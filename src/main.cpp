@@ -1,7 +1,9 @@
 #include "HuxleyServer.h"
+#include "Database.h"
+#include "AuthManager.h"
 #include <iostream> 
 
-// test drive 
+// Test authmanager
 int main() {
     // HuxleyServer server;
     // if (server.start(8080)) {
@@ -10,8 +12,14 @@ int main() {
     // server.stop();
     // return 0;
 
-    std::cout << "Hallo, Welt!" << std::endl;
-    return 0; 
-}
+    Database db("huxley.db");
+    AuthManager authManager(&db);
+    authManager.registerUser("testuser", "testpassword");
+    if (authManager.loginUser("testuser", "testpassword")) {
+        std::cout << "Login successful!" << std::endl;
+    } else {
+        std::cout << "Login failed!" << std::endl;
+    }
 
-// das hier ist ein hallo welt programm
+    return 0;
+}

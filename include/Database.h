@@ -1,10 +1,11 @@
 // Database.h
 #pragma once
 #include <string>
+#include <unordered_map>
 
 class Database {
 public:
-    Database(const std::string& filename);
+    explicit Database(const std::string& filename);
     ~Database();
 
     bool insertUser(const std::string& username, const std::string& hash);
@@ -13,4 +14,5 @@ public:
 
 private:
     void* dbHandle; // will be sqlite3*
+    std::unordered_map<std::string, std::string> users; // in-memory placeholder store
 };

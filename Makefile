@@ -2,7 +2,7 @@
 BUILD_DIR := build
 CXX := /home/josesilvaa/buildroot/buildroot-2025.02/output/host/bin/aarch64-linux-g++
 CXXFLAGS := -Wall -O2 -std=c++17 -Iinclude # -I flag looks for headers in 'include'
-# LDFLAGS := -lpthread -lsqlite3 # Link against pthread and sqlite3
+LDFLAGS := -lpthread -lsqlite3 # Link against pthread and sqlite3
 
 # Source and Target
 SRC := $(wildcard src/*.cpp) # All .cpp files in src/
