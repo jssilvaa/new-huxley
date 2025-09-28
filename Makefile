@@ -2,7 +2,7 @@
 BUILD_DIR := build
 CXX := /home/josesilvaa/buildroot/buildroot-2025.02/output/host/bin/aarch64-linux-g++
 CXXFLAGS := -Wall -O2 -std=c++17 -Iinclude # -I flag looks for headers in 'include'
-LDFLAGS := -lpthread -lsqlite3 # Link against pthread and sqlite3
+# LDFLAGS := -lpthread -lsqlite3 # Link against pthread and sqlite3
 
 # Source and Target
 SRC := $(wildcard src/*.cpp) # All .cpp files in src/
@@ -12,8 +12,8 @@ TARGET := huxley
 
 # Pi connection settings
 PI_USER := root
-PI_HOST := raspberrypi   # update with Pi's IP
-PI_PATH := /etc          # where to copy binary
+PI_HOST := raspberrypi
+PI_PATH := /etc
 
 .PHONY: all deploy run clean
 
@@ -22,7 +22,7 @@ PI_PATH := /etc          # where to copy binary
 all: $(TARGET)
 
 # 1. Link the executable (linking objects into the TARGET)
-$(TARGET): $(BUILD_DIR) $(OBJ)
+$(TARGET): $(OBJ)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 # 2. Rule to ensure the build directory exists
