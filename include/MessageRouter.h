@@ -15,7 +15,7 @@ public:
     void registerClient(const std::string& username, ClientState* state); 
     void unregisterClient(const std::string& username); 
     bool routeMessage(const std::string& sender, const std::string& recipient, const std::string& message);
-
+    
 private:
     CryptoEngine* cryptoEngine;
     pthread_mutex_t clientsMutex; 
