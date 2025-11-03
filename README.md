@@ -124,3 +124,4 @@ Add a LICENSE file to the repository and replace this section with the chosen li
 ## Contact
 
 Maintainer: jssilvaa (https://github.com/jssilvaa)
+            vascoolify (https://github.com/vascoolify)
