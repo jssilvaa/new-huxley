@@ -10,5 +10,6 @@ public:
     void setState(State s);
 
 private:
+    pthread_mutex_t ledMutex; 
     void updateLed(State s);
 };

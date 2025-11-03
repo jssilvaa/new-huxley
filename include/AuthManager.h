@@ -2,7 +2,8 @@
 #pragma once
 #include <string>
 
-class Database; // Forward declaration (implemented in Database.h)
+// Forward declaration
+class Database; 
 
 class AuthManager {
 public:
