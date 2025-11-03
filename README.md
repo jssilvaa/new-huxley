@@ -26,7 +26,7 @@ new-huxley is a lightweight client-server application written in C++ targeting t
 ## Requirements
 
 - Raspberry Pi 4 (or a compatible ARM64/ARMv7 device)
-- GNU toolchain (g++ supporting C++17)
+- GNU toolchain (glibc with C++ support)
 - cmake (optional, for CMake-based builds)
 - make (for the Makefile flow)
 - Optional: cross-compilation toolchain if building from a non-ARM machine
@@ -37,7 +37,7 @@ new-huxley is a lightweight client-server application written in C++ targeting t
 
    sudo apt update && sudo apt install -y build-essential cmake git
 
-2. Clone the repository (if not already done):
+2. Clone the repository:
 
    git clone https://github.com/jssilvaa/new-huxley.git
    cd new-huxley
@@ -102,24 +102,12 @@ Command-line flags and configuration depend on the implementation; run --help ag
 - If tests exist under tests/, run them after building (e.g., ctest or make test).
 - Add unit tests for networking, serialization, and platform-specific behavior.
 
-## Contributing
-
-Contributions are welcome. A suggested workflow:
-
-1. Fork the repository
-2. Create a feature branch
-3. Open a pull request with a clear description and tests if appropriate
-
-Please follow the repository's coding conventions and include clear commit messages.
-
 ## Troubleshooting
 
 - Build failures: ensure you have the correct toolchain and dependencies installed
 - Runtime networking issues: verify IP addresses, port availability, and firewall settings
 
 ## License
-
-Add a LICENSE file to the repository and replace this section with the chosen license. Common options: MIT, Apache-2.0, GPL-3.0.
 
 ## Contact
 
