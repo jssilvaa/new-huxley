@@ -20,5 +20,4 @@ private:
     CryptoEngine* cryptoEngine;
     pthread_mutex_t clientsMutex; 
     std::map<std::string, ClientState> activeClients; 
-    
 };
