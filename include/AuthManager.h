@@ -1,21 +1,28 @@
 // AuthManager.h
 #pragma once
+
 #include <string>
+#include <unordered_set>
+#include <pthread.h>
 
-// Forward declaration
-class Database; 
+class Database;
 
+// Handles registration, authentication, and session validation.
 class AuthManager {
 public:
-    // Dependency-injected database pointer. AuthManager does NOT own the database.
-    explicit AuthManager(Database* db);
+    explicit AuthManager(Database& db);
+    ~AuthManager();
 
     bool registerUser(const std::string& username, const std::string& password);
     bool loginUser(const std::string& username, const std::string& password);
-    bool verifySession(const std::string& username);
+    void logoutUser(const std::string& username);
+    bool verifySession(const std::string& username) const;
 
 private:
-    Database* database { nullptr };
-    std::string hashPassword(const std::string& password) const; // simple placeholder hash
-};
+    std::string hashPassword(const std::string& password) const;
+    bool verifyPassword(const std::string& password, const std::string& storedHash) const;
 
+    Database& database;
+    mutable pthread_mutex_t sessionMutex;
+    std::unordered_set<std::string> activeUsers;
+};

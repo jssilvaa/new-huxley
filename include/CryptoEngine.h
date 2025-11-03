@@ -1,11 +1,26 @@
 // CryptoEngine.h
 #pragma once
+
+#include <array>
 #include <string>
 
-// Where are we getting the key? Do we need to fetch it directly with os.read()? What's the safest option? Do we need to provide an 
-// additional interface for that with getKey() (SOLID Interface Segregation)
+// Provides authenticated encryption for payloads routed through the server.
 class CryptoEngine {
 public:
-    std::string encrypt(const std::string& plain, const std::string& key);
-    std::string decrypt(const std::string& cipher, const std::string& key);
+    struct CipherMessage {
+        std::string nonce;
+        std::string ciphertext;
+        std::string mac;
+    };
+
+    CryptoEngine();
+
+    CipherMessage encryptMessage(const std::string& plaintext) const;
+    bool decryptMessage(const CipherMessage& cipher, std::string& outPlaintext) const;
+
+private:
+    void ensureKeyLoaded() const;
+
+    mutable bool keyLoaded;
+    mutable std::array<unsigned char, 32> secretKey;
 };
