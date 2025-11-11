@@ -28,6 +28,8 @@ public:
 
     bool insertUser(const std::string& username, const std::string& passwordHash);
     bool findUser(const std::string& username, std::string& outHash) const;
+    bool findUserId(const std::string& username, int& outId) const;
+    bool findUsername(int userId, std::string& outUsername) const;
 
     bool insertMessage(int senderId,
                        int recipientId,

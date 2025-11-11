@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include <pthread.h>
+#include <sys/epoll.h>
 
 class AuthManager;
 class MessageRouter;
@@ -29,6 +30,7 @@ public:
     void notifyEvent(int clientFd);
 
     int id() const { return workerId; }
+    pthread_t nativeHandle() const { return threadHandle; }
 
 private:
     static void* threadEntry(void* arg);
@@ -37,6 +39,8 @@ private:
     void handleWriteEvent(int clientFd);
     void processCommand(ClientState& state, const Command& command);
     void closeClient(int clientFd);
+    ClientState* getClient(int clientFd);
+    void removeClient(int clientFd);
 
     int workerId;
     int epollFd;
@@ -52,5 +56,5 @@ private:
     ProtocolHandler& protocolHandler;
     StatusManager& statusManager;
 
-    std::vector<int> eventBuffer;
+    std::vector<epoll_event> eventBuffer;
 };

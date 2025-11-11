@@ -29,6 +29,7 @@ public:
 
 private:
     void acceptLoop();
+    static void* acceptThreadEntry(void* arg);
     void dispatchPendingClients();
     bool initializeServices(int port);
     void startWorkerPool(std::size_t threadCount);
@@ -37,13 +38,13 @@ private:
 
     int listenFd {-1};
     std::atomic<bool> running {false};
+    pthread_t acceptThread {0};
 
     pthread_mutex_t queueMutex;
     pthread_cond_t queueCond;
     std::queue<int> socketQueue;
 
     std::vector<std::unique_ptr<WorkerThread>> workerThreads;
-    std::vector<pthread_t> threadHandles;
 
     std::unique_ptr<AuthManager> authManager;
     std::unique_ptr<MessageRouter> messageRouter;
@@ -53,4 +54,5 @@ private:
     std::unique_ptr<Database> database;
 
     std::string databasePath;
+    std::size_t nextWorkerIndex {0};
 };

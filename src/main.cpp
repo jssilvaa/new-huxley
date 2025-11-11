@@ -1,25 +1,32 @@
-#include "HuxleyServer.h"
-#include "Database.h"
 #include "AuthManager.h"
-#include <iostream> 
+#include "DatabaseEngine.h"
+#include "HuxleyServer.h"
 
-// Test authmanager
-int main() {
-    // HuxleyServer server;
-    // if (server.start(8080)) {
-    //     // TODO: loop or signal handling
-    // }
-    // server.stop();
-    // return 0;
+#include <iostream>
 
-    Database db("huxley.db");
-    AuthManager authManager(&db);
-    authManager.registerUser("testuser", "testpassword");
-    if (authManager.loginUser("testuser", "testpassword")) {
-        std::cout << "Login successful!" << std::endl;
-    } else {
-        std::cout << "Login failed!" << std::endl;
+int main()
+{
+    Database database("huxley.db");
+    if (!database.open()) {
+        std::cerr << "Failed to open database" << std::endl;
+        return 1;
     }
 
+    AuthManager auth(database);
+    auth.registerUser("alice", "password123");
+    if (auth.loginUser("alice", "password123")) {
+        std::cout << "Authentication OK" << std::endl;
+    }
+
+    HuxleyServer server;
+    if (!server.start(8080)) {
+        std::cerr << "Server failed to start" << std::endl;
+        return 1;
+    }
+
+    std::cout << "Server running on port 8080. Press Enter to stop." << std::endl;
+    std::cin.get();
+
+    server.stop();
     return 0;
 }

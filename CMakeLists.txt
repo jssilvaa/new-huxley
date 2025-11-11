@@ -8,4 +8,8 @@ include_directories(include)
 
 file(GLOB SOURCES "src/*.cpp")
 
+find_package(SQLite3 REQUIRED)
+find_package(Threads REQUIRED)
+
 add_executable(huxley ${SOURCES})
+target_link_libraries(huxley PRIVATE SQLite::SQLite3 Threads::Threads)
