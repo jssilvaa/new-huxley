@@ -10,17 +10,17 @@ public:
     struct CipherMessage {
         std::string nonce;
         std::string ciphertext;
-        std::string mac;
     };
 
-    CryptoEngine();
+    CryptoEngine() : keyLoaded(false) {}
+    ~CryptoEngine() noexcept;  
 
-    CipherMessage encryptMessage(const std::string& plaintext) const;
-    bool decryptMessage(const CipherMessage& cipher, std::string& outPlaintext) const;
+    CipherMessage encryptMessage(const std::string& plaintext);
+    bool decryptMessage(const CipherMessage& cipher, std::string& outPlaintext);
 
 private:
     void ensureKeyLoaded() const;
 
-    mutable bool keyLoaded;
-    mutable std::array<unsigned char, 32> secretKey;
+    bool keyLoaded;
+    std::array<unsigned char, 32> secretKey;
 };

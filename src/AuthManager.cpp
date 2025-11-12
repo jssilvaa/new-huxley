@@ -1,46 +1,16 @@
 // AuthManager.cpp
 #include "AuthManager.h"
-
 #include "DatabaseEngine.h"
-
-// #include <algorithm>
-// #include <array>
-#include <chrono>
-// #include <iomanip>
 #include <iostream>
-#include <random>
-// #include <sstream>
 #include <sodium.h> 
 
-// namespace {
-// std::string generateSalt()
-// {
-//     std::array<unsigned char, 16> salt{};
-//     std::random_device rd;
-//     for (auto& byte : salt) {
-//         byte = static_cast<unsigned char>(rd());
-//     }
+/* TODOS 
+1. Compare moderate vs interactive OPS / MEMLIMITS
+2. Ensure sodium_init() is called once at program start (maybe in the main() function)
+3. Delete commented-out code if not needed: libsodium generates its own salt internally.
+There's also no need for the constantTimeEquals function since libsodium handles that securely.
 
-//     std::ostringstream oss;
-//     oss << std::hex;
-//     for (unsigned char byte : salt) {
-//         oss << std::setw(2) << std::setfill('0') << static_cast<int>(byte);
-//     }
-//     return oss.str();
-// }
-
-// bool constantTimeEquals(const std::string& lhs, const std::string& rhs)
-// {
-//     if (lhs.size() != rhs.size()) {
-//         return false;
-//     }
-//     unsigned char diff = 0;
-//     for (std::size_t i = 0; i < lhs.size(); ++i) {
-//         diff |= static_cast<unsigned char>(lhs[i] ^ rhs[i]);
-//     }
-//     return diff == 0;
-// }
-// } // namespace
+*/
 
 AuthManager::AuthManager(Database& db)
     : database(db)

@@ -1,48 +1,21 @@
 #include "CryptoEngine.h"
 
-#include <algorithm>
 #include <array>
-#include <iomanip>
-#include <random>
-#include <sstream>
+#include <stdexcept>
+#include <vector> 
+#include <sodium.h>
 
-namespace {
-std::string toHex(std::size_t value)
-{
-    std::ostringstream oss;
-    oss << std::hex << std::setw(sizeof(std::size_t) * 2) << std::setfill('0') << value;
-    return oss.str();
-}
-
-bool constantTimeEquals(const std::string& lhs, const std::string& rhs)
-{
-    if (lhs.size() != rhs.size()) {
-        return false;
-    }
-    unsigned char diff = 0;
-    for (std::size_t i = 0; i < lhs.size(); ++i) {
-        diff |= static_cast<unsigned char>(lhs[i] ^ rhs[i]);
-    }
-    return diff == 0;
-}
-
-std::string computeMac(const std::string& nonce,
-                       const std::string& ciphertext,
-                       const std::array<unsigned char, 32>& key)
-{
-    std::string combined;
-    combined.reserve(nonce.size() + ciphertext.size() + key.size());
-    combined.append(nonce);
-    combined.append(ciphertext);
-    combined.append(reinterpret_cast<const char*>(key.data()), key.size());
-    return toHex(std::hash<std::string>{}(combined));
-}
-} // namespace
 
 CryptoEngine::CryptoEngine()
     : keyLoaded(false)
     , secretKey{}
 {
+}
+
+CryptoEngine::~CryptoEngine()
+{
+    // Zero out the secret key from memory
+    sodium_memzero(secretKey.data(), secretKey.size());
 }
 
 void CryptoEngine::ensureKeyLoaded() const
@@ -51,60 +24,63 @@ void CryptoEngine::ensureKeyLoaded() const
         return;
     }
 
-    std::random_device rd;
-    for (auto& byte : secretKey) {
-        byte = static_cast<unsigned char>(rd());
-    }
-    keyLoaded = true;
+    throw std::runtime_error("Secret key not loaded");
 }
 
-CryptoEngine::CipherMessage CryptoEngine::encryptMessage(const std::string& plaintext) const
+CryptoEngine::CipherMessage CryptoEngine::encryptMessage(const std::string& plaintext)
 {
     ensureKeyLoaded();
 
-    std::array<unsigned char, 24> nonceBytes{};
-    std::random_device rd;
-    for (auto& byte : nonceBytes) {
-        byte = static_cast<unsigned char>(rd());
-    }
+    // Nonce generation
+    unsigned char nonce[crypto_secretbox_NONCEBYTES];
+    randombytes_buf(nonce, sizeof(nonce));
 
-    std::string nonce(reinterpret_cast<const char*>(nonceBytes.data()), nonceBytes.size());
-    std::string ciphertext(plaintext.size(), '\0');
+    // Message encryption, AEAD 
+    std::vector<unsigned char> ciphertext(crypto_secretbox_MACBYTES + plaintext.size());
+    crypto_secretbox_easy(ciphertext.data(), 
+                          reinterpret_cast<const unsigned char*>(plaintext.data()),
+                          plaintext.size(),
+                          nonce,
+                          secretKey.data());
 
-    for (std::size_t i = 0; i < plaintext.size(); ++i) {
-        const unsigned char k = secretKey[i % secretKey.size()];
-        const unsigned char n = nonceBytes[i % nonceBytes.size()];
-        ciphertext[i] = static_cast<char>(plaintext[i] ^ k ^ n);
-    }
-
-    CipherMessage message;
-    message.nonce = std::move(nonce);
-    message.ciphertext = std::move(ciphertext);
-    message.mac = computeMac(message.nonce, message.ciphertext, secretKey);
-    return message;
+    // Pack up the cipher message and nonce 
+    CipherMessage cipherMsg;
+    cipherMsg.nonce = std::string(reinterpret_cast<char*>(nonce), sizeof(nonce));
+    cipherMsg.ciphertext = std::string(reinterpret_cast<char*>(ciphertext.data()), ciphertext.size());
+    return cipherMsg;
 }
 
-bool CryptoEngine::decryptMessage(const CipherMessage& cipher, std::string& outPlaintext) const
+bool CryptoEngine::decryptMessage(const CipherMessage& cipher, std::string& outPlaintext)
 {
     ensureKeyLoaded();
 
-    const std::string expectedMac = computeMac(cipher.nonce, cipher.ciphertext, secretKey);
-    if (!constantTimeEquals(expectedMac, cipher.mac)) {
+    // Validate nonce size
+    if (cipher.nonce.size() != crypto_secretbox_NONCEBYTES) {
         return false;
     }
 
-    if (cipher.nonce.empty()) {
+    // Prepare buffers
+    const unsigned char* nonce = reinterpret_cast<const unsigned char*>(cipher.nonce.data());
+    const unsigned char* ciphertext = reinterpret_cast<const unsigned char*>(cipher.ciphertext.data());
+    size_t ciphertextLen = cipher.ciphertext.size();
+
+
+    // Validate ciphertext size
+    if (ciphertextLen < crypto_secretbox_MACBYTES) {
         return false;
     }
+    std::vector<unsigned char> plaintext(ciphertextLen - crypto_secretbox_MACBYTES);
 
-    outPlaintext.resize(cipher.ciphertext.size());
-    const auto* noncePtr = reinterpret_cast<const unsigned char*>(cipher.nonce.data());
-
-    for (std::size_t i = 0; i < cipher.ciphertext.size(); ++i) {
-        const unsigned char k = secretKey[i % secretKey.size()];
-        const unsigned char n = noncePtr[i % cipher.nonce.size()];
-        outPlaintext[i] = static_cast<char>(cipher.ciphertext[i] ^ k ^ n);
+    // Message decryption
+    if (crypto_secretbox_open_easy(plaintext.data(), 
+                                   ciphertext,
+                                   ciphertextLen,
+                                   nonce,
+                                   secretKey.data()) != 0) {
+        return false; // Decryption failed
     }
 
+    // Output plaintext
+    outPlaintext.assign(plaintext.begin(), plaintext.end());
     return true;
 }
