@@ -19,7 +19,7 @@ public:
 
     bool isAuthenticated() const { return authenticated; }
     void setAuthenticated(bool value);
-    const std::string& username() const { return username; }
+    const std::string& username() const { return username_; }
     void setUsername(std::string name);
 
     time_t lastActivity() const { return lastActivityTs; }
@@ -34,7 +34,7 @@ public:
 private:
     WorkerThread* owner;
     int socketFd;
-    std::string username;
+    std::string username_;
     bool authenticated;
     time_t lastActivityTs;
     std::string recvBuffer;

@@ -4,11 +4,12 @@
 
 #include <ctime>
 #include <unistd.h>
+#include <utility>
 
 ClientState::ClientState(WorkerThread* ownerThread, int fd)
     : owner(ownerThread)
     , socketFd(fd)
-    , username()
+    , username_()
     , authenticated(false)
     , lastActivityTs(::time(nullptr))
     , recvBuffer()
@@ -29,7 +30,7 @@ void ClientState::setAuthenticated(bool value)
 
 void ClientState::setUsername(std::string name)
 {
-    username = std::move(name);
+    username_ = std::move(name);
 }
 
 void ClientState::updateActivity(time_t now)
