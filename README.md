@@ -70,17 +70,31 @@ Refer to CMake cross-compilation documentation or your CI configuration for exac
 
 ## Running
 
-The repository provides (or is expected to provide) at least two binaries: a server and a client. Replace binary names below with the actual names in the repo.
+### Cross-compiled target build
 
-1. Start the server (on the Pi that acts as server):
+```bash
+make                # builds huxley using the Buildroot aarch64 toolchain
+scp huxley ...      # or `make deploy`
+```
 
-   ./server --port 5000
+### Host simulation + CLI harness
 
-2. Run the client (on the Pi or another machine):
+You can exercise the entire stack on your development machine before deploying:
 
-   ./client --host 192.168.1.100 --port 5000
+```bash
+make host           # native g++ build (outputs huxley_host)
+make host-run       # start the host binary on port 8080 (--no-block)
+make cli-run        # open the interactive Python CLI (client/client.py)
+make test-sim       # automated harness: starts host server + scripted clients
+```
 
-Command-line flags and configuration depend on the implementation; run --help against each binary to see supported options.
+- `make test-sim` launches `huxley_host` on port 9090, runs `tests/cli_harness.py` to
+   register two ephemeral users, log them in, attempt authorized/unauthorized sends,
+   and logs the transcript to `/tmp/huxley_sim.log`.
+- Open additional terminals and run `python client/client.py localhost 8080` to run
+   interactive slash commands; see `client/README.md` for details.
+
+Command-line flags for the C++ server can be listed with `./huxley_host --help`.
 
 ## Configuration
 

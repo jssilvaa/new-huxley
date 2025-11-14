@@ -1,6 +1,6 @@
 // AuthManager.cpp
-#include "AuthManager.h"
-#include "DatabaseEngine.h"
+#include "../include/AuthManager.h"
+#include "../include/DatabaseEngine.h"
 #include <iostream>
 #include <sodium.h> 
 
@@ -9,7 +9,6 @@
 2. Ensure sodium_init() is called once at program start (maybe in the main() function)
 3. Delete commented-out code if not needed: libsodium generates its own salt internally.
 There's also no need for the constantTimeEquals function since libsodium handles that securely.
-
 */
 
 AuthManager::AuthManager(Database& db)
@@ -72,13 +71,16 @@ bool AuthManager::loginUser(const std::string& username, const std::string& pass
     return true;
 }
 
-void AuthManager::logoutUser(const std::string& username)
+bool AuthManager::logoutUser(const std::string& username)
 {
     pthread_mutex_lock(&sessionMutex);
-    activeUsers.erase(username);
+    if ( activeUsers.erase(username) ) {
+        pthread_mutex_unlock(&sessionMutex);
+        database.logActivity("INFO", "User logout: " + username);
+        return true;
+    }
     pthread_mutex_unlock(&sessionMutex);
-
-    database.logActivity("INFO", "User logout: " + username);
+    return false;
 }
 
 bool AuthManager::verifySession(const std::string& username) const

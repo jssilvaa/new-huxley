@@ -1,8 +1,7 @@
-#include "MessageRouter.h"
-
-#include "ClientState.h"
-#include "DatabaseEngine.h"
-
+#include "../include/MessageRouter.h"
+#include "../include/ClientState.h"
+#include "../include/AuthManager.h"
+#include "../include/DatabaseEngine.h"
 #include <sstream>
 
 namespace {
@@ -28,9 +27,10 @@ std::string buildInboundMessagePayload(const std::string& sender, const std::str
 }
 } // namespace
 
-MessageRouter::MessageRouter(Database& db, CryptoEngine& crypto)
+MessageRouter::MessageRouter(Database& db, CryptoEngine& crypto, AuthManager& authMgr)
     : database(db)
     , cryptoEngine(crypto)
+    , authManager(authMgr) 
 {
     pthread_mutex_init(&clientsMutex, nullptr);
 }
@@ -74,11 +74,11 @@ bool MessageRouter::persistMessage(const std::string& sender,
     int senderId = 0;
     int recipientId = 0;
     if (!database.findUserId(sender, senderId) || !database.findUserId(recipient, recipientId)) {
-        database.logActivity("WARN", "Failed to persist message – unknown user");
+        database.logActivity("WARN", "Failed to persist message - unknown user");
         return false;
     }
 
-    return database.insertMessage(senderId, recipientId, cipher.ciphertext, cipher.nonce, cipher.mac);
+    return database.insertMessage(senderId, recipientId, cipher.ciphertext, cipher.nonce);
 }
 
 bool MessageRouter::routeMessage(const std::string& sender,
@@ -95,7 +95,7 @@ bool MessageRouter::routeMessage(const std::string& sender,
         return true; // Stored for later delivery.
     }
 
-    recipientState->queueResponse(buildInboundMessagePayload(sender, plaintext));
+    recipientState->queueFramedResponse(buildInboundMessagePayload(sender, plaintext));
     database.logActivity("INFO", "Queued realtime delivery: " + sender + " -> " + recipient);
     return true;
 }
@@ -113,7 +113,7 @@ bool MessageRouter::deliverQueuedMessages(const std::string& username, ClientSta
     }
 
     for (const auto& stored : messages) {
-        CryptoEngine::CipherMessage cipher { stored.nonce, stored.ciphertext, stored.mac };
+        CryptoEngine::CipherMessage cipher { stored.nonce, stored.ciphertext };
         std::string plaintext;
         if (!cryptoEngine.decryptMessage(cipher, plaintext)) {
             database.logActivity("ERROR", "Failed to decrypt stored message " + std::to_string(stored.id));
@@ -125,7 +125,7 @@ bool MessageRouter::deliverQueuedMessages(const std::string& username, ClientSta
             senderName = "unknown";
         }
 
-        state.queueResponse(buildInboundMessagePayload(senderName, plaintext));
+        state.queueFramedResponse(buildInboundMessagePayload(senderName, plaintext));
         database.markDelivered(stored.id);
     }
 

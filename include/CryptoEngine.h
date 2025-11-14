@@ -19,7 +19,7 @@ public:
     bool decryptMessage(const CipherMessage& cipher, std::string& outPlaintext);
 
 private:
-    void ensureKeyLoaded() const;
+    void ensureKeyLoaded() noexcept;
 
     bool keyLoaded;
     std::array<unsigned char, 32> secretKey;

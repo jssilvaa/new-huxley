@@ -7,6 +7,8 @@
 #include <pthread.h>
 
 #include "CryptoEngine.h"
+#include "AuthManager.h"
+#include "DatabaseEngine.h"
 
 class ClientState;
 class Database;
@@ -14,7 +16,8 @@ class Database;
 // Routes encrypted messages to online clients or persists them for later delivery.
 class MessageRouter {
 public:
-    MessageRouter(Database& db, CryptoEngine& crypto);
+    // MessageRouter(Database& db, CryptoEngine& crypto);
+    MessageRouter(Database& db, CryptoEngine& crypto, AuthManager& authMgr);
     ~MessageRouter();
 
     void registerClient(const std::string& username, ClientState* state);
@@ -33,6 +36,7 @@ private:
 
     Database& database;
     CryptoEngine& cryptoEngine;
+    AuthManager& authManager;
     pthread_mutex_t clientsMutex;
     std::map<std::string, ClientState*> activeClients;
 };

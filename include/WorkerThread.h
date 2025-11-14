@@ -7,6 +7,8 @@
 #include <pthread.h>
 #include <sys/epoll.h>
 
+#include "ClientNotifier.h"
+
 class AuthManager;
 class MessageRouter;
 class ProtocolHandler;
@@ -15,7 +17,7 @@ class ClientState;
 struct Command;
 
 // Event-driven worker responsible for servicing a shard of client sockets.
-class WorkerThread {
+class WorkerThread : public ClientNotifier {
 public:
     WorkerThread(int id,
                  AuthManager& auth,
@@ -27,7 +29,7 @@ public:
     void start();
     void stop();
     void assignClient(int clientFd);
-    void notifyEvent(int clientFd);
+    void notifyEvent(int clientFd) override;
 
     int id() const { return workerId; }
     pthread_t nativeHandle() const { return threadHandle; }

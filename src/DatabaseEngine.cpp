@@ -1,7 +1,6 @@
-#include "DatabaseEngine.h"
+#include "../include/DatabaseEngine.h"
 
 #include <sqlite3.h>
-
 #include <iostream>
 #include <utility>
 
@@ -55,6 +54,7 @@ bool Database::open()
 
 void Database::close()
 {
+    finalizeStatements();
     if (dbHandle) {
         sqlite3_close(dbHandle);
         dbHandle = nullptr;
@@ -70,17 +70,15 @@ bool Database::insertUser(const std::string& username, const std::string& passwo
     static constexpr const char* sql =
         "INSERT INTO users (username, password_hash) VALUES (?, ?);";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(insertUserStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(stmt, 2, passwordHash.c_str(), -1, SQLITE_TRANSIENT);
 
-    const bool success = sqlite3_step(stmt) == SQLITE_DONE;
-    sqlite3_finalize(stmt);
-    return success;
+    return sqlite3_step(stmt) == SQLITE_DONE;
 }
 
 bool Database::findUser(const std::string& username, std::string& outHash) const
@@ -92,11 +90,11 @@ bool Database::findUser(const std::string& username, std::string& outHash) const
     static constexpr const char* sql =
         "SELECT password_hash FROM users WHERE username = ?;";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(findUserStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_TRANSIENT);
 
     const int step = sqlite3_step(stmt);
@@ -108,7 +106,6 @@ bool Database::findUser(const std::string& username, std::string& outHash) const
             found = true;
         }
     }
-    sqlite3_finalize(stmt);
     return found;
 }
 
@@ -121,11 +118,11 @@ bool Database::findUserId(const std::string& username, int& outId) const
     static constexpr const char* sql =
         "SELECT id FROM users WHERE username = ?;";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(findUserIdStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_TRANSIENT);
 
     const int step = sqlite3_step(stmt);
@@ -133,7 +130,6 @@ bool Database::findUserId(const std::string& username, int& outId) const
     if (found) {
         outId = sqlite3_column_int(stmt, 0);
     }
-    sqlite3_finalize(stmt);
     return found;
 }
 
@@ -146,11 +142,11 @@ bool Database::findUsername(int userId, std::string& outUsername) const
     static constexpr const char* sql =
         "SELECT username FROM users WHERE id = ?;";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(findUsernameStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_int(stmt, 1, userId);
 
     const int step = sqlite3_step(stmt);
@@ -161,38 +157,33 @@ bool Database::findUsername(int userId, std::string& outUsername) const
             outUsername.assign(text);
         }
     }
-    sqlite3_finalize(stmt);
     return found;
 }
 
 bool Database::insertMessage(int senderId,
                               int recipientId,
                               const std::string& ciphertext,
-                              const std::string& nonce,
-                              const std::string& mac)
+                              const std::string& nonce)
 {
     if (!dbHandle) {
         return false;
     }
 
     static constexpr const char* sql =
-        "INSERT INTO messages (sender_id, recipient_id, ciphertext, nonce, mac, delivered) "
-        "VALUES (?, ?, ?, ?, ?, 0);";
+        "INSERT INTO messages (sender_id, recipient_id, ciphertext, nonce, delivered) "
+        "VALUES (?, ?, ?, ?, 0);";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(insertMessageStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_int(stmt, 1, senderId);
     sqlite3_bind_int(stmt, 2, recipientId);
     sqlite3_bind_blob(stmt, 3, ciphertext.data(), static_cast<int>(ciphertext.size()), SQLITE_TRANSIENT);
     sqlite3_bind_blob(stmt, 4, nonce.data(), static_cast<int>(nonce.size()), SQLITE_TRANSIENT);
-    sqlite3_bind_blob(stmt, 5, mac.data(), static_cast<int>(mac.size()), SQLITE_TRANSIENT);
 
-    const bool success = sqlite3_step(stmt) == SQLITE_DONE;
-    sqlite3_finalize(stmt);
-    return success;
+    return sqlite3_step(stmt) == SQLITE_DONE;
 }
 
 std::vector<Database::StoredMessage> Database::getQueuedMessages(int recipientId) const
@@ -203,14 +194,14 @@ std::vector<Database::StoredMessage> Database::getQueuedMessages(int recipientId
     }
 
     static constexpr const char* sql =
-        "SELECT id, sender_id, recipient_id, ciphertext, nonce, mac, timestamp "
+        "SELECT id, sender_id, recipient_id, ciphertext, nonce, timestamp "
         "FROM messages WHERE recipient_id = ? AND delivered = 0 ORDER BY id ASC;";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(queuedMessagesStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return messages;
     }
-
     sqlite3_bind_int(stmt, 1, recipientId);
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
@@ -231,13 +222,7 @@ std::vector<Database::StoredMessage> Database::getQueuedMessages(int recipientId
             message.nonce.assign(noncePtr, nonceSize);
         }
 
-        const auto* macPtr = static_cast<const char*>(sqlite3_column_blob(stmt, 5));
-        const int macSize = sqlite3_column_bytes(stmt, 5);
-        if (macPtr && macSize > 0) {
-            message.mac.assign(macPtr, macSize);
-        }
-
-        const auto* tsPtr = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 6));
+        const auto* tsPtr = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
         if (tsPtr) {
             message.timestamp.assign(tsPtr);
         }
@@ -245,7 +230,6 @@ std::vector<Database::StoredMessage> Database::getQueuedMessages(int recipientId
         messages.emplace_back(std::move(message));
     }
 
-    sqlite3_finalize(stmt);
     return messages;
 }
 
@@ -258,15 +242,13 @@ bool Database::markDelivered(int messageId)
     static constexpr const char* sql =
         "UPDATE messages SET delivered = 1 WHERE id = ?;";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(markDeliveredStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_int(stmt, 1, messageId);
-    const bool success = sqlite3_step(stmt) == SQLITE_DONE;
-    sqlite3_finalize(stmt);
-    return success;
+    return sqlite3_step(stmt) == SQLITE_DONE;
 }
 
 bool Database::logActivity(const std::string& level, const std::string& message)
@@ -278,17 +260,15 @@ bool Database::logActivity(const std::string& level, const std::string& message)
     static constexpr const char* sql =
         "INSERT INTO logs (level, log) VALUES (?, ?);";
 
-    sqlite3_stmt* stmt = nullptr;
-    if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    auto stmtGuard = makeStatementGuard(logActivityStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
         return false;
     }
-
     sqlite3_bind_text(stmt, 1, level.c_str(), -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(stmt, 2, message.c_str(), -1, SQLITE_TRANSIENT);
 
-    const bool success = sqlite3_step(stmt) == SQLITE_DONE;
-    sqlite3_finalize(stmt);
-    return success;
+    return sqlite3_step(stmt) == SQLITE_DONE;
 }
 
 bool Database::configurePragmas()
@@ -325,7 +305,6 @@ bool Database::ensureSchema()
         " recipient_id INTEGER NOT NULL,"
         " ciphertext BLOB NOT NULL,"
         " nonce BLOB NOT NULL,"
-        " mac BLOB NOT NULL,"
         " delivered INTEGER NOT NULL DEFAULT 0,"
         " timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,"
         " FOREIGN KEY(sender_id) REFERENCES users(id),"
@@ -362,4 +341,88 @@ bool Database::ensureSchema()
         && exec(dbHandle, idxUsername)
         && exec(dbHandle, idxRecipientDelivered)
         && exec(dbHandle, idxSenderTimestamp);
+}
+
+Database::StatementGuard::StatementGuard(const Database& db, sqlite3_stmt* stmt) noexcept
+    : database(&db)
+    , statement(stmt)
+{
+}
+
+Database::StatementGuard::StatementGuard(StatementGuard&& other) noexcept
+    : database(other.database)
+    , statement(other.statement)
+{
+    other.statement = nullptr;
+}
+
+Database::StatementGuard& Database::StatementGuard::operator=(StatementGuard&& other) noexcept
+{
+    if (this != &other) {
+        if (statement && database) {
+            database->resetStatement(statement);
+        }
+        database = other.database;
+        statement = other.statement;
+        other.statement = nullptr;
+    }
+    return *this;
+}
+
+Database::StatementGuard::~StatementGuard()
+{
+    if (statement && database) {
+        database->resetStatement(statement);
+    }
+}
+
+sqlite3_stmt* Database::getStatement(sqlite3_stmt*& stmt, const char* sql) const
+{
+    if (!dbHandle) {
+        return nullptr;
+    }
+
+    if (!stmt) {
+        if (sqlite3_prepare_v2(dbHandle, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+            std::cerr << "Failed to prepare statement: " << sqlite3_errmsg(dbHandle) << std::endl;
+            stmt = nullptr;
+            return nullptr;
+        }
+    }
+
+    return stmt;
+}
+
+void Database::resetStatement(sqlite3_stmt* stmt) const
+{
+    if (!stmt) {
+        return;
+    }
+
+    sqlite3_reset(stmt);
+    sqlite3_clear_bindings(stmt);
+}
+
+void Database::finalizeStatements()
+{
+    auto finalize = [](sqlite3_stmt*& stmt) {
+        if (stmt) {
+            sqlite3_finalize(stmt);
+            stmt = nullptr;
+        }
+    };
+
+    finalize(insertUserStmt);
+    finalize(findUserStmt);
+    finalize(findUserIdStmt);
+    finalize(findUsernameStmt);
+    finalize(insertMessageStmt);
+    finalize(queuedMessagesStmt);
+    finalize(markDeliveredStmt);
+    finalize(logActivityStmt);
+}
+
+Database::StatementGuard Database::makeStatementGuard(sqlite3_stmt*& stmt, const char* sql) const
+{
+    return StatementGuard(*this, getStatement(stmt, sql));
 }

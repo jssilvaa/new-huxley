@@ -15,7 +15,7 @@ public:
 
     bool registerUser(const std::string& username, const std::string& password);
     bool loginUser(const std::string& username, const std::string& password);
-    void logoutUser(const std::string& username);
+    bool logoutUser(const std::string& username);
     bool verifySession(const std::string& username) const;
 
 private:

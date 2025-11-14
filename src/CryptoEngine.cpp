@@ -1,4 +1,4 @@
-#include "CryptoEngine.h"
+#include "../include/CryptoEngine.h"
 
 #include <array>
 #include <stdexcept>
@@ -6,11 +6,10 @@
 #include <sodium.h>
 
 
-CryptoEngine::CryptoEngine()
-    : keyLoaded(false)
-    , secretKey{}
-{
-}
+// CryptoEngine::CryptoEngine()
+//     : keyLoaded(false)
+// {
+// }
 
 CryptoEngine::~CryptoEngine()
 {
@@ -18,13 +17,18 @@ CryptoEngine::~CryptoEngine()
     sodium_memzero(secretKey.data(), secretKey.size());
 }
 
-void CryptoEngine::ensureKeyLoaded() const
+void CryptoEngine::ensureKeyLoaded() noexcept
 {
     if (keyLoaded) {
         return;
-    }
+    } 
 
-    throw std::runtime_error("Secret key not loaded");
+    // random key generation via crypto_secretbox_keygen (random symmetric key)
+    unsigned char key[crypto_secretbox_KEYBYTES];
+    crypto_secretbox_keygen(key);
+    std::copy(key, key + crypto_secretbox_KEYBYTES, secretKey.begin());
+    sodium_memzero(key, sizeof(key));
+    keyLoaded = true;
 }
 
 CryptoEngine::CipherMessage CryptoEngine::encryptMessage(const std::string& plaintext)

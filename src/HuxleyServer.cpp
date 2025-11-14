@@ -124,7 +124,7 @@ bool HuxleyServer::initializeServices(int port)
     protocolHandler = std::make_unique<ProtocolHandler>();
     statusManager = std::make_unique<StatusManager>();
     authManager = std::make_unique<AuthManager>(*database);
-    messageRouter = std::make_unique<MessageRouter>(*database, *cryptoEngine);
+    messageRouter = std::make_unique<MessageRouter>(*database, *cryptoEngine, *authManager);
 
     listenFd = ::socket(AF_INET, SOCK_STREAM, 0);
     if (listenFd == -1) {

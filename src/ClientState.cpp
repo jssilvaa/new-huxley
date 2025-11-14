@@ -1,12 +1,29 @@
 #include "ClientState.h"
 
-#include "WorkerThread.h"
-
+#include <arpa/inet.h>
 #include <ctime>
+#include <cstring>
 #include <unistd.h>
 #include <utility>
 
-ClientState::ClientState(WorkerThread* ownerThread, int fd)
+namespace {
+std::string framePayload(const std::string& payload)
+{
+    const uint32_t payloadSize = static_cast<uint32_t>(payload.size());
+    std::string frame;
+    frame.resize(sizeof(uint32_t) + payloadSize);
+
+    uint32_t netOrder = htonl(payloadSize);
+    std::memcpy(frame.data(), &netOrder, sizeof(netOrder));
+    if (payloadSize > 0) {
+        std::memcpy(frame.data() + sizeof(netOrder), payload.data(), payloadSize);
+    }
+
+    return frame;
+}
+} // namespace
+
+ClientState::ClientState(ClientNotifier* ownerThread, int fd)
     : owner(ownerThread)
     , socketFd(fd)
     , username_()
@@ -46,7 +63,27 @@ void ClientState::clearRecvBuffer()
 void ClientState::queueResponse(const std::string& message)
 {
     pthread_mutex_lock(&sendMutex);
-    sendQueue.push(message);
+    sendQueue.push_back(message);
+    pthread_mutex_unlock(&sendMutex);
+
+    if (owner) {
+        owner->notifyEvent(socketFd);
+    }
+}
+
+void ClientState::queueFramedResponse(const std::string& message)
+{
+    const std::string frame = framePayload(message);
+    if (frame.empty()) {
+        return;
+    }
+    queueResponse(frame);
+}
+
+void ClientState::pushFrontResponse(const std::string& message)
+{
+    pthread_mutex_lock(&sendMutex);
+    sendQueue.push_front(message);
     pthread_mutex_unlock(&sendMutex);
 
     if (owner) {
@@ -63,7 +100,7 @@ bool ClientState::popQueuedResponse(std::string& outMessage)
     }
 
     outMessage = std::move(sendQueue.front());
-    sendQueue.pop();
+    sendQueue.pop_front();
     pthread_mutex_unlock(&sendMutex);
     return true;
 }

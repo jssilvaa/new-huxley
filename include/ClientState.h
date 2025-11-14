@@ -1,21 +1,21 @@
 // ClientState.h
 #pragma once
 
-#include <queue>
+#include <deque>
 #include <string>
 #include <time.h>
 #include <pthread.h>
 
-class WorkerThread;
+#include "ClientNotifier.h"
 
 // Represents per-connection state owned by a specific worker thread.
 class ClientState {
 public:
-    ClientState(WorkerThread* owner, int socketFd);
+    ClientState(ClientNotifier* owner, int socketFd);
     ~ClientState();
 
     int socket() const { return socketFd; }
-    WorkerThread* ownerThread() const { return owner; }
+    ClientNotifier* ownerThread() const { return owner; }
 
     bool isAuthenticated() const { return authenticated; }
     void setAuthenticated(bool value);
@@ -29,16 +29,18 @@ public:
     void clearRecvBuffer();
 
     void queueResponse(const std::string& message);
+    void queueFramedResponse(const std::string& message);
+    void pushFrontResponse(const std::string& message);
     bool popQueuedResponse(std::string& outMessage);
 
 private:
-    WorkerThread* owner;
+    ClientNotifier* owner;
     int socketFd;
     std::string username_;
     bool authenticated;
     time_t lastActivityTs;
     std::string recvBuffer;
 
-    std::queue<std::string> sendQueue;
+    std::deque<std::string> sendQueue;
     pthread_mutex_t sendMutex;
 };
