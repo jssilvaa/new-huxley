@@ -33,7 +33,7 @@ SIM_DURATION ?= 20
 
 .PHONY: all deploy run clean
 .PHONY: host host-run host-clean cli cli-run cli-shell
-.PHONY: test-sim
+.PHONY: test-sim mini_client mini-run
 
 # --- Main Targets ---
 
@@ -106,3 +106,10 @@ test-sim: host
 	wait $$SERVER_PID; \
 	trap - EXIT; \
 	cat /tmp/huxley_sim.log
+
+# --- Mini integration test client ---
+mini_client:
+	$(HOST_CXX) $(HOST_CXXFLAGS) mini_client.cpp -o mini_client $(HOST_LDFLAGS)
+
+mini-run: mini_client
+	./mini_client
