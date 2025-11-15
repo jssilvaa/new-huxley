@@ -9,7 +9,6 @@ host_build/
 *.db
 nov11cpp_notes.txt
 .cli
-mini_client.cpp
 test.db
 tests/
 huxley_host
