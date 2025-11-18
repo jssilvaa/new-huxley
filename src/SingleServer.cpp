@@ -133,7 +133,7 @@ void SingleServer::stop()
 bool SingleServer::initializeServices(int port)
 {
     database = std::make_unique<Database>(databasePath);
-    if (!database->open()) {
+    if (!database->isOpen()) {
         std::cerr << "Failed to open database" << std::endl;
         database.reset();
         return false;
@@ -142,7 +142,7 @@ bool SingleServer::initializeServices(int port)
     cryptoEngine = std::make_unique<CryptoEngine>();
     protocolHandler = std::make_unique<ProtocolHandler>();
     authManager = std::make_unique<AuthManager>(*database);
-    messageRouter = std::make_unique<MessageRouter>(*database, *cryptoEngine, *authManager);
+    messageRouter = std::make_unique<MessageRouter>(*database, *cryptoEngine);
 
     listenFd = ::socket(AF_INET, SOCK_STREAM, 0);
     if (listenFd == -1) {
@@ -176,10 +176,6 @@ bool SingleServer::initializeServices(int port)
 
 void SingleServer::shutdownServices()
 {
-    if (database) {
-        database->close();
-    }
-
     worker.reset();
     messageRouter.reset();
     authManager.reset();
