@@ -53,7 +53,7 @@ int main(int argc, char** argv)
     }
 
     Database database("huxley.db");
-    if (!database.open()) {
+    if (!database.isOpen()) {
         std::cerr << "Failed to open database" << std::endl;
         return 1;
     }

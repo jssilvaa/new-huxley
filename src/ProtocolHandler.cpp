@@ -52,3 +52,14 @@ std::string ProtocolHandler::serializeResponse(const Response& response) const
 
     return jsonResponse.dump() + "\n";
 }
+
+std::string ProtocolHandler::serializeIncomingMessage(const std::string& sender,
+                                                      const std::string& content) const
+{
+    nlohmann::json payload {
+        {"command", "incoming_message"},
+        {"sender", sender},
+        {"content", content}
+    };
+    return payload.dump() + "\n";
+}

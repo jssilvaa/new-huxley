@@ -1,4 +1,5 @@
 #include <chrono>
+#include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -9,13 +10,15 @@
 // modules under test
 #include "src/DatabaseEngine.cpp"
 #include "src/AuthManager.cpp"
+#include <filesystem>
 #include "src/CryptoEngine.cpp"
 #include "src/ClientState.cpp"
 #include "src/MessageRouter.cpp"
+#include "src/ProtocolHandler.cpp"
 
 /**
  * @file mini_client.cpp
- * @brief Graduate-level integration test suite for Huxley messaging server core modules
+ * @brief integration test suite for Huxley business layer 
  * 
  * Test Coverage:
  *   - AuthManager: Registration, login, session management, password hashing (Argon2id)
@@ -26,9 +29,8 @@
  * Architecture:
  *   - Structured test suites with pass/fail assertions
  *   - Performance benchmarking (operation latency, throughput)
- *   - Isolated teardown between test groups
- *   - Comprehensive reporting with statistics
- */
+ *   - various test groups
+ *  */
 
 // ============================= Test Infrastructure =============================
 
@@ -139,7 +141,11 @@ private:
 // ============================= Test Utilities =============================
 
 std::string makeTestUser(int id) {
-    return "testuser_" + std::to_string(id);
+    static const std::string runSalt = [] {
+        const auto now = std::chrono::steady_clock::now().time_since_epoch();
+        return std::to_string(std::chrono::duration_cast<std::chrono::microseconds>(now).count());
+    }();
+    return "testuser_" + std::to_string(id) + "_" + runSalt;
 }
 
 std::string makeTestPassword(int id) {
@@ -162,8 +168,12 @@ int main(int argc, char* argv[]) {
     }
     std::cout << "[INIT] Libsodium initialized\n";
 
-    Database database("test_integration.db");
-    if (!database.open()) {
+    const std::string testDbPath = "test_integration.db";
+    std::error_code fsErr;
+    std::filesystem::remove(testDbPath, fsErr); // start on a clean slate if file existed
+
+    Database database(testDbPath);
+        if (!database.isOpen()) {
         std::cerr << "[FATAL] Failed to open database\n";
         return 1;
     }
@@ -175,7 +185,7 @@ int main(int argc, char* argv[]) {
     AuthManager authManager(database);
     std::cout << "[INIT] AuthManager initialized\n";
 
-    MessageRouter messageRouter(database, cryptoEngine, authManager);
+    MessageRouter messageRouter(database, cryptoEngine);
     std::cout << "[INIT] MessageRouter initialized\n";
 
     // ========================= AuthManager Test Suite =========================
@@ -201,38 +211,17 @@ int main(int argc, char* argv[]) {
     bool loginOk = authManager.loginUser(user1, pass1);
     runner.test("Login with correct password", loginOk, "Valid credentials should authenticate");
 
-    // Test 4: Session verification
-    bool sessionOk = authManager.verifySession(user1);
-    runner.test("Verify active session", sessionOk, "Logged-in user must have active session");
-
-    // Test 5: Login with incorrect credentials
+    // Test 4: Login with incorrect credentials
     bool loginBad = authManager.loginUser(user2, "wrong_password_123");
     runner.test("Reject invalid password", !loginBad, "Incorrect password must fail");
-
-    bool sessionBad = authManager.verifySession(user2);
-    runner.test("No session for failed login", !sessionBad, "Failed login should not create session");
 
     // Test 6: Successful login for user2
     bool login2 = authManager.loginUser(user2, pass2);
     runner.test("Login user2", login2, "Valid credentials should authenticate");
 
-    bool session2 = authManager.verifySession(user2);
-    runner.test("Verify user2 session", session2, "Logged-in user must have active session");
-
-    // Test 7: Logout
-    bool logout1 = authManager.logoutUser(user1);
-    runner.test("Logout user1", logout1, "Active user should logout successfully");
-
-    bool sessionPost = authManager.verifySession(user1);
-    runner.test("Session cleared after logout", !sessionPost, "Logged-out user must have no session");
-
-    // Test 8: Double logout
-    bool logoutAgain = authManager.logoutUser(user1);
-    runner.test("Reject double logout", !logoutAgain, "Logout of inactive session should fail");
-
-    // Test 9: Re-login after logout
+    // Test 7: Repeat login should remain allowed without explicit logout
     bool relogin = authManager.loginUser(user1, pass1);
-    runner.test("Re-login after logout", relogin, "User should be able to log back in");
+    runner.test("Repeat login allowed", relogin, "Multiple login attempts should succeed");
 
     // ========================= Database Test Suite =========================
     runner.beginSuite("Database");
@@ -330,7 +319,7 @@ int main(int argc, char* argv[]) {
 
     // Benchmark 3: Message encryption
     runner.benchmark("Message encryption (XSalsa20)", [&]() {
-        cryptoEngine.encryptMessage("Benchmark payload for encryption throughput testing");
+        cryptoEngine.encryptMessage("Benchmark payload for encryption testing");
     }, 1000);
 
     // Benchmark 4: Message decryption
@@ -341,7 +330,6 @@ int main(int argc, char* argv[]) {
     }, 1000);
 
     // ========================= Teardown & Reporting =========================
-    database.close();
     std::cout << "\n[CLEANUP] Database closed\n";
 
     runner.printSummary();

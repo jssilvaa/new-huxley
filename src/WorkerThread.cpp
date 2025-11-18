@@ -3,7 +3,10 @@
 #include "AuthManager.h"
 #include "ClientState.h"
 #include "MessageRouter.h"
+#include "OfflineDelivery.h"
 #include "ProtocolHandler.h"
+#include "CryptoEngine.h"
+#include "DatabaseEngine.h"
 #include "StatusManager.h"
 
 #include <arpa/inet.h>
@@ -52,7 +55,9 @@ WorkerThread::WorkerThread(int id,
                            AuthManager& auth,
                            MessageRouter& router,
                            ProtocolHandler& protocol,
-                           StatusManager& status)
+                           StatusManager& status,
+                           Database& db,
+                           CryptoEngine& crypto)
     : workerId(id)
     , epollFd(-1)
     , wakeupFd(-1)
@@ -62,6 +67,8 @@ WorkerThread::WorkerThread(int id,
     , messageRouter(router)
     , protocolHandler(protocol)
     , statusManager(status)
+    , database(db)
+    , cryptoEngine(crypto)
     , eventBuffer(64)
 {
     pthread_mutex_init(&clientsMutex, nullptr);
@@ -176,7 +183,7 @@ void WorkerThread::assignClient(int clientFd)
         return;
     }
 
-    auto state = std::make_unique<ClientState>(this, clientFd);
+    auto state = std::make_unique<ClientState>(this, clientFd, protocolHandler);
     pthread_mutex_lock(&clientsMutex);
     clientStates[clientFd] = std::move(state);
     pthread_mutex_unlock(&clientsMutex);
@@ -378,7 +385,8 @@ void WorkerThread::processCommand(ClientState& state, const Command& command)
             state.setAuthenticated(true);
             state.setUsername(command.username);
             messageRouter.registerClient(command.username, &state);
-            messageRouter.deliverQueuedMessages(command.username, state);
+            // Flush queued messages via OfflineDelivery helper once auth succeeds
+            deliverOfflineMessages(database, cryptoEngine, command.username, state);
             statusManager.setState(StatusManager::State::Operational);
             response.success = true;
             response.message = "Login successful";
@@ -413,8 +421,9 @@ void WorkerThread::processCommand(ClientState& state, const Command& command)
     case Command::Type::Logout: {
         response.command = "logout";
         if (state.isAuthenticated()) {
-            messageRouter.unregisterClient(state.username());
-            authManager.logoutUser(state.username());
+            const std::string username = state.username();
+            messageRouter.unregisterClient(username);
+            database.logActivity("INFO", "User logout: " + username);
             state.setAuthenticated(false);
             state.setUsername({});
             response.success = true;
@@ -433,7 +442,7 @@ void WorkerThread::processCommand(ClientState& state, const Command& command)
         break;
     }
 
-    state.queueFramedResponse(protocolHandler.serializeResponse(response));
+    state.queueProtocolResponse(response);
 }
 
 void WorkerThread::closeClient(int clientFd)
@@ -441,8 +450,9 @@ void WorkerThread::closeClient(int clientFd)
     ClientState* state = getClient(clientFd);
     if (state) {
         if (state->isAuthenticated()) {
-            messageRouter.unregisterClient(state->username());
-            authManager.logoutUser(state->username());
+            const std::string username = state->username();
+            messageRouter.unregisterClient(username);
+            database.logActivity("INFO", "User disconnected: " + username);
         }
     }
 

@@ -13,6 +13,8 @@ class AuthManager;
 class MessageRouter;
 class ProtocolHandler;
 class StatusManager;
+class Database;
+class CryptoEngine;
 class ClientState;
 struct Command;
 
@@ -23,7 +25,9 @@ public:
                  AuthManager& auth,
                  MessageRouter& router,
                  ProtocolHandler& protocol,
-                 StatusManager& status);
+                 StatusManager& status,
+                 Database& database,
+                 CryptoEngine& crypto);
     ~WorkerThread();
 
     void start();
@@ -57,6 +61,8 @@ private:
     MessageRouter& messageRouter;
     ProtocolHandler& protocolHandler;
     StatusManager& statusManager;
+    Database& database;
+    CryptoEngine& cryptoEngine;
 
     std::vector<epoll_event> eventBuffer;
 };

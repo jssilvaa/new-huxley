@@ -23,9 +23,10 @@ std::string framePayload(const std::string& payload)
 }
 } // namespace
 
-ClientState::ClientState(ClientNotifier* ownerThread, int fd)
+ClientState::ClientState(ClientNotifier* ownerThread, int fd, ProtocolHandler& protocol)
     : owner(ownerThread)
     , socketFd(fd)
+    , protocolHandler(protocol)
     , username_()
     , authenticated(false)
     , lastActivityTs(::time(nullptr))
@@ -78,6 +79,16 @@ void ClientState::queueFramedResponse(const std::string& message)
         return;
     }
     queueResponse(frame);
+}
+
+void ClientState::queueProtocolResponse(const Response& response)
+{
+    queueFramedResponse(protocolHandler.serializeResponse(response));
+}
+
+void ClientState::queueIncomingMessage(const std::string& sender, const std::string& content)
+{
+    queueFramedResponse(protocolHandler.serializeIncomingMessage(sender, content));
 }
 
 void ClientState::pushFrontResponse(const std::string& message)

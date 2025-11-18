@@ -3,7 +3,10 @@
 #include "AuthManager.h"
 #include "ClientState.h"
 #include "MessageRouter.h"
+#include "OfflineDelivery.h"
 #include "ProtocolHandler.h"
+#include "CryptoEngine.h"
+#include "DatabaseEngine.h"
 
 #include <arpa/inet.h>
 #include <cerrno>
@@ -48,7 +51,9 @@ ssize_t sendNonBlocking(int fd, const char* buffer, std::size_t size)
 SingleWorker::SingleWorker(int id,
                            AuthManager& auth,
                            MessageRouter& router,
-                           ProtocolHandler& protocol)
+                           ProtocolHandler& protocol,
+                           Database& db,
+                           CryptoEngine& crypto)
     : workerId(id)
     , epollFd(-1)
     , wakeupFd(-1)
@@ -59,6 +64,8 @@ SingleWorker::SingleWorker(int id,
     , authManager(auth)
     , messageRouter(router)
     , protocolHandler(protocol)
+    , database(db)
+    , cryptoEngine(crypto)
 {
 }
 
@@ -232,8 +239,9 @@ void SingleWorker::eventLoop()
 
     for (auto& [fd, state] : clientStates) {
         if (state && state->isAuthenticated()) {
-            messageRouter.unregisterClient(state->username());
-            authManager.logoutUser(state->username());
+            const std::string username = state->username();
+            messageRouter.unregisterClient(username);
+            database.logActivity("INFO", "User disconnected: " + username);
         }
         if (epollFd != -1) {
             ::epoll_ctl(epollFd, EPOLL_CTL_DEL, fd, nullptr);
@@ -283,7 +291,7 @@ void SingleWorker::drainPendingClients()
             continue;
         }
 
-        auto state = std::make_unique<ClientState>(this, fd);
+        auto state = std::make_unique<ClientState>(this, fd, protocolHandler);
         clientStates[fd] = std::move(state);
     }
 }
@@ -424,7 +432,8 @@ void SingleWorker::processCommand(ClientState& state, const Command& command)
             state.setAuthenticated(true);
             state.setUsername(command.username);
             messageRouter.registerClient(command.username, &state);
-            messageRouter.deliverQueuedMessages(command.username, state);
+            // Flush queued messages via OfflineDelivery helper once auth succeeds
+            deliverOfflineMessages(database, cryptoEngine, command.username, state);
             response.success = true;
             response.message = "Login successful";
         } else {
@@ -458,8 +467,9 @@ void SingleWorker::processCommand(ClientState& state, const Command& command)
     case Command::Type::Logout: {
         response.command = "logout";
         if (state.isAuthenticated()) {
-            messageRouter.unregisterClient(state.username());
-            authManager.logoutUser(state.username());
+            const std::string username = state.username();
+            messageRouter.unregisterClient(username);
+            database.logActivity("INFO", "User logout: " + username);
             state.setAuthenticated(false);
             state.setUsername({});
             response.success = true;
@@ -478,7 +488,7 @@ void SingleWorker::processCommand(ClientState& state, const Command& command)
         break;
     }
 
-    state.queueFramedResponse(protocolHandler.serializeResponse(response));
+    state.queueProtocolResponse(response);
 }
 
 void SingleWorker::closeClient(int clientFd)
@@ -486,8 +496,9 @@ void SingleWorker::closeClient(int clientFd)
     ClientState* state = getClient(clientFd);
     if (state) {
         if (state->isAuthenticated()) {
-            messageRouter.unregisterClient(state->username());
-            authManager.logoutUser(state->username());
+            const std::string username = state->username();
+            messageRouter.unregisterClient(username);
+            database.logActivity("INFO", "User disconnected: " + username);
         }
     }
 

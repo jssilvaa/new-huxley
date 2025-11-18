@@ -107,7 +107,7 @@ test-sim: host
 	trap - EXIT; \
 	cat /tmp/huxley_sim.log
 
-# --- Mini integration test client ---
+# --- Mini integration test client on the host machine ---
 mini_client:
 	$(HOST_CXX) $(HOST_CXXFLAGS) mini_client.cpp -o mini_client $(HOST_LDFLAGS)
 

@@ -50,7 +50,12 @@ bool SingleServer::start(int port)
         return false;
     }
 
-    worker = std::make_unique<SingleWorker>(0, *authManager, *messageRouter, *protocolHandler);
+    worker = std::make_unique<SingleWorker>(0,
+                                            *authManager,
+                                            *messageRouter,
+                                            *protocolHandler,
+                                            *database,
+                                            *cryptoEngine);
 
     running.store(true);
 

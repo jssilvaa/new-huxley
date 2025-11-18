@@ -7,7 +7,7 @@
 struct sqlite3;
 struct sqlite3_stmt;
 
-// Thin wrapper around the SQLite persistence layer.
+// Database Wrapper around the SQLite persistence layer.
 class Database {
 public:
     struct StoredMessage {
@@ -22,8 +22,7 @@ public:
     explicit Database(const std::string& filename);
     ~Database();
 
-    bool open();
-    void close();
+    bool isOpen() const noexcept;
 
     bool insertUser(const std::string& username, const std::string& passwordHash);
     bool findUser(const std::string& username, std::string& outHash) const;
@@ -62,6 +61,7 @@ private:
     sqlite3_stmt* getStatement(sqlite3_stmt*& stmt, const char* sql) const;
     void resetStatement(sqlite3_stmt* stmt) const;
     void finalizeStatements();
+    void teardown();
     StatementGuard makeStatementGuard(sqlite3_stmt*& stmt, const char* sql) const;
 
     sqlite3* dbHandle;

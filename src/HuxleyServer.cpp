@@ -114,7 +114,7 @@ void HuxleyServer::stop()
 bool HuxleyServer::initializeServices(int port)
 {
     database = std::make_unique<Database>(databasePath);
-    if (!database->open()) {
+    if (!database->isOpen()) {
         std::cerr << "Failed to open database" << std::endl;
         database.reset();
         return false;
@@ -124,7 +124,7 @@ bool HuxleyServer::initializeServices(int port)
     protocolHandler = std::make_unique<ProtocolHandler>();
     statusManager = std::make_unique<StatusManager>();
     authManager = std::make_unique<AuthManager>(*database);
-    messageRouter = std::make_unique<MessageRouter>(*database, *cryptoEngine, *authManager);
+    messageRouter = std::make_unique<MessageRouter>(*database, *cryptoEngine);
 
     listenFd = ::socket(AF_INET, SOCK_STREAM, 0);
     if (listenFd == -1) {
@@ -162,10 +162,12 @@ void HuxleyServer::startWorkerPool(std::size_t threadCount)
     workerThreads.reserve(threadCount);
     for (std::size_t i = 0; i < threadCount; ++i) {
         auto worker = std::make_unique<WorkerThread>(static_cast<int>(i),
-                                                     *authManager,
-                                                     *messageRouter,
-                                                     *protocolHandler,
-                                                     *statusManager);
+                                 *authManager,
+                                 *messageRouter,
+                                 *protocolHandler,
+                                 *statusManager,
+                                 *database,
+                                 *cryptoEngine);
         worker->start();
         workerThreads.emplace_back(std::move(worker));
     }
@@ -190,7 +192,6 @@ void HuxleyServer::shutdownServices()
     protocolHandler.reset();
     statusManager.reset();
     if (database) {
-        database->close();
         database.reset();
     }
 }

@@ -31,4 +31,6 @@ class ProtocolHandler {
 public:
     Command parseCommand(const std::string& json) const;
     std::string serializeResponse(const Response& response) const;
+    std::string serializeIncomingMessage(const std::string& sender,
+                                         const std::string& content) const;
 };

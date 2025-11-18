@@ -14,12 +14,6 @@ There's also no need for the constantTimeEquals function since libsodium handles
 AuthManager::AuthManager(Database& db)
     : database(db)
 {
-    pthread_mutex_init(&sessionMutex, nullptr);
-}
-
-AuthManager::~AuthManager()
-{
-    pthread_mutex_destroy(&sessionMutex);
 }
 
 std::string AuthManager::hashPassword(const std::string& password) const
@@ -32,11 +26,6 @@ std::string AuthManager::hashPassword(const std::string& password) const
         throw std::runtime_error("Password hashing failed");
     }
     return std::string(hash);
-}
-
-bool AuthManager::verifyPassword(const std::string& password, const std::string& storedHash) const
-{
-    return crypto_pwhash_str_verify(storedHash.c_str(), password.c_str(), password.size()) == 0;
 }
 
 bool AuthManager::registerUser(const std::string& username, const std::string& password)
@@ -59,34 +48,11 @@ bool AuthManager::loginUser(const std::string& username, const std::string& pass
         return false;
     }
 
-    if (!verifyPassword(password, storedHash)) {
+    // Match password with stored hash
+    if (crypto_pwhash_str_verify(storedHash.c_str(), password.c_str(), password.size()) != 0) {
         return false;
     }
 
-    pthread_mutex_lock(&sessionMutex);
-    activeUsers.insert(username);
-    pthread_mutex_unlock(&sessionMutex);
-
     database.logActivity("INFO", "User login: " + username);
     return true;
-}
-
-bool AuthManager::logoutUser(const std::string& username)
-{
-    pthread_mutex_lock(&sessionMutex);
-    if ( activeUsers.erase(username) ) {
-        pthread_mutex_unlock(&sessionMutex);
-        database.logActivity("INFO", "User logout: " + username);
-        return true;
-    }
-    pthread_mutex_unlock(&sessionMutex);
-    return false;
-}
-
-bool AuthManager::verifySession(const std::string& username) const
-{
-    pthread_mutex_lock(&sessionMutex);
-    const bool active = activeUsers.find(username) != activeUsers.end();
-    pthread_mutex_unlock(&sessionMutex);
-    return active;
 }

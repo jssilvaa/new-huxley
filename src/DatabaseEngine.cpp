@@ -24,49 +24,35 @@ Database::Database(const std::string& filename)
     : dbHandle(nullptr)
     , dbPath(filename)
 {
+    if (sqlite3_open(dbPath.c_str(), &dbHandle) != SQLITE_OK) {
+        std::cerr << "Failed to open database: "
+                  << (dbHandle ? sqlite3_errmsg(dbHandle) : "unknown error")
+                  << std::endl;
+        if (dbHandle) {
+            sqlite3_close(dbHandle);
+            dbHandle = nullptr;
+        }
+        return;
+    }
+
+    if (!configurePragmas() || !ensureSchema()) {
+        std::cerr << "Failed to initialize database schema" << std::endl;
+        teardown();
+    }
 }
 
 Database::~Database()
 {
-    close();
+    teardown();
 }
 
-bool Database::open()
+bool Database::isOpen() const noexcept
 {
-    if (dbHandle) {
-        return true;
-    }
-
-    if (sqlite3_open(dbPath.c_str(), &dbHandle) != SQLITE_OK) {
-        std::cerr << "Failed to open database: " << sqlite3_errmsg(dbHandle) << std::endl;
-        dbHandle = nullptr;
-        return false;
-    }
-
-    if (!configurePragmas()) {
-        return false;
-    }
-    if (!ensureSchema()) {
-        return false;
-    }
-    return true;
-}
-
-void Database::close()
-{
-    finalizeStatements();
-    if (dbHandle) {
-        sqlite3_close(dbHandle);
-        dbHandle = nullptr;
-    }
+    return dbHandle != nullptr;
 }
 
 bool Database::insertUser(const std::string& username, const std::string& passwordHash)
 {
-    if (!dbHandle && !open()) {
-        return false;
-    }
-
     static constexpr const char* sql =
         "INSERT INTO users (username, password_hash) VALUES (?, ?);";
 
@@ -133,12 +119,14 @@ bool Database::findUserId(const std::string& username, int& outId) const
     return found;
 }
 
+// Find username by userId
 bool Database::findUsername(int userId, std::string& outUsername) const
 {
     if (!dbHandle) {
         return false;
     }
 
+    // SQL to find userID by username
     static constexpr const char* sql =
         "SELECT username FROM users WHERE id = ?;";
 
@@ -147,6 +135,7 @@ bool Database::findUsername(int userId, std::string& outUsername) const
     if (!stmt) {
         return false;
     }
+    // Bind userId parameter to SQL statement
     sqlite3_bind_int(stmt, 1, userId);
 
     const int step = sqlite3_step(stmt);
@@ -157,9 +146,11 @@ bool Database::findUsername(int userId, std::string& outUsername) const
             outUsername.assign(text);
         }
     }
+    // return true if username is in now in outUsername
     return found;
 }
 
+// Store encrypted message in database
 bool Database::insertMessage(int senderId,
                               int recipientId,
                               const std::string& ciphertext,
@@ -169,20 +160,24 @@ bool Database::insertMessage(int senderId,
         return false;
     }
 
+    // SQL to insert message
     static constexpr const char* sql =
         "INSERT INTO messages (sender_id, recipient_id, ciphertext, nonce, delivered) "
         "VALUES (?, ?, ?, ?, 0);";
 
+    // Prepare statement for inserting message
     auto stmtGuard = makeStatementGuard(insertMessageStmt, sql);
     sqlite3_stmt* stmt = stmtGuard.get();
     if (!stmt) {
         return false;
     }
+    // Bind parameters to SQL statement
     sqlite3_bind_int(stmt, 1, senderId);
     sqlite3_bind_int(stmt, 2, recipientId);
     sqlite3_bind_blob(stmt, 3, ciphertext.data(), static_cast<int>(ciphertext.size()), SQLITE_TRANSIENT);
     sqlite3_bind_blob(stmt, 4, nonce.data(), static_cast<int>(nonce.size()), SQLITE_TRANSIENT);
 
+    // Execute insertion
     return sqlite3_step(stmt) == SQLITE_DONE;
 }
 
@@ -420,6 +415,15 @@ void Database::finalizeStatements()
     finalize(queuedMessagesStmt);
     finalize(markDeliveredStmt);
     finalize(logActivityStmt);
+}
+
+void Database::teardown()
+{
+    finalizeStatements();
+    if (dbHandle) {
+        sqlite3_close(dbHandle);
+        dbHandle = nullptr;
+    }
 }
 
 Database::StatementGuard Database::makeStatementGuard(sqlite3_stmt*& stmt, const char* sql) const

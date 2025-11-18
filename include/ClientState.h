@@ -7,11 +7,12 @@
 #include <pthread.h>
 
 #include "ClientNotifier.h"
+#include "ProtocolHandler.h"
 
 // Represents per-connection state owned by a specific worker thread.
 class ClientState {
 public:
-    ClientState(ClientNotifier* owner, int socketFd);
+    ClientState(ClientNotifier* owner, int socketFd, ProtocolHandler& protocol);
     ~ClientState();
 
     int socket() const { return socketFd; }
@@ -30,12 +31,15 @@ public:
 
     void queueResponse(const std::string& message);
     void queueFramedResponse(const std::string& message);
+    void queueProtocolResponse(const Response& response);
+    void queueIncomingMessage(const std::string& sender, const std::string& content);
     void pushFrontResponse(const std::string& message);
     bool popQueuedResponse(std::string& outMessage);
 
 private:
     ClientNotifier* owner;
     int socketFd;
+    ProtocolHandler& protocolHandler;
     std::string username_;
     bool authenticated;
     time_t lastActivityTs;

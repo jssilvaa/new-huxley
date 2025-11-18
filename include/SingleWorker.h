@@ -13,6 +13,8 @@
 class AuthManager; 
 class MessageRouter; 
 class ProtocolHandler; 
+class Database;
+class CryptoEngine;
 class StatusManager; 
 class ClientState; 
 struct Command; 
@@ -25,7 +27,9 @@ public:
         SingleWorker(int id, 
                     AuthManager& auth, 
                     MessageRouter& router,
-                    ProtocolHandler& protocol); 
+                    ProtocolHandler& protocol,
+                    Database& database,
+                    CryptoEngine& crypto); 
         ~SingleWorker(); 
 
         void start(); 
@@ -67,5 +71,7 @@ private:
         AuthManager& authManager;
         MessageRouter& messageRouter; 
         ProtocolHandler& protocolHandler; 
+        Database& database;
+        CryptoEngine& cryptoEngine;
 
 }; 
