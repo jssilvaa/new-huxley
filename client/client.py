@@ -1150,12 +1150,6 @@ class CursesChatApp:
                 self.focus_chat = False
                 self.status = "Back to user list."
                 return
-            if ch == curses.KEY_PPAGE:
-                self._scroll_chat(self._last_chat_visible or 5)
-                return
-            if ch == curses.KEY_NPAGE:
-                self._scroll_chat(-(self._last_chat_visible or 5))
-                return
             if ch == curses.KEY_UP:
                 self._scroll_chat(1)
                 return
