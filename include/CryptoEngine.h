@@ -3,6 +3,7 @@
 
 #include <array>
 #include <string>
+#include <sodium.h>
 
 // Provides authenticated encryption for payloads routed through the server.
 class CryptoEngine {
@@ -12,15 +13,19 @@ public:
         std::string ciphertext;
     };
 
-    CryptoEngine() : keyLoaded(false) {}
+    CryptoEngine(); 
     ~CryptoEngine() noexcept;  
 
     CipherMessage encryptMessage(const std::string& plaintext);
     bool decryptMessage(const CipherMessage& cipher, std::string& outPlaintext);
 
 private:
-    void ensureKeyLoaded() noexcept;
-
+    std::array<unsigned char, crypto_secretbox_KEYBYTES> secretKey; 
+    std::array<unsigned char, crypto_secretbox_KEYBYTES> masterKey;
     bool keyLoaded;
-    std::array<unsigned char, 32> secretKey;
+    bool masterLoaded;
+
+    void ensureKeyLoaded() noexcept;
+    void loadMasterKey();
+    void loadSecretKey();
 };

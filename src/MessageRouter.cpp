@@ -15,6 +15,14 @@ MessageRouter::~MessageRouter()
     pthread_mutex_destroy(&clientsMutex);
 }
 
+bool MessageRouter::isRegistered(const std::string& username)
+{
+    pthread_mutex_lock(&clientsMutex);
+    const bool registered = activeClients.find(username) != activeClients.end();
+    pthread_mutex_unlock(&clientsMutex);
+    return registered;
+}
+
 void MessageRouter::registerClient(const std::string& username, ClientState* state)
 {
     pthread_mutex_lock(&clientsMutex);
@@ -48,7 +56,8 @@ bool MessageRouter::routeMessage(const std::string& sender,
     }
 
     // persist message in database
-    if (!database.insertMessage(senderId, recipientId, cipher.ciphertext, cipher.nonce)) {
+    int messageId = 0;
+    if (!database.insertMessage(senderId, recipientId, cipher.ciphertext, cipher.nonce, messageId)) {
         return false;
     }
 
@@ -67,6 +76,12 @@ bool MessageRouter::routeMessage(const std::string& sender,
 
     // user online, deliver in real-time
     recipientState->queueIncomingMessage(sender, plaintext);
+    if (!database.markDelivered(messageId)) {
+        database.logActivity("ERROR", "Realtime delivery persisted but markDelivered failed for message "
+                                         + std::to_string(messageId));
+        return false;
+    }
+
     database.logActivity("INFO", "Queued realtime delivery: " + sender + " -> " + recipient);
     return true;
 }

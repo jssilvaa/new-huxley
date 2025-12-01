@@ -22,6 +22,8 @@ bool deliverOfflineMessages(Database& database,
         return true;
     }
 
+    bool allMarkedDelivered = true;
+
     for (const auto& stored : messages) {
         CryptoEngine::CipherMessage cipher { stored.nonce, stored.ciphertext };
         std::string plaintext;
@@ -36,9 +38,21 @@ bool deliverOfflineMessages(Database& database,
         }
 
         state.queueIncomingMessage(senderName, plaintext);
-        database.markDelivered(stored.id);
+        if (!database.markDelivered(stored.id)) {
+            allMarkedDelivered = false;
+            database.logActivity("ERROR", "Failed to mark delivered for message " + std::to_string(stored.id)
+                                             + " (recipient: " + username + ")");
+        } else {
+            database.logActivity("INFO", "Delivered marked successfully");
+        }
     }
 
-    database.logActivity("INFO", "Delivered queued messages to " + username);
-    return true;
+    if (allMarkedDelivered) {
+        database.logActivity("INFO", "Delivered queued messages to " + username);
+    } else {
+        database.logActivity("WARN", "Delivered queued messages to " + username +
+                                       " with pending delivery state errors");
+    }
+
+    return allMarkedDelivered;
 }

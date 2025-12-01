@@ -13,6 +13,8 @@ public:
                   CryptoEngine& crypto);
     ~MessageRouter();
 
+    bool isRegistered(const std::string& username);
+
     void registerClient(const std::string& username, ClientState* state);
     void unregisterClient(const std::string& username);
 

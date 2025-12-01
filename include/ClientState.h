@@ -30,7 +30,6 @@ public:
     void clearRecvBuffer();
 
     void queueResponse(const std::string& message);
-    void queueFramedResponse(const std::string& message);
     void queueProtocolResponse(const Response& response);
     void queueIncomingMessage(const std::string& sender, const std::string& content);
     void pushFrontResponse(const std::string& message);
@@ -39,12 +38,12 @@ public:
 private:
     ClientNotifier* owner;
     int socketFd;
-    ProtocolHandler& protocolHandler;
     std::string username_;
     bool authenticated;
     time_t lastActivityTs;
     std::string recvBuffer;
-
     std::deque<std::string> sendQueue;
     pthread_mutex_t sendMutex;
+
+    ProtocolHandler& protocolHandler;
 };

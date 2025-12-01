@@ -23,7 +23,7 @@
 #include <iostream>
 
 namespace {
-constexpr uint32_t kBaseEvents = EPOLLIN | EPOLLRDHUP | EPOLLERR;
+constexpr uint32_t kBaseEvents = EPOLLIN | EPOLLRDHUP | EPOLLERR; // EPOLLERR not required to be in the base events mask since it's always reported
 constexpr std::size_t kFrameHeaderSize = sizeof(uint32_t);
 constexpr uint32_t kMaxFrameSize = 64 * 1024; // 64 KiB guardrail
 
@@ -40,17 +40,28 @@ ssize_t recvNonBlocking(int fd, char* buffer, std::size_t size)
 ssize_t sendNonBlocking(int fd, const char* buffer, std::size_t size)
 {
 #ifdef MSG_NOSIGNAL
-    return ::send(fd, buffer, size, MSG_NOSIGNAL);
+    return ::send(fd, buffer, size, MSG_NOSIGNAL); // prevent SIGPIPE on Linux on broken pipe / closed socket
 #else
     return ::send(fd, buffer, size, 0);
 #endif
 }
 
 } // namespace
+    
+/* 
+WorkerThread Constructor 
+Intializes the worker thread's necessary components 
+Establishes connections between the concurrency layer and the business logic layer 
+Other class instances are passed by reference, they're singletons managed by the HuxleyServer 
 
-// Constructor
-// use reference types as alias, be careful with semantics
-// all instances are shared across threads
+Here, we also setup the **listenFd** and **wakeupFd**, file descriptors used for 
+event notification from (1) sockets and (2) inter-thread wakeup signals respectively (from the main thread)
+The epoll instance is created to monitor these file descriptors for events
+
+The *clientsMutex* is initialized to protect access to the *clientStates* map, ensuring thread-safe operations
+Other threads may write to the outbound buffer of a ClientState instance, so proper synchronization is crucial
+Clients are managed here and only here, which is why they're also std::unique_ptr<ClientState> instances
+ */
 WorkerThread::WorkerThread(int id,
                            AuthManager& auth,
                            MessageRouter& router,
@@ -71,6 +82,7 @@ WorkerThread::WorkerThread(int id,
     , cryptoEngine(crypto)
     , eventBuffer(64)
 {
+
     pthread_mutex_init(&clientsMutex, nullptr);
 }
 
@@ -85,11 +97,13 @@ WorkerThread::~WorkerThread()
 // Sets up epoll and wakeup mechanisms
 void WorkerThread::start()
 {
+    // if running, return early
     if (running.load()) {
         return;
     }
 
     // EPOLL_CLOEXEC to close on exec, so child processes don't inherit fds
+    // even though we don't expect to fork/exec in this server
     epollFd = ::epoll_create1(EPOLL_CLOEXEC);
     if (epollFd == -1) {
         std::perror("epoll_create1");
@@ -98,7 +112,7 @@ void WorkerThread::start()
 
     // Create eventfd for wakeup notifications
     // set EFD_NONBLOCK for no subsequent blocking during I/O operations
-    // set EFD_CLOEXEC to close on exec
+    // set EFD_CLOEXEC to close on exec (again, it isn't expected to fork/exec)
     wakeupFd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
     if (wakeupFd == -1) {
         std::perror("eventfd");
@@ -108,8 +122,8 @@ void WorkerThread::start()
     }
 
     epoll_event wakeEvent{};
-    wakeEvent.events = EPOLLIN;
-    wakeEvent.data.fd = wakeupFd;
+    wakeEvent.events = EPOLLIN;   // events is a bit mask of events, implemented in the kernel as __poll_t (instead of __u32)
+    wakeEvent.data.fd = wakeupFd; // data is a union, here we use fd to store the wakeupFd. kernel implements this as a __u64 
     if (::epoll_ctl(epollFd, EPOLL_CTL_ADD, wakeupFd, &wakeEvent) == -1) {
         std::perror("epoll_ctl add wakeup");
         ::close(wakeupFd);
@@ -136,16 +150,19 @@ void WorkerThread::stop()
         return;
     }
 
+    // wakes up the event loop if it's blocked in epoll_wait
     if (wakeupFd != -1) {
         const uint64_t value = 1;
         ::write(wakeupFd, &value, sizeof(value));
     }
 
+    // wait for the thread to finish
     if (threadHandle) {
         pthread_join(threadHandle, nullptr);
         threadHandle = 0;
     }
 
+    // close all client connections in the clientStates unordered_map
     pthread_mutex_lock(&clientsMutex);
     for (auto& [fd, state] : clientStates) {
         if (state) {
@@ -155,6 +172,7 @@ void WorkerThread::stop()
     clientStates.clear();
     pthread_mutex_unlock(&clientsMutex);
 
+    // finally, close the wakeup and epoll file descriptors
     if (wakeupFd != -1) {
         ::close(wakeupFd);
         wakeupFd = -1;
@@ -165,12 +183,18 @@ void WorkerThread::stop()
     }
 }
 
+// assign client to this worker thread
 void WorkerThread::assignClient(int clientFd)
 {
+
+    // client does not exist
     if (clientFd < 0) {
         return;
     }
 
+    // set client socket to non-blocking mode
+    // first get current flags
+    // then append O_NONBLOCK flag
     const int flags = ::fcntl(clientFd, F_GETFL, 0);
     ::fcntl(clientFd, F_SETFL, flags | O_NONBLOCK);
 
@@ -214,6 +238,7 @@ void WorkerThread::notifyEvent(int clientFd)
     }
 }
 
+// Entry point for the worker thread
 void* WorkerThread::threadEntry(void* arg)
 {
     auto* worker = static_cast<WorkerThread*>(arg);
@@ -221,10 +246,11 @@ void* WorkerThread::threadEntry(void* arg)
     return nullptr;
 }
 
+// Main event loop for the worker thread
 void WorkerThread::eventLoop()
 {
-    while (running.load()) {
-        const int ready = ::epoll_wait(epollFd, eventBuffer.data(), static_cast<int>(eventBuffer.size()), 1000);
+    while (running.load()) { // ; check if running 
+        const int ready = ::epoll_wait(epollFd, eventBuffer.data(), static_cast<int>(eventBuffer.size()), -1); // no timeout, wait blocks thread but cpu efficient 
         if (ready == -1) {
             if (errno == EINTR) {
                 continue;
@@ -243,14 +269,16 @@ void WorkerThread::eventLoop()
                 continue;
             }
 
+            // error or connection closed by peer 
             if ((event.events & (EPOLLERR | EPOLLRDHUP | EPOLLHUP)) != 0) {
                 closeClient(fd);
                 continue;
             }
 
+            // socket is ready for read event 
             if (event.events & EPOLLIN) {
                 handleReadEvent(fd);
-            }
+            } // socket is ready for write event
             if (event.events & EPOLLOUT) {
                 handleWriteEvent(fd);
             }
@@ -258,15 +286,16 @@ void WorkerThread::eventLoop()
     }
 }
 
+// no mutex required here, called from within the event loop thread only
 ClientState* WorkerThread::getClient(int clientFd)
 {
-    pthread_mutex_lock(&clientsMutex);
+    //pthread_mutex_lock(&clientsMutex); // lock the mutex to protect access to clientStates
     ClientState* state = nullptr;
     const auto it = clientStates.find(clientFd);
     if (it != clientStates.end()) {
         state = it->second.get();
     }
-    pthread_mutex_unlock(&clientsMutex);
+    //pthread_mutex_unlock(&clientsMutex);
     return state;
 }
 
@@ -381,7 +410,17 @@ void WorkerThread::processCommand(ClientState& state, const Command& command)
     }
     case Command::Type::Login: {
         response.command = "login";
-        if (authManager.loginUser(command.username, command.password)) {
+        if (state.isAuthenticated()) {
+            response.success = false;
+            response.message = "Already logged in!";
+        }
+        else if (authManager.loginUser(command.username, command.password)) {
+            // check if user is already logged in elsewhere?
+            if (messageRouter.isRegistered(command.username)) {
+                response.success = false;
+                response.message = "User already logged in elsewhere";
+                break;
+            }
             state.setAuthenticated(true);
             state.setUsername(command.username);
             messageRouter.registerClient(command.username, &state);

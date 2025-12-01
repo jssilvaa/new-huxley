@@ -1,4 +1,5 @@
 {
+    "editor.fontFamily": "'PxPlus IBM VGA 8x16', monospace"
     "files.associations": {
         "*.tex": "latex",
         "stdexcept": "cpp",
@@ -67,6 +68,7 @@
         "valarray": "cpp",
         "condition_variable": "cpp",
         "csignal": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "fstream": "cpp"
     }
 }

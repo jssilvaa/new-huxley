@@ -40,26 +40,31 @@ Command ProtocolHandler::parseCommand(const std::string& json) const
 
 std::string ProtocolHandler::serializeResponse(const Response& response) const
 {
-    nlohmann::json jsonResponse {
-        {"success", response.success},
-        {"command", response.command},
-        {"message", response.message}
-    };
+    nlohmann::json jsonResponse;
+
+    if (response.success.has_value()) {
+        jsonResponse["success"] = *response.success;
+    }
+
+    jsonResponse["command"] = response.command;
+    jsonResponse["message"] = response.message;
 
     if (response.payload) {
         jsonResponse["payload"] = *response.payload;
     }
 
-    return jsonResponse.dump() + "\n";
-}
+    if (response.sender) {
+        jsonResponse["sender"] = *response.sender;
+    }
+    if (response.recipient) {
+        jsonResponse["recipient"] = *response.recipient;
+    }
+    if (response.content) {
+        jsonResponse["content"] = *response.content;
+    }
+    if (response.timestamp) {
+        jsonResponse["timestamp"] = *response.timestamp;
+    }
 
-std::string ProtocolHandler::serializeIncomingMessage(const std::string& sender,
-                                                      const std::string& content) const
-{
-    nlohmann::json payload {
-        {"command", "incoming_message"},
-        {"sender", sender},
-        {"content", content}
-    };
-    return payload.dump() + "\n";
+    return jsonResponse.dump() + "\n";
 }

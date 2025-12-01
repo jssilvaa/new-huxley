@@ -1,4 +1,6 @@
 build/
+build_pi/
+build_host/
 host_build/
 *.exe
 *.dll
@@ -12,3 +14,9 @@ nov11cpp_notes.txt
 test.db
 tests/
 huxley_host
+huxley
+huxley_pi
+*.log
+*.aux
+*.out
+hey 

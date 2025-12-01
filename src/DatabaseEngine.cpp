@@ -18,7 +18,78 @@ bool exec(sqlite3* db, const char* sql)
     }
     return true;
 }
+
+// Create binding policies
+template<typename T> 
+void bindParam(sqlite3_stmt* stmt, int index, const T&) = delete; 
+
+// int 
+template<>
+inline void bindParam<int>(sqlite3_stmt* stmt, int index, const int& value) 
+{
+    sqlite3_bind_int(stmt, index, value); 
+}
+
+// string
+template<>
+inline void bindParam<std::string>(sqlite3_stmt* stmt, int index, const std::string& value)
+{
+    sqlite3_bind_text(stmt, index, value.c_str(), -1, SQLITE_TRANSIENT); 
+}
+
+// const char* 
+template<>
+inline void bindParam<const char*>(sqlite3_stmt* stmt, int index, const char* const& value)
+{
+    sqlite3_bind_text(stmt, index, value, -1, SQLITE_TRANSIENT); 
+}
+
+// Generic extractor — fallback deleted.
+template <typename T>
+void extractColumn(sqlite3_stmt* stmt, int col, T&) = delete;
+
+// Extract int
+template <>
+inline void extractColumn<int>(sqlite3_stmt* stmt, int col, int& out) {
+    out = sqlite3_column_int(stmt, col);
+}
+
+// Extract std::string
+template <>
+inline void extractColumn<std::string>(sqlite3_stmt* stmt, int col, std::string& out) {
+    const auto* text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, col));
+    out = text ? text : "";
+}
 } // namespace
+
+// helps bind cached statement and sql binding string to 
+// implement findUser, findUserId, findUsername in FP style
+template <typename Input, typename Output>
+bool Database::singleColumnQuery(sqlite3_stmt*& cachedStmt,
+                       const char* sql,
+                       const Input& input,
+                       Output& out) const
+{
+    if (!dbHandle) {
+        return false;
+    }
+
+    auto guard = makeStatementGuard(cachedStmt, sql);
+    sqlite3_stmt* stmt = guard.get();
+    if (!stmt) {
+        return false;
+    }
+
+    bindParam(stmt, 1, input);
+
+    const int rc = sqlite3_step(stmt);
+    if (rc != SQLITE_ROW) {
+        return false;
+    }
+
+    extractColumn(stmt, 0, out);
+    return true;
+}
 
 Database::Database(const std::string& filename)
     : dbHandle(nullptr)
@@ -67,94 +138,30 @@ bool Database::insertUser(const std::string& username, const std::string& passwo
     return sqlite3_step(stmt) == SQLITE_DONE;
 }
 
-bool Database::findUser(const std::string& username, std::string& outHash) const
-{
-    if (!dbHandle) {
-        return false;
-    }
-
+bool Database::findUser(const std::string& username, std::string& outHash) const {
     static constexpr const char* sql =
         "SELECT password_hash FROM users WHERE username = ?;";
-
-    auto stmtGuard = makeStatementGuard(findUserStmt, sql);
-    sqlite3_stmt* stmt = stmtGuard.get();
-    if (!stmt) {
-        return false;
-    }
-    sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_TRANSIENT);
-
-    const int step = sqlite3_step(stmt);
-    bool found = false;
-    if (step == SQLITE_ROW) {
-        const auto* text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
-        if (text) {
-            outHash.assign(text);
-            found = true;
-        }
-    }
-    return found;
+    return singleColumnQuery(findUserStmt, sql, username, outHash);
 }
 
-bool Database::findUserId(const std::string& username, int& outId) const
-{
-    if (!dbHandle) {
-        return false;
-    }
-
+bool Database::findUserId(const std::string& username, int& outId) const {
     static constexpr const char* sql =
         "SELECT id FROM users WHERE username = ?;";
-
-    auto stmtGuard = makeStatementGuard(findUserIdStmt, sql);
-    sqlite3_stmt* stmt = stmtGuard.get();
-    if (!stmt) {
-        return false;
-    }
-    sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_TRANSIENT);
-
-    const int step = sqlite3_step(stmt);
-    const bool found = step == SQLITE_ROW;
-    if (found) {
-        outId = sqlite3_column_int(stmt, 0);
-    }
-    return found;
+    return singleColumnQuery(findUserIdStmt, sql, username, outId);
 }
 
-// Find username by userId
-bool Database::findUsername(int userId, std::string& outUsername) const
-{
-    if (!dbHandle) {
-        return false;
-    }
-
-    // SQL to find userID by username
+bool Database::findUsername(int userId, std::string& outUsername) const {
     static constexpr const char* sql =
         "SELECT username FROM users WHERE id = ?;";
-
-    auto stmtGuard = makeStatementGuard(findUsernameStmt, sql);
-    sqlite3_stmt* stmt = stmtGuard.get();
-    if (!stmt) {
-        return false;
-    }
-    // Bind userId parameter to SQL statement
-    sqlite3_bind_int(stmt, 1, userId);
-
-    const int step = sqlite3_step(stmt);
-    const bool found = step == SQLITE_ROW;
-    if (found) {
-        const auto* text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
-        if (text) {
-            outUsername.assign(text);
-        }
-    }
-    // return true if username is in now in outUsername
-    return found;
+    return singleColumnQuery(findUsernameStmt, sql, userId, outUsername);
 }
 
 // Store encrypted message in database
 bool Database::insertMessage(int senderId,
                               int recipientId,
                               const std::string& ciphertext,
-                              const std::string& nonce)
+                              const std::string& nonce,
+                              int& outMessageId)
 {
     if (!dbHandle) {
         return false;
@@ -178,7 +185,16 @@ bool Database::insertMessage(int senderId,
     sqlite3_bind_blob(stmt, 4, nonce.data(), static_cast<int>(nonce.size()), SQLITE_TRANSIENT);
 
     // Execute insertion
-    return sqlite3_step(stmt) == SQLITE_DONE;
+    const int rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        std::cerr << "Failed to insert message: "
+                  << (dbHandle ? sqlite3_errmsg(dbHandle) : "database closed")
+                  << std::endl;
+        return false;
+    }
+
+    outMessageId = static_cast<int>(sqlite3_last_insert_rowid(dbHandle));
+    return true;
 }
 
 std::vector<Database::StoredMessage> Database::getQueuedMessages(int recipientId) const
@@ -243,7 +259,15 @@ bool Database::markDelivered(int messageId)
         return false;
     }
     sqlite3_bind_int(stmt, 1, messageId);
-    return sqlite3_step(stmt) == SQLITE_DONE;
+    const int rc = sqlite3_step(stmt);
+    if (rc != SQLITE_DONE) {
+        std::cerr << "Failed to mark message " << messageId
+                  << " as delivered: "
+                  << (dbHandle ? sqlite3_errmsg(dbHandle) : "database closed")
+                  << std::endl;
+        return false;
+    }
+    return true;
 }
 
 bool Database::logActivity(const std::string& level, const std::string& message)

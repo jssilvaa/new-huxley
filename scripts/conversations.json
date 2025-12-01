@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Morning Coffee",
+    "description": "Two coworkers syncing before work.",
+    "messages": [
+      {"from": "alex", "to": "blake", "text": "Morning! You up yet?"},
+      {"from": "blake", "to": "alex", "text": "Barely. Need coffee first."},
+      {"from": "alex", "to": "blake", "text": "Want me to grab your usual latte?"},
+      {"from": "blake", "to": "alex", "text": "Please! I'll owe you one."},
+      {"from": "alex", "to": "blake", "text": "Cool, meet you in the lobby in ten."},
+      {"from": "blake", "to": "alex", "text": "Deal. Trying to look awake by then."}
+    ]
+  },
+  {
+    "title": "Lunch Plans",
+    "description": "Friends coordinating lunch break.",
+    "messages": [
+      {"from": "sam", "to": "taylor", "text": "Feel like sushi today?"},
+      {"from": "taylor", "to": "sam", "text": "Yes! There's a new place on 5th."},
+      {"from": "sam", "to": "taylor", "text": "Heard it's good. Noon still work?"},
+      {"from": "taylor", "to": "sam", "text": "Yep, I'll book a table."},
+      {"from": "sam", "to": "taylor", "text": "Awesome, see you there."},
+      {"from": "taylor", "to": "sam", "text": "Bringing my appetite."}
+    ]
+  },
+  {
+    "title": "Grocery Check",
+    "description": "Roommates figuring out groceries.",
+    "messages": [
+      {"from": "mia", "to": "noah", "text": "Heading to the store after work."},
+      {"from": "noah", "to": "mia", "text": "Nice, we need eggs and oat milk."},
+      {"from": "mia", "to": "noah", "text": "Got it. Anything sweet?"},
+      {"from": "noah", "to": "mia", "text": "Maybe those dark chocolate pretzels."},
+      {"from": "mia", "to": "noah", "text": "Dangerous, but okay."},
+      {"from": "noah", "to": "mia", "text": "I'll pay you back tonight."}
+    ]
+  },
+  {
+    "title": "Movie Night",
+    "description": "Couple deciding on a movie night.",
+    "messages": [
+      {"from": "jordan", "to": "casey", "text": "Movie night tonight?"},
+      {"from": "casey", "to": "jordan", "text": "Always. Comedy or sci-fi?"},
+      {"from": "jordan", "to": "casey", "text": "Let's go sci-fi and order tacos."},
+      {"from": "casey", "to": "jordan", "text": "Perfect combo."},
+      {"from": "jordan", "to": "casey", "text": "I'll queue something up."},
+      {"from": "casey", "to": "jordan", "text": "I'll handle tacos. 7pm?"}
+    ]
+  },
+  {
+    "title": "Weekend Hike",
+    "description": "Friends planning a weekend hike.",
+    "messages": [
+      {"from": "li", "to": "ari", "text": "Trail conditions look great this weekend."},
+      {"from": "ari", "to": "li", "text": "Let's do it! Saturday morning?"},
+      {"from": "li", "to": "ari", "text": "Yup, leave at 7 so we beat the crowd."},
+      {"from": "ari", "to": "li", "text": "I'll pack snacks and sunscreen."},
+      {"from": "li", "to": "ari", "text": "I'll bring extra water."},
+      {"from": "ari", "to": "li", "text": "See you Saturday!"}
+    ]
+  }
+]

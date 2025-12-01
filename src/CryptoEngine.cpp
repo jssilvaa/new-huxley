@@ -2,14 +2,16 @@
 
 #include <array>
 #include <stdexcept>
-#include <vector> 
+#include <vector>
 #include <sodium.h>
+#include <fstream>
 
-
-// CryptoEngine::CryptoEngine()
-//     : keyLoaded(false)
-// {
-// }
+CryptoEngine::CryptoEngine()
+    : keyLoaded(false)
+{
+    loadMasterKey();
+    loadSecretKey();
+}
 
 CryptoEngine::~CryptoEngine()
 {
@@ -17,21 +19,72 @@ CryptoEngine::~CryptoEngine()
     sodium_memzero(secretKey.data(), secretKey.size());
 }
 
-void CryptoEngine::ensureKeyLoaded() noexcept
+void CryptoEngine::loadMasterKey()
 {
-    if (keyLoaded) {
-        return;
-    } 
+    std::ifstream in("/etc/huxley/master.key", std::ios::binary);
+    if (!in)
+    {
+        throw std::runtime_error("Failed to open master key file");
+    }
 
-    // random key generation via crypto_secretbox_keygen (random symmetric key)
-    unsigned char key[crypto_secretbox_KEYBYTES];
-    crypto_secretbox_keygen(key);
-    std::copy(key, key + crypto_secretbox_KEYBYTES, secretKey.begin());
-    sodium_memzero(key, sizeof(key));
+    in.read(reinterpret_cast<char *>(masterKey.data()), masterKey.size());
+    if (in.gcount() != (int)masterKey.size())
+    {
+        throw std::runtime_error("Master key has an invalid size");
+    }
+
+    masterLoaded = true;
+}
+
+void CryptoEngine::loadSecretKey()
+{
+    if (!masterLoaded)
+    {
+        throw std::runtime_error("Encrypted session key missing");
+    }
+
+    std::ifstream in("/etc/huxley/session.key.enc", std::ios::binary);
+    if (!in)
+    {
+        throw std::runtime_error("Failed to open session.key.enc file");
+    }
+
+    unsigned char nonce[crypto_secretbox_NONCEBYTES];
+    unsigned char sealed[crypto_secretbox_MACBYTES + crypto_secretbox_KEYBYTES];
+
+    in.read(reinterpret_cast<char *>(nonce), sizeof nonce);
+    if (in.gcount() != (int)sizeof(nonce))
+    {
+        throw std::runtime_error("Invalid sealed key (bad nonce size)");
+    }
+
+    in.read(reinterpret_cast<char *>(sealed), sizeof sealed);
+    if (in.gcount() != (int)sizeof(sealed))
+    {
+        throw std::runtime_error("Invalid sealed key (bad sealed size)");
+    }
+
+    // Decrypt session key
+    if (crypto_secretbox_open_easy(secretKey.data(),
+                                   sealed,
+                                   sizeof sealed,
+                                   nonce,
+                                   masterKey.data()) != 0)
+    {
+        throw std::runtime_error("Failed to decrypt session key");
+    }
     keyLoaded = true;
 }
 
-CryptoEngine::CipherMessage CryptoEngine::encryptMessage(const std::string& plaintext)
+void CryptoEngine::ensureKeyLoaded() noexcept
+{
+    if (keyLoaded)
+    {
+        throw std::runtime_error("Secret key not loaded");
+    }
+}
+
+CryptoEngine::CipherMessage CryptoEngine::encryptMessage(const std::string &plaintext)
 {
     ensureKeyLoaded();
 
@@ -39,48 +92,50 @@ CryptoEngine::CipherMessage CryptoEngine::encryptMessage(const std::string& plai
     unsigned char nonce[crypto_secretbox_NONCEBYTES];
     randombytes_buf(nonce, sizeof(nonce));
 
-    // Message encryption, AEAD 
+    // Message encryption, AEAD
     std::vector<unsigned char> ciphertext(crypto_secretbox_MACBYTES + plaintext.size());
-    crypto_secretbox_easy(ciphertext.data(), 
-                          reinterpret_cast<const unsigned char*>(plaintext.data()),
+    crypto_secretbox_easy(ciphertext.data(),
+                          reinterpret_cast<const unsigned char *>(plaintext.data()),
                           plaintext.size(),
                           nonce,
                           secretKey.data());
 
-    // Pack up the cipher message and nonce 
+    // Pack up the cipher message and nonce
     CipherMessage cipherMsg;
-    cipherMsg.nonce = std::string(reinterpret_cast<char*>(nonce), sizeof(nonce));
-    cipherMsg.ciphertext = std::string(reinterpret_cast<char*>(ciphertext.data()), ciphertext.size());
+    cipherMsg.nonce = std::string(reinterpret_cast<char *>(nonce), sizeof(nonce));
+    cipherMsg.ciphertext = std::string(reinterpret_cast<char *>(ciphertext.data()), ciphertext.size());
     return cipherMsg;
 }
 
-bool CryptoEngine::decryptMessage(const CipherMessage& cipher, std::string& outPlaintext)
+bool CryptoEngine::decryptMessage(const CipherMessage &cipher, std::string &outPlaintext)
 {
     ensureKeyLoaded();
 
     // Validate nonce size
-    if (cipher.nonce.size() != crypto_secretbox_NONCEBYTES) {
+    if (cipher.nonce.size() != crypto_secretbox_NONCEBYTES)
+    {
         return false;
     }
 
     // Prepare buffers
-    const unsigned char* nonce = reinterpret_cast<const unsigned char*>(cipher.nonce.data());
-    const unsigned char* ciphertext = reinterpret_cast<const unsigned char*>(cipher.ciphertext.data());
+    const unsigned char *nonce = reinterpret_cast<const unsigned char *>(cipher.nonce.data());
+    const unsigned char *ciphertext = reinterpret_cast<const unsigned char *>(cipher.ciphertext.data());
     size_t ciphertextLen = cipher.ciphertext.size();
 
-
     // Validate ciphertext size
-    if (ciphertextLen < crypto_secretbox_MACBYTES) {
+    if (ciphertextLen < crypto_secretbox_MACBYTES)
+    {
         return false;
     }
     std::vector<unsigned char> plaintext(ciphertextLen - crypto_secretbox_MACBYTES);
 
     // Message decryption
-    if (crypto_secretbox_open_easy(plaintext.data(), 
+    if (crypto_secretbox_open_easy(plaintext.data(),
                                    ciphertext,
                                    ciphertextLen,
                                    nonce,
-                                   secretKey.data()) != 0) {
+                                   secretKey.data()) != 0)
+    {
         return false; // Decryption failed
     }
 

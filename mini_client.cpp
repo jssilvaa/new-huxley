@@ -7,14 +7,12 @@
 #include <vector>
 #include <sodium.h>
 
-// modules under test
-#include "src/DatabaseEngine.cpp"
-#include "src/AuthManager.cpp"
-#include <filesystem>
-#include "src/CryptoEngine.cpp"
-#include "src/ClientState.cpp"
-#include "src/MessageRouter.cpp"
-#include "src/ProtocolHandler.cpp"
+#include "DatabaseEngine.h"
+#include "AuthManager.h"
+#include "CryptoEngine.h"
+#include "ClientState.h"
+#include "MessageRouter.h"
+#include "ProtocolHandler.h"
 
 /**
  * @file mini_client.cpp

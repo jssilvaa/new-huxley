@@ -21,6 +21,15 @@ std::string framePayload(const std::string& payload)
 
     return frame;
 }
+
+void queueFramedResponse(ClientState& state, const std::string& message)
+{
+    const std::string frame = framePayload(message);
+    if (frame.empty()) {
+        return;
+    }
+    state.queueResponse(frame);
+}
 } // namespace
 
 ClientState::ClientState(ClientNotifier* ownerThread, int fd, ProtocolHandler& protocol)
@@ -72,23 +81,19 @@ void ClientState::queueResponse(const std::string& message)
     }
 }
 
-void ClientState::queueFramedResponse(const std::string& message)
-{
-    const std::string frame = framePayload(message);
-    if (frame.empty()) {
-        return;
-    }
-    queueResponse(frame);
-}
-
 void ClientState::queueProtocolResponse(const Response& response)
 {
-    queueFramedResponse(protocolHandler.serializeResponse(response));
+    queueFramedResponse(*this, protocolHandler.serializeResponse(response));
 }
 
 void ClientState::queueIncomingMessage(const std::string& sender, const std::string& content)
 {
-    queueFramedResponse(protocolHandler.serializeIncomingMessage(sender, content));
+    Response notification;
+    notification.command = "incoming_message";
+    notification.message = "";
+    notification.sender = sender;
+    notification.content = content;
+    queueFramedResponse(*this, protocolHandler.serializeResponse(notification));
 }
 
 void ClientState::pushFrontResponse(const std::string& message)

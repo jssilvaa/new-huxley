@@ -23,6 +23,11 @@ public:
     ~Database();
 
     bool isOpen() const noexcept;
+    template <typename Input, typename Output>
+    bool singleColumnQuery(sqlite3_stmt*& cachedStmt,
+                           const char* sql,
+                           const Input& input,
+                           Output& out) const;
 
     bool insertUser(const std::string& username, const std::string& passwordHash);
     bool findUser(const std::string& username, std::string& outHash) const;
@@ -32,7 +37,8 @@ public:
     bool insertMessage(int senderId,
                        int recipientId,
                        const std::string& ciphertext,
-                       const std::string& nonce);
+                       const std::string& nonce,
+                       int& outMessageId);
     std::vector<StoredMessage> getQueuedMessages(int recipientId) const;
     bool markDelivered(int messageId);
 

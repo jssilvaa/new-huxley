@@ -32,12 +32,12 @@ private:
     static void* acceptThreadEntry(void* arg);
     void dispatchPendingClients();
     bool initializeServices(int port);
-    void startWorkerPool(std::size_t threadCount);
+    void startWorkerPool(std::size_t threadCount); // changed here
     void stopWorkerPool();
     void shutdownServices();
 
     int listenFd {-1};
-    std::atomic<bool> running {false};
+    std::atomic<bool> running {false}; // changed here
     pthread_t acceptThread {0};
 
     pthread_mutex_t queueMutex;

@@ -58,12 +58,6 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    AuthManager auth(database);
-    auth.registerUser("alice", "password123");
-    if (auth.loginUser("alice", "password123")) {
-        std::cout << "Authentication OK" << std::endl;
-    }
-
     HuxleyServer server;
     if (!server.start(port)) {
         std::cerr << "Server failed to start" << std::endl;

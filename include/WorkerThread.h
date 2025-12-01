@@ -1,12 +1,11 @@
 #pragma once
-
 #include <atomic>
 #include <memory>
 #include <unordered_map>
 #include <vector>
 #include <pthread.h>
 #include <sys/epoll.h>
-
+#include <atomic>
 #include "ClientNotifier.h"
 
 class AuthManager;
