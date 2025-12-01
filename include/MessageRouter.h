@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include <vector>
 #include <pthread.h>
 #include "CryptoEngine.h"
 #include "DatabaseEngine.h"
@@ -17,6 +18,7 @@ public:
 
     void registerClient(const std::string& username, ClientState* state);
     void unregisterClient(const std::string& username);
+    std::vector<std::string> listActiveUsers();
 
     bool routeMessage(const std::string& sender,
                       const std::string& recipient,

@@ -8,6 +8,7 @@
 
 CryptoEngine::CryptoEngine()
     : keyLoaded(false)
+    , masterLoaded(false)
 {
     loadMasterKey();
     loadSecretKey();
@@ -76,9 +77,9 @@ void CryptoEngine::loadSecretKey()
     keyLoaded = true;
 }
 
-void CryptoEngine::ensureKeyLoaded() noexcept
+void CryptoEngine::ensureKeyLoaded()
 {
-    if (keyLoaded)
+    if (!keyLoaded)
     {
         throw std::runtime_error("Secret key not loaded");
     }

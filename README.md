@@ -22,6 +22,7 @@ new-huxley is a lightweight client-server application written in C++ targeting t
 - build/ - recommended out-of-source build directory
 - tests/ - unit or integration tests (if present)
 - Makefile, CMakeLists.txt - top-level build files
+- docs/ - design and protocol notes (see docs/protocol.md, docs/client.tex)
 
 ## Requirements
 

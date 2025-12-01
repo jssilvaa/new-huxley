@@ -19,6 +19,11 @@ public:
         std::string timestamp;
     };
 
+    struct UserSummary {
+        int id;
+        std::string username;
+    };
+
     explicit Database(const std::string& filename);
     ~Database();
 
@@ -40,6 +45,11 @@ public:
                        const std::string& nonce,
                        int& outMessageId);
     std::vector<StoredMessage> getQueuedMessages(int recipientId) const;
+    std::vector<UserSummary> listAllUsers() const;
+    std::vector<StoredMessage> getConversation(int userA,
+                                               int userB,
+                                               int limit,
+                                               int offset) const;
     bool markDelivered(int messageId);
 
     bool logActivity(const std::string& level, const std::string& message);
@@ -79,6 +89,8 @@ private:
     mutable sqlite3_stmt* findUsernameStmt {nullptr};
     mutable sqlite3_stmt* insertMessageStmt {nullptr};
     mutable sqlite3_stmt* queuedMessagesStmt {nullptr};
+    mutable sqlite3_stmt* listUsersStmt {nullptr};
+    mutable sqlite3_stmt* conversationStmt {nullptr};
     mutable sqlite3_stmt* markDeliveredStmt {nullptr};
     mutable sqlite3_stmt* logActivityStmt {nullptr};
 };

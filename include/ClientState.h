@@ -31,7 +31,10 @@ public:
 
     void queueResponse(const std::string& message);
     void queueProtocolResponse(const Response& response);
-    void queueIncomingMessage(const std::string& sender, const std::string& content);
+    void queueIncomingMessage(const std::string& sender,
+                              const std::string& content,
+                              const std::string& timestamp = {},
+                              std::optional<int> messageId = std::nullopt);
     void pushFrontResponse(const std::string& message);
     bool popQueuedResponse(std::string& outMessage);
 

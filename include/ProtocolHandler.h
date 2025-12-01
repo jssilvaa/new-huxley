@@ -2,6 +2,7 @@
 
 #include <optional>
 #include <string>
+#include <nlohmann/json.hpp>
 
 struct Command {
     enum class Type {
@@ -9,6 +10,9 @@ struct Command {
         Login,
         SendMessage,
         Logout,
+        ListUsers,
+        ListOnline,
+        GetHistory,
         Unknown
     };
 
@@ -17,13 +21,17 @@ struct Command {
     std::string password;
     std::string recipient;
     std::string content;
+    std::string targetUser;
+    int limit {50};
+    int offset {0};
 };
 
 struct Response {
     std::optional<bool> success;
     std::string command;
     std::string message;
-    std::optional<std::string> payload;
+    std::optional<nlohmann::json> payload;
+    std::optional<int> id;
     std::optional<std::string> sender;
     std::optional<std::string> recipient;
     std::optional<std::string> content;

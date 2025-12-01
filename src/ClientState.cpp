@@ -86,13 +86,22 @@ void ClientState::queueProtocolResponse(const Response& response)
     queueFramedResponse(*this, protocolHandler.serializeResponse(response));
 }
 
-void ClientState::queueIncomingMessage(const std::string& sender, const std::string& content)
+void ClientState::queueIncomingMessage(const std::string& sender,
+                                       const std::string& content,
+                                       const std::string& timestamp,
+                                       std::optional<int> messageId)
 {
     Response notification;
     notification.command = "incoming_message";
     notification.message = "";
     notification.sender = sender;
     notification.content = content;
+    if (!timestamp.empty()) {
+        notification.timestamp = timestamp;
+    }
+    if (messageId.has_value()) {
+        notification.id = messageId;
+    }
     queueFramedResponse(*this, protocolHandler.serializeResponse(notification));
 }
 

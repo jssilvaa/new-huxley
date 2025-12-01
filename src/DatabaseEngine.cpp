@@ -3,6 +3,7 @@
 #include <sqlite3.h>
 #include <iostream>
 #include <utility>
+#include <algorithm>
 
 namespace {
 bool exec(sqlite3* db, const char* sql)
@@ -244,6 +245,106 @@ std::vector<Database::StoredMessage> Database::getQueuedMessages(int recipientId
     return messages;
 }
 
+std::vector<Database::UserSummary> Database::listAllUsers() const
+{
+    std::vector<UserSummary> users;
+    if (!dbHandle) {
+        return users;
+    }
+
+    static constexpr const char* sql =
+        "SELECT id, username FROM users ORDER BY username;";
+
+    auto stmtGuard = makeStatementGuard(listUsersStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
+        return users;
+    }
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        UserSummary user{};
+        user.id = sqlite3_column_int(stmt, 0);
+        const auto* namePtr = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+        if (namePtr) {
+            user.username.assign(namePtr);
+        }
+        users.emplace_back(std::move(user));
+    }
+
+    return users;
+}
+
+std::vector<Database::StoredMessage> Database::getConversation(int userA,
+                                                               int userB,
+                                                               int limit,
+                                                               int offset) const
+{
+    std::vector<StoredMessage> messages;
+    if (!dbHandle) {
+        return messages;
+    }
+
+    if (limit <= 0) {
+        limit = 50;
+    }
+    if (offset < 0) {
+        offset = 0;
+    }
+
+    static constexpr const char* sql =
+        "SELECT id, sender_id, recipient_id, ciphertext, nonce, timestamp "
+        "FROM messages "
+        "WHERE (sender_id = ? AND recipient_id = ?) "
+        "   OR (sender_id = ? AND recipient_id = ?) "
+        "ORDER BY timestamp DESC, id DESC "
+        "LIMIT ? OFFSET ?;";
+
+    auto stmtGuard = makeStatementGuard(conversationStmt, sql);
+    sqlite3_stmt* stmt = stmtGuard.get();
+    if (!stmt) {
+        return messages;
+    }
+
+    sqlite3_bind_int(stmt, 1, userA);
+    sqlite3_bind_int(stmt, 2, userB);
+    sqlite3_bind_int(stmt, 3, userB);
+    sqlite3_bind_int(stmt, 4, userA);
+    sqlite3_bind_int(stmt, 5, limit);
+    sqlite3_bind_int(stmt, 6, offset);
+
+    while (sqlite3_step(stmt) == SQLITE_ROW) {
+        StoredMessage message{};
+        message.id = sqlite3_column_int(stmt, 0);
+        message.senderId = sqlite3_column_int(stmt, 1);
+        message.recipientId = sqlite3_column_int(stmt, 2);
+
+        const auto* cipherPtr = static_cast<const char*>(sqlite3_column_blob(stmt, 3));
+        const int cipherSize = sqlite3_column_bytes(stmt, 3);
+        if (cipherPtr && cipherSize > 0) {
+            message.ciphertext.assign(cipherPtr, cipherSize);
+        }
+
+        const auto* noncePtr = static_cast<const char*>(sqlite3_column_blob(stmt, 4));
+        const int nonceSize = sqlite3_column_bytes(stmt, 4);
+        if (noncePtr && nonceSize > 0) {
+            message.nonce.assign(noncePtr, nonceSize);
+        }
+
+        const auto* tsPtr = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 5));
+        if (tsPtr) {
+            message.timestamp.assign(tsPtr);
+        }
+
+        messages.emplace_back(std::move(message));
+    }
+
+    // We fetch newest-first via SQL so LIMIT applies to recent messages.
+    // Reverse to return ascending order to callers.
+    std::reverse(messages.begin(), messages.end());
+
+    return messages;
+}
+
 bool Database::markDelivered(int messageId)
 {
     if (!dbHandle) {
@@ -437,6 +538,8 @@ void Database::finalizeStatements()
     finalize(findUsernameStmt);
     finalize(insertMessageStmt);
     finalize(queuedMessagesStmt);
+    finalize(listUsersStmt);
+    finalize(conversationStmt);
     finalize(markDeliveredStmt);
     finalize(logActivityStmt);
 }

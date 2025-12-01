@@ -37,7 +37,7 @@ bool deliverOfflineMessages(Database& database,
             senderName = "unknown";
         }
 
-        state.queueIncomingMessage(senderName, plaintext);
+        state.queueIncomingMessage(senderName, plaintext, stored.timestamp, stored.id);
         if (!database.markDelivered(stored.id)) {
             allMarkedDelivered = false;
             database.logActivity("ERROR", "Failed to mark delivered for message " + std::to_string(stored.id)

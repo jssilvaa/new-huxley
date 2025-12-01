@@ -17,10 +17,14 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstdio>
 #include <cstring>
 #include <iostream>
+#include <unordered_set>
+#include <vector>
+#include <nlohmann/json.hpp>
 
 namespace {
 constexpr uint32_t kBaseEvents = EPOLLIN | EPOLLRDHUP | EPOLLERR; // EPOLLERR not required to be in the base events mask since it's always reported
@@ -471,6 +475,130 @@ void WorkerThread::processCommand(ClientState& state, const Command& command)
             response.success = false;
             response.message = "Not authenticated";
         }
+        break;
+    }
+    case Command::Type::ListUsers: {
+        response.command = "list_users";
+        if (!state.isAuthenticated()) {
+            response.success = false;
+            response.message = "Authentication required";
+            break;
+        }
+
+        auto users = database.listAllUsers();
+        auto onlineUsers = messageRouter.listActiveUsers();
+        std::unordered_set<std::string> onlineSet(onlineUsers.begin(), onlineUsers.end());
+        std::sort(users.begin(), users.end(), [](const Database::UserSummary& a, const Database::UserSummary& b) {
+            return a.username < b.username;
+        });
+
+        nlohmann::json userArray = nlohmann::json::array();
+        for (const auto& user : users) {
+            userArray.push_back({
+                {"username", user.username},
+                {"online", onlineSet.find(user.username) != onlineSet.end()}
+            });
+        }
+
+        response.success = true;
+        response.message = "ok";
+        response.payload = nlohmann::json{
+            {"users", userArray}
+        };
+        break;
+    }
+    case Command::Type::ListOnline: {
+        response.command = "list_online";
+        if (!state.isAuthenticated()) {
+            response.success = false;
+            response.message = "Authentication required";
+            break;
+        }
+        auto onlineUsers = messageRouter.listActiveUsers();
+        std::sort(onlineUsers.begin(), onlineUsers.end());
+
+        nlohmann::json userArray = nlohmann::json::array();
+        for (const auto& user : onlineUsers) {
+            userArray.push_back({{"username", user}});
+        }
+
+        response.success = true;
+        response.message = "ok";
+        response.payload = nlohmann::json{
+            {"users", userArray}
+        };
+        break;
+    }
+    case Command::Type::GetHistory: {
+        response.command = "get_history";
+        if (!state.isAuthenticated()) {
+            response.success = false;
+            response.message = "Authentication required";
+            break;
+        }
+        const std::string requester = state.username();
+        const std::string other = command.targetUser;
+        if (other.empty()) {
+            response.success = false;
+            response.message = "Missing peer username";
+            break;
+        }
+
+        int requesterId = 0;
+        int otherId = 0;
+        if (!database.findUserId(requester, requesterId)) {
+            response.success = false;
+            response.message = "Unknown requester";
+            break;
+        }
+        if (!database.findUserId(other, otherId)) {
+            response.success = false;
+            response.message = "Unknown user";
+            break;
+        }
+
+        const int limit = command.limit > 0 ? command.limit : 50;
+        const int offset = command.offset >= 0 ? command.offset : 0;
+        auto stored = database.getConversation(requesterId, otherId, limit, offset);
+
+        nlohmann::json messages = nlohmann::json::array();
+        for (const auto& msg : stored) {
+            CryptoEngine::CipherMessage cipher { msg.nonce, msg.ciphertext };
+            std::string plaintext;
+            if (!cryptoEngine.decryptMessage(cipher, plaintext)) {
+                database.logActivity("ERROR", "Failed to decrypt message id " + std::to_string(msg.id));
+                continue;
+            }
+
+            std::string senderName;
+            std::string recipientName;
+            if (!database.findUsername(msg.senderId, senderName)) {
+                senderName = "unknown";
+            }
+            if (!database.findUsername(msg.recipientId, recipientName)) {
+                recipientName = "unknown";
+            }
+
+            nlohmann::json entry{
+                {"id", msg.id},
+                {"from", senderName},
+                {"to", recipientName},
+                {"content", plaintext}
+            };
+            if (!msg.timestamp.empty()) {
+                entry["timestamp"] = msg.timestamp;
+            }
+            messages.push_back(std::move(entry));
+        }
+
+        response.success = true;
+        response.message = "ok";
+        response.payload = nlohmann::json{
+            {"with", other},
+            {"limit", limit},
+            {"offset", offset},
+            {"messages", messages}
+        };
         break;
     }
     case Command::Type::Unknown:

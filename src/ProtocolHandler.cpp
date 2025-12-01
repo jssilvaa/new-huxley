@@ -1,4 +1,7 @@
 #include "ProtocolHandler.h"
+
+#include <algorithm>
+#include <cctype>
 #include <nlohmann/json.hpp>
 
 Command ProtocolHandler::parseCommand(const std::string& json) const
@@ -26,14 +29,23 @@ Command ProtocolHandler::parseCommand(const std::string& json) const
         command.type = Command::Type::SendMessage;
     } else if (upperType == "LOGOUT") {
         command.type = Command::Type::Logout;
+    } else if (upperType == "LIST_USERS") {
+        command.type = Command::Type::ListUsers;
+    } else if (upperType == "LIST_ONLINE") {
+        command.type = Command::Type::ListOnline;
+    } else if (upperType == "GET_HISTORY") {
+        command.type = Command::Type::GetHistory;
     } else {
         command.type = Command::Type::Unknown;
     }
 
-    command.username  = payload.value("username", std::string{});
-    command.password  = payload.value("password", std::string{});
-    command.recipient = payload.value("recipient", std::string{});
-    command.content   = payload.value("content", std::string{});
+    command.username   = payload.value("username", std::string{});
+    command.password   = payload.value("password", std::string{});
+    command.recipient  = payload.value("recipient", std::string{});
+    command.content    = payload.value("content", std::string{});
+    command.targetUser = payload.value("with", payload.value("target", std::string{}));
+    command.limit      = payload.value("limit", command.limit);
+    command.offset     = payload.value("offset", command.offset);
 
     return command;
 }
@@ -51,6 +63,10 @@ std::string ProtocolHandler::serializeResponse(const Response& response) const
 
     if (response.payload) {
         jsonResponse["payload"] = *response.payload;
+    }
+
+    if (response.id) {
+        jsonResponse["id"] = *response.id;
     }
 
     if (response.sender) {
