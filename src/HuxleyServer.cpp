@@ -132,7 +132,13 @@ bool HuxleyServer::initializeServices(int port)
         return false;
     }
 
-    setReusable(listenFd);
+    int n = setReusable(listenFd);
+    if (n == 0) {
+        std::perror("setsockopt");
+        ::close(listenFd);
+        listenFd = -1;
+        return false;
+    }
 
     sockaddr_in addr{};
     addr.sin_family = AF_INET;
