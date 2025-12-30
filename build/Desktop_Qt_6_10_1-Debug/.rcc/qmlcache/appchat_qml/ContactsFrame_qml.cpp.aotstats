@@ -1,0 +1,151 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 130,
+                            "functionName": "fill",
+                            "line": 12,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 20,
+                            "durationMicroseconds": 504,
+                            "functionName": "model",
+                            "line": 33,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 24,
+                            "durationMicroseconds": 140,
+                            "functionName": "width",
+                            "line": 36,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 24,
+                            "durationMicroseconds": 223,
+                            "functionName": "color",
+                            "line": 38,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 285,
+                            "functionName": "visible",
+                            "line": 79,
+                            "message": "Cannot access value for name search"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 94,
+                            "functionName": "height",
+                            "line": 43,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 228,
+                            "functionName": "color",
+                            "line": 44,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 101,
+                            "functionName": "left",
+                            "line": 45,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 34,
+                            "durationMicroseconds": 88,
+                            "functionName": "top",
+                            "line": 46,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 55,
+                            "functionName": "fill",
+                            "line": 50,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 165,
+                            "functionName": "color",
+                            "line": 58,
+                            "message": "Cannot access value for name online"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 86,
+                            "functionName": "alignment",
+                            "line": 59,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 63,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 65,
+                            "message": "Could not find property \"elide\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "bold",
+                            "line": 67,
+                            "message": "Could not find property \"bold\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 567,
+                            "functionName": "onClicked",
+                            "line": 73,
+                            "message": "Cannot access value for name list"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 80,
+                            "functionName": "fill",
+                            "line": 72,
+                            "message": ""
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/qml/ContactsFrame.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

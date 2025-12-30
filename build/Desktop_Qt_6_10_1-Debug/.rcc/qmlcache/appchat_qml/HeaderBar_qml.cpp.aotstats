@@ -1,0 +1,63 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 112,
+                            "functionName": "fill",
+                            "line": 12,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 19,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 17,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 19,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 25,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 20,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 26,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "enabled",
+                            "line": 32,
+                            "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 33,
+                            "message": "Could not find signal \"clicked\"."
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/qml/HeaderBar.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

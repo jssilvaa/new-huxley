@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/qt/qml/chat">/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat</file>
+
+  </qresource>
+</RCC>

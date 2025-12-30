@@ -1,0 +1,79 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 269,
+                            "functionName": "sourceComponent",
+                            "line": 18,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 122,
+                            "functionName": "fill",
+                            "line": 17,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 17,
+                            "durationMicroseconds": 64,
+                            "functionName": "target",
+                            "line": 33,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 9,
+                            "durationMicroseconds": 0,
+                            "functionName": "onToast",
+                            "line": 34,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 9,
+                            "durationMicroseconds": 0,
+                            "functionName": "onError",
+                            "line": 35,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 9,
+                            "durationMicroseconds": 82,
+                            "functionName": "onConnectedChanged",
+                            "line": 36,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 9,
+                            "durationMicroseconds": 70,
+                            "functionName": "onAuthenticatedChanged",
+                            "line": 37,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 43,
+                            "message": "Could not find signal \"triggered\"."
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/Main.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

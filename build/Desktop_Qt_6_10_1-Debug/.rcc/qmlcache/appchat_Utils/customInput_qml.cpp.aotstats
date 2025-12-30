@@ -1,0 +1,15 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/Utils/customInput.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

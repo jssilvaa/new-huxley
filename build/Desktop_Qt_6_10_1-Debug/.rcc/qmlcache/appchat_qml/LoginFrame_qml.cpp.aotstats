@@ -1,0 +1,135 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 120,
+                            "functionName": "fill",
+                            "line": 8,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 42,
+                            "functionName": "centerIn",
+                            "line": 12,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 21,
+                            "durationMicroseconds": 37,
+                            "functionName": "target",
+                            "line": 19,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 26,
+                            "durationMicroseconds": 51,
+                            "functionName": "type",
+                            "line": 24,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 32,
+                            "functionName": "fill",
+                            "line": 28,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 40,
+                            "functionName": "fillMode",
+                            "line": 36,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 46,
+                            "message": "Could not find property \"weight\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 46,
+                            "functionName": "alignment",
+                            "line": 47,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 54,
+                            "message": "Could not find property \"weight\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 37,
+                            "functionName": "alignment",
+                            "line": 55,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 0,
+                            "functionName": "echoMode",
+                            "line": 73,
+                            "message": "Could not find property \"echoMode\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 240,
+                            "functionName": "enabled",
+                            "line": 101,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 249,
+                            "functionName": "onClicked",
+                            "line": 102,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 29,
+                            "durationMicroseconds": 0,
+                            "functionName": "textFormat",
+                            "line": 112,
+                            "message": "Could not find property \"textFormat\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 55,
+                            "functionName": "alignment",
+                            "line": 108,
+                            "message": ""
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/qml/LoginFrame.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 127,
+                            "functionName": "showIcon",
+                            "line": 9,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 19,
+                            "durationMicroseconds": 0,
+                            "functionName": "rightPadding",
+                            "line": 17,
+                            "message": "Could not find property \"rightPadding\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 44,
+                            "functionName": "fill",
+                            "line": 23,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 18,
+                            "durationMicroseconds": 23,
+                            "functionName": "visible",
+                            "line": 29,
+                            "message": "Cannot access value for name showIcon"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 17,
+                            "durationMicroseconds": 13,
+                            "functionName": "source",
+                            "line": 30,
+                            "message": "Cannot access value for name iconSource"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 48,
+                            "functionName": "fillMode",
+                            "line": 39,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 20,
+                            "durationMicroseconds": 74,
+                            "functionName": "right",
+                            "line": 33,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 55,
+                            "functionName": "verticalCenter",
+                            "line": 35,
+                            "message": ""
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/Utils/CustomInput.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

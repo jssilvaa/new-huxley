@@ -1,0 +1,129 @@
+{
+    "classes": [
+        {
+            "className": "MessageService",
+            "lineNumber": 10,
+            "object": true,
+            "qualifiedClassName": "MessageService",
+            "signals": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "success",
+                            "type": "bool"
+                        },
+                        {
+                            "name": "msg",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 20,
+                    "name": "loginResult",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "ok",
+                            "type": "bool"
+                        },
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 21,
+                    "name": "sendMessageResponse",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "users",
+                            "type": "QList<QJsonObject>"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 22,
+                    "name": "usersReceived",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "peer",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "messages",
+                            "type": "QList<QJsonObject>"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 23,
+                    "name": "historyReceived",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "message",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 4,
+                    "lineNumber": 24,
+                    "name": "incomingMessage",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "command",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 5,
+                    "lineNumber": 25,
+                    "name": "commandError",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "obj",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 6,
+                    "lineNumber": 28,
+                    "name": "onResponse",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "MessageService.h",
+    "outputRevision": 69
+}

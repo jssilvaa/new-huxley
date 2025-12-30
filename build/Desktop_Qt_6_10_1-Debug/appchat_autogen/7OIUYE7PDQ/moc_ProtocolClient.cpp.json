@@ -1,0 +1,120 @@
+{
+    "classes": [
+        {
+            "className": "ProtocolClient",
+            "lineNumber": 12,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "host",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "port",
+                            "type": "quint16"
+                        }
+                    ],
+                    "index": 6,
+                    "lineNumber": 17,
+                    "name": "connectToHost",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 7,
+                    "lineNumber": 18,
+                    "name": "disconnectFromHost",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "obj",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 8,
+                    "lineNumber": 19,
+                    "name": "sendCommand",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "ProtocolClient",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 24,
+                    "name": "connected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "lineNumber": 25,
+                    "name": "disconnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 26,
+                    "name": "errorOcurred",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "obj",
+                            "type": "QJsonObject"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 27,
+                    "name": "responseReceived",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "index": 4,
+                    "lineNumber": 30,
+                    "name": "onReadyRead",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "type": "QAbstractSocket::SocketError"
+                        }
+                    ],
+                    "index": 5,
+                    "lineNumber": 31,
+                    "name": "onSocketError",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "ProtocolClient.h",
+    "outputRevision": 69
+}

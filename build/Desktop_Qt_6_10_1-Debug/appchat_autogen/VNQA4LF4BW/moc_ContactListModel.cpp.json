@@ -1,0 +1,33 @@
+{
+    "classes": [
+        {
+            "className": "ContactListModel",
+            "lineNumber": 14,
+            "object": true,
+            "qualifiedClassName": "ContactListModel",
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "contacts",
+                            "type": "QList<Contact>"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 30,
+                    "name": "setContacts",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QAbstractListModel"
+                }
+            ]
+        }
+    ],
+    "inputFile": "ContactListModel.h",
+    "outputRevision": 69
+}

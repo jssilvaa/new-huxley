@@ -1,0 +1,46 @@
+{
+    "classes": [
+        {
+            "className": "ChatHistoryModel",
+            "lineNumber": 14,
+            "object": true,
+            "qualifiedClassName": "ChatHistoryModel",
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "messages",
+                            "type": "QList<ChatMessage>"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 31,
+                    "name": "resetHistory",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "message",
+                            "type": "ChatMessage"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 32,
+                    "name": "appendMessage",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QAbstractListModel"
+                }
+            ]
+        }
+    ],
+    "inputFile": "ChatHistoryModel.h",
+    "outputRevision": 69
+}

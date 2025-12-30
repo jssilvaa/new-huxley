@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/qt/qml/chat/">
+    <file alias="images/logo.png">/home/josesilvaa/huxley-gui/chat/images/logo.png</file>
+    <file alias="images/message-icon.png">/home/josesilvaa/huxley-gui/chat/images/message-icon.png</file>
+    <file alias="images/lock.png">/home/josesilvaa/huxley-gui/chat/images/lock.png</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,259 @@
+{
+    "classes": [
+        {
+            "className": "ClientController",
+            "lineNumber": 11,
+            "methods": [
+                {
+                    "access": "public",
+                    "index": 8,
+                    "lineNumber": 26,
+                    "name": "start",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "user",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "pass",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 9,
+                    "lineNumber": 27,
+                    "name": "login",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 10,
+                    "lineNumber": 28,
+                    "name": "refreshUsers",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "peer",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 11,
+                    "lineNumber": 29,
+                    "name": "selectPeer",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "content",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 12,
+                    "lineNumber": 38,
+                    "name": "sendMessage",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 13,
+                    "name": "connected",
+                    "notify": "connectedChanged",
+                    "read": "connected",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 14,
+                    "name": "authenticated",
+                    "notify": "authenticatedChanged",
+                    "read": "authenticated",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 2,
+                    "lineNumber": 15,
+                    "name": "currentPeer",
+                    "notify": "currentPeerChanged",
+                    "read": "currentPeer",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 3,
+                    "lineNumber": 16,
+                    "name": "hasPeer",
+                    "notify": "currentPeerChanged",
+                    "read": "hasPeer",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 4,
+                    "lineNumber": 17,
+                    "name": "messageService",
+                    "read": "messageService",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QObject*",
+                    "user": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 5,
+                    "lineNumber": 18,
+                    "name": "contacts",
+                    "read": "contacts",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QObject*",
+                    "user": false
+                },
+                {
+                    "constant": true,
+                    "designable": true,
+                    "final": false,
+                    "index": 6,
+                    "lineNumber": 19,
+                    "name": "chat",
+                    "read": "chat",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QObject*",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "ClientController",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 51,
+                    "name": "connectedChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "lineNumber": 52,
+                    "name": "authenticatedChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "lineNumber": 53,
+                    "name": "currentPeerChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "msg",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 55,
+                    "name": "toast",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "msg",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 4,
+                    "lineNumber": 56,
+                    "name": "error",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "index": 5,
+                    "lineNumber": 59,
+                    "name": "onConnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "index": 6,
+                    "lineNumber": 60,
+                    "name": "onDisconnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "msg",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 7,
+                    "lineNumber": 61,
+                    "name": "onError",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "ClientController.h",
+    "outputRevision": 69
+}

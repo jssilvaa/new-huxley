@@ -1,0 +1,15 @@
+module chat
+typeinfo appchat.qmltypes
+prefer :/qt/qml/chat/
+Main 1.0 Main.qml
+LoginFrame 1.0 qml/LoginFrame.qml
+ChatShell 1.0 qml/ChatShell.qml
+HeaderBar 1.0 qml/HeaderBar.qml
+ContactsFrame 1.0 qml/ContactsFrame.qml
+ChatView 1.0 qml/ChatView.qml
+InputBar 1.0 qml/InputBar.qml
+CustomInput 1.0 Utils/CustomInput.qml
+CustomCheckBox 1.0 Utils/CustomCheckBox.qml
+CustomButton 1.0 Utils/CustomButton.qml
+depends QtQuick
+
