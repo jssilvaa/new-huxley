@@ -7,98 +7,162 @@
                     "entries": [
                         {
                             "codegenResult": 0,
+                            "column": 12,
+                            "durationMicroseconds": 1316,
+                            "functionName": "color",
+                            "line": 8,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 46,
+                            "functionName": "color",
+                            "line": 9,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 130,
+                            "durationMicroseconds": 28,
                             "functionName": "fill",
-                            "line": 12,
+                            "line": 13,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 20,
-                            "durationMicroseconds": 504,
+                            "durationMicroseconds": 239,
                             "functionName": "model",
-                            "line": 33,
+                            "line": 34,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 140,
+                            "durationMicroseconds": 56,
                             "functionName": "width",
-                            "line": 36,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 24,
-                            "durationMicroseconds": 223,
-                            "functionName": "color",
                             "line": 38,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 26,
-                            "durationMicroseconds": 285,
-                            "functionName": "visible",
-                            "line": 79,
-                            "message": "Cannot access value for name search"
+                            "codegenResult": 0,
+                            "column": 25,
+                            "durationMicroseconds": 33,
+                            "functionName": "radius",
+                            "line": 40,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 29,
-                            "durationMicroseconds": 94,
-                            "functionName": "height",
+                            "column": 41,
+                            "durationMicroseconds": 28,
+                            "functionName": "selected",
+                            "line": 42,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 40,
+                            "durationMicroseconds": 27,
+                            "functionName": "hovered",
                             "line": 43,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 228,
-                            "functionName": "color",
+                            "column": 40,
+                            "durationMicroseconds": 26,
+                            "functionName": "pressed",
                             "line": 44,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 101,
-                            "functionName": "left",
-                            "line": 45,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 88,
-                            "functionName": "top",
+                            "column": 24,
+                            "durationMicroseconds": 96,
+                            "functionName": "color",
                             "line": 46,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 55,
-                            "functionName": "fill",
-                            "line": 50,
+                            "column": 24,
+                            "durationMicroseconds": 47,
+                            "functionName": "scale",
+                            "line": 51,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 81,
+                            "functionName": "color",
+                            "line": 48,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 44,
+                            "functionName": "width",
+                            "line": 49,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 65,
+                            "durationMicroseconds": 30,
+                            "functionName": "duration",
+                            "line": 52,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 64,
+                            "durationMicroseconds": 27,
+                            "functionName": "duration",
+                            "line": 53,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 165,
+                            "durationMicroseconds": 261,
+                            "functionName": "onClicked",
+                            "line": 60,
+                            "message": "Cannot access value for name list"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 22,
+                            "functionName": "fill",
+                            "line": 57,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 20,
+                            "functionName": "fill",
+                            "line": 67,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 76,
                             "functionName": "color",
-                            "line": 58,
+                            "line": 73,
                             "message": "Cannot access value for name online"
                         },
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 86,
+                            "durationMicroseconds": 31,
                             "functionName": "alignment",
-                            "line": 59,
+                            "line": 74,
                             "message": ""
                         },
                         {
@@ -106,39 +170,159 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 63,
+                            "line": 78,
                             "message": "Could not find property \"text\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
                             "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 79,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 65,
+                            "line": 80,
                             "message": "Could not find property \"elide\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 82,
+                            "message": "Could not find property \"horizontalAlignment\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "verticalAlignment",
+                            "line": 83,
+                            "message": "Could not find property \"verticalAlignment\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "bold",
-                            "line": 67,
+                            "line": 85,
                             "message": "Could not find property \"bold\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 567,
-                            "functionName": "onClicked",
-                            "line": 73,
-                            "message": "Cannot access value for name list"
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 91,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 92,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 32,
+                            "functionName": "radius",
+                            "line": 99,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 37,
+                            "functionName": "color",
+                            "line": 100,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 17,
+                            "functionName": "opacity",
+                            "line": 101,
+                            "message": "Cannot access value for name pressed"
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 80,
+                            "durationMicroseconds": 21,
                             "functionName": "fill",
-                            "line": 72,
+                            "line": 98,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 71,
+                            "durationMicroseconds": 27,
+                            "functionName": "duration",
+                            "line": 102,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 27,
+                            "functionName": "radius",
+                            "line": 108,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 34,
+                            "functionName": "color",
+                            "line": 109,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 27,
+                            "functionName": "opacity",
+                            "line": 110,
+                            "message": "Cannot access value for name hovered"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 19,
+                            "functionName": "fill",
+                            "line": 107,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 36,
+                            "functionName": "color",
+                            "line": 111,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 23,
+                            "functionName": "width",
+                            "line": 112,
+                            "message": "Cannot access value for name hovered"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 71,
+                            "durationMicroseconds": 28,
+                            "functionName": "duration",
+                            "line": 113,
                             "message": ""
                         }
                     ],

@@ -6,27 +6,51 @@
                 {
                     "entries": [
                         {
-                            "codegenResult": 2,
-                            "column": 14,
-                            "durationMicroseconds": 389,
-                            "functionName": "enabled",
-                            "line": 11,
-                            "message": "Cannot access value for name Controller"
-                        },
-                        {
                             "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 110,
-                            "functionName": "fill",
-                            "line": 14,
+                            "column": 12,
+                            "durationMicroseconds": 2027,
+                            "functionName": "color",
+                            "line": 8,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
+                            "column": 14,
+                            "durationMicroseconds": 201,
+                            "functionName": "enabled",
+                            "line": 12,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 58,
+                            "functionName": "color",
+                            "line": 9,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 32,
+                            "functionName": "fill",
+                            "line": 15,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "placeholderText",
+                            "line": 23,
+                            "message": "Could not find property \"placeholderText\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 22,
+                            "line": 29,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -34,16 +58,32 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 27,
+                            "line": 34,
                             "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "opacity",
+                            "line": 36,
+                            "message": "Could not find property \"opacity\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 28,
+                            "line": 41,
                             "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 45,
+                            "durationMicroseconds": 38,
+                            "functionName": "duration",
+                            "line": 38,
+                            "message": ""
                         }
                     ],
                     "filePath": "/home/josesilvaa/huxley-gui/chat/qml/InputBar.qml"

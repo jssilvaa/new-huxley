@@ -8,6 +8,8 @@ HeaderBar 1.0 qml/HeaderBar.qml
 ContactsFrame 1.0 qml/ContactsFrame.qml
 ChatView 1.0 qml/ChatView.qml
 InputBar 1.0 qml/InputBar.qml
+singleton Theme 1.0 qml/Theme.qml
+SettingsDrawer 1.0 qml/SettingsDrawer.qml
 CustomInput 1.0 Utils/CustomInput.qml
 CustomCheckBox 1.0 Utils/CustomCheckBox.qml
 CustomButton 1.0 Utils/CustomButton.qml

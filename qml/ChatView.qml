@@ -2,17 +2,23 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import chat 1.0
 
 Rectangle {
     id: root
-    color: "#0f0f0f"
+    color: Theme.bg
 
-    // Empty state
-    Label {
+    // Empty states
+    Column {
         anchors.centerIn: parent
-        text: "Select a chat to start messaging"
-        color: "#666"
-        visible: Controller.hasPeer === false
+        spacing: 8
+        visible: !Controller.hasPeer
+
+        Label {
+            text: "No messages yet. Say hello 👋"
+            color: Theme.muted
+            horizontalAlignment: Text.AlignHCenter
+        }
     }
 
     ListView {
@@ -23,40 +29,47 @@ Rectangle {
         spacing: 10
         model: Controller.chat
 
-        // keep the view glued to bottom when new messages arrive,
-        // but don't fight the user if they scroll up
+        boundsBehavior: Flickable.StopAtBounds
+
+        // Keep glued to bottom only if user is at bottom.
         property bool stickToBottom: true
+        function atBottom() {
+            return contentY >= (contentHeight - height - 2)
+        }
 
-        onMovementStarted: stickToBottom = (contentY >= (contentHeight - height - 2))
-        onMovementEnded:   stickToBottom = (contentY >= (contentHeight - height - 2))
+        onMovementStarted: stickToBottom = atBottom()
+        onMovementEnded:   stickToBottom = atBottom()
 
-        Component.onCompleted: positionViewAtEnd()
+        Component.onCompleted: Qt.callLater(positionViewAtEnd)
+
         onCountChanged: {
             if (count > 0 && stickToBottom)
-                positionViewAtEnd()
+                Qt.callLater(positionViewAtEnd)
+        }
+
+        // Correct place for “arrival” animations
+        add: Transition {
+            NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: Theme.animFast }
         }
 
         delegate: Item {
             id: row
             width: chat.width
-            // Height is bubble height only. Spacing handled by ListView.spacing
             height: bubble.implicitHeight
 
-            // Use a row container so right/left alignment is stable
             RowLayout {
                 anchors.fill: parent
 
-                Item { Layout.fillWidth: true; visible: isOwn }  // left spacer for own messages
+                Item { Layout.fillWidth: true; visible: isOwn }  // left spacer
 
                 Rectangle {
                     id: bubble
-                    radius: 10
-                    color: isOwn ? "#1f3b2d" : "#1b1b1b"
-                    border.color: "#2a2a2a"
+                    radius: Theme.radiusSm
+                    color: isOwn ? Theme.bubbleOwn : Theme.bubblePeer
+                    border.color: Theme.border
                     border.width: 1
 
                     Layout.alignment: isOwn ? Qt.AlignRight : Qt.AlignLeft
-                    // IMPORTANT: cap width, don't force it
                     Layout.maximumWidth: Math.floor(chat.width * 0.72)
 
                     implicitWidth: bubbleContent.implicitWidth + 24
@@ -70,30 +83,26 @@ Rectangle {
                         anchors.margins: 10
                         spacing: 4
 
-                        // Optional: sender line for non-own messages (WhatsApp group style)
-                        // Comment out if you want 1:1-only feel.
                         Label {
                             visible: !isOwn
                             text: sender
-                            color: "#9aa0a6"
+                            color: Theme.muted
                             font.pointSize: 9
                             elide: Label.ElideRight
                         }
 
                         Text {
                             text: content
-                            color: "#eaeaea"
+                            color: Theme.text
                             wrapMode: Text.Wrap
                             textFormat: Text.PlainText
-                            // ensure wrapping uses the bubble width
                             width: Math.min(implicitWidth, bubble.Layout.maximumWidth - 20)
                         }
 
-                        // Optional timestamp (if you have it)
                         Label {
                             visible: timestamp && timestamp.length > 0
                             text: timestamp
-                            color: "#8a8a8a"
+                            color: Theme.muted
                             font.pointSize: 8
                             horizontalAlignment: Text.AlignRight
                             Layout.fillWidth: true
@@ -101,16 +110,18 @@ Rectangle {
                     }
                 }
 
-                Item { Layout.fillWidth: true; visible: !isOwn } // right spacer for peer messages
+                Item { Layout.fillWidth: true; visible: !isOwn } // right spacer
             }
         }
 
-        Connections { 
-            target: Controller 
-            function onCurrentPeerChanged() { 
-                chat.stickToBottom = true;
-                Qt.callLater(function() { chat.positionViewAtEnd(); });
+        Connections {
+            target: Controller
+            function onCurrentPeerChanged() {
+                chat.stickToBottom = true
+                Qt.callLater(function() { chat.positionViewAtEnd(); })
             }
         }
+
+        ScrollBar.vertical: ScrollBar { }
     }
 }

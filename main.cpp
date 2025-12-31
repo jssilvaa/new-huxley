@@ -7,6 +7,10 @@
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication::setOrganizationName("huxley");
+    QCoreApplication::setOrganizationDomain("huxley.chat");
+    QCoreApplication::setApplicationName("huxley");
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;

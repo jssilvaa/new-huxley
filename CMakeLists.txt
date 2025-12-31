@@ -27,6 +27,9 @@ target_include_directories(appchat
     PRIVATE src
 )
 
+# mark QML singletons
+set_source_files_properties(qml/Theme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
 # QML modules and resources
 qt_add_qml_module(appchat
     URI chat
@@ -41,18 +44,16 @@ qt_add_qml_module(appchat
         qml/ChatView.qml
         qml/InputBar.qml
         qml/Theme.qml
-        QML_FILES Utils/CustomInput.qml
-        QML_FILES Utils/CustomCheckBox.qml
-        QML_FILES Utils/CustomButton.qml
+        qml/SettingsDrawer.qml
+        Utils/CustomInput.qml
+        Utils/CustomCheckBox.qml
+        Utils/CustomButton.qml
         
     RESOURCES
         images/logo.png
         images/message-icon.png
         images/lock.png
 )
-
-# mark QML singletons
-set_source_files_properties(qml/Theme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 # Platform specific properties
 set_target_properties(appchat PROPERTIES

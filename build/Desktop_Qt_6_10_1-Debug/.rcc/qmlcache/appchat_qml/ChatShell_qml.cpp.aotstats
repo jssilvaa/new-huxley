@@ -8,33 +8,65 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 148,
+                            "durationMicroseconds": 128,
                             "functionName": "fill",
-                            "line": 7,
+                            "line": 8,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 16,
+                            "durationMicroseconds": 2718,
+                            "functionName": "color",
+                            "line": 12,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 76,
                             "functionName": "fill",
-                            "line": 10,
+                            "line": 11,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 54,
+                            "durationMicroseconds": 0,
+                            "functionName": "height",
+                            "line": 14,
+                            "message": "Could not find property \"height\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 63,
+                            "durationMicroseconds": 64,
                             "functionName": "fill",
-                            "line": 14,
+                            "line": 17,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 58,
+                            "functionName": "onSettingsRequested",
+                            "line": 23,
+                            "message": "Cannot retrieve a non-object type by ID: settingsDrawer"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 106,
+                            "functionName": "color",
+                            "line": 39,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 63,
                             "functionName": "fill",
-                            "line": 38,
+                            "line": 42,
                             "message": ""
                         }
                     ],

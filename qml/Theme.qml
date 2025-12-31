@@ -1,4 +1,4 @@
-// Theme.qml
+// qml/Theme.qml
 pragma Singleton
 import QtQuick
 import Qt.labs.settings
@@ -6,31 +6,23 @@ import Qt.labs.settings
 QtObject {
     id: root
 
-    // ---- persisted settings ----
-    property bool dark: true
-    property int accentIndex: 0
-
-    Settings {
-        id: store
+    property var store: Settings {
         category: "ui"
         property bool dark: true
         property int accentIndex: 0
     }
 
-    Component.onCompleted: {
-        dark = store.dark
-        accentIndex = store.accentIndex
-    }
+    readonly property bool dark: store.dark
+    readonly property int accentIndex: store.accentIndex
 
     function setDark(v) {
-        dark = v
         store.dark = v
     }
 
     readonly property var accents: ["#4caf50", "#8e7dff", "#ff9800"]
+
     function setAccent(i) {
-        accentIndex = Math.max(0, Math.min(i, accents.length - 1))
-        store.accentIndex = accentIndex
+        store.accentIndex = Math.max(0, Math.min(i, accents.length - 1))
     }
 
     // ---- tokens ----
@@ -46,11 +38,9 @@ QtObject {
     readonly property color text:    dark ? "#eaeaea" : "#1a1a1a"
     readonly property color muted:   dark ? "#9aa0a6" : "#777777"
 
-    // chat bubbles
     readonly property color bubblePeer: dark ? "#1b1b1b" : "#ffffff"
     readonly property color bubbleOwn:  dark ? "#1f3b2d" : "#dff5e6"
 
-    // metrics
     readonly property int radiusSm: 10
     readonly property int radiusMd: 12
     readonly property int radiusLg: 16

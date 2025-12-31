@@ -8,49 +8,49 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 120,
+                            "durationMicroseconds": 153,
                             "functionName": "fill",
-                            "line": 8,
+                            "line": 9,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 42,
+                            "durationMicroseconds": 58,
                             "functionName": "centerIn",
-                            "line": 12,
+                            "line": 13,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 37,
+                            "durationMicroseconds": 42,
                             "functionName": "target",
-                            "line": 19,
+                            "line": 20,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 51,
+                            "durationMicroseconds": 59,
                             "functionName": "type",
-                            "line": 24,
+                            "line": 25,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 32,
+                            "durationMicroseconds": 36,
                             "functionName": "fill",
-                            "line": 28,
+                            "line": 29,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 40,
+                            "durationMicroseconds": 43,
                             "functionName": "fillMode",
-                            "line": 36,
+                            "line": 37,
                             "message": ""
                         },
                         {
@@ -58,15 +58,15 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 46,
-                            "message": "Could not find property \"weight\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 46,
-                            "functionName": "alignment",
                             "line": 47,
+                            "message": "Could not find property \"weight\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 51,
+                            "functionName": "alignment",
+                            "line": 48,
                             "message": ""
                         },
                         {
@@ -74,15 +74,15 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 54,
+                            "line": 55,
                             "message": "Could not find property \"weight\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 37,
+                            "durationMicroseconds": 42,
                             "functionName": "alignment",
-                            "line": 55,
+                            "line": 56,
                             "message": ""
                         },
                         {
@@ -90,23 +90,23 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "echoMode",
-                            "line": 73,
+                            "line": 74,
                             "message": "Could not find property \"echoMode\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 240,
+                            "durationMicroseconds": 286,
                             "functionName": "enabled",
-                            "line": 101,
+                            "line": 102,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 249,
+                            "durationMicroseconds": 275,
                             "functionName": "onClicked",
-                            "line": 102,
+                            "line": 103,
                             "message": "Cannot access value for name Controller"
                         },
                         {
@@ -114,15 +114,15 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "textFormat",
-                            "line": 112,
+                            "line": 113,
                             "message": "Could not find property \"textFormat\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 55,
+                            "durationMicroseconds": 67,
                             "functionName": "alignment",
-                            "line": 108,
+                            "line": 109,
                             "message": ""
                         }
                     ],

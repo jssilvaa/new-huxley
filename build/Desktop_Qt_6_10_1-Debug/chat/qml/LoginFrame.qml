@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import "../Utils"
+import chat 1.0
 
 Item {
     anchors.fill: parent

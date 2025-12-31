@@ -1,6 +1,7 @@
 // Main.qml
 import QtQuick
 import QtQuick.Controls
+import chat 1.0
 
 Window {
     id: root
@@ -20,12 +21,22 @@ Window {
 
     Component {
         id: loginShell
-        LoginFrame { }
+        LoginFrame {
+            anchors.fill: parent
+            visible: !Controller.authenticated
+            opacity: visible ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: Theme.animMed } }    
+         }
     }
 
     Component {
         id: chatShell
-        ChatShell { }
+        ChatShell {
+            anchors.fill: parent
+            visible: Controller.authenticated
+            opacity: visible ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: Theme.animMed } }
+         }
     }
 
     // Keep logs centralized while building.

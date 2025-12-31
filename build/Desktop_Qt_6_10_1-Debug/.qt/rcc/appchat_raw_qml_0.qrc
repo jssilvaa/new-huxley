@@ -7,6 +7,8 @@
     <file alias="qml/ContactsFrame.qml">/home/josesilvaa/huxley-gui/chat/qml/ContactsFrame.qml</file>
     <file alias="qml/ChatView.qml">/home/josesilvaa/huxley-gui/chat/qml/ChatView.qml</file>
     <file alias="qml/InputBar.qml">/home/josesilvaa/huxley-gui/chat/qml/InputBar.qml</file>
+    <file alias="qml/Theme.qml">/home/josesilvaa/huxley-gui/chat/qml/Theme.qml</file>
+    <file alias="qml/SettingsDrawer.qml">/home/josesilvaa/huxley-gui/chat/qml/SettingsDrawer.qml</file>
     <file alias="Utils/CustomInput.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomInput.qml</file>
     <file alias="Utils/CustomCheckBox.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomCheckBox.qml</file>
     <file alias="Utils/CustomButton.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomButton.qml</file>

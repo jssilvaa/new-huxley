@@ -8,25 +8,89 @@
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 269,
+                            "durationMicroseconds": 134,
                             "functionName": "sourceComponent",
-                            "line": 18,
+                            "line": 19,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 122,
+                            "durationMicroseconds": 64,
                             "functionName": "fill",
-                            "line": 17,
+                            "line": 18,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 67,
+                            "functionName": "visible",
+                            "line": 26,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 62,
+                            "functionName": "opacity",
+                            "line": 27,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 23,
+                            "functionName": "fill",
+                            "line": 25,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 63,
+                            "durationMicroseconds": 1040,
+                            "functionName": "duration",
+                            "line": 28,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 88,
+                            "functionName": "visible",
+                            "line": 36,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 57,
+                            "functionName": "opacity",
+                            "line": 37,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 23,
+                            "functionName": "fill",
+                            "line": 35,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 63,
+                            "durationMicroseconds": 31,
+                            "functionName": "duration",
+                            "line": 38,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 64,
+                            "durationMicroseconds": 25,
                             "functionName": "target",
-                            "line": 33,
+                            "line": 44,
                             "message": "Cannot access value for name Controller"
                         },
                         {
@@ -34,7 +98,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onToast",
-                            "line": 34,
+                            "line": 45,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -42,23 +106,23 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onError",
-                            "line": 35,
+                            "line": 46,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
                             "column": 9,
-                            "durationMicroseconds": 82,
+                            "durationMicroseconds": 30,
                             "functionName": "onConnectedChanged",
-                            "line": 36,
+                            "line": 47,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 2,
                             "column": 9,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 22,
                             "functionName": "onAuthenticatedChanged",
-                            "line": 37,
+                            "line": 48,
                             "message": "Cannot access value for name Controller"
                         },
                         {
@@ -66,7 +130,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 43,
+                            "line": 54,
                             "message": "Could not find signal \"triggered\"."
                         }
                     ],

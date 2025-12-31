@@ -18,6 +18,8 @@
 /home/josesilvaa/huxley-gui/chat/qml/ContactsFrame.qml
 /home/josesilvaa/huxley-gui/chat/qml/ChatView.qml
 /home/josesilvaa/huxley-gui/chat/qml/InputBar.qml
+/home/josesilvaa/huxley-gui/chat/qml/Theme.qml
+/home/josesilvaa/huxley-gui/chat/qml/SettingsDrawer.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomInput.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomCheckBox.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomButton.qml

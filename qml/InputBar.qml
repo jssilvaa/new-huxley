@@ -2,10 +2,11 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import chat 1.0
 
 Rectangle {
-    color: "#161616"
-    border.color: "#222222"
+    color: Theme.panel2
+    border.color: Theme.border
     border.width: 1
 
     enabled: Controller.authenticated && Controller.hasPeer
@@ -18,13 +19,25 @@ Rectangle {
         TextField {
             id: input
             Layout.fillWidth: true
-            placeholderText: "Type a message"
-            enabled: Controller.authenticated
+
+            placeholderText: !Controller.authenticated
+                ? "Log in to start chatting"
+                : !Controller.hasPeer
+                    ? "Select a contact first"
+                    : "Type a message"
+
+            enabled: Controller.authenticated && Controller.hasPeer
         }
 
         Button {
             text: "Send"
-            enabled: parent.enabled && input.text.length > 0
+            enabled: input.text.length > 0 && input.enabled
+
+            opacity: enabled ? 1.0 : 0.4
+            Behavior on opacity {
+                NumberAnimation { duration: Theme.animFast }
+            }
+
             onClicked: {
                 Controller.sendMessage(input.text)
                 input.clear()

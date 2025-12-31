@@ -2,13 +2,16 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import chat 1.0
 
 Item {
     anchors.fill: parent
 
     Rectangle {
         anchors.fill: parent
-        color: "#111111"
+        color: Theme.bg
+
+        SettingsDrawer { id: settingsDrawer; height: parent.height }
 
         ColumnLayout {
             anchors.fill: parent
@@ -17,6 +20,7 @@ Item {
             HeaderBar {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 56
+                onSettingsRequested: settingsDrawer.open()
             }
 
             RowLayout {
@@ -32,7 +36,7 @@ Item {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    color: "#0f0f0f"
+                    color: Theme.bg
 
                     ColumnLayout {
                         anchors.fill: parent

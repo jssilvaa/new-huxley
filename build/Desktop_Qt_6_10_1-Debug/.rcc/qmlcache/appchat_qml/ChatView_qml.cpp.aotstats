@@ -6,163 +6,227 @@
                 {
                     "entries": [
                         {
+                            "codegenResult": 0,
+                            "column": 12,
+                            "durationMicroseconds": 1430,
+                            "functionName": "color",
+                            "line": 9,
+                            "message": ""
+                        },
+                        {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 0,
+                            "durationMicroseconds": 114,
                             "functionName": "visible",
                             "line": 15,
-                            "message": "Could not find property \"visible\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "centerIn",
-                            "line": 12,
-                            "message": "Could not find property \"centerIn\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 16,
-                            "durationMicroseconds": 260,
-                            "functionName": "model",
-                            "line": 24,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 141,
-                            "functionName": "onMovementStarted",
-                            "line": 30,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 127,
-                            "functionName": "onMovementEnded",
-                            "line": 31,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 25,
-                            "durationMicroseconds": 102,
-                            "functionName": "onCountChanged",
-                            "line": 34,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 33,
-                            "functionName": "fill",
-                            "line": 20,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 32,
-                            "durationMicroseconds": 25,
-                            "functionName": "onCompleted",
-                            "line": 33,
+                            "column": 27,
+                            "durationMicroseconds": 36,
+                            "functionName": "centerIn",
+                            "line": 13,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 20,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 19,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 20,
+                            "message": "Could not find property \"horizontalAlignment\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 16,
+                            "durationMicroseconds": 233,
+                            "functionName": "model",
+                            "line": 30,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 25,
+                            "durationMicroseconds": 36,
+                            "functionName": "boundsBehavior",
+                            "line": 32,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 9,
                             "durationMicroseconds": 19,
-                            "functionName": "width",
+                            "functionName": "atBottom",
+                            "line": 36,
+                            "message": "function without return type annotation returns bool. This may prevent proper compilation to Cpp."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 45,
+                            "functionName": "onMovementStarted",
+                            "line": 40,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 32,
+                            "functionName": "onMovementEnded",
                             "line": 41,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 160,
+                            "functionName": "onCountChanged",
+                            "line": 45,
+                            "message": "Cannot generate efficient code for lookup of (component in /home/josesilvaa/huxley-gui/chat/qml/ChatView.qml)::positionViewAtEnd(...) (stored as QJSValue)"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 26,
+                            "functionName": "fill",
+                            "line": 26,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 63,
+                            "functionName": "onCompleted",
+                            "line": 43,
+                            "message": "Cannot generate efficient code for lookup of (component in /home/josesilvaa/huxley-gui/chat/qml/ChatView.qml)::positionViewAtEnd(...) (stored as QJSValue)"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 80,
+                            "durationMicroseconds": 35,
+                            "functionName": "duration",
+                            "line": 52,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 20,
+                            "durationMicroseconds": 15,
+                            "functionName": "width",
+                            "line": 57,
                             "message": "Cannot access value for name chat"
                         },
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 64,
                             "functionName": "height",
-                            "line": 43,
+                            "line": 58,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 22,
+                            "durationMicroseconds": 24,
                             "functionName": "fill",
-                            "line": 47,
+                            "line": 61,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 57,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 58,
                             "functionName": "visible",
-                            "line": 49,
+                            "line": 63,
                             "message": "Cannot access value for name isOwn"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 34,
+                            "functionName": "radius",
+                            "line": 67,
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 64,
+                            "durationMicroseconds": 78,
                             "functionName": "color",
-                            "line": 54,
+                            "line": 68,
                             "message": "Cannot access value for name isOwn"
                         },
                         {
                             "codegenResult": 0,
                             "column": 36,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 57,
                             "functionName": "implicitWidth",
-                            "line": 62,
+                            "line": 75,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 48,
+                            "durationMicroseconds": 50,
                             "functionName": "implicitHeight",
-                            "line": 63,
+                            "line": 76,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 39,
+                            "functionName": "color",
+                            "line": 69,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 72,
                             "functionName": "alignment",
-                            "line": 58,
+                            "line": 72,
                             "message": "Cannot access value for name isOwn"
                         },
                         {
                             "codegenResult": 2,
                             "column": 42,
-                            "durationMicroseconds": 23,
+                            "durationMicroseconds": 24,
                             "functionName": "maximumWidth",
-                            "line": 60,
+                            "line": 73,
                             "message": "Cannot access value for name chat"
                         },
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 42,
                             "functionName": "left",
-                            "line": 67,
+                            "line": 80,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 40,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 37,
                             "functionName": "right",
-                            "line": 68,
+                            "line": 81,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 36,
                             "functionName": "top",
-                            "line": 69,
+                            "line": 82,
                             "message": ""
                         },
                         {
@@ -170,7 +234,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 76,
+                            "line": 87,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -178,47 +242,63 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 77,
+                            "line": 88,
                             "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 89,
+                            "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 80,
+                            "line": 91,
                             "message": "Could not find property \"elide\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 119,
                             "functionName": "text",
-                            "line": 84,
+                            "line": 95,
                             "message": "Cannot access value for name content"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 36,
+                            "durationMicroseconds": 71,
+                            "functionName": "color",
+                            "line": 96,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 39,
                             "durationMicroseconds": 33,
                             "functionName": "wrapMode",
-                            "line": 86,
+                            "line": 97,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 29,
+                            "durationMicroseconds": 24,
                             "functionName": "textFormat",
-                            "line": 87,
+                            "line": 98,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 36,
-                            "durationMicroseconds": 114,
+                            "durationMicroseconds": 124,
                             "functionName": "width",
-                            "line": 89,
+                            "line": 99,
                             "message": ""
                         },
                         {
@@ -226,7 +306,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 94,
+                            "line": 103,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -234,39 +314,47 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 95,
+                            "line": 104,
                             "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 105,
+                            "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 98,
+                            "line": 107,
                             "message": "Could not find property \"horizontalAlignment\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 57,
-                            "durationMicroseconds": 50,
+                            "durationMicroseconds": 55,
                             "functionName": "visible",
-                            "line": 104,
+                            "line": 113,
                             "message": "Cannot access value for name isOwn"
                         },
                         {
                             "codegenResult": 2,
                             "column": 21,
-                            "durationMicroseconds": 21,
+                            "durationMicroseconds": 23,
                             "functionName": "target",
-                            "line": 109,
+                            "line": 118,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 2,
                             "column": 13,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 83,
                             "functionName": "onCurrentPeerChanged",
-                            "line": 110,
+                            "line": 119,
                             "message": "Cannot generate efficient code for LoadClosure"
                         }
                     ],

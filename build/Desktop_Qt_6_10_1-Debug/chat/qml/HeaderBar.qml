@@ -2,10 +2,13 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import chat 1.0
 
 Rectangle {
-    color: "#161616"
-    border.color: "#222222"
+    signal settingsRequested()
+
+    color: Theme.panel2
+    border.color: Theme.border
     border.width: 1
 
     RowLayout {
@@ -15,7 +18,7 @@ Rectangle {
 
         Label {
             text: Controller.authenticated ? "Huxley" : "Huxley (guest)"
-            color: "#eaeaea"
+            color: Theme.text
             font.bold: true
         }
 
@@ -23,14 +26,23 @@ Rectangle {
 
         Label {
             text: Controller.connected ? "● Connected" : "● Disconnected"
-            color: Controller.connected ? "#4caf50" : "#ff5252"
+            color: Controller.connected ? Theme.accent : Theme.danger
             font.pointSize: 10
+
+            Behavior on color {
+                ColorAnimation { duration: Theme.animFast }
+            }
         }
 
         Button {
             text: "Refresh"
             enabled: Controller.authenticated
             onClicked: Controller.refreshUsers()
+        }
+
+        Button {
+            text: "⚙"
+            onClicked: settingsRequested()
         }
     }
 }
