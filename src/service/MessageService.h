@@ -17,7 +17,8 @@ public:
     void sendMessage(const QString& peer, const QString& content); 
 
 signals: 
-    void loginResult(bool success, QString msg); 
+    void loginResult(bool success, QString msg);
+    void registerResult(bool success, QString msg); 
     void sendMessageResponse(bool ok, QString message); 
     void usersReceived(QVector<QJsonObject> users); 
     void historyReceived(QString peer, QVector<QJsonObject> messages);

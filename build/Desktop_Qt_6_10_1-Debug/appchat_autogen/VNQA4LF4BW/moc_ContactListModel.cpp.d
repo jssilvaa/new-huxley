@@ -1,6 +1,7 @@
 /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/VNQA4LF4BW/moc_ContactListModel.cpp: /home/josesilvaa/huxley-gui/chat/src/model/ContactListModel.h \
   /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/moc_predefs.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QAbstractListModel \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QDateTime \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QString \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QVector \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/q17memory.h \
@@ -26,6 +27,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbytearraylist.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbytearrayview.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qcalendar.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qchar.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qcompare.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qcompare_impl.h \
@@ -39,6 +41,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qcontiguouscache.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdarwinhelpers.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdatastream.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdatetime.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdebug.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qexceptionhandling.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qflags.h \
@@ -56,6 +59,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qiterator.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qlatin1stringview.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qlist.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qlocale.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qlogging.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qmalloc.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qmap.h \

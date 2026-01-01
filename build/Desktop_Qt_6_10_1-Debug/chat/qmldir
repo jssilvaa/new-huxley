@@ -3,6 +3,7 @@ typeinfo appchat.qmltypes
 prefer :/qt/qml/chat/
 Main 1.0 Main.qml
 LoginFrame 1.0 qml/LoginFrame.qml
+RegisterFrame 1.0 qml/RegisterFrame.qml
 ChatShell 1.0 qml/ChatShell.qml
 HeaderBar 1.0 qml/HeaderBar.qml
 ContactsFrame 1.0 qml/ContactsFrame.qml

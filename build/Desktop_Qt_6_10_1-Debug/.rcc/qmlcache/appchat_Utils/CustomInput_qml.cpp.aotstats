@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 173,
+                            "durationMicroseconds": 113,
                             "functionName": "showIcon",
                             "line": 9,
                             "message": ""
@@ -18,55 +18,55 @@
                             "column": 19,
                             "durationMicroseconds": 0,
                             "functionName": "rightPadding",
-                            "line": 17,
+                            "line": 18,
                             "message": "Could not find property \"rightPadding\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 33,
                             "functionName": "fill",
-                            "line": 23,
+                            "line": 24,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 17,
                             "functionName": "visible",
-                            "line": 29,
+                            "line": 30,
                             "message": "Cannot access value for name showIcon"
                         },
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 26,
+                            "durationMicroseconds": 9,
                             "functionName": "source",
-                            "line": 30,
+                            "line": 31,
                             "message": "Cannot access value for name iconSource"
                         },
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 85,
+                            "durationMicroseconds": 36,
                             "functionName": "fillMode",
-                            "line": 39,
+                            "line": 40,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 114,
+                            "durationMicroseconds": 54,
                             "functionName": "right",
-                            "line": 33,
+                            "line": 34,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 98,
+                            "durationMicroseconds": 40,
                             "functionName": "verticalCenter",
-                            "line": 35,
+                            "line": 36,
                             "message": ""
                         }
                     ],

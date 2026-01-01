@@ -6,6 +6,8 @@ set(src_and_dest_list
     "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/Main.qml"
     "/home/josesilvaa/huxley-gui/chat/qml/LoginFrame.qml"
     "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/qml/LoginFrame.qml"
+    "/home/josesilvaa/huxley-gui/chat/qml/RegisterFrame.qml"
+    "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/qml/RegisterFrame.qml"
     "/home/josesilvaa/huxley-gui/chat/qml/ChatShell.qml"
     "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/qml/ChatShell.qml"
     "/home/josesilvaa/huxley-gui/chat/qml/HeaderBar.qml"

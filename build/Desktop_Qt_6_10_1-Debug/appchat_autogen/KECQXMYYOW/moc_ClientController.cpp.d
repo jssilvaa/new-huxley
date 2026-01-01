@@ -1,9 +1,12 @@
 /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/KECQXMYYOW/moc_ClientController.cpp: /home/josesilvaa/huxley-gui/chat/src/controller/ClientController.h \
   /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/moc_predefs.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QAbstractListModel \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QDateTime \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QJsonObject \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QObject \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QSortFilterProxyModel \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QString \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QTimer \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/QVector \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/q17memory.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/q20functional.h \
@@ -13,7 +16,9 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/q20utility.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/q23type_traits.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/q23utility.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qabstracteventdispatcher.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qabstractproxymodel.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qalgorithms.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qalloc.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qanystringview.h \
@@ -24,6 +29,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qatomic.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qatomic_cxx11.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbasicatomic.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbasictimer.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbindingstorage.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbytearray.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
@@ -46,8 +52,10 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdarwinhelpers.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdatastream.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdatetime.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdeadlinetimer.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qdebug.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qendian.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qeventloop.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qexceptionhandling.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qflags.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qfloat16.h \
@@ -95,6 +103,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qshareddata_impl.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qsharedpointer.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qsortfilterproxymodel.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qspan.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qstdlibdetection.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qstring.h \
@@ -122,6 +131,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtenvironmentvariables.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtextstream.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtformat_impl.h \
+  /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtimer.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtmetamacros.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtnoop.h \
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtCore/qtpreprocessorsupport.h \
@@ -150,6 +160,7 @@
   /home/josesilvaa/Qt/6.10.1/gcc_64/include/QtNetwork/qtnetworkglobal.h \
   /home/josesilvaa/huxley-gui/chat/src/model/ChatHistoryModel.h \
   /home/josesilvaa/huxley-gui/chat/src/model/ContactListModel.h \
+  /home/josesilvaa/huxley-gui/chat/src/model/ContactProxyModel.h \
   /home/josesilvaa/huxley-gui/chat/src/net/ProtocolClient.h \
   /home/josesilvaa/huxley-gui/chat/src/service/MessageService.h \
   /usr/include/alloca.h \

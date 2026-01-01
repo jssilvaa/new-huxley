@@ -1,16 +1,21 @@
 // src/Model/ContactListModel.h
 #pragma once
 #include <QAbstractListModel>
+#include <QDateTime>
 #include <QString> 
 #include <QVector> 
 #include <qabstractitemmodel.h>
 #include <qbytearrayview.h>
 #include <qcontainerfwd.h>
+#include <qdatetime.h>
+#include <qobject.h>
 
 struct Contact { 
     QString username; 
     bool online = false; 
     int unread = 0; 
+    QString lastMessage;
+    QString lastTimestamp;
 }; 
 
 class ContactListModel final : public QAbstractListModel {
@@ -19,7 +24,9 @@ public:
     enum Roles {
         UsernameRole = Qt::UserRole + 1, 
         OnlineRole,
-        UnreadRole
+        UnreadRole,
+        LastMessageRole,
+        LastTimestampRole
     }; 
 
     explicit ContactListModel(QObject* parent = nullptr); 
@@ -55,7 +62,26 @@ public:
                 return;
             }
         }
-    }; 
+    };
+    void updateLastMessage(const QString &user, const QString& content, const QString& timestamp, bool incrementUnread) {
+        for (int i = 0; i < m_contacts.size(); ++i) {
+            auto& c = m_contacts[i]; 
+            if (c.username == user) {
+                c.lastMessage = content; 
+                c.lastTimestamp = timestamp;
+
+                // decide what to emit (i.e. include unread as well?)
+                QVector<int> roles { LastMessageRole, LastTimestampRole }; 
+                if (incrementUnread) {
+                    ++c.unread;
+                    roles.push_back(UnreadRole); 
+                }
+                emit dataChanged(index(i), index(i), roles);
+                return; 
+            }
+        }
+    }
+    void mergePresence(const QVector<Contact>& snapshot); 
     
     // QAbstractItemModel interface
     int rowCount(const QModelIndex& parent = QModelIndex()) const override; 

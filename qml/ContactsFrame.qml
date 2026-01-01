@@ -9,6 +9,24 @@ Rectangle {
     border.color: Theme.border
     border.width: 1
 
+    function formatTime(ts) {
+        if (!ts || ts.length === 0) return ""
+
+        const d = new Date(ts)
+        if (isNaN(d.getTime())) return ""
+
+        const now = new Date()
+        if (d.toDateString() === now.toDateString())
+            return Qt.formatTime(d, "hh:mm")
+
+        const y = new Date(now)
+        y.setDate(now.getDate() - 1)
+        if (d.toDateString() === y.toDateString())
+            return "Yesterday"
+
+        return Qt.formatDate(d, "dd/MM/yyyy")
+    }
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 8
@@ -24,6 +42,7 @@ Rectangle {
             id: search
             Layout.fillWidth: true
             placeholderText: "Search"
+            onTextChanged: Controller.contactsProxy.filterText = text 
         }
 
         ListView {
@@ -31,7 +50,53 @@ Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
-            model: Controller.contacts
+            focus: Controller.focusContacts
+            activeFocusOnTab: true
+            model: Controller.contactsProxy
+
+            Component.onCompleted: {
+                if (Controller.focus) {
+                    forceActiveFocus()
+                }
+            }
+
+            Connections {
+                target: Controller
+                function onFocusContactsChanged() {
+                    if (Controller.focusContacts) {
+                        Qt.callLater(() => list.forceActiveFocus())
+                    }
+                }
+            }
+
+            Keys.onPressed: function(e) {
+                switch (e.key) {
+                case Qt.Key_Up:
+                    currentIndex = Math.max(0, currentIndex - 1)
+                    e.accepted = true
+                    break
+
+                case Qt.Key_Down:
+                    currentIndex = Math.min(count - 1, currentIndex + 1)
+                    e.accepted = true
+                    break
+
+                case Qt.Key_Return:
+                case Qt.Key_Enter:
+                    if (currentItem) {
+                        Controller.selectPeer(currentItem.username)
+                        Controller.focusContacts = false
+                    }
+                    e.accepted = true
+                    break
+
+                case Qt.Key_Escape:
+                    currentIndex = -1
+                    Controller.clearPeer()
+                    e.accepted = true
+                    break
+                }
+            }
 
             delegate: Rectangle {
                 id: row
@@ -45,27 +110,13 @@ Rectangle {
 
                 color: selected ? Theme.surface : "transparent"
 
-                border.color: selected ? Theme.accent : "transparent"
+                border.color: selected  && list.activeFocus ? Theme.accent : "transparent"
                 border.width: selected ? 1 : 0
 
                 scale: pressed ? 0.985 : 1.0
                 Behavior on scale { NumberAnimation { duration: Theme.animFast } }
                 Behavior on color { ColorAnimation { duration: Theme.animFast } }
 
-                Rectangle {
-                    visible: unread > 0
-                    width: 18; height: 18
-                    radius: 9
-                    color: Theme.accent
-
-                    Label {
-                        anchors.centerIn: parent
-                        text: unread
-                        color: "white"
-                        font.pointSize: 9
-                    }
-                }
-                
                 MouseArea {
                     id: mouse
                     anchors.fill: parent
@@ -82,21 +133,69 @@ Rectangle {
                     anchors.margins: 12
                     spacing: 10
 
+                    // online dot
                     Rectangle {
                         width: 8; height: 8; radius: 4
                         color: online ? Theme.accent : Theme.muted
                         Layout.alignment: Qt.AlignVCenter
                     }
 
-                    Label {
-                        text: username
-                        color: Theme.text
-                        elide: Label.ElideRight
+                    // main text column
+                    ColumnLayout {
                         Layout.fillWidth: true
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-                        font.pointSize: 11
-                        font.bold: selected
+                        spacing: 2
+
+                        Label {
+                            text: username
+                            color: Theme.text
+                            elide: Label.ElideRight
+                            font.pointSize: 11
+                            font.bold: selected
+                        }
+
+                        Label {
+                            text: lastMessage
+                            color: Theme.muted
+                            font.pointSize: 9
+                            elide: Label.ElideRight
+                            visible: lastMessage && lastMessage.length > 0
+                        }
+                    }
+
+                    // right side info: timestamp and badge
+                    ColumnLayout {
+                        spacing: 4
+                        Layout.alignment: Qt.AlignVCenter
+                        Layout.preferredWidth: 60
+
+                        Label {
+                            text: formatTime(lastTimestamp)
+                            font.pointSize: 9
+                            color: Theme.muted
+                            horizontalAlignment: Text.AlignRight
+                            Layout.fillWidth: true
+                            visible: lastTimestamp && lastTimestamp.length > 0
+                        }
+
+                        Rectangle {
+                            visible: unread > 0
+                            width: unread < 10 ? 18 : 22
+                            height: 18
+                            radius: 9
+                            color: Theme.accent
+                            Layout.alignment: Qt.AlignRight
+
+                            // animations
+                            Behavior on width { NumberAnimation { duration: Theme.animFast } }
+                            Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
+
+                            Label {
+                                anchors.centerIn: parent
+                                text: unread > 99 ? "99+" : unread
+                                color: "white"
+                                font.pointSize: 9
+                            }
+                        }
                     }
 
                     // keeps right edge consistent, little guy > icon

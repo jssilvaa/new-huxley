@@ -2,5 +2,6 @@
 #include "KECQXMYYOW/moc_ClientController.cpp"
 #include "VNQA4LF4BW/moc_ChatHistoryModel.cpp"
 #include "VNQA4LF4BW/moc_ContactListModel.cpp"
+#include "VNQA4LF4BW/moc_ContactProxyModel.cpp"
 #include "7OIUYE7PDQ/moc_ProtocolClient.cpp"
 #include "RIEQWACMR2/moc_MessageService.cpp"

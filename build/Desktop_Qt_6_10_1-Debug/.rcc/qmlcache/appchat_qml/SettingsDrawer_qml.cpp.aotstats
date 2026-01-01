@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 3141,
+                            "durationMicroseconds": 3113,
                             "functionName": "color",
                             "line": 14,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 118,
+                            "durationMicroseconds": 116,
                             "functionName": "color",
                             "line": 15,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 76,
                             "functionName": "fill",
                             "line": 20,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 102,
+                            "durationMicroseconds": 103,
                             "functionName": "color",
                             "line": 31,
                             "message": ""
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 28,
+                            "durationMicroseconds": 30,
                             "functionName": "model",
                             "line": 49,
                             "message": "Cannot load property length from Theme::accents with type QVariant."
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 65,
+                            "durationMicroseconds": 58,
                             "functionName": "width",
                             "line": 53,
                             "message": "Cannot access value for name index"
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 60,
+                            "durationMicroseconds": 65,
                             "functionName": "color",
                             "line": 54,
                             "message": "Cannot access value for name index"
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 226,
+                            "durationMicroseconds": 230,
                             "functionName": "onClicked",
                             "line": 58,
                             "message": "Cannot access value for name index"
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 90,
+                            "durationMicroseconds": 78,
                             "functionName": "fill",
                             "line": 57,
                             "message": ""

@@ -2,11 +2,15 @@
 #pragma once 
 #include <QObject> 
 #include <QJsonObject>
+#include <QTimer> 
+#include <qobject.h>
+#include <qset.h>
 #include <qtmetamacros.h>
 #include "../net/ProtocolClient.h"
 #include "../service/MessageService.h"
 #include "../model/ContactListModel.h"
 #include "../model/ChatHistoryModel.h"
+#include "../model/ContactProxyModel.h"
 
 class ClientController final : public QObject {
     Q_OBJECT;
@@ -18,14 +22,21 @@ class ClientController final : public QObject {
     Q_PROPERTY(QObject* contacts READ contacts CONSTANT); 
     Q_PROPERTY(QObject* chat READ chat CONSTANT);
     Q_PROPERTY(bool currentPeerOnline READ currentPeerOnline NOTIFY currentPeerOnlineChanged);  
+    Q_PROPERTY(bool focusContacts READ focusContacts WRITE setFocusContacts NOTIFY focusContactsChanged);
+    Q_PROPERTY(QObject* contactsProxy READ contactsProxy CONSTANT); 
+    Q_PROPERTY(bool registering READ registering NOTIFY registeringChanged);
 public: 
     explicit ClientController(QObject* parent=nullptr); 
     QObject* messageService() { return &m_msgservice; }
     QObject* contacts() { return &m_contacts; }
     QObject* chat() { return &m_chat; }
+    QObject* contactsProxy() { return &m_contactsProxy; }
 
     Q_INVOKABLE void start(); 
-    Q_INVOKABLE void login(const QString& user, const QString& pass); 
+    Q_INVOKABLE void login(const QString& user, const QString& pass);
+    Q_INVOKABLE void registerUser(const QString& user, const QString& pass); 
+    Q_INVOKABLE void showRegister(); 
+    Q_INVOKABLE void showLogin();  
     Q_INVOKABLE void refreshUsers() { m_msgservice.listUsers(); }
     Q_INVOKABLE void selectPeer(const QString& peer) {
         if (peer == m_currentPeer) return; 
@@ -50,20 +61,29 @@ public:
     Q_INVOKABLE bool hasUnread(const QString& user) const {
         return m_contacts.unreadCount(user) > 0; 
     }; 
+    void setFocusContacts(bool v) {
+        if (m_focusContacts == v) return; 
+        m_focusContacts = v; 
+        emit focusContactsChanged(); 
+    }
 
     bool connected() const { return m_connected; }
     bool authenticated() const { return m_authenticated; }
+    bool registering() const { return m_registering; }
     bool hasPeer() const { return !m_currentPeer.isEmpty(); }
     bool currentPeerOnline() const; 
     QString currentPeer() const { return m_currentPeer; }
+    bool focusContacts() const { return m_focusContacts; }
 
 signals: 
     void connectedChanged(); 
     void authenticatedChanged(); 
+    void registeringChanged();
     void currentPeerChanged(); 
     void currentPeerOnlineChanged(); 
+    void focusContactsChanged(); 
     void clearChat(); // temporary logic, not scalable, but works for now 
-    void showChat();  
+    void showChat();
 
     void toast(QString msg); 
     void error(QString msg);
@@ -78,10 +98,15 @@ private:
     MessageService m_msgservice; 
     ContactListModel m_contacts;
     ChatHistoryModel m_chat;  
+    ContactProxyModel m_contactsProxy; 
     bool m_connecting = false; 
     bool m_connected = false; 
     bool m_authenticated = false;
+    bool m_registering = false; 
+    bool m_focusContacts;
     QString m_pendingUsername; 
     QString m_username;  
-    QString m_currentPeer; 
+    QString m_currentPeer;
+    QTimer m_presenceTimer; 
+    QSet<QString> m_prefetchedPreview; 
 }; 

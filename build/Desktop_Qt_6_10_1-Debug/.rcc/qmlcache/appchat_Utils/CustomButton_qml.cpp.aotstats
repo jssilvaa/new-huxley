@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 408,
+                            "durationMicroseconds": 311,
                             "functionName": "implicitWidth",
                             "line": 8,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 328,
+                            "durationMicroseconds": 204,
                             "functionName": "implicitHeight",
                             "line": 10,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 100,
+                            "durationMicroseconds": 57,
                             "functionName": "horizontalPadding",
                             "line": 14,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 17,
-                            "durationMicroseconds": 832,
+                            "durationMicroseconds": 528,
                             "functionName": "color",
                             "line": 19,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 91,
+                            "durationMicroseconds": 51,
                             "functionName": "spacing",
                             "line": 23,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 85,
+                            "durationMicroseconds": 39,
                             "functionName": "mirrored",
                             "line": 24,
                             "message": ""
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 81,
+                            "durationMicroseconds": 38,
                             "functionName": "display",
                             "line": 25,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 15,
-                            "durationMicroseconds": 92,
+                            "durationMicroseconds": 45,
                             "functionName": "icon",
                             "line": 27,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 0,
                             "column": 15,
-                            "durationMicroseconds": 71,
+                            "durationMicroseconds": 35,
                             "functionName": "text",
                             "line": 28,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 332,
+                            "durationMicroseconds": 225,
                             "functionName": "visible",
                             "line": 36,
                             "message": ""
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 222,
+                            "durationMicroseconds": 119,
                             "functionName": "color",
                             "line": 37,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 334,
+                            "durationMicroseconds": 184,
                             "functionName": "color",
                             "line": 38,
                             "message": ""
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 23,
-                            "durationMicroseconds": 142,
+                            "durationMicroseconds": 85,
                             "functionName": "width",
                             "line": 39,
                             "message": "Cannot load property accessibility from QtObject::styleHints with type QObject."

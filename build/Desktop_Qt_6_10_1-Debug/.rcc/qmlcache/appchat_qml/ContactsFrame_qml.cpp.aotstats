@@ -8,15 +8,23 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 3126,
+                            "durationMicroseconds": 2760,
                             "functionName": "color",
                             "line": 8,
                             "message": ""
                         },
                         {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "formatTime",
+                            "line": 12,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 107,
+                            "durationMicroseconds": 77,
                             "functionName": "color",
                             "line": 9,
                             "message": ""
@@ -24,153 +32,177 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 44,
                             "functionName": "fill",
-                            "line": 13,
+                            "line": 31,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTextChanged",
+                            "line": 45,
+                            "message": "Could not find signal \"textChanged\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 20,
-                            "durationMicroseconds": 551,
+                            "durationMicroseconds": 428,
+                            "functionName": "focus",
+                            "line": 53,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 20,
+                            "durationMicroseconds": 448,
                             "functionName": "model",
-                            "line": 34,
+                            "line": 55,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 443,
+                            "functionName": "onCompleted",
+                            "line": 57,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 53,
+                            "functionName": "target",
+                            "line": 64,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 17,
+                            "durationMicroseconds": 75,
+                            "functionName": "onFocusContactsChanged",
+                            "line": 65,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 29,
+                            "durationMicroseconds": 1293,
+                            "functionName": "onPressed",
+                            "line": 72,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 67,
+                            "functionName": "onPressed",
+                            "line": 72,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 134,
+                            "durationMicroseconds": 115,
                             "functionName": "width",
-                            "line": 38,
+                            "line": 103,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 25,
-                            "durationMicroseconds": 80,
+                            "durationMicroseconds": 57,
                             "functionName": "radius",
-                            "line": 40,
+                            "line": 105,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 46,
                             "functionName": "selected",
-                            "line": 42,
+                            "line": 107,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 40,
-                            "durationMicroseconds": 69,
+                            "durationMicroseconds": 46,
                             "functionName": "hovered",
-                            "line": 43,
+                            "line": 108,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 40,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 43,
                             "functionName": "pressed",
-                            "line": 44,
+                            "line": 109,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 241,
+                            "durationMicroseconds": 161,
                             "functionName": "color",
-                            "line": 46,
+                            "line": 111,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 116,
+                            "durationMicroseconds": 77,
                             "functionName": "scale",
-                            "line": 51,
+                            "line": 116,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
+                            "codegenResult": 2,
                             "column": 31,
-                            "durationMicroseconds": 197,
+                            "durationMicroseconds": 75,
                             "functionName": "color",
-                            "line": 48,
-                            "message": ""
+                            "line": 113,
+                            "message": "Cannot access value for name list"
                         },
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 106,
+                            "durationMicroseconds": 70,
                             "functionName": "width",
-                            "line": 49,
+                            "line": 114,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 65,
-                            "durationMicroseconds": 80,
+                            "durationMicroseconds": 67,
                             "functionName": "duration",
-                            "line": 52,
+                            "line": 117,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 64,
-                            "durationMicroseconds": 68,
+                            "durationMicroseconds": 79,
                             "functionName": "duration",
-                            "line": 53,
+                            "line": 118,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 30,
-                            "durationMicroseconds": 179,
-                            "functionName": "visible",
-                            "line": 56,
-                            "message": "Cannot access value for name unread"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 108,
-                            "functionName": "color",
-                            "line": 59,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 63,
-                            "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 43,
-                            "durationMicroseconds": 0,
-                            "functionName": "centerIn",
-                            "line": 62,
-                            "message": "Could not find property \"centerIn\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 596,
+                            "durationMicroseconds": 499,
                             "functionName": "onClicked",
-                            "line": 74,
+                            "line": 125,
                             "message": "Cannot access value for name list"
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 61,
+                            "durationMicroseconds": 71,
                             "functionName": "fill",
-                            "line": 71,
+                            "line": 122,
                             "message": ""
                         },
                         {
@@ -178,79 +210,199 @@
                             "column": 35,
                             "durationMicroseconds": 51,
                             "functionName": "fill",
-                            "line": 81,
+                            "line": 132,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 190,
+                            "durationMicroseconds": 184,
                             "functionName": "color",
-                            "line": 87,
+                            "line": 139,
                             "message": "Cannot access value for name online"
                         },
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 76,
+                            "durationMicroseconds": 84,
                             "functionName": "alignment",
-                            "line": 88,
+                            "line": 140,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 31,
+                            "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 92,
+                            "line": 149,
                             "message": "Could not find property \"text\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 93,
-                            "message": "Could not find property \"color\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 94,
-                            "message": "Could not find property \"elide\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 46,
-                            "durationMicroseconds": 0,
-                            "functionName": "horizontalAlignment",
-                            "line": 96,
-                            "message": "Could not find property \"horizontalAlignment\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "verticalAlignment",
-                            "line": 97,
-                            "message": "Could not find property \"verticalAlignment\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 36,
                             "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 150,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 151,
+                            "message": "Could not find property \"elide\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
                             "functionName": "bold",
-                            "line": 99,
+                            "line": 153,
                             "message": "Could not find property \"bold\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 157,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 158,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 160,
+                            "message": "Could not find property \"elide\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 161,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 57,
+                            "functionName": "alignment",
+                            "line": 168,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 172,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 174,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 50,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 175,
+                            "message": "Could not find property \"horizontalAlignment\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 177,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 125,
+                            "functionName": "visible",
+                            "line": 181,
+                            "message": "Cannot access value for name unread"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 103,
+                            "functionName": "width",
+                            "line": 182,
+                            "message": "Cannot access value for name unread"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 36,
+                            "durationMicroseconds": 88,
+                            "functionName": "color",
+                            "line": 185,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 50,
+                            "functionName": "alignment",
+                            "line": 186,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 77,
+                            "durationMicroseconds": 53,
+                            "functionName": "duration",
+                            "line": 189,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 79,
+                            "durationMicroseconds": 43,
+                            "functionName": "duration",
+                            "line": 190,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 194,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 51,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 193,
+                            "message": "Could not find property \"centerIn\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 105,
+                            "line": 204,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -258,103 +410,103 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 106,
+                            "line": 205,
                             "message": "Could not find property \"visible\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 84,
+                            "durationMicroseconds": 55,
                             "functionName": "radius",
-                            "line": 113,
+                            "line": 212,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 90,
+                            "durationMicroseconds": 72,
                             "functionName": "color",
-                            "line": 114,
+                            "line": 213,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 30,
-                            "durationMicroseconds": 43,
+                            "durationMicroseconds": 41,
                             "functionName": "opacity",
-                            "line": 115,
+                            "line": 214,
                             "message": "Cannot access value for name pressed"
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 55,
+                            "durationMicroseconds": 48,
                             "functionName": "fill",
-                            "line": 112,
+                            "line": 211,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 71,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 60,
                             "functionName": "duration",
-                            "line": 116,
+                            "line": 215,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 74,
+                            "durationMicroseconds": 50,
                             "functionName": "radius",
-                            "line": 122,
+                            "line": 221,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 85,
+                            "durationMicroseconds": 59,
                             "functionName": "color",
-                            "line": 123,
+                            "line": 222,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 30,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 54,
                             "functionName": "opacity",
-                            "line": 124,
+                            "line": 223,
                             "message": "Cannot access value for name hovered"
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 51,
+                            "durationMicroseconds": 36,
                             "functionName": "fill",
-                            "line": 121,
+                            "line": 220,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 87,
+                            "durationMicroseconds": 68,
                             "functionName": "color",
-                            "line": 125,
+                            "line": 224,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 60,
+                            "durationMicroseconds": 43,
                             "functionName": "width",
-                            "line": 126,
+                            "line": 225,
                             "message": "Cannot access value for name hovered"
                         },
                         {
                             "codegenResult": 0,
                             "column": 71,
-                            "durationMicroseconds": 66,
+                            "durationMicroseconds": 58,
                             "functionName": "duration",
-                            "line": 127,
+                            "line": 226,
                             "message": ""
                         }
                     ],

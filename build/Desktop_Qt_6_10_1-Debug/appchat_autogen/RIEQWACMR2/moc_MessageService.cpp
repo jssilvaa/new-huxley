@@ -44,6 +44,7 @@ template <> constexpr inline auto MessageService::qt_create_metaobjectdata<qt_me
         "",
         "success",
         "msg",
+        "registerResult",
         "sendMessageResponse",
         "ok",
         "message",
@@ -66,29 +67,33 @@ template <> constexpr inline auto MessageService::qt_create_metaobjectdata<qt_me
         QtMocHelpers::SignalData<void(bool, QString)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Bool, 3 }, { QMetaType::QString, 4 },
         }}),
-        // Signal 'sendMessageResponse'
+        // Signal 'registerResult'
         QtMocHelpers::SignalData<void(bool, QString)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Bool, 6 }, { QMetaType::QString, 7 },
+            { QMetaType::Bool, 3 }, { QMetaType::QString, 4 },
+        }}),
+        // Signal 'sendMessageResponse'
+        QtMocHelpers::SignalData<void(bool, QString)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Bool, 7 }, { QMetaType::QString, 8 },
         }}),
         // Signal 'usersReceived'
-        QtMocHelpers::SignalData<void(QVector<QJsonObject>)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 9, 10 },
+        QtMocHelpers::SignalData<void(QVector<QJsonObject>)>(9, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 10, 11 },
         }}),
         // Signal 'historyReceived'
-        QtMocHelpers::SignalData<void(QString, QVector<QJsonObject>)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 12 }, { 0x80000000 | 9, 13 },
+        QtMocHelpers::SignalData<void(QString, QVector<QJsonObject>)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 13 }, { 0x80000000 | 10, 14 },
         }}),
         // Signal 'incomingMessage'
-        QtMocHelpers::SignalData<void(QJsonObject)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 15, 7 },
+        QtMocHelpers::SignalData<void(QJsonObject)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 16, 8 },
         }}),
         // Signal 'commandError'
-        QtMocHelpers::SignalData<void(QString, QString)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 17 }, { QMetaType::QString, 7 },
+        QtMocHelpers::SignalData<void(QString, QString)>(17, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 18 }, { QMetaType::QString, 8 },
         }}),
         // Slot 'onResponse'
-        QtMocHelpers::SlotData<void(QJsonObject)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 15, 19 },
+        QtMocHelpers::SlotData<void(QJsonObject)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 16, 20 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -114,27 +119,30 @@ void MessageService::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->loginResult((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 1: _t->sendMessageResponse((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 2: _t->usersReceived((*reinterpret_cast<std::add_pointer_t<QList<QJsonObject>>>(_a[1]))); break;
-        case 3: _t->historyReceived((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QList<QJsonObject>>>(_a[2]))); break;
-        case 4: _t->incomingMessage((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
-        case 5: _t->commandError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 6: _t->onResponse((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 1: _t->registerResult((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
+        case 2: _t->sendMessageResponse((*reinterpret_cast<std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
+        case 3: _t->usersReceived((*reinterpret_cast<std::add_pointer_t<QList<QJsonObject>>>(_a[1]))); break;
+        case 4: _t->historyReceived((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QList<QJsonObject>>>(_a[2]))); break;
+        case 5: _t->incomingMessage((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
+        case 6: _t->commandError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
+        case 7: _t->onResponse((*reinterpret_cast<std::add_pointer_t<QJsonObject>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (MessageService::*)(bool , QString )>(_a, &MessageService::loginResult, 0))
             return;
-        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(bool , QString )>(_a, &MessageService::sendMessageResponse, 1))
+        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(bool , QString )>(_a, &MessageService::registerResult, 1))
             return;
-        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QVector<QJsonObject> )>(_a, &MessageService::usersReceived, 2))
+        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(bool , QString )>(_a, &MessageService::sendMessageResponse, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QString , QVector<QJsonObject> )>(_a, &MessageService::historyReceived, 3))
+        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QVector<QJsonObject> )>(_a, &MessageService::usersReceived, 3))
             return;
-        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QJsonObject )>(_a, &MessageService::incomingMessage, 4))
+        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QString , QVector<QJsonObject> )>(_a, &MessageService::historyReceived, 4))
             return;
-        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QString , QString )>(_a, &MessageService::commandError, 5))
+        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QJsonObject )>(_a, &MessageService::incomingMessage, 5))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (MessageService::*)(QString , QString )>(_a, &MessageService::commandError, 6))
             return;
     }
 }
@@ -158,14 +166,14 @@ int MessageService::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }
@@ -177,32 +185,38 @@ void MessageService::loginResult(bool _t1, QString _t2)
 }
 
 // SIGNAL 1
-void MessageService::sendMessageResponse(bool _t1, QString _t2)
+void MessageService::registerResult(bool _t1, QString _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1, _t2);
 }
 
 // SIGNAL 2
-void MessageService::usersReceived(QVector<QJsonObject> _t1)
+void MessageService::sendMessageResponse(bool _t1, QString _t2)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1, _t2);
 }
 
 // SIGNAL 3
-void MessageService::historyReceived(QString _t1, QVector<QJsonObject> _t2)
+void MessageService::usersReceived(QVector<QJsonObject> _t1)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1, _t2);
+    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
 }
 
 // SIGNAL 4
-void MessageService::incomingMessage(QJsonObject _t1)
+void MessageService::historyReceived(QString _t1, QVector<QJsonObject> _t2)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1, _t2);
 }
 
 // SIGNAL 5
+void MessageService::incomingMessage(QJsonObject _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 5, nullptr, _t1);
+}
+
+// SIGNAL 6
 void MessageService::commandError(QString _t1, QString _t2)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 5, nullptr, _t1, _t2);
+    QMetaObject::activate<void>(this, &staticMetaObject, 6, nullptr, _t1, _t2);
 }
 QT_WARNING_POP

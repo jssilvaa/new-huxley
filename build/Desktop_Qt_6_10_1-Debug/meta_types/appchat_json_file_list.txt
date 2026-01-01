@@ -3,3 +3,4 @@
 /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/include/../RIEQWACMR2/moc_MessageService.cpp.json
 /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/include/../VNQA4LF4BW/moc_ChatHistoryModel.cpp.json
 /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/include/../VNQA4LF4BW/moc_ContactListModel.cpp.json
+/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_autogen/include/../VNQA4LF4BW/moc_ContactProxyModel.cpp.json

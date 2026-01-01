@@ -16,14 +16,25 @@ Window {
     Loader {
         id: rootLoader
         anchors.fill: parent
-        sourceComponent: Controller.authenticated ? chatShell : loginShell
+        sourceComponent: Controller.authenticated ? chatShell : 
+                         Controller.registering ? registerShell : loginShell
     }
 
     Component {
         id: loginShell
         LoginFrame {
             anchors.fill: parent
-            visible: !Controller.authenticated
+            visible: !Controller.authenticated && !Controller.registering
+            opacity: visible ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: Theme.animMed } }    
+         }
+    }
+
+    Component { 
+        id:  registerShell 
+        RegisterFrame {
+            anchors.fill: parent
+            visible: !Controller.authenticated && Controller.registering
             opacity: visible ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: Theme.animMed } }    
          }

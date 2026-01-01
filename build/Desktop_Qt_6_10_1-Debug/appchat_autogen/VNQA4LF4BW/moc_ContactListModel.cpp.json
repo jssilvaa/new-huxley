@@ -2,7 +2,7 @@
     "classes": [
         {
             "className": "ContactListModel",
-            "lineNumber": 16,
+            "lineNumber": 21,
             "object": true,
             "qualifiedClassName": "ContactListModel",
             "slots": [
@@ -15,7 +15,7 @@
                         }
                     ],
                     "index": 0,
-                    "lineNumber": 66,
+                    "lineNumber": 92,
                     "name": "setContacts",
                     "returnType": "void"
                 }

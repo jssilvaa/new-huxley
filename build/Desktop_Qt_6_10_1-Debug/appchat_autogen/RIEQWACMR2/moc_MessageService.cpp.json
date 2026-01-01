@@ -27,6 +27,23 @@
                     "access": "public",
                     "arguments": [
                         {
+                            "name": "success",
+                            "type": "bool"
+                        },
+                        {
+                            "name": "msg",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 21,
+                    "name": "registerResult",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
                             "name": "ok",
                             "type": "bool"
                         },
@@ -35,8 +52,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 1,
-                    "lineNumber": 21,
+                    "index": 2,
+                    "lineNumber": 22,
                     "name": "sendMessageResponse",
                     "returnType": "void"
                 },
@@ -48,8 +65,8 @@
                             "type": "QList<QJsonObject>"
                         }
                     ],
-                    "index": 2,
-                    "lineNumber": 22,
+                    "index": 3,
+                    "lineNumber": 23,
                     "name": "usersReceived",
                     "returnType": "void"
                 },
@@ -65,8 +82,8 @@
                             "type": "QList<QJsonObject>"
                         }
                     ],
-                    "index": 3,
-                    "lineNumber": 23,
+                    "index": 4,
+                    "lineNumber": 24,
                     "name": "historyReceived",
                     "returnType": "void"
                 },
@@ -78,8 +95,8 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 4,
-                    "lineNumber": 24,
+                    "index": 5,
+                    "lineNumber": 25,
                     "name": "incomingMessage",
                     "returnType": "void"
                 },
@@ -95,8 +112,8 @@
                             "type": "QString"
                         }
                     ],
-                    "index": 5,
-                    "lineNumber": 25,
+                    "index": 6,
+                    "lineNumber": 26,
                     "name": "commandError",
                     "returnType": "void"
                 }
@@ -110,8 +127,8 @@
                             "type": "QJsonObject"
                         }
                     ],
-                    "index": 6,
-                    "lineNumber": 28,
+                    "index": 7,
+                    "lineNumber": 29,
                     "name": "onResponse",
                     "returnType": "void"
                 }

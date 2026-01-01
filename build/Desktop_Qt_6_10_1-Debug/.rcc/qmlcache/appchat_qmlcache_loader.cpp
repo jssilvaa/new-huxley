@@ -19,6 +19,13 @@ namespace _qt_qml_chat_qml_LoginFrame_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _qt_qml_chat_qml_RegisterFrame_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 namespace _qt_qml_chat_qml_ChatShell_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
@@ -119,6 +126,7 @@ Q_GLOBAL_STATIC(Registry, unitRegistry)
 Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/Main.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_Main_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/LoginFrame.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_LoginFrame_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/RegisterFrame.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_RegisterFrame_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/ChatShell.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_ChatShell_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/HeaderBar.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_HeaderBar_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/ContactsFrame.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_ContactsFrame_qml::unit);

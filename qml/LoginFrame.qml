@@ -13,17 +13,18 @@ Item {
         anchors.centerIn: parent
         width: 420
         height: 720
-        color: "#fafafa"
         radius: 24
+        color: "#fafafa"
 
-        OpacityAnimator {
-            target: card
-            from: 0
-            to: 1
-            duration: 250
-            running: true
-            easing.type: Easing.InOutQuad
-        }
+        // ease in and out animation on register and back
+        // OpacityAnimator {
+        //     target: card
+        //     from: 0
+        //     to: 1
+        //     duration: 250
+        //     running: true
+        //     easing.type: Easing.InOutQuad
+        // }
 
         ColumnLayout {
             anchors.fill: parent
@@ -73,6 +74,14 @@ Item {
                 placeholderText: qsTr("Enter your password")
                 echoMode: TextInput.Password
                 iconSource: "qrc:/qt/qml/chat/images/lock.png"
+                maximumLength: 24
+
+                Keys.onReturnPressed: function(event) {
+                    if (Controller.connected) {
+                        Controller.login(usernameInput.text, passwordInput.text)
+                        event.accepted = true
+                    }
+                }
             }
 
             Item { Layout.preferredHeight: 16 }
@@ -111,6 +120,12 @@ Item {
                 font.pointSize: 8
                 color: "#1e1e1e"
                 textFormat: Text.RichText
+
+                MouseArea {
+                    anchors.fill: parent 
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: Controller.showRegister()
+                }
             }
         }
     }

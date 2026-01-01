@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 3008,
+                            "durationMicroseconds": 3079,
                             "functionName": "color",
                             "line": 10,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 129,
+                            "durationMicroseconds": 294,
                             "functionName": "color",
                             "line": 11,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 80,
+                            "durationMicroseconds": 66,
                             "functionName": "fill",
                             "line": 15,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 30,
-                            "durationMicroseconds": 69,
+                            "durationMicroseconds": 55,
                             "functionName": "sourceComponent",
                             "line": 22,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 45,
-                            "durationMicroseconds": 88,
+                            "durationMicroseconds": 69,
                             "functionName": "duration",
                             "line": 26,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 25,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 72,
                             "functionName": "target",
                             "line": 30,
                             "message": "Cannot access value for name Controller"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 202,
+                            "durationMicroseconds": 178,
                             "functionName": "onCurrentPeerChanged",
                             "line": 31,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 2,
                             "column": 22,
-                            "durationMicroseconds": 235,
+                            "durationMicroseconds": 222,
                             "functionName": "visible",
                             "line": 52,
                             "message": "Cannot access value for name Controller"
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 222,
+                            "durationMicroseconds": 174,
                             "functionName": "color",
                             "line": 56,
                             "message": "Cannot access value for name Controller"
@@ -136,7 +136,7 @@
                         {
                             "codegenResult": 0,
                             "column": 44,
-                            "durationMicroseconds": 95,
+                            "durationMicroseconds": 74,
                             "functionName": "duration",
                             "line": 74,
                             "message": ""

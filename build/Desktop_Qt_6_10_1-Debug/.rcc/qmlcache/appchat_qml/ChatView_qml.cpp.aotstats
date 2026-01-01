@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 2916,
+                            "durationMicroseconds": 3294,
                             "functionName": "color",
                             "line": 9,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 237,
+                            "durationMicroseconds": 242,
                             "functionName": "visible",
                             "line": 15,
                             "message": "Cannot access value for name Controller"
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 98,
+                            "durationMicroseconds": 87,
                             "functionName": "centerIn",
                             "line": 13,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 16,
-                            "durationMicroseconds": 557,
+                            "durationMicroseconds": 533,
                             "functionName": "model",
                             "line": 30,
                             "message": "Cannot access value for name Controller"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 18,
-                            "durationMicroseconds": 70,
+                            "durationMicroseconds": 65,
                             "functionName": "visible",
                             "line": 33,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 0,
                             "column": 25,
-                            "durationMicroseconds": 84,
+                            "durationMicroseconds": 86,
                             "functionName": "boundsBehavior",
                             "line": 61,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 2,
                             "column": 9,
-                            "durationMicroseconds": 45,
+                            "durationMicroseconds": 43,
                             "functionName": "atBottom",
                             "line": 65,
                             "message": "function without return type annotation returns bool. This may prevent proper compilation to Cpp."
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 102,
+                            "durationMicroseconds": 97,
                             "functionName": "onMovementStarted",
                             "line": 69,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 88,
+                            "durationMicroseconds": 72,
                             "functionName": "onMovementEnded",
                             "line": 70,
                             "message": ""
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 25,
-                            "durationMicroseconds": 433,
+                            "durationMicroseconds": 450,
                             "functionName": "onCountChanged",
                             "line": 80,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 73,
+                            "durationMicroseconds": 58,
                             "functionName": "fill",
                             "line": 26,
                             "message": ""
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 101,
+                            "durationMicroseconds": 103,
                             "functionName": "duration",
                             "line": 36,
                             "message": ""
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 2,
                             "column": 21,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 76,
                             "functionName": "target",
                             "line": 40,
                             "message": "Cannot access value for name Controller"
@@ -136,7 +136,7 @@
                         {
                             "codegenResult": 0,
                             "column": 13,
-                            "durationMicroseconds": 147,
+                            "durationMicroseconds": 234,
                             "functionName": "onCurrentPeerChanged",
                             "line": 41,
                             "message": ""
@@ -144,7 +144,7 @@
                         {
                             "codegenResult": 2,
                             "column": 21,
-                            "durationMicroseconds": 64,
+                            "durationMicroseconds": 63,
                             "functionName": "target",
                             "line": 49,
                             "message": "Cannot access value for name Controller"
@@ -152,7 +152,7 @@
                         {
                             "codegenResult": 0,
                             "column": 13,
-                            "durationMicroseconds": 90,
+                            "durationMicroseconds": 85,
                             "functionName": "onClearChat",
                             "line": 50,
                             "message": ""
@@ -160,7 +160,7 @@
                         {
                             "codegenResult": 2,
                             "column": 13,
-                            "durationMicroseconds": 130,
+                            "durationMicroseconds": 124,
                             "functionName": "onShowChat",
                             "line": 53,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -168,7 +168,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 167,
+                            "durationMicroseconds": 145,
                             "functionName": "onCompleted",
                             "line": 72,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -176,7 +176,7 @@
                         {
                             "codegenResult": 0,
                             "column": 84,
-                            "durationMicroseconds": 95,
+                            "durationMicroseconds": 89,
                             "functionName": "duration",
                             "line": 93,
                             "message": ""
@@ -192,7 +192,7 @@
                         {
                             "codegenResult": 2,
                             "column": 69,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 24,
                             "functionName": "to",
                             "line": 94,
                             "message": "Cannot access value for name y"
@@ -200,7 +200,7 @@
                         {
                             "codegenResult": 0,
                             "column": 82,
-                            "durationMicroseconds": 81,
+                            "durationMicroseconds": 65,
                             "functionName": "duration",
                             "line": 94,
                             "message": ""
@@ -208,7 +208,7 @@
                         {
                             "codegenResult": 0,
                             "column": 84,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 65,
                             "functionName": "duration",
                             "line": 100,
                             "message": ""
@@ -216,7 +216,7 @@
                         {
                             "codegenResult": 2,
                             "column": 58,
-                            "durationMicroseconds": 39,
+                            "durationMicroseconds": 29,
                             "functionName": "from",
                             "line": 101,
                             "message": "Cannot access value for name y"
@@ -224,7 +224,7 @@
                         {
                             "codegenResult": 2,
                             "column": 65,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 28,
                             "functionName": "to",
                             "line": 101,
                             "message": "Cannot access value for name y"
@@ -232,7 +232,7 @@
                         {
                             "codegenResult": 0,
                             "column": 82,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 61,
                             "functionName": "duration",
                             "line": 101,
                             "message": ""
@@ -240,7 +240,7 @@
                         {
                             "codegenResult": 2,
                             "column": 20,
-                            "durationMicroseconds": 40,
+                            "durationMicroseconds": 33,
                             "functionName": "width",
                             "line": 107,
                             "message": "Cannot access value for name chat"
@@ -248,7 +248,7 @@
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 129,
+                            "durationMicroseconds": 113,
                             "functionName": "height",
                             "line": 108,
                             "message": ""
@@ -256,7 +256,7 @@
                         {
                             "codegenResult": 0,
                             "column": 31,
-                            "durationMicroseconds": 65,
+                            "durationMicroseconds": 53,
                             "functionName": "fill",
                             "line": 111,
                             "message": ""
@@ -264,7 +264,7 @@
                         {
                             "codegenResult": 2,
                             "column": 57,
-                            "durationMicroseconds": 138,
+                            "durationMicroseconds": 129,
                             "functionName": "visible",
                             "line": 113,
                             "message": "Cannot access value for name isOwn"
@@ -272,7 +272,7 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 91,
+                            "durationMicroseconds": 79,
                             "functionName": "radius",
                             "line": 117,
                             "message": ""
@@ -280,7 +280,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 185,
+                            "durationMicroseconds": 181,
                             "functionName": "color",
                             "line": 118,
                             "message": "Cannot access value for name isOwn"
@@ -288,7 +288,7 @@
                         {
                             "codegenResult": 0,
                             "column": 36,
-                            "durationMicroseconds": 134,
+                            "durationMicroseconds": 131,
                             "functionName": "implicitWidth",
                             "line": 125,
                             "message": ""
@@ -296,7 +296,7 @@
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 124,
+                            "durationMicroseconds": 108,
                             "functionName": "implicitHeight",
                             "line": 126,
                             "message": ""
@@ -304,7 +304,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 103,
+                            "durationMicroseconds": 93,
                             "functionName": "color",
                             "line": 119,
                             "message": ""
@@ -312,7 +312,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 180,
+                            "durationMicroseconds": 301,
                             "functionName": "alignment",
                             "line": 122,
                             "message": "Cannot access value for name isOwn"
@@ -320,7 +320,7 @@
                         {
                             "codegenResult": 2,
                             "column": 42,
-                            "durationMicroseconds": 61,
+                            "durationMicroseconds": 62,
                             "functionName": "maximumWidth",
                             "line": 123,
                             "message": "Cannot access value for name chat"
@@ -328,7 +328,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 112,
                             "functionName": "left",
                             "line": 130,
                             "message": ""
@@ -336,7 +336,7 @@
                         {
                             "codegenResult": 0,
                             "column": 40,
-                            "durationMicroseconds": 98,
+                            "durationMicroseconds": 76,
                             "functionName": "right",
                             "line": 131,
                             "message": ""
@@ -344,7 +344,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 93,
+                            "durationMicroseconds": 78,
                             "functionName": "top",
                             "line": 132,
                             "message": ""
@@ -384,7 +384,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 284,
+                            "durationMicroseconds": 307,
                             "functionName": "text",
                             "line": 145,
                             "message": "Cannot access value for name content"
@@ -392,7 +392,7 @@
                         {
                             "codegenResult": 0,
                             "column": 36,
-                            "durationMicroseconds": 124,
+                            "durationMicroseconds": 115,
                             "functionName": "color",
                             "line": 146,
                             "message": ""
@@ -400,7 +400,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 73,
                             "functionName": "wrapMode",
                             "line": 147,
                             "message": ""
@@ -408,7 +408,7 @@
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 64,
+                            "durationMicroseconds": 57,
                             "functionName": "textFormat",
                             "line": 148,
                             "message": ""
@@ -416,7 +416,7 @@
                         {
                             "codegenResult": 0,
                             "column": 36,
-                            "durationMicroseconds": 265,
+                            "durationMicroseconds": 273,
                             "functionName": "width",
                             "line": 149,
                             "message": ""
@@ -456,7 +456,7 @@
                         {
                             "codegenResult": 2,
                             "column": 57,
-                            "durationMicroseconds": 134,
+                            "durationMicroseconds": 149,
                             "functionName": "visible",
                             "line": 163,
                             "message": "Cannot access value for name isOwn"
@@ -464,7 +464,7 @@
                         {
                             "codegenResult": 2,
                             "column": 21,
-                            "durationMicroseconds": 59,
+                            "durationMicroseconds": 58,
                             "functionName": "target",
                             "line": 168,
                             "message": "Cannot access value for name Controller"
@@ -472,7 +472,7 @@
                         {
                             "codegenResult": 2,
                             "column": 13,
-                            "durationMicroseconds": 196,
+                            "durationMicroseconds": 197,
                             "functionName": "onCurrentPeerChanged",
                             "line": 169,
                             "message": "Cannot generate efficient code for LoadClosure"

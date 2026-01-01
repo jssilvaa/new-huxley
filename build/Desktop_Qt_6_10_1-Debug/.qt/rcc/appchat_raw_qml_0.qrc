@@ -2,6 +2,7 @@
   <qresource prefix="/qt/qml/chat/">
     <file alias="Main.qml">/home/josesilvaa/huxley-gui/chat/Main.qml</file>
     <file alias="qml/LoginFrame.qml">/home/josesilvaa/huxley-gui/chat/qml/LoginFrame.qml</file>
+    <file alias="qml/RegisterFrame.qml">/home/josesilvaa/huxley-gui/chat/qml/RegisterFrame.qml</file>
     <file alias="qml/ChatShell.qml">/home/josesilvaa/huxley-gui/chat/qml/ChatShell.qml</file>
     <file alias="qml/HeaderBar.qml">/home/josesilvaa/huxley-gui/chat/qml/HeaderBar.qml</file>
     <file alias="qml/ContactsFrame.qml">/home/josesilvaa/huxley-gui/chat/qml/ContactsFrame.qml</file>

@@ -1,0 +1,319 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "hasLower",
+                            "line": 13,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "hasUpper",
+                            "line": 14,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "hasDigit",
+                            "line": 15,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "hasSpecial",
+                            "line": 16,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 71,
+                            "functionName": "ruleLen",
+                            "line": 18,
+                            "message": "Cannot retrieve a non-object type by ID: pass"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 20,
+                            "functionName": "ruleLower",
+                            "line": 19,
+                            "message": "Cannot retrieve a non-object type by ID: pass"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 13,
+                            "functionName": "ruleUpper",
+                            "line": 20,
+                            "message": "Cannot retrieve a non-object type by ID: pass"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 12,
+                            "functionName": "ruleDigit",
+                            "line": 21,
+                            "message": "Cannot retrieve a non-object type by ID: pass"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 13,
+                            "functionName": "ruleSpecial",
+                            "line": 22,
+                            "message": "Cannot retrieve a non-object type by ID: pass"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 150,
+                            "functionName": "passOk",
+                            "line": 24,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 43,
+                            "functionName": "matchOk",
+                            "line": 25,
+                            "message": "Cannot retrieve a non-object type by ID: confirm"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "ruleColor",
+                            "line": 27,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 232,
+                            "functionName": "tryRegister",
+                            "line": 33,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 37,
+                            "functionName": "fill",
+                            "line": 9,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 23,
+                            "functionName": "centerIn",
+                            "line": 43,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 21,
+                            "functionName": "fill",
+                            "line": 50,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 34,
+                            "functionName": "fillMode",
+                            "line": 58,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 68,
+                            "message": "Could not find property \"weight\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 31,
+                            "functionName": "alignment",
+                            "line": 69,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 76,
+                            "message": "Could not find property \"weight\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 41,
+                            "functionName": "alignment",
+                            "line": 77,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 0,
+                            "functionName": "echoMode",
+                            "line": 95,
+                            "message": "Could not find property \"echoMode\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 0,
+                            "functionName": "echoMode",
+                            "line": 107,
+                            "message": "Could not find property \"echoMode\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 27,
+                            "functionName": "onReturnPressed",
+                            "line": 111,
+                            "message": "method tryRegister cannot be resolved."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 23,
+                            "functionName": "onReturnPressed",
+                            "line": 111,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 16,
+                            "functionName": "onEnterPressed",
+                            "line": 115,
+                            "message": "method tryRegister cannot be resolved."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 15,
+                            "functionName": "onEnterPressed",
+                            "line": 115,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 81,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 130,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 82,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 131,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 82,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 132,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 82,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 133,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 82,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 134,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 81,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 135,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 139,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 141,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 211,
+                            "functionName": "enabled",
+                            "line": 150,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 142,
+                            "functionName": "onClicked",
+                            "line": 151,
+                            "message": "method tryRegister cannot be resolved."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 132,
+                            "functionName": "onClicked",
+                            "line": 159,
+                            "message": "Cannot access value for name Controller"
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/qml/RegisterFrame.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

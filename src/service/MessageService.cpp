@@ -57,6 +57,13 @@ void MessageService::onResponse(QJsonObject obj) {
         return; 
     }   
 
+    // Register response 
+    if (cmd == "register" || cmd == "register_response") {
+        const bool ok = obj.value("success").toBool(false);
+        const QString msg = obj.value("message").toString(); 
+        emit registerResult(ok, msg); 
+    }
+
     // sucessful send ACK 
     if (cmd == "send_message" || cmd == "send_message_response") {
         const bool ok = obj.value("success").toBool(false); 

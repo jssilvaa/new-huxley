@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 25,
-                            "durationMicroseconds": 138,
+                            "durationMicroseconds": 167,
                             "functionName": "queue",
                             "line": 9,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 157,
+                            "durationMicroseconds": 165,
                             "functionName": "next",
                             "line": 25,
                             "message": "Cannot load property length from (component in /home/josesilvaa/huxley-gui/chat/qml/ToastHost.qml)::queue with type QVariant."
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 73,
+                            "durationMicroseconds": 81,
                             "functionName": "fill",
                             "line": 6,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 110,
+                            "durationMicroseconds": 115,
                             "functionName": "horizontalCenter",
                             "line": 14,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 25,
-                            "durationMicroseconds": 96,
+                            "durationMicroseconds": 98,
                             "functionName": "bottom",
                             "line": 15,
                             "message": ""

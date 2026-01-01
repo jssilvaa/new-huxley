@@ -20,6 +20,7 @@ qt_add_executable(appchat
     src/controller/ClientController.cpp
     src/service/MessageService.cpp
     src/model/ContactListModel.cpp
+    src/model/ContactProxyModel.cpp
     src/model/ChatHistoryModel.cpp
 )
 
@@ -38,6 +39,7 @@ qt_add_qml_module(appchat
     QML_FILES
         Main.qml
         qml/LoginFrame.qml
+        qml/RegisterFrame.qml
         qml/ChatShell.qml
         qml/HeaderBar.qml
         qml/ContactsFrame.qml

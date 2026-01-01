@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 59,
+                            "durationMicroseconds": 86,
                             "functionName": "dark",
                             "line": 15,
                             "message": "Cannot load property dark from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 204,
+                            "durationMicroseconds": 229,
                             "functionName": "accents",
                             "line": 22,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 37,
-                            "durationMicroseconds": 177,
+                            "durationMicroseconds": 183,
                             "functionName": "accent",
                             "line": 29,
                             "message": "Cannot generate efficient code for LoadElement with non-list base type (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::accents with type QVariant (adjusted to QJSValue, stored as QJSValue)"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 197,
+                            "durationMicroseconds": 200,
                             "functionName": "danger",
                             "line": 30,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 175,
+                            "durationMicroseconds": 174,
                             "functionName": "bg",
                             "line": 32,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 179,
+                            "durationMicroseconds": 154,
                             "functionName": "panel",
                             "line": 33,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 178,
+                            "durationMicroseconds": 144,
                             "functionName": "panel2",
                             "line": 34,
                             "message": ""
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 167,
+                            "durationMicroseconds": 146,
                             "functionName": "surface",
                             "line": 35,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 189,
+                            "durationMicroseconds": 141,
                             "functionName": "border",
                             "line": 36,
                             "message": ""
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 156,
+                            "durationMicroseconds": 144,
                             "functionName": "text",
                             "line": 38,
                             "message": ""
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 153,
+                            "durationMicroseconds": 155,
                             "functionName": "muted",
                             "line": 39,
                             "message": ""
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 147,
+                            "durationMicroseconds": 155,
                             "functionName": "bubblePeer",
                             "line": 41,
                             "message": ""
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 154,
+                            "durationMicroseconds": 166,
                             "functionName": "bubbleOwn",
                             "line": 42,
                             "message": ""
