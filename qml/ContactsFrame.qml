@@ -52,6 +52,20 @@ Rectangle {
                 Behavior on scale { NumberAnimation { duration: Theme.animFast } }
                 Behavior on color { ColorAnimation { duration: Theme.animFast } }
 
+                Rectangle {
+                    visible: unread > 0
+                    width: 18; height: 18
+                    radius: 9
+                    color: Theme.accent
+
+                    Label {
+                        anchors.centerIn: parent
+                        text: unread
+                        color: "white"
+                        font.pointSize: 9
+                    }
+                }
+                
                 MouseArea {
                     id: mouse
                     anchors.fill: parent

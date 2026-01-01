@@ -127,8 +127,8 @@
                 "methods": [
                     {
                         "access": "public",
-                        "index": 8,
-                        "lineNumber": 26,
+                        "index": 11,
+                        "lineNumber": 27,
                         "name": "start",
                         "returnType": "void"
                     },
@@ -144,15 +144,15 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 9,
-                        "lineNumber": 27,
+                        "index": 12,
+                        "lineNumber": 28,
                         "name": "login",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 10,
-                        "lineNumber": 28,
+                        "index": 13,
+                        "lineNumber": 29,
                         "name": "refreshUsers",
                         "returnType": "void"
                     },
@@ -164,8 +164,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 11,
-                        "lineNumber": 29,
+                        "index": 14,
+                        "lineNumber": 30,
                         "name": "selectPeer",
                         "returnType": "void"
                     },
@@ -177,10 +177,38 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 12,
-                        "lineNumber": 38,
+                        "index": 15,
+                        "lineNumber": 41,
                         "name": "sendMessage",
                         "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "user",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 16,
+                        "isConst": true,
+                        "lineNumber": 47,
+                        "name": "unreadCount",
+                        "returnType": "int"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "user",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 17,
+                        "isConst": true,
+                        "lineNumber": 50,
+                        "name": "hasUnread",
+                        "returnType": "bool"
                     }
                 ],
                 "object": true,
@@ -286,6 +314,21 @@
                         "stored": true,
                         "type": "QObject*",
                         "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 20,
+                        "name": "currentPeerOnline",
+                        "notify": "currentPeerOnlineChanged",
+                        "read": "currentPeerOnline",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false
                     }
                 ],
                 "qualifiedClassName": "ClientController",
@@ -293,22 +336,43 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 51,
+                        "lineNumber": 61,
                         "name": "connectedChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 52,
+                        "lineNumber": 62,
                         "name": "authenticatedChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 53,
+                        "lineNumber": 63,
                         "name": "currentPeerChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 64,
+                        "name": "currentPeerOnlineChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 65,
+                        "name": "clearChat",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 66,
+                        "name": "showChat",
                         "returnType": "void"
                     },
                     {
@@ -319,8 +383,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 3,
-                        "lineNumber": 55,
+                        "index": 6,
+                        "lineNumber": 68,
                         "name": "toast",
                         "returnType": "void"
                     },
@@ -332,8 +396,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 4,
-                        "lineNumber": 56,
+                        "index": 7,
+                        "lineNumber": 69,
                         "name": "error",
                         "returnType": "void"
                     }
@@ -341,15 +405,15 @@
                 "slots": [
                     {
                         "access": "private",
-                        "index": 5,
-                        "lineNumber": 59,
+                        "index": 8,
+                        "lineNumber": 72,
                         "name": "onConnected",
                         "returnType": "void"
                     },
                     {
                         "access": "private",
-                        "index": 6,
-                        "lineNumber": 60,
+                        "index": 9,
+                        "lineNumber": 73,
                         "name": "onDisconnected",
                         "returnType": "void"
                     },
@@ -361,8 +425,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 7,
-                        "lineNumber": 61,
+                        "index": 10,
+                        "lineNumber": 74,
                         "name": "onError",
                         "returnType": "void"
                     }
@@ -557,7 +621,7 @@
         "classes": [
             {
                 "className": "ContactListModel",
-                "lineNumber": 14,
+                "lineNumber": 16,
                 "object": true,
                 "qualifiedClassName": "ContactListModel",
                 "slots": [
@@ -570,7 +634,7 @@
                             }
                         ],
                         "index": 0,
-                        "lineNumber": 30,
+                        "lineNumber": 66,
                         "name": "setContacts",
                         "returnType": "void"
                     }

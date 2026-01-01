@@ -43,6 +43,9 @@ template <> constexpr inline auto ClientController::qt_create_metaobjectdata<qt_
         "",
         "authenticatedChanged",
         "currentPeerChanged",
+        "currentPeerOnlineChanged",
+        "clearChat",
+        "showChat",
         "toast",
         "msg",
         "error",
@@ -58,13 +61,16 @@ template <> constexpr inline auto ClientController::qt_create_metaobjectdata<qt_
         "peer",
         "sendMessage",
         "content",
+        "unreadCount",
+        "hasUnread",
         "connected",
         "authenticated",
         "currentPeer",
         "hasPeer",
         "messageService",
         "contacts",
-        "chat"
+        "chat",
+        "currentPeerOnline"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -74,54 +80,70 @@ template <> constexpr inline auto ClientController::qt_create_metaobjectdata<qt_
         QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'currentPeerChanged'
         QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'currentPeerOnlineChanged'
+        QtMocHelpers::SignalData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'clearChat'
+        QtMocHelpers::SignalData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'showChat'
+        QtMocHelpers::SignalData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'toast'
-        QtMocHelpers::SignalData<void(QString)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 6 },
+        QtMocHelpers::SignalData<void(QString)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 9 },
         }}),
         // Signal 'error'
-        QtMocHelpers::SignalData<void(QString)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 6 },
+        QtMocHelpers::SignalData<void(QString)>(10, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 9 },
         }}),
         // Slot 'onConnected'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDisconnected'
-        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onError'
-        QtMocHelpers::SlotData<void(QString)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 6 },
+        QtMocHelpers::SlotData<void(QString)>(13, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 9 },
         }}),
         // Method 'start'
-        QtMocHelpers::MethodData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::MethodData<void()>(14, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'login'
-        QtMocHelpers::MethodData<void(const QString &, const QString &)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 13 }, { QMetaType::QString, 14 },
+        QtMocHelpers::MethodData<void(const QString &, const QString &)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 16 }, { QMetaType::QString, 17 },
         }}),
         // Method 'refreshUsers'
-        QtMocHelpers::MethodData<void()>(15, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::MethodData<void()>(18, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'selectPeer'
-        QtMocHelpers::MethodData<void(const QString &)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 17 },
+        QtMocHelpers::MethodData<void(const QString &)>(19, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 20 },
         }}),
         // Method 'sendMessage'
-        QtMocHelpers::MethodData<void(const QString &)>(18, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::QString, 19 },
+        QtMocHelpers::MethodData<void(const QString &)>(21, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 22 },
+        }}),
+        // Method 'unreadCount'
+        QtMocHelpers::MethodData<int(const QString &) const>(23, 2, QMC::AccessPublic, QMetaType::Int, {{
+            { QMetaType::QString, 16 },
+        }}),
+        // Method 'hasUnread'
+        QtMocHelpers::MethodData<bool(const QString &) const>(24, 2, QMC::AccessPublic, QMetaType::Bool, {{
+            { QMetaType::QString, 16 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'connected'
-        QtMocHelpers::PropertyData<bool>(20, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
+        QtMocHelpers::PropertyData<bool>(25, QMetaType::Bool, QMC::DefaultPropertyFlags, 0),
         // property 'authenticated'
-        QtMocHelpers::PropertyData<bool>(21, QMetaType::Bool, QMC::DefaultPropertyFlags, 1),
+        QtMocHelpers::PropertyData<bool>(26, QMetaType::Bool, QMC::DefaultPropertyFlags, 1),
         // property 'currentPeer'
-        QtMocHelpers::PropertyData<QString>(22, QMetaType::QString, QMC::DefaultPropertyFlags, 2),
+        QtMocHelpers::PropertyData<QString>(27, QMetaType::QString, QMC::DefaultPropertyFlags, 2),
         // property 'hasPeer'
-        QtMocHelpers::PropertyData<bool>(23, QMetaType::Bool, QMC::DefaultPropertyFlags, 2),
+        QtMocHelpers::PropertyData<bool>(28, QMetaType::Bool, QMC::DefaultPropertyFlags, 2),
         // property 'messageService'
-        QtMocHelpers::PropertyData<QObject*>(24, QMetaType::QObjectStar, QMC::DefaultPropertyFlags | QMC::Constant),
+        QtMocHelpers::PropertyData<QObject*>(29, QMetaType::QObjectStar, QMC::DefaultPropertyFlags | QMC::Constant),
         // property 'contacts'
-        QtMocHelpers::PropertyData<QObject*>(25, QMetaType::QObjectStar, QMC::DefaultPropertyFlags | QMC::Constant),
+        QtMocHelpers::PropertyData<QObject*>(30, QMetaType::QObjectStar, QMC::DefaultPropertyFlags | QMC::Constant),
         // property 'chat'
-        QtMocHelpers::PropertyData<QObject*>(26, QMetaType::QObjectStar, QMC::DefaultPropertyFlags | QMC::Constant),
+        QtMocHelpers::PropertyData<QObject*>(31, QMetaType::QObjectStar, QMC::DefaultPropertyFlags | QMC::Constant),
+        // property 'currentPeerOnline'
+        QtMocHelpers::PropertyData<bool>(32, QMetaType::Bool, QMC::DefaultPropertyFlags, 3),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -146,16 +168,23 @@ void ClientController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 0: _t->connectedChanged(); break;
         case 1: _t->authenticatedChanged(); break;
         case 2: _t->currentPeerChanged(); break;
-        case 3: _t->toast((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 4: _t->error((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 5: _t->onConnected(); break;
-        case 6: _t->onDisconnected(); break;
-        case 7: _t->onError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 8: _t->start(); break;
-        case 9: _t->login((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
-        case 10: _t->refreshUsers(); break;
-        case 11: _t->selectPeer((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
-        case 12: _t->sendMessage((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 3: _t->currentPeerOnlineChanged(); break;
+        case 4: _t->clearChat(); break;
+        case 5: _t->showChat(); break;
+        case 6: _t->toast((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 7: _t->error((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 8: _t->onConnected(); break;
+        case 9: _t->onDisconnected(); break;
+        case 10: _t->onError((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 11: _t->start(); break;
+        case 12: _t->login((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<QString>>(_a[2]))); break;
+        case 13: _t->refreshUsers(); break;
+        case 14: _t->selectPeer((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 15: _t->sendMessage((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        case 16: { int _r = _t->unreadCount((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<int*>(_a[0]) = std::move(_r); }  break;
+        case 17: { bool _r = _t->hasUnread((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -166,9 +195,15 @@ void ClientController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
             return;
         if (QtMocHelpers::indexOfMethod<void (ClientController::*)()>(_a, &ClientController::currentPeerChanged, 2))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ClientController::*)(QString )>(_a, &ClientController::toast, 3))
+        if (QtMocHelpers::indexOfMethod<void (ClientController::*)()>(_a, &ClientController::currentPeerOnlineChanged, 3))
             return;
-        if (QtMocHelpers::indexOfMethod<void (ClientController::*)(QString )>(_a, &ClientController::error, 4))
+        if (QtMocHelpers::indexOfMethod<void (ClientController::*)()>(_a, &ClientController::clearChat, 4))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ClientController::*)()>(_a, &ClientController::showChat, 5))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ClientController::*)(QString )>(_a, &ClientController::toast, 6))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ClientController::*)(QString )>(_a, &ClientController::error, 7))
             return;
     }
     if (_c == QMetaObject::ReadProperty) {
@@ -181,6 +216,7 @@ void ClientController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 4: *reinterpret_cast<QObject**>(_v) = _t->messageService(); break;
         case 5: *reinterpret_cast<QObject**>(_v) = _t->contacts(); break;
         case 6: *reinterpret_cast<QObject**>(_v) = _t->chat(); break;
+        case 7: *reinterpret_cast<bool*>(_v) = _t->currentPeerOnline(); break;
         default: break;
         }
     }
@@ -205,20 +241,20 @@ int ClientController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 18;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 18)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 13;
+        _id -= 18;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }
@@ -242,14 +278,32 @@ void ClientController::currentPeerChanged()
 }
 
 // SIGNAL 3
-void ClientController::toast(QString _t1)
+void ClientController::currentPeerOnlineChanged()
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 3, nullptr, _t1);
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 
 // SIGNAL 4
+void ClientController::clearChat()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void ClientController::showChat()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+}
+
+// SIGNAL 6
+void ClientController::toast(QString _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 6, nullptr, _t1);
+}
+
+// SIGNAL 7
 void ClientController::error(QString _t1)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1);
 }
 QT_WARNING_POP

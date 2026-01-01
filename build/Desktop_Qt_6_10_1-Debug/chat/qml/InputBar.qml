@@ -11,6 +11,30 @@ Rectangle {
 
     enabled: Controller.authenticated && Controller.hasPeer
 
+    opacity: enabled ? 1.0 : 0.6
+    Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
+
+    Keys.onReturnPressed: function(event) {
+        if (event.modifiers & Qt.ShiftModifier) { // still not working, input bar does not extend?
+            input.insert("\n")
+            event.accepted = true
+        } else if (enabled && input.text.length > 0) {
+            Controller.sendMessage(input.text)
+            event.accepted = true
+        }
+    }
+
+    Keys.onEnterPressed: function(event) {
+        Keys.onReturnPressed(event)
+    }
+
+    Connections {
+        target: Controller
+        function onCurrentPeerChanged() {
+            Qt.callLater(() => input.forceActiveFocus())
+        }
+    }
+
     RowLayout {
         anchors.fill: parent
         anchors.margins: 10
@@ -40,7 +64,13 @@ Rectangle {
 
             onClicked: {
                 Controller.sendMessage(input.text)
-                input.clear()
+            }
+
+            Connections {
+                target: Controller.messageService
+                function onSendMessageResponse() {
+                    input.clear()
+                }
             }
         }
     }

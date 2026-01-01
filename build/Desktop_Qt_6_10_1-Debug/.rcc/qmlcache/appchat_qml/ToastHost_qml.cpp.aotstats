@@ -1,0 +1,63 @@
+{
+    "formatRevision": 1,
+    "modules": [
+        {
+            "moduleFiles": [
+                {
+                    "entries": [
+                        {
+                            "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 138,
+                            "functionName": "queue",
+                            "line": 9,
+                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "show",
+                            "line": 19,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 157,
+                            "functionName": "next",
+                            "line": 25,
+                            "message": "Cannot load property length from (component in /home/josesilvaa/huxley-gui/chat/qml/ToastHost.qml)::queue with type QVariant."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 73,
+                            "functionName": "fill",
+                            "line": 6,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 110,
+                            "functionName": "horizontalCenter",
+                            "line": 14,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 25,
+                            "durationMicroseconds": 96,
+                            "functionName": "bottom",
+                            "line": 15,
+                            "message": ""
+                        }
+                    ],
+                    "filePath": "/home/josesilvaa/huxley-gui/chat/qml/ToastHost.qml"
+                }
+            ],
+            "moduleId": "chat(appchat)"
+        }
+    ]
+}

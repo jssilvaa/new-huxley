@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 128,
+                            "durationMicroseconds": 103,
                             "functionName": "fill",
                             "line": 8,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 2718,
+                            "durationMicroseconds": 1353,
                             "functionName": "color",
                             "line": 12,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 76,
+                            "durationMicroseconds": 40,
                             "functionName": "fill",
                             "line": 11,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 64,
+                            "durationMicroseconds": 32,
                             "functionName": "fill",
                             "line": 17,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 58,
+                            "durationMicroseconds": 34,
                             "functionName": "onSettingsRequested",
                             "line": 23,
                             "message": "Cannot retrieve a non-object type by ID: settingsDrawer"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 106,
+                            "durationMicroseconds": 62,
                             "functionName": "color",
                             "line": 39,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 63,
+                            "durationMicroseconds": 30,
                             "functionName": "fill",
                             "line": 42,
                             "message": ""

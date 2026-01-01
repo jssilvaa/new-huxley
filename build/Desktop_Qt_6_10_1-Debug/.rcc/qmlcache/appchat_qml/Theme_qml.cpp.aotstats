@@ -8,17 +8,17 @@
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 45,
+                            "durationMicroseconds": 59,
                             "functionName": "dark",
-                            "line": 16,
+                            "line": 15,
                             "message": "Cannot load property dark from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
                         },
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 6,
+                            "durationMicroseconds": 17,
                             "functionName": "accentIndex",
-                            "line": 17,
+                            "line": 16,
                             "message": "Cannot load property accentIndex from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
                         },
                         {
@@ -26,15 +26,15 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "setDark",
-                            "line": 19,
+                            "line": 18,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 99,
+                            "durationMicroseconds": 204,
                             "functionName": "accents",
-                            "line": 23,
+                            "line": 22,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -42,95 +42,95 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "setAccent",
-                            "line": 25,
+                            "line": 24,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
                             "column": 37,
-                            "durationMicroseconds": 73,
+                            "durationMicroseconds": 177,
                             "functionName": "accent",
-                            "line": 30,
+                            "line": 29,
                             "message": "Cannot generate efficient code for LoadElement with non-list base type (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::accents with type QVariant (adjusted to QJSValue, stored as QJSValue)"
                         },
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 82,
+                            "durationMicroseconds": 197,
                             "functionName": "danger",
-                            "line": 31,
+                            "line": 30,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 65,
+                            "durationMicroseconds": 175,
                             "functionName": "bg",
+                            "line": 32,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 179,
+                            "functionName": "panel",
                             "line": 33,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 61,
-                            "functionName": "panel",
+                            "durationMicroseconds": 178,
+                            "functionName": "panel2",
                             "line": 34,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 60,
-                            "functionName": "panel2",
+                            "durationMicroseconds": 167,
+                            "functionName": "surface",
                             "line": 35,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 60,
-                            "functionName": "surface",
+                            "durationMicroseconds": 189,
+                            "functionName": "border",
                             "line": 36,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 64,
-                            "functionName": "border",
-                            "line": 37,
+                            "durationMicroseconds": 156,
+                            "functionName": "text",
+                            "line": 38,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 58,
-                            "functionName": "text",
+                            "durationMicroseconds": 153,
+                            "functionName": "muted",
                             "line": 39,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 58,
-                            "functionName": "muted",
-                            "line": 40,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 58,
+                            "durationMicroseconds": 147,
                             "functionName": "bubblePeer",
-                            "line": 42,
+                            "line": 41,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 58,
+                            "durationMicroseconds": 154,
                             "functionName": "bubbleOwn",
-                            "line": 43,
+                            "line": 42,
                             "message": ""
                         }
                     ],

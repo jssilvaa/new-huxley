@@ -17,7 +17,8 @@ QVariant ContactListModel::data(const QModelIndex& index, int role) const {
 
     switch (role) {
         case UsernameRole: return c.username; 
-        case OnlineRole:   return c.online; 
+        case OnlineRole:   return c.online;
+        case UnreadRole:   return c.unread; 
         default:           return {}; 
     }
 }
@@ -25,7 +26,8 @@ QVariant ContactListModel::data(const QModelIndex& index, int role) const {
 QHash<int, QByteArray> ContactListModel::roleNames() const { 
     return {
         { UsernameRole, "username" }, 
-        { OnlineRole, "online"} 
+        { OnlineRole, "online"},
+        { UnreadRole, "unread" }
     };
 }
 

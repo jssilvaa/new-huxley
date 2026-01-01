@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 1380,
+                            "durationMicroseconds": 3008,
                             "functionName": "color",
                             "line": 10,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 55,
+                            "durationMicroseconds": 129,
                             "functionName": "color",
                             "line": 11,
                             "message": ""
@@ -24,25 +24,97 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 80,
                             "functionName": "fill",
                             "line": 15,
                             "message": ""
                         },
                         {
+                            "codegenResult": 0,
+                            "column": 30,
+                            "durationMicroseconds": 69,
+                            "functionName": "sourceComponent",
+                            "line": 22,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 45,
+                            "durationMicroseconds": 88,
+                            "functionName": "duration",
+                            "line": 26,
+                            "message": ""
+                        },
+                        {
                             "codegenResult": 2,
-                            "column": 19,
+                            "column": 25,
+                            "durationMicroseconds": 77,
+                            "functionName": "target",
+                            "line": 30,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 17,
+                            "durationMicroseconds": 202,
+                            "functionName": "onCurrentPeerChanged",
+                            "line": 31,
+                            "message": "Cannot generate efficient code for LoadClosure"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 20,
+                            "line": 41,
                             "message": "Could not find property \"text\"."
                         },
                         {
                             "codegenResult": 2,
-                            "column": 20,
+                            "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 21,
+                            "line": 44,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 46,
+                            "message": "Could not find property \"elide\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 235,
+                            "functionName": "visible",
+                            "line": 52,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 24,
+                            "durationMicroseconds": 222,
+                            "functionName": "color",
+                            "line": 56,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 60,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 61,
                             "message": "Could not find property \"color\"."
                         },
                         {
@@ -50,7 +122,7 @@
                             "column": 19,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 28,
+                            "line": 69,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -58,15 +130,15 @@
                             "column": 20,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 29,
+                            "line": 70,
                             "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 44,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 95,
                             "functionName": "duration",
-                            "line": 33,
+                            "line": 74,
                             "message": ""
                         },
                         {
@@ -74,15 +146,23 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 39,
+                            "line": 80,
                             "message": "Could not find property \"enabled\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 22,
+                            "durationMicroseconds": 0,
+                            "functionName": "opacity",
+                            "line": 81,
+                            "message": "Could not find property \"opacity\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 40,
+                            "line": 82,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -90,7 +170,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 45,
+                            "line": 87,
                             "message": "Could not find signal \"clicked\"."
                         }
                     ],

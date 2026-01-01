@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 153,
+                            "durationMicroseconds": 117,
                             "functionName": "fill",
                             "line": 9,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 58,
+                            "durationMicroseconds": 38,
                             "functionName": "centerIn",
                             "line": 13,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 42,
+                            "durationMicroseconds": 39,
                             "functionName": "target",
                             "line": 20,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 59,
+                            "durationMicroseconds": 54,
                             "functionName": "type",
                             "line": 25,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 34,
                             "functionName": "fill",
                             "line": 29,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 51,
+                            "durationMicroseconds": 59,
                             "functionName": "alignment",
                             "line": 48,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 42,
+                            "durationMicroseconds": 40,
                             "functionName": "alignment",
                             "line": 56,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 286,
+                            "durationMicroseconds": 251,
                             "functionName": "enabled",
                             "line": 102,
                             "message": "Cannot access value for name Controller"
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 275,
+                            "durationMicroseconds": 262,
                             "functionName": "onClicked",
                             "line": 103,
                             "message": "Cannot access value for name Controller"
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 60,
                             "functionName": "alignment",
                             "line": 109,
                             "message": ""

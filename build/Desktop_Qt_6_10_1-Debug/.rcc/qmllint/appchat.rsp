@@ -19,6 +19,8 @@
 /home/josesilvaa/huxley-gui/chat/qml/ChatView.qml
 /home/josesilvaa/huxley-gui/chat/qml/InputBar.qml
 /home/josesilvaa/huxley-gui/chat/qml/Theme.qml
+/home/josesilvaa/huxley-gui/chat/qml/Toast.qml
+/home/josesilvaa/huxley-gui/chat/qml/ToastHost.qml
 /home/josesilvaa/huxley-gui/chat/qml/SettingsDrawer.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomInput.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomCheckBox.qml

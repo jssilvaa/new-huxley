@@ -39,6 +39,24 @@ Window {
          }
     }
 
+    ToastHost {
+        id: toasts
+        parent: root.contentItem
+        anchors.fill: parent
+
+        Component.onCompleted: toasts.show("Toast System Online", false)
+    }
+
+    Connections {
+        target: Controller
+        function onToast(msg) {
+            toasts.show(msg, false)
+        }
+        function onError(msg) {
+            toasts.show(msg, true)
+        }
+    }
+
     // Keep logs centralized while building.
     Connections {
         target: Controller

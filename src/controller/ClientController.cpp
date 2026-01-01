@@ -31,12 +31,14 @@ ClientController::ClientController(QObject* parent) : QObject(parent), m_msgserv
 
                 for (const auto& u : users) {
                     Contact c; 
-                    c.username = u.value("username").toString(); 
+                    c.username = u.value("username").toString();
+                    if (c.username == m_username) continue; 
                     c.online = u.value("online").toBool(); 
                     out.push_back(c);
                 }
 
                 m_contacts.setContacts(out); 
+                emit currentPeerOnlineChanged(); 
             });
     connect(&m_msgservice, &MessageService::historyReceived, 
             this, [this](const QString& peer, 
@@ -57,7 +59,9 @@ ClientController::ClientController(QObject* parent) : QObject(parent), m_msgserv
                     out.push_back(cm); 
                 }
                 
+                emit clearChat(); // temp placeholder logic 
                 m_chat.resetHistory(out);
+                emit showChat(); 
             });
     connect(&m_msgservice, &MessageService::incomingMessage, 
             this, [this](const QJsonObject& m) {
@@ -68,7 +72,13 @@ ClientController::ClientController(QObject* parent) : QObject(parent), m_msgserv
                     m.value("recipient").toString() :
                     sender; 
                 
-                if (peer != m_currentPeer) return;
+                if (peer != m_currentPeer) {
+                    m_contacts.incrementUnread(peer); 
+                    emit toast(QString("%1: %2")
+                               .arg(peer)
+                               .arg(m.value("content").toString().left(40))); 
+                    return; 
+                };
 
                 ChatMessage cm; 
                 cm.sender = sender; 
@@ -128,4 +138,15 @@ void ClientController::onDisconnected() {
 
 void ClientController::onError(QString msg) {
     emit error(msg); 
+}
+
+bool ClientController::currentPeerOnline() const {
+    if (m_currentPeer.isEmpty())
+        return false;
+
+    for (const auto& c : m_contacts.contacts()) {
+        if (c.username == m_currentPeer)
+            return c.online;
+    }
+    return false;
 }

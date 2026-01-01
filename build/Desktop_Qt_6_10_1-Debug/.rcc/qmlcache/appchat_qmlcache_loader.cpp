@@ -61,6 +61,20 @@ namespace _qt_qml_chat_qml_Theme_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _qt_qml_chat_qml_Toast_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _qt_qml_chat_qml_ToastHost_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 namespace _qt_qml_chat_qml_SettingsDrawer_qml { 
     extern const unsigned char qmlData[];
     extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
@@ -111,6 +125,8 @@ Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/ChatView.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_ChatView_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/InputBar.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_InputBar_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/Theme.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_Theme_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/Toast.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_Toast_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/ToastHost.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_ToastHost_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/qml/SettingsDrawer.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_qml_SettingsDrawer_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/Utils/CustomInput.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_Utils_CustomInput_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/qt/qml/chat/Utils/CustomCheckBox.qml"), &QmlCacheGeneratedCode::_qt_qml_chat_Utils_CustomCheckBox_qml::unit);

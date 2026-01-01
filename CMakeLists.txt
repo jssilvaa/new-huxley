@@ -44,6 +44,8 @@ qt_add_qml_module(appchat
         qml/ChatView.qml
         qml/InputBar.qml
         qml/Theme.qml
+        qml/Toast.qml
+        qml/ToastHost.qml
         qml/SettingsDrawer.qml
         Utils/CustomInput.qml
         Utils/CustomCheckBox.qml

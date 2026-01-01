@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 3422,
+                            "durationMicroseconds": 3141,
                             "functionName": "color",
                             "line": 14,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 112,
+                            "durationMicroseconds": 118,
                             "functionName": "color",
                             "line": 15,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 74,
+                            "durationMicroseconds": 70,
                             "functionName": "fill",
                             "line": 20,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 110,
+                            "durationMicroseconds": 102,
                             "functionName": "color",
                             "line": 31,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 49,
+                            "durationMicroseconds": 46,
                             "functionName": "color",
                             "line": 52,
                             "message": "Cannot access value for name index"
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 56,
+                            "durationMicroseconds": 65,
                             "functionName": "width",
                             "line": 53,
                             "message": "Cannot access value for name index"
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 75,
+                            "durationMicroseconds": 60,
                             "functionName": "color",
                             "line": 54,
                             "message": "Cannot access value for name index"
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 222,
+                            "durationMicroseconds": 226,
                             "functionName": "onClicked",
                             "line": 58,
                             "message": "Cannot access value for name index"
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 0,
                             "column": 43,
-                            "durationMicroseconds": 81,
+                            "durationMicroseconds": 90,
                             "functionName": "fill",
                             "line": 57,
                             "message": ""

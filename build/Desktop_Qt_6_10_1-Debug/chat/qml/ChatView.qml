@@ -29,6 +29,35 @@ Rectangle {
         spacing: 10
         model: Controller.chat
 
+        property bool ready: false
+        visible: ready 
+        opacity: ready ? 1.0 : 0.0
+        Behavior on opacity {
+            NumberAnimation { duration: Theme.animFast }
+        }
+
+        Connections {
+            target: Controller
+            function onCurrentPeerChanged() {
+                chat.ready = false 
+                chat.stickToBottom = true
+            }
+        }
+
+        // temp placeholder logic
+        Connections {
+            target: Controller 
+            function onClearChat() {
+                chat.ready = false
+            }
+            function onShowChat() {
+                Qt.callLater(() => {
+                    chat.positionViewAtEnd() 
+                    chat.ready = true
+                })
+            }
+        }
+
         boundsBehavior: Flickable.StopAtBounds
 
         // Keep glued to bottom only if user is at bottom.
@@ -40,22 +69,43 @@ Rectangle {
         onMovementStarted: stickToBottom = atBottom()
         onMovementEnded:   stickToBottom = atBottom()
 
-        Component.onCompleted: Qt.callLater(positionViewAtEnd)
+        Component.onCompleted: {
+            ready = false  
+            Qt.callLater(function() {
+                positionViewAtEnd()
+                ready = true
+            })    
+        } 
 
         onCountChanged: {
-            if (count > 0 && stickToBottom)
-                Qt.callLater(positionViewAtEnd)
+            if (count > 0 && stickToBottom) {
+                Qt.callLater(function() {
+                    positionViewAtEnd()
+                    ready = true 
+                })
+            } else if (count === 0) {
+                ready = true 
+            }
+        }
+        
+        add: Transition {
+            ParallelAnimation {
+                NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: Theme.animFast }
+                NumberAnimation { properties: "y"; from: y + 6; to: y; duration: Theme.animFast }
+            }
         }
 
-        // Correct place for “arrival” animations
-        add: Transition {
-            NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: Theme.animFast }
+        remove: Transition {
+            ParallelAnimation {
+                NumberAnimation { properties: "opacity"; from: 1; to: 0; duration: Theme.animFast }
+                NumberAnimation { properties: "y"; from: y; to: y - 6; duration: Theme.animFast }
+            }
         }
 
         delegate: Item {
             id: row
             width: chat.width
-            height: bubble.implicitHeight
+            height: bubble.implicitHeight + 6
 
             RowLayout {
                 anchors.fill: parent

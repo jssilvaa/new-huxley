@@ -12,7 +12,6 @@ QtObject {
         property int accentIndex: 0
     }
 
-    // DO NOT assign to these directly
     readonly property bool dark: store.dark
     readonly property int accentIndex: store.accentIndex
 

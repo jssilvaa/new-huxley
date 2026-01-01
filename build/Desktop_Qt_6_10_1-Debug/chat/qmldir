@@ -9,6 +9,8 @@ ContactsFrame 1.0 qml/ContactsFrame.qml
 ChatView 1.0 qml/ChatView.qml
 InputBar 1.0 qml/InputBar.qml
 singleton Theme 1.0 qml/Theme.qml
+Toast 1.0 qml/Toast.qml
+ToastHost 1.0 qml/ToastHost.qml
 SettingsDrawer 1.0 qml/SettingsDrawer.qml
 CustomInput 1.0 Utils/CustomInput.qml
 CustomCheckBox 1.0 Utils/CustomCheckBox.qml
