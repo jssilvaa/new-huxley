@@ -80,6 +80,6 @@ Window {
     // quit with ctrl w 
     Action {
         shortcut: "Ctrl+w"
-        onTriggered: Qt.quit()
+        onTriggered: root.close()
     }
 }

@@ -11,6 +11,25 @@ Item {
         anchors.fill: parent
         color: Theme.bg
 
+        // put these near the top of the background Rectangle (behind everything)
+        Rectangle {
+            anchors.fill: parent
+            visible: Theme.gradientOn && Theme.hasGradient
+            opacity: 0.35
+            gradient: Gradient {
+                GradientStop { position: 0; color: Theme.gradA }
+                GradientStop { position: 1; color: Theme.gradB }
+            }
+        }
+
+        Image {
+            anchors.fill: parent
+            visible: Theme.decorationsOn && Theme.hasPattern
+            source: Theme.pattern
+            fillMode: Image.Tile
+            opacity: 0.10
+        }
+
         SettingsDrawer { id: settingsDrawer; height: parent.height }
 
         ColumnLayout {
@@ -36,7 +55,7 @@ Item {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    color: Theme.bg
+                    color: "transparent"
 
                     ColumnLayout {
                         anchors.fill: parent

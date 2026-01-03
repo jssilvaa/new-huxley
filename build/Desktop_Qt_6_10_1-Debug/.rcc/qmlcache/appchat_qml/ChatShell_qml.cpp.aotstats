@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 141,
+                            "durationMicroseconds": 83,
                             "functionName": "fill",
                             "line": 8,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 1673,
+                            "durationMicroseconds": 1544,
                             "functionName": "color",
                             "line": 12,
                             "message": ""
@@ -24,9 +24,73 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 46,
+                            "durationMicroseconds": 29,
                             "functionName": "fill",
                             "line": 11,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 79,
+                            "functionName": "visible",
+                            "line": 17,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 23,
+                            "functionName": "fill",
+                            "line": 16,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 52,
+                            "durationMicroseconds": 40,
+                            "functionName": "color",
+                            "line": 20,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 52,
+                            "durationMicroseconds": 37,
+                            "functionName": "color",
+                            "line": 21,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 67,
+                            "functionName": "visible",
+                            "line": 27,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 21,
+                            "durationMicroseconds": 36,
+                            "functionName": "source",
+                            "line": 28,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 31,
+                            "functionName": "fillMode",
+                            "line": 29,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 22,
+                            "functionName": "fill",
+                            "line": 26,
                             "message": ""
                         },
                         {
@@ -34,39 +98,31 @@
                             "column": 54,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 14,
+                            "line": 33,
                             "message": "Could not find property \"height\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 37,
+                            "durationMicroseconds": 22,
                             "functionName": "fill",
-                            "line": 17,
+                            "line": 36,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 40,
+                            "durationMicroseconds": 23,
                             "functionName": "onSettingsRequested",
-                            "line": 23,
+                            "line": 42,
                             "message": "Cannot retrieve a non-object type by ID: settingsDrawer"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 72,
-                            "functionName": "color",
-                            "line": 39,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 38,
+                            "durationMicroseconds": 22,
                             "functionName": "fill",
-                            "line": 42,
+                            "line": 61,
                             "message": ""
                         }
                     ],

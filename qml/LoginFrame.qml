@@ -26,6 +26,25 @@ Item {
         //     easing.type: Easing.InOutQuad
         // }
 
+        // put these near the top of the background Rectangle (behind everything)
+        Rectangle {
+            anchors.fill: parent
+            visible: Theme.gradientOn && Theme.hasGradient
+            opacity: 0.35
+            gradient: Gradient {
+                GradientStop { position: 0; color: Theme.gradA }
+                GradientStop { position: 1; color: Theme.gradB }
+            }
+        }
+
+        Image {
+            anchors.fill: parent
+            visible: Theme.decorationsOn && Theme.hasPattern
+            source: Theme.pattern
+            fillMode: Image.Tile
+            opacity: 0.10
+        }
+
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: 20

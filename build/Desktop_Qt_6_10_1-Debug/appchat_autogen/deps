@@ -777,6 +777,14 @@ appchat_autogen/timestamp: \
 	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets-relwithdebinfo.cmake \
 	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsTargets.cmake \
 	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6QuickTools/Qt6QuickToolsVersionlessTargets.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgTargets-relwithdebinfo.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgTargets.cmake \
+	/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake \
 	/home/josesilvaa/Qt/Tools/CMake/share/cmake-3.30/Modules/CMakeCXXInformation.cmake \
 	/home/josesilvaa/Qt/Tools/CMake/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	/home/josesilvaa/Qt/Tools/CMake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake \

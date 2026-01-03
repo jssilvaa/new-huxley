@@ -110,7 +110,7 @@ Rectangle {
 
                 color: selected ? Theme.surface : "transparent"
 
-                border.color: selected  && list.activeFocus ? Theme.accent : "transparent"
+                border.color: selected ? Theme.accent : "transparent"
                 border.width: selected ? 1 : 0
 
                 scale: pressed ? 0.985 : 1.0

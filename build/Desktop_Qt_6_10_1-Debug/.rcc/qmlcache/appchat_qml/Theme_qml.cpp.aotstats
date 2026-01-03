@@ -8,129 +8,273 @@
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 86,
+                            "durationMicroseconds": 43,
                             "functionName": "dark",
-                            "line": 15,
+                            "line": 23,
                             "message": "Cannot load property dark from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
                         },
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 17,
+                            "durationMicroseconds": 7,
                             "functionName": "accentIndex",
-                            "line": 16,
+                            "line": 24,
                             "message": "Cannot load property accentIndex from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 5,
+                            "functionName": "presetId",
+                            "line": 25,
+                            "message": "Cannot load property presetId from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 5,
+                            "functionName": "gradientOn",
+                            "line": 26,
+                            "message": "Cannot load property gradientOn from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 5,
+                            "functionName": "decorationsOn",
+                            "line": 27,
+                            "message": "Cannot load property decorationsOn from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 4,
+                            "functionName": "reducedMotion",
+                            "line": 28,
+                            "message": "Cannot load property reducedMotion from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "setDark",
-                            "line": 18,
+                            "line": 31,
                             "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 229,
-                            "functionName": "accents",
-                            "line": 22,
-                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "setAccent",
-                            "line": 24,
+                            "line": 32,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "setPreset",
+                            "line": 33,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "setGradientOn",
+                            "line": 34,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "setDecorationsOn",
+                            "line": 35,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "setReducedMotion",
+                            "line": 36,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 134,
+                            "functionName": "accents",
+                            "line": 39,
+                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 37,
-                            "durationMicroseconds": 183,
+                            "durationMicroseconds": 77,
                             "functionName": "accent",
-                            "line": 29,
+                            "line": 40,
                             "message": "Cannot generate efficient code for LoadElement with non-list base type (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::accents with type QVariant (adjusted to QJSValue, stored as QJSValue)"
                         },
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 200,
+                            "durationMicroseconds": 88,
                             "functionName": "danger",
-                            "line": 30,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 174,
-                            "functionName": "bg",
-                            "line": 32,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 154,
-                            "functionName": "panel",
-                            "line": 33,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 144,
-                            "functionName": "panel2",
-                            "line": 34,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 146,
-                            "functionName": "surface",
-                            "line": 35,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 141,
-                            "functionName": "border",
-                            "line": 36,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 144,
-                            "functionName": "text",
-                            "line": 38,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 155,
-                            "functionName": "muted",
-                            "line": 39,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 155,
-                            "functionName": "bubblePeer",
                             "line": 41,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
+                            "column": 36,
+                            "durationMicroseconds": 945,
+                            "functionName": "presets",
+                            "line": 45,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 29,
+                            "functionName": "preset",
+                            "line": 118,
+                            "message": "Cannot load property classic from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::presets with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "pick",
+                            "line": 121,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 142,
+                            "functionName": "bg",
+                            "line": 127,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 134,
+                            "functionName": "panel",
+                            "line": 128,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 122,
+                            "functionName": "panel2",
+                            "line": 129,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 117,
+                            "functionName": "surface",
+                            "line": 130,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 111,
+                            "functionName": "border",
+                            "line": 131,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 111,
+                            "functionName": "text",
+                            "line": 133,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 111,
+                            "functionName": "muted",
+                            "line": 134,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 166,
+                            "durationMicroseconds": 113,
+                            "functionName": "bubblePeer",
+                            "line": 136,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 41,
+                            "durationMicroseconds": 111,
                             "functionName": "bubbleOwn",
-                            "line": 42,
+                            "line": 137,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 41,
+                            "durationMicroseconds": 19,
+                            "functionName": "hasGradient",
+                            "line": 140,
+                            "message": "Cannot load property gradA from call to method preset, returning QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 205,
+                            "functionName": "gradA",
+                            "line": 141,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 190,
+                            "functionName": "gradB",
+                            "line": 143,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 58,
+                            "functionName": "pattern",
+                            "line": 147,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 57,
+                            "functionName": "hasPattern",
+                            "line": 148,
+                            "message": "Cannot generate efficient code for incomparable types QString and (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::pattern with type QUrl"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 37,
+                            "durationMicroseconds": 47,
+                            "functionName": "animFast",
+                            "line": 156,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 37,
+                            "durationMicroseconds": 41,
+                            "functionName": "animMed",
+                            "line": 157,
                             "message": ""
                         }
                     ],

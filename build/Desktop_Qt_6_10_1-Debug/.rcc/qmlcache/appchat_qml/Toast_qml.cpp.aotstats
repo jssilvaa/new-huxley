@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 13,
-                            "durationMicroseconds": 3110,
+                            "durationMicroseconds": 10241,
                             "functionName": "radius",
                             "line": 7,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 131,
+                            "durationMicroseconds": 127,
                             "functionName": "color",
                             "line": 8,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 325,
+                            "durationMicroseconds": 313,
                             "functionName": "implicitWidth",
                             "line": 15,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 148,
+                            "durationMicroseconds": 132,
                             "functionName": "implicitHeight",
                             "line": 16,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 107,
+                            "durationMicroseconds": 106,
                             "functionName": "color",
                             "line": 9,
                             "message": ""
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 55,
-                            "durationMicroseconds": 84,
+                            "durationMicroseconds": 87,
                             "functionName": "duration",
                             "line": 21,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 55,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 96,
                             "functionName": "duration",
                             "line": 22,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 0,
                             "column": 15,
-                            "durationMicroseconds": 84,
+                            "durationMicroseconds": 91,
                             "functionName": "text",
                             "line": 27,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 2,
                             "column": 16,
-                            "durationMicroseconds": 75,
+                            "durationMicroseconds": 80,
                             "functionName": "color",
                             "line": 28,
                             "message": "Cannot access value for name error"
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 81,
+                            "durationMicroseconds": 85,
                             "functionName": "wrapMode",
                             "line": 29,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 30,
-                            "durationMicroseconds": 75,
+                            "durationMicroseconds": 74,
                             "functionName": "horizontalAlignment",
                             "line": 30,
                             "message": ""
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 74,
+                            "durationMicroseconds": 67,
                             "functionName": "centerIn",
                             "line": 26,
                             "message": ""

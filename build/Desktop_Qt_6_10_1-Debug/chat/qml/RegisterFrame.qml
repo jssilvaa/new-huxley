@@ -132,7 +132,6 @@ Item {
                 Label { text: "• 1 uppercase (A–Z)";                      color: ruleColor(ruleUpper);   font.pointSize: 9 }
                 Label { text: "• 1 number (0–9)";                         color: ruleColor(ruleDigit);   font.pointSize: 9 }
                 Label { text: "• 1 special character (!@#…)";             color: ruleColor(ruleSpecial); font.pointSize: 9 }
-                Label { text: "• at most 24 characters";                 color: ruleColor(ruleLen);     font.pointSize: 9 }
 
                 Label {
                     text: "• passwords match"

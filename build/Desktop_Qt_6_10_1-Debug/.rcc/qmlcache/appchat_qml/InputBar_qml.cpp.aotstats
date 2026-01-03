@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 2965,
+                            "durationMicroseconds": 14792,
                             "functionName": "color",
                             "line": 8,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 14,
-                            "durationMicroseconds": 357,
+                            "durationMicroseconds": 362,
                             "functionName": "enabled",
                             "line": 12,
                             "message": "Cannot access value for name Controller"
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 14,
-                            "durationMicroseconds": 156,
+                            "durationMicroseconds": 161,
                             "functionName": "opacity",
                             "line": 14,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 128,
                             "functionName": "color",
                             "line": 9,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 55,
-                            "durationMicroseconds": 74,
+                            "durationMicroseconds": 75,
                             "functionName": "duration",
                             "line": 15,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 27,
-                            "durationMicroseconds": 387,
+                            "durationMicroseconds": 5693,
                             "functionName": "onReturnPressed",
                             "line": 17,
                             "message": "Cannot retrieve a non-object type by ID: input"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 73,
+                            "durationMicroseconds": 87,
                             "functionName": "onReturnPressed",
                             "line": 17,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 134,
+                            "durationMicroseconds": 114,
                             "functionName": "onEnterPressed",
                             "line": 27,
                             "message": "Type QQuickKeysAttached does not have a property onReturnPressed for calling"
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 0,
                             "column": 26,
-                            "durationMicroseconds": 44,
+                            "durationMicroseconds": 38,
                             "functionName": "onEnterPressed",
                             "line": 27,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 59,
+                            "durationMicroseconds": 61,
                             "functionName": "target",
                             "line": 32,
                             "message": "Cannot access value for name Controller"
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 2,
                             "column": 9,
-                            "durationMicroseconds": 151,
+                            "durationMicroseconds": 158,
                             "functionName": "onCurrentPeerChanged",
                             "line": 33,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 68,
+                            "durationMicroseconds": 66,
                             "functionName": "fill",
                             "line": 39,
                             "message": ""
@@ -144,7 +144,7 @@
                         {
                             "codegenResult": 0,
                             "column": 45,
-                            "durationMicroseconds": 91,
+                            "durationMicroseconds": 97,
                             "functionName": "duration",
                             "line": 62,
                             "message": ""
@@ -152,7 +152,7 @@
                         {
                             "codegenResult": 2,
                             "column": 25,
-                            "durationMicroseconds": 69,
+                            "durationMicroseconds": 73,
                             "functionName": "target",
                             "line": 70,
                             "message": "Cannot access value for name Controller"
@@ -160,7 +160,7 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 36,
                             "functionName": "onSendMessageResponse",
                             "line": 71,
                             "message": "Cannot retrieve a non-object type by ID: input"

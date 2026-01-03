@@ -7,9 +7,9 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setOrganizationName("huxley");
+    QCoreApplication::setOrganizationName("Huxley");
     QCoreApplication::setOrganizationDomain("huxley.chat");
-    QCoreApplication::setApplicationName("huxley");
+    QCoreApplication::setApplicationName("HuxleyChat");
 
     QGuiApplication app(argc, argv);
 

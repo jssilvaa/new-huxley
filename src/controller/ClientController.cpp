@@ -145,10 +145,11 @@ ClientController::ClientController(QObject* parent)
 
                 // if not current chat, just send notif 
                 if (!isPeerCurrent) {
+                    QString notif = (content.size() > 40) ? content.left(37).append("...") : content; 
+
                     emit toast(QString("%1: %2")
-                    .arg(peer)                  // % 1
-                    .arg(content.left(40))); // % 2 
-                    return; 
+                    .arg(peer, notif));
+                    return;  
                 };
                 
                 ChatMessage cm; 

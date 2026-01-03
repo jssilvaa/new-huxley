@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick)
+find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick Svg)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -57,6 +57,8 @@ qt_add_qml_module(appchat
         images/logo.png
         images/message-icon.png
         images/lock.png
+        images/patterns/hearts.svg
+        images/patterns/diamonds.svg
 )
 
 # Platform specific properties
@@ -71,7 +73,7 @@ set_target_properties(appchat PROPERTIES
 
 # Link QT libraries
 target_link_libraries(appchat
-    PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick
+    PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick Qt6::Svg
 )
 
 # Installation rules

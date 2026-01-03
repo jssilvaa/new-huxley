@@ -6,7 +6,7 @@ import chat 1.0
 
 Rectangle {
     id: root
-    color: Theme.bg
+    color: "transparent"
 
     // Empty states
     Column {
