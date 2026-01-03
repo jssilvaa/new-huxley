@@ -8,6 +8,9 @@ import chat 1.0
 Item {
     anchors.fill: parent
 
+    // controller object ready
+    property bool controllerReady: Controller !== null
+
     Rectangle {
         id: card
         anchors.centerIn: parent
@@ -127,7 +130,7 @@ Item {
             CustomButton {
                 Layout.fillWidth: true
                 text: qsTr("Login  →")
-                enabled: Controller.connected
+                enabled: controllerReady && Controller.connected
                 onClicked: Controller.login(usernameInput.text, passwordInput.text)
             }
 

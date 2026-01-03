@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 2,
                             "column": 34,
-                            "durationMicroseconds": 43,
+                            "durationMicroseconds": 146,
                             "functionName": "dark",
                             "line": 23,
                             "message": "Cannot load property dark from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 7,
+                            "durationMicroseconds": 20,
                             "functionName": "accentIndex",
                             "line": 24,
                             "message": "Cannot load property accentIndex from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 5,
+                            "durationMicroseconds": 13,
                             "functionName": "presetId",
                             "line": 25,
                             "message": "Cannot load property presetId from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 5,
+                            "durationMicroseconds": 12,
                             "functionName": "gradientOn",
                             "line": 26,
                             "message": "Cannot load property gradientOn from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 2,
                             "column": 43,
-                            "durationMicroseconds": 5,
+                            "durationMicroseconds": 13,
                             "functionName": "decorationsOn",
                             "line": 27,
                             "message": "Cannot load property decorationsOn from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 43,
-                            "durationMicroseconds": 4,
+                            "durationMicroseconds": 12,
                             "functionName": "reducedMotion",
                             "line": 28,
                             "message": "Cannot load property reducedMotion from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::store with type QVariant."
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 134,
+                            "durationMicroseconds": 2387,
                             "functionName": "accents",
                             "line": 39,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 2,
                             "column": 37,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 245,
                             "functionName": "accent",
                             "line": 40,
                             "message": "Cannot generate efficient code for LoadElement with non-list base type (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::accents with type QVariant (adjusted to QJSValue, stored as QJSValue)"
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 88,
+                            "durationMicroseconds": 219,
                             "functionName": "danger",
                             "line": 41,
                             "message": ""
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 0,
                             "column": 36,
-                            "durationMicroseconds": 945,
+                            "durationMicroseconds": 2125,
                             "functionName": "presets",
                             "line": 45,
                             "message": ""
@@ -136,7 +136,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 29,
+                            "durationMicroseconds": 89,
                             "functionName": "preset",
                             "line": 118,
                             "message": "Cannot load property classic from (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::presets with type QVariant."
@@ -152,7 +152,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 142,
+                            "durationMicroseconds": 1102,
                             "functionName": "bg",
                             "line": 127,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -160,7 +160,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 134,
+                            "durationMicroseconds": 655,
                             "functionName": "panel",
                             "line": 128,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -168,7 +168,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 122,
+                            "durationMicroseconds": 322,
                             "functionName": "panel2",
                             "line": 129,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -176,7 +176,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 117,
+                            "durationMicroseconds": 350,
                             "functionName": "surface",
                             "line": 130,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -184,7 +184,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 290,
                             "functionName": "border",
                             "line": 131,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -192,7 +192,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 290,
                             "functionName": "text",
                             "line": 133,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -200,7 +200,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 345,
                             "functionName": "muted",
                             "line": 134,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -208,7 +208,7 @@
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 113,
+                            "durationMicroseconds": 299,
                             "functionName": "bubblePeer",
                             "line": 136,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -216,7 +216,7 @@
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 111,
+                            "durationMicroseconds": 291,
                             "functionName": "bubbleOwn",
                             "line": 137,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -224,7 +224,7 @@
                         {
                             "codegenResult": 2,
                             "column": 41,
-                            "durationMicroseconds": 19,
+                            "durationMicroseconds": 62,
                             "functionName": "hasGradient",
                             "line": 140,
                             "message": "Cannot load property gradA from call to method preset, returning QVariant."
@@ -232,7 +232,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 205,
+                            "durationMicroseconds": 5931,
                             "functionName": "gradA",
                             "line": 141,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -240,7 +240,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 190,
+                            "durationMicroseconds": 3513,
                             "functionName": "gradB",
                             "line": 143,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -248,7 +248,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 58,
+                            "durationMicroseconds": 187,
                             "functionName": "pattern",
                             "line": 147,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -256,7 +256,7 @@
                         {
                             "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 57,
+                            "durationMicroseconds": 152,
                             "functionName": "hasPattern",
                             "line": 148,
                             "message": "Cannot generate efficient code for incomparable types QString and (component in /home/josesilvaa/huxley-gui/chat/qml/Theme.qml)::pattern with type QUrl"
@@ -264,7 +264,7 @@
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 47,
+                            "durationMicroseconds": 134,
                             "functionName": "animFast",
                             "line": 156,
                             "message": ""
@@ -272,7 +272,7 @@
                         {
                             "codegenResult": 0,
                             "column": 37,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 172,
                             "functionName": "animMed",
                             "line": 157,
                             "message": ""

@@ -123,12 +123,12 @@
         "classes": [
             {
                 "className": "ClientController",
-                "lineNumber": 15,
+                "lineNumber": 16,
                 "methods": [
                     {
                         "access": "public",
-                        "index": 13,
-                        "lineNumber": 35,
+                        "index": 19,
+                        "lineNumber": 36,
                         "name": "start",
                         "returnType": "void"
                     },
@@ -144,8 +144,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 14,
-                        "lineNumber": 36,
+                        "index": 20,
+                        "lineNumber": 37,
                         "name": "login",
                         "returnType": "void"
                     },
@@ -161,29 +161,29 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 15,
-                        "lineNumber": 37,
+                        "index": 21,
+                        "lineNumber": 38,
                         "name": "registerUser",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 16,
-                        "lineNumber": 38,
+                        "index": 22,
+                        "lineNumber": 39,
                         "name": "showRegister",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 17,
-                        "lineNumber": 39,
+                        "index": 23,
+                        "lineNumber": 40,
                         "name": "showLogin",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 18,
-                        "lineNumber": 40,
+                        "index": 24,
+                        "lineNumber": 41,
                         "name": "refreshUsers",
                         "returnType": "void"
                     },
@@ -195,8 +195,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 19,
-                        "lineNumber": 41,
+                        "index": 25,
+                        "lineNumber": 42,
                         "name": "selectPeer",
                         "returnType": "void"
                     },
@@ -208,8 +208,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 20,
-                        "lineNumber": 52,
+                        "index": 26,
+                        "lineNumber": 55,
                         "name": "sendMessage",
                         "returnType": "void"
                     },
@@ -221,9 +221,9 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 21,
+                        "index": 27,
                         "isConst": true,
-                        "lineNumber": 58,
+                        "lineNumber": 61,
                         "name": "unreadCount",
                         "returnType": "int"
                     },
@@ -235,9 +235,9 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 22,
+                        "index": 28,
                         "isConst": true,
-                        "lineNumber": 61,
+                        "lineNumber": 64,
                         "name": "hasUnread",
                         "returnType": "bool"
                     }
@@ -249,7 +249,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 17,
+                        "lineNumber": 18,
                         "name": "connected",
                         "notify": "connectedChanged",
                         "read": "connected",
@@ -264,7 +264,7 @@
                         "designable": true,
                         "final": false,
                         "index": 1,
-                        "lineNumber": 18,
+                        "lineNumber": 19,
                         "name": "authenticated",
                         "notify": "authenticatedChanged",
                         "read": "authenticated",
@@ -279,7 +279,7 @@
                         "designable": true,
                         "final": false,
                         "index": 2,
-                        "lineNumber": 19,
+                        "lineNumber": 20,
                         "name": "currentPeer",
                         "notify": "currentPeerChanged",
                         "read": "currentPeer",
@@ -294,7 +294,7 @@
                         "designable": true,
                         "final": false,
                         "index": 3,
-                        "lineNumber": 20,
+                        "lineNumber": 21,
                         "name": "hasPeer",
                         "notify": "currentPeerChanged",
                         "read": "hasPeer",
@@ -309,7 +309,7 @@
                         "designable": true,
                         "final": false,
                         "index": 4,
-                        "lineNumber": 21,
+                        "lineNumber": 22,
                         "name": "messageService",
                         "read": "messageService",
                         "required": false,
@@ -323,7 +323,7 @@
                         "designable": true,
                         "final": false,
                         "index": 5,
-                        "lineNumber": 22,
+                        "lineNumber": 23,
                         "name": "contacts",
                         "read": "contacts",
                         "required": false,
@@ -337,7 +337,7 @@
                         "designable": true,
                         "final": false,
                         "index": 6,
-                        "lineNumber": 23,
+                        "lineNumber": 24,
                         "name": "chat",
                         "read": "chat",
                         "required": false,
@@ -351,7 +351,7 @@
                         "designable": true,
                         "final": false,
                         "index": 7,
-                        "lineNumber": 24,
+                        "lineNumber": 25,
                         "name": "currentPeerOnline",
                         "notify": "currentPeerOnlineChanged",
                         "read": "currentPeerOnline",
@@ -366,7 +366,7 @@
                         "designable": true,
                         "final": false,
                         "index": 8,
-                        "lineNumber": 25,
+                        "lineNumber": 26,
                         "name": "focusContacts",
                         "notify": "focusContactsChanged",
                         "read": "focusContacts",
@@ -382,7 +382,7 @@
                         "designable": true,
                         "final": false,
                         "index": 9,
-                        "lineNumber": 26,
+                        "lineNumber": 27,
                         "name": "contactsProxy",
                         "read": "contactsProxy",
                         "required": false,
@@ -396,7 +396,7 @@
                         "designable": true,
                         "final": false,
                         "index": 10,
-                        "lineNumber": 27,
+                        "lineNumber": 28,
                         "name": "registering",
                         "notify": "registeringChanged",
                         "read": "registering",
@@ -412,56 +412,56 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 79,
+                        "lineNumber": 82,
                         "name": "connectedChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 80,
+                        "lineNumber": 83,
                         "name": "authenticatedChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 81,
+                        "lineNumber": 84,
                         "name": "registeringChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 3,
-                        "lineNumber": 82,
+                        "lineNumber": 85,
                         "name": "currentPeerChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 4,
-                        "lineNumber": 83,
+                        "lineNumber": 86,
                         "name": "currentPeerOnlineChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 5,
-                        "lineNumber": 84,
+                        "lineNumber": 87,
                         "name": "focusContactsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 6,
-                        "lineNumber": 85,
+                        "lineNumber": 88,
                         "name": "clearChat",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 7,
-                        "lineNumber": 86,
+                        "lineNumber": 89,
                         "name": "showChat",
                         "returnType": "void"
                     },
@@ -474,7 +474,7 @@
                             }
                         ],
                         "index": 8,
-                        "lineNumber": 88,
+                        "lineNumber": 91,
                         "name": "toast",
                         "returnType": "void"
                     },
@@ -487,7 +487,7 @@
                             }
                         ],
                         "index": 9,
-                        "lineNumber": 89,
+                        "lineNumber": 92,
                         "name": "error",
                         "returnType": "void"
                     }
@@ -496,14 +496,14 @@
                     {
                         "access": "private",
                         "index": 10,
-                        "lineNumber": 92,
+                        "lineNumber": 95,
                         "name": "onConnected",
                         "returnType": "void"
                     },
                     {
                         "access": "private",
                         "index": 11,
-                        "lineNumber": 93,
+                        "lineNumber": 96,
                         "name": "onDisconnected",
                         "returnType": "void"
                     },
@@ -516,8 +516,102 @@
                             }
                         ],
                         "index": 12,
-                        "lineNumber": 94,
+                        "lineNumber": 97,
                         "name": "onError",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "ok",
+                                "type": "bool"
+                            },
+                            {
+                                "name": "msg",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 99,
+                        "name": "onLoginResult",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "ok",
+                                "type": "bool"
+                            },
+                            {
+                                "name": "msg",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 14,
+                        "lineNumber": 100,
+                        "name": "onRegisterResult",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "users",
+                                "type": "QList<QJsonObject>"
+                            }
+                        ],
+                        "index": 15,
+                        "lineNumber": 101,
+                        "name": "onUsersReceived",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "peer",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "msgs",
+                                "type": "QList<QJsonObject>"
+                            }
+                        ],
+                        "index": 16,
+                        "lineNumber": 102,
+                        "name": "onHistoryReceived",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "m",
+                                "type": "QJsonObject"
+                            }
+                        ],
+                        "index": 17,
+                        "lineNumber": 104,
+                        "name": "onIncomingMessage",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "ok",
+                                "type": "bool"
+                            },
+                            {
+                                "name": "msg",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 18,
+                        "lineNumber": 105,
+                        "name": "onSendMessageResponse",
                         "returnType": "void"
                     }
                 ],

@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 1955,
+                            "durationMicroseconds": 4644,
                             "functionName": "color",
                             "line": 16,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 48,
+                            "durationMicroseconds": 123,
                             "functionName": "color",
                             "line": 17,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 29,
+                            "durationMicroseconds": 75,
                             "functionName": "fill",
                             "line": 22,
                             "message": ""
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 39,
+                            "durationMicroseconds": 104,
                             "functionName": "color",
                             "line": 32,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 80,
                             "functionName": "checked",
                             "line": 37,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 72,
+                            "durationMicroseconds": 162,
                             "functionName": "onToggled",
                             "line": 38,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 32,
+                            "durationMicroseconds": 82,
                             "functionName": "checked",
                             "line": 43,
                             "message": ""
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 29,
+                            "durationMicroseconds": 75,
                             "functionName": "enabled",
                             "line": 44,
                             "message": ""
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 60,
+                            "durationMicroseconds": 161,
                             "functionName": "opacity",
                             "line": 45,
                             "message": ""
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 63,
+                            "durationMicroseconds": 160,
                             "functionName": "onToggled",
                             "line": 46,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 75,
                             "functionName": "checked",
                             "line": 51,
                             "message": ""
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 29,
+                            "durationMicroseconds": 70,
                             "functionName": "enabled",
                             "line": 52,
                             "message": ""
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 50,
+                            "durationMicroseconds": 120,
                             "functionName": "opacity",
                             "line": 53,
                             "message": ""
@@ -136,7 +136,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 67,
+                            "durationMicroseconds": 147,
                             "functionName": "onToggled",
                             "line": 54,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -144,7 +144,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 30,
+                            "durationMicroseconds": 74,
                             "functionName": "checked",
                             "line": 59,
                             "message": ""
@@ -152,7 +152,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 57,
+                            "durationMicroseconds": 142,
                             "functionName": "onToggled",
                             "line": 60,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
@@ -160,7 +160,7 @@
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 38,
+                            "durationMicroseconds": 103,
                             "functionName": "color",
                             "line": 63,
                             "message": ""
@@ -176,7 +176,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 320,
+                            "durationMicroseconds": 632,
                             "functionName": "model",
                             "line": 75,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
@@ -184,7 +184,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 32,
+                            "durationMicroseconds": 97,
                             "functionName": "width",
                             "line": 83,
                             "message": "Cannot access value for name root"
@@ -192,7 +192,7 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 107,
                             "functionName": "radius",
                             "line": 85,
                             "message": ""
@@ -200,7 +200,7 @@
                         {
                             "codegenResult": 0,
                             "column": 28,
-                            "durationMicroseconds": 39,
+                            "durationMicroseconds": 94,
                             "functionName": "color",
                             "line": 88,
                             "message": ""
@@ -208,7 +208,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 100,
+                            "durationMicroseconds": 216,
                             "functionName": "width",
                             "line": 86,
                             "message": "Cannot access value for name modelData"
@@ -216,7 +216,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 91,
+                            "durationMicroseconds": 203,
                             "functionName": "color",
                             "line": 87,
                             "message": "Cannot access value for name modelData"
@@ -224,7 +224,7 @@
                         {
                             "codegenResult": 2,
                             "column": 33,
-                            "durationMicroseconds": 30,
+                            "durationMicroseconds": 66,
                             "functionName": "radius",
                             "line": 93,
                             "message": "Cannot load property radius from (component in /home/josesilvaa/huxley-gui/chat/qml/SettingsDrawer.qml)::parent with type QQuickItem."
@@ -232,7 +232,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 26,
+                            "durationMicroseconds": 66,
                             "functionName": "fill",
                             "line": 92,
                             "message": ""
@@ -240,7 +240,7 @@
                         {
                             "codegenResult": 2,
                             "column": 64,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 77,
                             "functionName": "color",
                             "line": 96,
                             "message": "Cannot access value for name modelData"
@@ -248,7 +248,7 @@
                         {
                             "codegenResult": 2,
                             "column": 64,
-                            "durationMicroseconds": 20,
+                            "durationMicroseconds": 59,
                             "functionName": "color",
                             "line": 97,
                             "message": "Cannot access value for name modelData"
@@ -256,7 +256,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 109,
+                            "durationMicroseconds": 250,
                             "functionName": "onClicked",
                             "line": 103,
                             "message": "Cannot access value for name modelData"
@@ -264,7 +264,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 25,
+                            "durationMicroseconds": 79,
                             "functionName": "fill",
                             "line": 102,
                             "message": ""
@@ -272,7 +272,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 44,
+                            "durationMicroseconds": 115,
                             "functionName": "left",
                             "line": 107,
                             "message": ""
@@ -280,7 +280,7 @@
                         {
                             "codegenResult": 0,
                             "column": 40,
-                            "durationMicroseconds": 37,
+                            "durationMicroseconds": 99,
                             "functionName": "right",
                             "line": 108,
                             "message": ""
@@ -288,7 +288,7 @@
                         {
                             "codegenResult": 0,
                             "column": 41,
-                            "durationMicroseconds": 36,
+                            "durationMicroseconds": 97,
                             "functionName": "bottom",
                             "line": 109,
                             "message": ""
@@ -336,7 +336,7 @@
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 39,
+                            "durationMicroseconds": 123,
                             "functionName": "color",
                             "line": 130,
                             "message": ""
@@ -352,7 +352,7 @@
                         {
                             "codegenResult": 0,
                             "column": 24,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 88,
                             "functionName": "model",
                             "line": 138,
                             "message": ""
@@ -360,7 +360,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 72,
+                            "durationMicroseconds": 188,
                             "functionName": "color",
                             "line": 141,
                             "message": "Cannot access value for name modelData"
@@ -368,7 +368,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 22,
+                            "durationMicroseconds": 71,
                             "functionName": "width",
                             "line": 142,
                             "message": "Cannot access value for name index"
@@ -376,7 +376,7 @@
                         {
                             "codegenResult": 2,
                             "column": 35,
-                            "durationMicroseconds": 24,
+                            "durationMicroseconds": 62,
                             "functionName": "color",
                             "line": 143,
                             "message": "Cannot access value for name index"
@@ -384,7 +384,7 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 86,
+                            "durationMicroseconds": 203,
                             "functionName": "onClicked",
                             "line": 147,
                             "message": "Cannot access value for name index"
@@ -392,7 +392,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 27,
+                            "durationMicroseconds": 101,
                             "functionName": "fill",
                             "line": 146,
                             "message": ""

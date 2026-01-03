@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 220,
+                            "durationMicroseconds": 176,
                             "functionName": "showIcon",
                             "line": 9,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 38,
+                            "durationMicroseconds": 40,
                             "functionName": "visible",
                             "line": 30,
                             "message": "Cannot access value for name showIcon"
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 22,
+                            "durationMicroseconds": 28,
                             "functionName": "source",
                             "line": 31,
                             "message": "Cannot access value for name iconSource"
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 78,
+                            "durationMicroseconds": 102,
                             "functionName": "fillMode",
                             "line": 40,
                             "message": ""
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 100,
+                            "durationMicroseconds": 119,
                             "functionName": "right",
                             "line": 34,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 108,
+                            "durationMicroseconds": 102,
                             "functionName": "verticalCenter",
                             "line": 36,
                             "message": ""

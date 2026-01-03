@@ -9,22 +9,23 @@ Window {
     height: 800
     visible: true
     title: qsTr("Huxley Chat")
-
-    // Desktop-first. Don’t overthink frameless right now.
     color: "#101010"
+
+    // controller object ready
+    property bool controllerReady: Controller !== null
 
     Loader {
         id: rootLoader
         anchors.fill: parent
-        sourceComponent: Controller.authenticated ? chatShell : 
-                         Controller.registering ? registerShell : loginShell
+        sourceComponent: controllerReady && Controller.authenticated ? chatShell :
+                         controllerReady && Controller.registering ? registerShell : loginShell
     }
 
     Component {
         id: loginShell
         LoginFrame {
             anchors.fill: parent
-            visible: !Controller.authenticated && !Controller.registering
+            visible: controllerReady && !Controller.authenticated && !Controller.registering
             opacity: visible ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: Theme.animMed } }    
          }

@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 164,
+                            "durationMicroseconds": 153,
                             "functionName": "ruleLen",
                             "line": 18,
                             "message": "Cannot retrieve a non-object type by ID: pass"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 33,
+                            "durationMicroseconds": 41,
                             "functionName": "ruleUpper",
                             "line": 20,
                             "message": "Cannot retrieve a non-object type by ID: pass"
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 32,
+                            "durationMicroseconds": 42,
                             "functionName": "ruleDigit",
                             "line": 21,
                             "message": "Cannot retrieve a non-object type by ID: pass"
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 34,
+                            "durationMicroseconds": 41,
                             "functionName": "ruleSpecial",
                             "line": 22,
                             "message": "Cannot retrieve a non-object type by ID: pass"
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 305,
+                            "durationMicroseconds": 272,
                             "functionName": "passOk",
                             "line": 24,
                             "message": ""
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 102,
+                            "durationMicroseconds": 123,
                             "functionName": "matchOk",
                             "line": 25,
                             "message": "Cannot retrieve a non-object type by ID: confirm"
@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 3115,
+                            "durationMicroseconds": 546,
                             "functionName": "tryRegister",
                             "line": 33,
                             "message": "Cannot access value for name Controller"
@@ -112,7 +112,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 125,
+                            "durationMicroseconds": 88,
                             "functionName": "fill",
                             "line": 9,
                             "message": ""
@@ -120,7 +120,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 55,
+                            "durationMicroseconds": 67,
                             "functionName": "centerIn",
                             "line": 43,
                             "message": ""
@@ -128,7 +128,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 53,
+                            "durationMicroseconds": 66,
                             "functionName": "fill",
                             "line": 50,
                             "message": ""
@@ -136,7 +136,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 86,
                             "functionName": "fillMode",
                             "line": 58,
                             "message": ""
@@ -152,7 +152,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 77,
+                            "durationMicroseconds": 91,
                             "functionName": "alignment",
                             "line": 69,
                             "message": ""
@@ -168,7 +168,7 @@
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 194,
+                            "durationMicroseconds": 94,
                             "functionName": "alignment",
                             "line": 77,
                             "message": ""
@@ -192,7 +192,7 @@
                         {
                             "codegenResult": 2,
                             "column": 39,
-                            "durationMicroseconds": 55,
+                            "durationMicroseconds": 67,
                             "functionName": "onReturnPressed",
                             "line": 111,
                             "message": "method tryRegister cannot be resolved."
@@ -200,7 +200,7 @@
                         {
                             "codegenResult": 0,
                             "column": 39,
-                            "durationMicroseconds": 42,
+                            "durationMicroseconds": 63,
                             "functionName": "onReturnPressed",
                             "line": 111,
                             "message": ""
@@ -208,7 +208,7 @@
                         {
                             "codegenResult": 2,
                             "column": 38,
-                            "durationMicroseconds": 27,
+                            "durationMicroseconds": 52,
                             "functionName": "onEnterPressed",
                             "line": 115,
                             "message": "method tryRegister cannot be resolved."
@@ -216,7 +216,7 @@
                         {
                             "codegenResult": 0,
                             "column": 38,
-                            "durationMicroseconds": 25,
+                            "durationMicroseconds": 51,
                             "functionName": "onEnterPressed",
                             "line": 115,
                             "message": ""
@@ -280,7 +280,7 @@
                         {
                             "codegenResult": 2,
                             "column": 26,
-                            "durationMicroseconds": 335,
+                            "durationMicroseconds": 493,
                             "functionName": "enabled",
                             "line": 149,
                             "message": "Cannot access value for name Controller"
@@ -288,7 +288,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 252,
+                            "durationMicroseconds": 340,
                             "functionName": "onClicked",
                             "line": 150,
                             "message": "method tryRegister cannot be resolved."
@@ -296,7 +296,7 @@
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 669,
+                            "durationMicroseconds": 339,
                             "functionName": "onClicked",
                             "line": 158,
                             "message": "Cannot access value for name Controller"
