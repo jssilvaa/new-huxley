@@ -94,13 +94,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 81,
+				"line" : 82,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 75,
+				"line" : 76,
 				"parent" : 0
 			},
 			{
@@ -603,6 +603,18 @@
 				"parent" : 60
 			},
 			{
+				"command" : 24,
+				"file" : 5,
+				"line" : 3591,
+				"parent" : 60
+			},
+			{
+				"command" : 24,
+				"file" : 5,
+				"line" : 3784,
+				"parent" : 60
+			},
+			{
 				"command" : 28,
 				"file" : 5,
 				"line" : 3876,
@@ -612,19 +624,19 @@
 				"command" : 27,
 				"file" : 0,
 				"line" : 405,
-				"parent" : 93
+				"parent" : 95
 			},
 			{
 				"command" : 26,
 				"file" : 0,
 				"line" : 2623,
-				"parent" : 94
+				"parent" : 96
 			},
 			{
 				"command" : 24,
 				"file" : 0,
 				"line" : 2163,
-				"parent" : 95
+				"parent" : 97
 			},
 			{
 				"command" : 28,
@@ -636,19 +648,19 @@
 				"command" : 27,
 				"file" : 0,
 				"line" : 405,
-				"parent" : 97
+				"parent" : 99
 			},
 			{
 				"command" : 26,
 				"file" : 0,
 				"line" : 2623,
-				"parent" : 98
+				"parent" : 100
 			},
 			{
 				"command" : 24,
 				"file" : 0,
 				"line" : 2163,
-				"parent" : 99
+				"parent" : 101
 			},
 			{
 				"command" : 28,
@@ -660,19 +672,19 @@
 				"command" : 27,
 				"file" : 0,
 				"line" : 405,
-				"parent" : 101
+				"parent" : 103
 			},
 			{
 				"command" : 26,
 				"file" : 0,
 				"line" : 2623,
-				"parent" : 102
+				"parent" : 104
 			},
 			{
 				"command" : 24,
 				"file" : 0,
 				"line" : 2163,
-				"parent" : 103
+				"parent" : 105
 			},
 			{
 				"command" : 31,
@@ -684,7 +696,7 @@
 				"command" : 24,
 				"file" : 0,
 				"line" : 2288,
-				"parent" : 105
+				"parent" : 107
 			}
 		]
 	},
@@ -839,9 +851,10 @@
 				37,
 				39,
 				41,
-				42,
 				43,
-				44
+				44,
+				45,
+				46
 			]
 		}
 	],
@@ -987,21 +1000,22 @@
 				37,
 				39,
 				41,
-				42,
 				43,
 				44,
 				45,
+				46,
 				47,
-				48,
-				54,
-				57,
-				82,
-				83,
-				84,
+				49,
+				50,
+				56,
+				59,
 				85,
 				86,
 				87,
-				88
+				88,
+				89,
+				90,
+				91
 			]
 		},
 		{
@@ -1029,29 +1043,28 @@
 				34,
 				36,
 				38,
-				40
+				40,
+				42
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				46,
-				49,
-				50,
+				48,
 				51,
 				52,
 				53,
+				54,
 				55,
-				56
+				57,
+				58
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				58,
-				59,
 				60,
 				61,
 				62,
@@ -1073,7 +1086,10 @@
 				78,
 				79,
 				80,
-				81
+				81,
+				82,
+				83,
+				84
 			]
 		}
 	],
@@ -1336,89 +1352,101 @@
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 96,
+			"backtrace" : 93,
+			"path" : "Utils/CustomLabel.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 94,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_1-Debug/.rcc/qmlcache/appchat_Utils/CustomLabel_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 98,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/qrc_appchat_raw_qml_0.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 100,
+			"backtrace" : 102,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/qrc_appchat_raw_res_0.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 104,
+			"backtrace" : 106,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/qrc_appchat_raw_qml_0_extra_qmldirs.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/qmake_chat.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/chat/qmldir",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/appchat_raw_qml_0.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/appchat_raw_res_0.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"path" : "images/logo.png",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"path" : "images/message-icon.png",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"path" : "images/lock.png",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"path" : "images/patterns/hearts.svg",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"path" : "images/patterns/diamonds.svg",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.qt/rcc/appchat_raw_qml_0_extra_qmldirs.qrc",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/chat/qml/qmldir",
 			"sourceGroupIndex" : 2
 		},
 		{
-			"backtrace" : 106,
+			"backtrace" : 108,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/chat/Utils/qmldir",
 			"sourceGroupIndex" : 2
@@ -1541,6 +1569,12 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_10_1-Debug/.rcc/qmlcache/appchat_Utils/CustomButton_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Desktop_Qt_6_10_1-Debug/.rcc/qmlcache/appchat_Utils/CustomLabel_qml.cpp.rule",
 			"sourceGroupIndex" : 3
 		},
 		{

@@ -3668,6 +3668,43 @@
 		},
 		{
 			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/Tools/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgTargets.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgTargets-relwithdebinfo.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake"
+		},
+		{
+			"isExternal" : true,
 			"path" : "/home/josesilvaa/Qt/6.10.1/gcc_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake"
 		},
 		{

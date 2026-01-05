@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 4644,
+                            "durationMicroseconds": 4558,
                             "functionName": "color",
                             "line": 16,
                             "message": ""
@@ -32,294 +32,286 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 123,
+                            "durationMicroseconds": 131,
                             "functionName": "color",
                             "line": 17,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 75,
+                            "codegenResult": 2,
+                            "column": 19,
+                            "durationMicroseconds": 0,
                             "functionName": "fill",
                             "line": 22,
+                            "message": "Could not find property \"fill\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "policy",
+                            "line": 25,
+                            "message": "Could not find property \"policy\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 74,
+                            "functionName": "fill",
+                            "line": 28,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 20,
+                            "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 29,
+                            "line": 36,
                             "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 0,
-                            "column": 63,
+                            "column": 67,
                             "durationMicroseconds": 104,
                             "functionName": "color",
-                            "line": 32,
+                            "line": 39,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 80,
+                            "column": 26,
+                            "durationMicroseconds": 81,
                             "functionName": "checked",
-                            "line": 37,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 24,
-                            "durationMicroseconds": 162,
-                            "functionName": "onToggled",
-                            "line": 38,
-                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 82,
-                            "functionName": "checked",
-                            "line": 43,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 75,
-                            "functionName": "enabled",
                             "line": 44,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 161,
-                            "functionName": "opacity",
-                            "line": 45,
-                            "message": ""
-                        },
-                        {
                             "codegenResult": 2,
-                            "column": 24,
-                            "durationMicroseconds": 160,
+                            "column": 28,
+                            "durationMicroseconds": 177,
                             "functionName": "onToggled",
-                            "line": 46,
+                            "line": 45,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 75,
+                            "column": 26,
+                            "durationMicroseconds": 82,
                             "functionName": "checked",
+                            "line": 50,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 26,
+                            "durationMicroseconds": 75,
+                            "functionName": "enabled",
                             "line": 51,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 70,
-                            "functionName": "enabled",
+                            "column": 26,
+                            "durationMicroseconds": 149,
+                            "functionName": "opacity",
                             "line": 52,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 120,
-                            "functionName": "opacity",
-                            "line": 53,
-                            "message": ""
-                        },
-                        {
                             "codegenResult": 2,
-                            "column": 24,
-                            "durationMicroseconds": 147,
+                            "column": 28,
+                            "durationMicroseconds": 158,
                             "functionName": "onToggled",
-                            "line": 54,
+                            "line": 53,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 74,
+                            "column": 26,
+                            "durationMicroseconds": 79,
                             "functionName": "checked",
+                            "line": 58,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 26,
+                            "durationMicroseconds": 69,
+                            "functionName": "enabled",
                             "line": 59,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 24,
-                            "durationMicroseconds": 142,
-                            "functionName": "onToggled",
+                            "codegenResult": 0,
+                            "column": 26,
+                            "durationMicroseconds": 121,
+                            "functionName": "opacity",
                             "line": 60,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 158,
+                            "functionName": "onToggled",
+                            "line": 61,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 63,
-                            "durationMicroseconds": 103,
-                            "functionName": "color",
-                            "line": 63,
+                            "column": 26,
+                            "durationMicroseconds": 80,
+                            "functionName": "checked",
+                            "line": 66,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 40,
+                            "column": 28,
+                            "durationMicroseconds": 164,
+                            "functionName": "onToggled",
+                            "line": 67,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 67,
+                            "durationMicroseconds": 106,
+                            "functionName": "color",
+                            "line": 70,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 66,
+                            "line": 73,
                             "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 2,
-                            "column": 24,
-                            "durationMicroseconds": 632,
+                            "column": 28,
+                            "durationMicroseconds": 746,
                             "functionName": "model",
-                            "line": 75,
+                            "line": 82,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 97,
+                            "column": 32,
+                            "durationMicroseconds": 85,
                             "functionName": "width",
-                            "line": 83,
+                            "line": 90,
                             "message": "Cannot access value for name root"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 29,
-                            "durationMicroseconds": 107,
-                            "functionName": "radius",
-                            "line": 85,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 28,
-                            "durationMicroseconds": 94,
-                            "functionName": "color",
-                            "line": 88,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 216,
-                            "functionName": "width",
-                            "line": 86,
-                            "message": "Cannot access value for name modelData"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 203,
-                            "functionName": "color",
-                            "line": 87,
-                            "message": "Cannot access value for name modelData"
-                        },
-                        {
-                            "codegenResult": 2,
                             "column": 33,
-                            "durationMicroseconds": 66,
+                            "durationMicroseconds": 104,
                             "functionName": "radius",
-                            "line": 93,
-                            "message": "Cannot load property radius from (component in /home/josesilvaa/huxley-gui/chat/qml/SettingsDrawer.qml)::parent with type QQuickItem."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 66,
-                            "functionName": "fill",
                             "line": 92,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 64,
-                            "durationMicroseconds": 77,
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 99,
                             "functionName": "color",
-                            "line": 96,
+                            "line": 95,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 232,
+                            "functionName": "width",
+                            "line": 93,
                             "message": "Cannot access value for name modelData"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 64,
-                            "durationMicroseconds": 59,
+                            "column": 39,
+                            "durationMicroseconds": 227,
                             "functionName": "color",
-                            "line": 97,
+                            "line": 94,
                             "message": "Cannot access value for name modelData"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 250,
-                            "functionName": "onClicked",
+                            "column": 37,
+                            "durationMicroseconds": 70,
+                            "functionName": "radius",
+                            "line": 100,
+                            "message": "Cannot load property radius from (component in /home/josesilvaa/huxley-gui/chat/qml/SettingsDrawer.qml)::parent with type QQuickItem."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 79,
+                            "functionName": "fill",
+                            "line": 99,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 68,
+                            "durationMicroseconds": 63,
+                            "functionName": "color",
                             "line": 103,
                             "message": "Cannot access value for name modelData"
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 79,
-                            "functionName": "fill",
-                            "line": 102,
-                            "message": ""
+                            "codegenResult": 2,
+                            "column": 68,
+                            "durationMicroseconds": 53,
+                            "functionName": "color",
+                            "line": 104,
+                            "message": "Cannot access value for name modelData"
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 115,
-                            "functionName": "left",
-                            "line": 107,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
+                            "codegenResult": 2,
                             "column": 40,
-                            "durationMicroseconds": 99,
-                            "functionName": "right",
-                            "line": 108,
-                            "message": ""
+                            "durationMicroseconds": 236,
+                            "functionName": "onClicked",
+                            "line": 110,
+                            "message": "Cannot access value for name modelData"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 41,
-                            "durationMicroseconds": 97,
-                            "functionName": "bottom",
+                            "column": 43,
+                            "durationMicroseconds": 67,
+                            "functionName": "fill",
                             "line": 109,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 111,
+                            "functionName": "left",
                             "line": 114,
-                            "message": "Could not find property \"text\"."
+                            "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
+                            "codegenResult": 0,
+                            "column": 44,
+                            "durationMicroseconds": 103,
+                            "functionName": "right",
                             "line": 115,
-                            "message": "Could not find property \"color\"."
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 45,
+                            "durationMicroseconds": 93,
+                            "functionName": "bottom",
+                            "line": 116,
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 117,
-                            "message": "Could not find property \"elide\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 35,
+                            "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "text",
                             "line": 121,
@@ -327,74 +319,98 @@
                         },
                         {
                             "codegenResult": 2,
-                            "column": 36,
+                            "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "color",
                             "line": 122,
                             "message": "Could not find property \"color\"."
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 63,
-                            "durationMicroseconds": 123,
-                            "functionName": "color",
-                            "line": 130,
-                            "message": ""
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 124,
+                            "message": "Could not find property \"elide\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 39,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 128,
+                            "message": "Could not find property \"text\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 133,
+                            "line": 129,
                             "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 0,
-                            "column": 24,
-                            "durationMicroseconds": 88,
-                            "functionName": "model",
-                            "line": 138,
+                            "column": 67,
+                            "durationMicroseconds": 104,
+                            "functionName": "color",
+                            "line": 137,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 28,
-                            "durationMicroseconds": 188,
+                            "column": 44,
+                            "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 141,
+                            "line": 140,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 89,
+                            "functionName": "model",
+                            "line": 145,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 187,
+                            "functionName": "color",
+                            "line": 148,
                             "message": "Cannot access value for name modelData"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 71,
+                            "column": 39,
+                            "durationMicroseconds": 59,
                             "functionName": "width",
-                            "line": 142,
+                            "line": 149,
                             "message": "Cannot access value for name index"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 35,
-                            "durationMicroseconds": 62,
+                            "column": 39,
+                            "durationMicroseconds": 57,
                             "functionName": "color",
-                            "line": 143,
+                            "line": 150,
                             "message": "Cannot access value for name index"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 36,
+                            "column": 40,
                             "durationMicroseconds": 203,
                             "functionName": "onClicked",
-                            "line": 147,
+                            "line": 154,
                             "message": "Cannot access value for name index"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 101,
+                            "column": 43,
+                            "durationMicroseconds": 76,
                             "functionName": "fill",
-                            "line": 146,
+                            "line": 153,
                             "message": ""
                         }
                     ],

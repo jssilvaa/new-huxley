@@ -15,6 +15,7 @@
     <file alias="Utils/CustomInput.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomInput.qml</file>
     <file alias="Utils/CustomCheckBox.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomCheckBox.qml</file>
     <file alias="Utils/CustomButton.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomButton.qml</file>
+    <file alias="Utils/CustomLabel.qml">/home/josesilvaa/huxley-gui/chat/Utils/CustomLabel.qml</file>
   </qresource>
 </RCC>
 

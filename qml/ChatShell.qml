@@ -11,7 +11,7 @@ Item {
         anchors.fill: parent
         color: Theme.bg
 
-        // put these near the top of the background Rectangle (behind everything)
+        // background layers (behind everything)
         Rectangle {
             anchors.fill: parent
             visible: Theme.gradientOn && Theme.hasGradient
@@ -32,44 +32,44 @@ Item {
 
         SettingsDrawer { id: settingsDrawer; height: parent.height }
 
-        ColumnLayout {
+        // --- NEW ROOT LAYOUT: split left (contacts) / right (chat pane)
+        RowLayout {
             anchors.fill: parent
             spacing: 0
 
-            HeaderBar {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 56
-                onSettingsRequested: settingsDrawer.open()
+            // LEFT: contacts full height
+            ContactsFrame {
+                Layout.preferredWidth: 340
+                Layout.minimumWidth: 240
+                Layout.fillHeight: true
             }
 
-            RowLayout {
+            // RIGHT: chat pane (header + chat + input)
+            Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                spacing: 0
+                color: "transparent"
 
-                ContactsFrame {
-                    Layout.preferredWidth: 340
-                    Layout.fillHeight: true
-                }
+                ColumnLayout {
+                    anchors.fill: parent
+                    spacing: 0
 
-                Rectangle {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    color: "transparent"
+                    // Header only for chat pane now
+                    HeaderBar {
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 56
+                        onSettingsRequested: settingsDrawer.open()
+                    }
 
-                    ColumnLayout {
-                        anchors.fill: parent
-                        spacing: 0
+                    ChatView {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        Layout.minimumWidth: 500
+                    }
 
-                        ChatView {
-                            Layout.fillWidth: true
-                            Layout.fillHeight: true
-                        }
-
-                        InputBar {
-                            Layout.fillWidth: true
-                            Layout.preferredHeight: 64
-                        }
+                    InputBar {
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 64
                     }
                 }
             }

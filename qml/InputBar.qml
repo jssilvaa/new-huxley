@@ -9,7 +9,7 @@ Rectangle {
     border.color: Theme.border
     border.width: 1
 
-    enabled: Controller.authenticated && Controller.hasPeer
+    visible: Controller.authenticated && Controller.hasPeer
 
     opacity: enabled ? 1.0 : 0.6
     Behavior on opacity { NumberAnimation { duration: Theme.animFast } }

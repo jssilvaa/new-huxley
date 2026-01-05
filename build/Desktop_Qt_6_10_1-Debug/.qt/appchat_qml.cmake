@@ -32,6 +32,8 @@ set(src_and_dest_list
     "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/Utils/CustomCheckBox.qml"
     "/home/josesilvaa/huxley-gui/chat/Utils/CustomButton.qml"
     "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/Utils/CustomButton.qml"
+    "/home/josesilvaa/huxley-gui/chat/Utils/CustomLabel.qml"
+    "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/chat/Utils/CustomLabel.qml"
 
 )
 set(timestamp_file "/home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/.qt/appchat_qml.txt")

@@ -8,6 +8,9 @@ Rectangle {
     id: root
     color: "transparent"
 
+    Layout.minimumWidth: 500
+    Layout.minimumHeight: 300
+
     // Empty states
     Column {
         anchors.centerIn: parent

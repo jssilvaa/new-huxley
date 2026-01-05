@@ -52,11 +52,13 @@ qt_add_qml_module(appchat
         Utils/CustomInput.qml
         Utils/CustomCheckBox.qml
         Utils/CustomButton.qml
+        Utils/CustomLabel.qml
         
     RESOURCES
         images/logo.png
         images/message-icon.png
         images/lock.png
+        images/settings-icon.png
         images/patterns/hearts.svg
         images/patterns/diamonds.svg
 )

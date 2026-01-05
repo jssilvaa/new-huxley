@@ -7,6 +7,11 @@ Window {
     id: root
     width: 1200
     height: 800
+
+    minimumWidth: 850
+    minimumHeight: 450
+
+
     visible: true
     title: qsTr("Huxley Chat")
     color: "#101010"

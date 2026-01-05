@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 116,
+                            "durationMicroseconds": 100,
                             "functionName": "fill",
                             "line": 8,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 16,
-                            "durationMicroseconds": 2662,
+                            "durationMicroseconds": 1462,
                             "functionName": "color",
                             "line": 12,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 46,
+                            "durationMicroseconds": 35,
                             "functionName": "fill",
                             "line": 11,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 121,
+                            "durationMicroseconds": 97,
                             "functionName": "visible",
                             "line": 17,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 49,
+                            "durationMicroseconds": 26,
                             "functionName": "fill",
                             "line": 16,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 0,
                             "column": 52,
-                            "durationMicroseconds": 65,
+                            "durationMicroseconds": 46,
                             "functionName": "color",
                             "line": 20,
                             "message": ""
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 0,
                             "column": 52,
-                            "durationMicroseconds": 60,
+                            "durationMicroseconds": 49,
                             "functionName": "color",
                             "line": 21,
                             "message": ""
@@ -64,7 +64,7 @@
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 151,
+                            "durationMicroseconds": 63,
                             "functionName": "visible",
                             "line": 27,
                             "message": ""
@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 0,
                             "column": 21,
-                            "durationMicroseconds": 62,
+                            "durationMicroseconds": 33,
                             "functionName": "source",
                             "line": 28,
                             "message": ""
@@ -80,7 +80,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 50,
+                            "durationMicroseconds": 28,
                             "functionName": "fillMode",
                             "line": 29,
                             "message": ""
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 37,
+                            "durationMicroseconds": 21,
                             "functionName": "fill",
                             "line": 26,
                             "message": ""
@@ -104,26 +104,26 @@
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 21,
                             "functionName": "fill",
-                            "line": 36,
+                            "line": 37,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 19,
+                            "functionName": "fill",
+                            "line": 54,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 38,
-                            "durationMicroseconds": 37,
+                            "column": 46,
+                            "durationMicroseconds": 24,
                             "functionName": "onSettingsRequested",
-                            "line": 42,
-                            "message": "Cannot retrieve a non-object type by ID: settingsDrawer"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 36,
-                            "functionName": "fill",
                             "line": 61,
-                            "message": ""
+                            "message": "Cannot retrieve a non-object type by ID: settingsDrawer"
                         }
                     ],
                     "filePath": "/home/josesilvaa/huxley-gui/chat/qml/ChatShell.qml"

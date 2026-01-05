@@ -18,138 +18,147 @@ Drawer {
         border.width: 1
     }
 
-    ColumnLayout {
-        anchors.fill: parent
-        anchors.margins: 14
-        spacing: 12
+    ScrollView {
+    anchors.fill: parent
+    clip: true
 
-        Label {
-            text: "Settings"
-            font.bold: true
-            color: Theme.text
-        }
+    ScrollBar.vertical.policy: ScrollBar.AsNeeded
 
-        Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 14
+            anchors.bottomMargin: 24
+            spacing: 12
 
-        // --- Appearance toggles ---
-        CustomCheckBox {
-            text: "Dark Mode"
-            checked: Theme.dark
-            onToggled: Theme.setDark(checked)
-        }
+            Label {
+                text: "Settings"
+                font.bold: true
+                color: Theme.text
+            }
 
-        CustomCheckBox {
-            text: "Gradient background"
-            checked: Theme.gradientOn
-            enabled: Theme.hasGradient
-            opacity: enabled ? 1 : 0.5
-            onToggled: Theme.setGradientOn(checked)
-        }
+            Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
 
-        CustomCheckBox {
-            text: "Decorations"
-            checked: Theme.decorationsOn
-            enabled: Theme.hasPattern
-            opacity: enabled ? 1 : 0.5
-            onToggled: Theme.setDecorationsOn(checked)
-        }
+            // --- Appearance toggles ---
+            CustomCheckBox {
+                text: "Dark Mode"
+                checked: Theme.dark
+                onToggled: Theme.setDark(checked)
+            }
 
-        CustomCheckBox {
-            text: "Reduced motion"
-            checked: Theme.reducedMotion
-            onToggled: Theme.setReducedMotion(checked)
-        }
+            CustomCheckBox {
+                text: "Gradient background"
+                checked: Theme.gradientOn
+                enabled: Theme.hasGradient
+                opacity: enabled ? 1 : 0.5
+                onToggled: Theme.setGradientOn(checked)
+            }
 
-        Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
+            CustomCheckBox {
+                text: "Decorations"
+                checked: Theme.decorationsOn
+                enabled: Theme.hasPattern
+                opacity: enabled ? 1 : 0.5
+                onToggled: Theme.setDecorationsOn(checked)
+            }
 
-        // --- Presets ---
-        Label { text: "Themes"; color: Theme.muted; font.pointSize: 10 }
+            CustomCheckBox {
+                text: "Reduced motion"
+                checked: Theme.reducedMotion
+                onToggled: Theme.setReducedMotion(checked)
+            }
 
-        Flow {
-            Layout.fillWidth: true
-            spacing: 10
+            Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
 
-            // We can’t iterate Theme.presets (object) directly; list them explicitly here.
-            // when adding more, make sure you don't forget to add them here too
-            Repeater {
-                model: [
-                    { id: "classic",   name: "Classic",   a: "#141c24", b: "#0f0f0f" },
-                    { id: "midnight",  name: "Midnight",  a: "#1b2a4a", b: "#0b1020" },
-                    { id: "synthwave", name: "Synthwave", a: "#2b1a6a", b: "#0a0620" },
-                    { id: "hearts",    name: "Hearts",    a: "#3a1f2a", b: "#0f0b10" }
-                ]
+            // --- Presets ---
+            Label { text: "Themes"; color: Theme.muted; font.pointSize: 10 }
 
-                delegate: Rectangle {
-                    width: (root.width - 14*2 - 10) / 2
-                    height: 74
-                    radius: Theme.radiusMd
-                    border.width: (Theme.presetId === modelData.id) ? 2 : 1
-                    border.color: (Theme.presetId === modelData.id) ? Theme.accent : Theme.border
-                    color: Theme.surface
+            Flow {
+                Layout.fillWidth: true
+                spacing: 10
 
-                    // preview gradient
-                    Rectangle {
-                        anchors.fill: parent
-                        radius: parent.radius
-                        opacity: 0.55
-                        gradient: Gradient {
-                            GradientStop { position: 0; color: modelData.a }
-                            GradientStop { position: 1; color: modelData.b }
-                        }
-                    }
+                // We can’t iterate Theme.presets (object) directly; list them explicitly here.
+                // when adding more, make sure you don't forget to add them here too
+                Repeater {
+                    model: [
+                        { id: "classic",   name: "Classic",   a: "#141c24", b: "#0f0f0f" },
+                        { id: "midnight",  name: "Midnight",  a: "#1b2a4a", b: "#0b1020" },
+                        { id: "synthwave", name: "Synthwave", a: "#2b1a6a", b: "#0a0620" },
+                        { id: "hearts",    name: "Hearts",    a: "#3a1f2a", b: "#0f0b10" }
+                    ]
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: Theme.setPreset(modelData.id)
-                    }
+                    delegate: Rectangle {
+                        width: (root.width - 14*2 - 10) / 2
+                        height: 74
+                        radius: Theme.radiusMd
+                        border.width: (Theme.presetId === modelData.id) ? 2 : 1
+                        border.color: (Theme.presetId === modelData.id) ? Theme.accent : Theme.border
+                        color: Theme.surface
 
-                    Column {
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.bottom: parent.bottom
-                        anchors.margins: 10
-                        spacing: 2
-
-                        Label {
-                            text: modelData.name
-                            color: Theme.text
-                            font.bold: true
-                            elide: Label.ElideRight
+                        // preview gradient
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: parent.radius
+                            opacity: 0.55
+                            gradient: Gradient {
+                                GradientStop { position: 0; color: modelData.a }
+                                GradientStop { position: 1; color: modelData.b }
+                            }
                         }
 
-                        Label {
-                            text: (Theme.presetId === modelData.id) ? "Selected" : ""
-                            color: Theme.muted
-                            font.pointSize: 9
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: Theme.setPreset(modelData.id)
+                        }
+
+                        Column {
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+                            anchors.margins: 10
+                            spacing: 2
+
+                            Label {
+                                text: modelData.name
+                                color: Theme.text
+                                font.bold: true
+                                elide: Label.ElideRight
+                            }
+
+                            Label {
+                                text: (Theme.presetId === modelData.id) ? "Selected" : ""
+                                color: Theme.muted
+                                font.pointSize: 9
+                            }
                         }
                     }
                 }
             }
-        }
 
-        Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
+            Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
 
-        // --- Accent ---
-        Label { text: "Accent"; color: Theme.muted; font.pointSize: 10 }
+            // --- Accent ---
+            Label { text: "Accent"; color: Theme.muted; font.pointSize: 10 }
 
-        RowLayout {
-            spacing: 10
-            Repeater {
-                model: Theme.accents
-                delegate: Rectangle {
-                    width: 22; height: 22; radius: 11
-                    color: modelData
-                    border.width: (index === Theme.accentIndex) ? 2 : 1
-                    border.color: (index === Theme.accentIndex) ? Theme.text : Theme.border
+            RowLayout {
+                spacing: 10
+                Repeater {
+                    model: Theme.accents
+                    delegate: Rectangle {
+                        width: 22; height: 22; radius: 11
+                        color: modelData
+                        border.width: (index === Theme.accentIndex) ? 2 : 1
+                        border.color: (index === Theme.accentIndex) ? Theme.text : Theme.border
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: Theme.setAccent(index)
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: Theme.setAccent(index)
+                        }
                     }
                 }
             }
-        }
 
-        Item { Layout.fillHeight: true }
+            Item { height: 8 }
+            Item { Layout.fillHeight: true }
+        }
     }
 }

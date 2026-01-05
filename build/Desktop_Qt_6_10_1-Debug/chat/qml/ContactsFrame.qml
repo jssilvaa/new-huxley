@@ -110,6 +110,7 @@ Rectangle {
 
                 color: selected ? Theme.surface : "transparent"
 
+                // need to fix this later 
                 border.color: selected ? Theme.accent : "transparent"
                 border.width: selected ? 1 : 0
 

@@ -65,26 +65,27 @@ Rectangle {
 
         Item { Layout.fillWidth: true }
 
-        Label {
-            text: Controller.connected ? "● Connected" : "● Disconnected"
-            color: Controller.connected ? Theme.accent : Theme.danger
-            font.pointSize: 10
+        // Label {
+        //     text: Controller.connected ? "● Connected" : "● Disconnected"
+        //     color: Controller.connected ? Theme.accent : Theme.danger
+        //     font.pointSize: 10
 
-            Behavior on color {
-                ColorAnimation { duration: Theme.animFast }
-            }
-        }
+        //     Behavior on color {
+        //         ColorAnimation { duration: Theme.animFast }
+        //     }
+        // }
 
-        Button {
-            text: "Refresh"
-            enabled: Controller.authenticated
-            opacity: enabled ? 1.0 : 0.4
-            onClicked: Controller.refreshUsers()
-        }
+        ToolButton {
+            icon.source: "../images/settings-icon.png"
+            icon.width: 18
+            icon.height: 18
+            flat: true
+            hoverEnabled: true
 
-        Button {
-            text: "⚙"
             onClicked: settingsRequested()
+
+            ToolTip.visible: hovered
+            ToolTip.text: "Settings"
         }
     }
 }

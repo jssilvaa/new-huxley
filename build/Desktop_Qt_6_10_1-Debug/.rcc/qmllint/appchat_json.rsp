@@ -26,5 +26,6 @@
 /home/josesilvaa/huxley-gui/chat/Utils/CustomInput.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomCheckBox.qml
 /home/josesilvaa/huxley-gui/chat/Utils/CustomButton.qml
+/home/josesilvaa/huxley-gui/chat/Utils/CustomLabel.qml
 --json
 /home/josesilvaa/huxley-gui/chat/build/Desktop_Qt_6_10_1-Debug/appchat_qmllint.json

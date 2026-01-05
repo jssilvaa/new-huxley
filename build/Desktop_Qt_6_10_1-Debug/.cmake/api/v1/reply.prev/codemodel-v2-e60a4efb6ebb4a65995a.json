@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-7bf578cba66f2a6175a7.json",
+					"jsonFile" : "directory-.-Debug-5825eb2359a5040e6137.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -72,7 +72,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-all_aotstats-Debug-db07cdc3ee0f4db5e575.json",
+					"jsonFile" : "target-all_aotstats-Debug-e52509b47e42926ceb21.json",
 					"name" : "all_aotstats",
 					"projectIndex" : 0
 				},
@@ -107,7 +107,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appchat::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appchat-Debug-ab78509e25dcd7b8631a.json",
+					"jsonFile" : "target-appchat-Debug-0b22180712e802c3cf3e.json",
 					"name" : "appchat",
 					"projectIndex" : 0
 				},
@@ -184,7 +184,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "module_appchat_aotstats_target::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-module_appchat_aotstats_target-Debug-1856c3d880080f2f0877.json",
+					"jsonFile" : "target-module_appchat_aotstats_target-Debug-0d2407102e2633bce87a.json",
 					"name" : "module_appchat_aotstats_target",
 					"projectIndex" : 0
 				}
