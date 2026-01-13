@@ -110,6 +110,38 @@ Rectangle {
             width: chat.width
             height: bubble.implicitHeight + 6
 
+            function dateKey(ts) {
+                return ts ? ts.split(" ")[0] : ""
+            }
+
+            property string myDate: dateKey(timestamp)
+            property string prevDate: index > 0
+                ? dateKey(chat.model.get(index - 1).timestamp)
+                : ""
+
+            Column {
+                width: parent.width
+                spacing: 6
+
+                // --- DATE SEPARATOR ---
+                Rectangle {
+                    visible: index === 0 || myDate !== prevDate
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    radius: 12
+                    color: Theme.surface
+                    border.color: Theme.border
+                    opacity: 0.95
+
+                    padding: 6
+
+                    Label {
+                        text: Qt.formatDate(new Date(myDate), "dddd, MMM d, yyyy")
+                        color: Theme.muted
+                        font.pointSize: 9
+                    }
+                }
+            }
+
             RowLayout {
                 anchors.fill: parent
 
