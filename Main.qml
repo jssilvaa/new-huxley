@@ -7,85 +7,99 @@ Window {
     id: root
     width: 1200
     height: 800
-
     minimumWidth: 850
     minimumHeight: 450
-
-
     visible: true
     title: qsTr("Huxley Chat")
-    color: "#101010"
+    color: Theme.bg
 
-    // controller object ready
     property bool controllerReady: Controller !== null
+    property string page: (controllerReady && Controller.authenticated) ? "chat"
+                       : (controllerReady && Controller.registering)   ? "register"
+                       : "login"
 
-    Loader {
-        id: rootLoader
+    // intro only once (first time app shows)
+    property real introT: 0
+    Component.onCompleted: introAnim.start()
+
+    NumberAnimation {
+        id: introAnim
+        target: root
+        property: "introT"
+        from: 0
+        to: 1
+        duration: Theme.reducedMotion ? 0 : Theme.animMed
+        easing.type: Easing.OutCubic
+    }
+
+    // --- Pages kept alive so transitions work ---
+    Item {
+        id: pages
         anchors.fill: parent
-        sourceComponent: controllerReady && Controller.authenticated ? chatShell :
-                         controllerReady && Controller.registering ? registerShell : loginShell
-    }
 
-    Component {
-        id: loginShell
+        // LOGIN
         LoginFrame {
+            id: loginPage
             anchors.fill: parent
-            visible: controllerReady && !Controller.authenticated && !Controller.registering
-            opacity: visible ? 1 : 0
-            Behavior on opacity { NumberAnimation { duration: Theme.animMed } }    
-         }
-    }
 
-    Component { 
-        id:  registerShell 
+            opacity: root.introT * (root.page === "login" ? 1 : 0)
+            visible: opacity > 0.01
+            enabled: root.page === "login"
+
+            // a tiny “pop” / drift
+            scale: root.page === "login" ? 1.0 : 0.985
+            y:     root.page === "login" ? 0   : 10
+
+            Behavior on opacity { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+            Behavior on scale   { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+            Behavior on y       { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+        }
+
+        // REGISTER
         RegisterFrame {
+            id: regPage
             anchors.fill: parent
-            visible: !Controller.authenticated && Controller.registering
-            opacity: visible ? 1 : 0
-            Behavior on opacity { NumberAnimation { duration: Theme.animMed } }    
-         }
-    }
 
-    Component {
-        id: chatShell
+            opacity: root.introT * (root.page === "register" ? 1 : 0)
+            visible: opacity > 0.01
+            enabled: root.page === "register"
+
+            scale: root.page === "register" ? 1.0 : 0.985
+            y:     root.page === "register" ? 0   : 10
+
+            Behavior on opacity { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+            Behavior on scale   { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+            Behavior on y       { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+        }
+
+        // CHAT (slide in slightly from right)
         ChatShell {
+            id: chatPage
             anchors.fill: parent
-            visible: Controller.authenticated
-            opacity: visible ? 1 : 0
-            Behavior on opacity { NumberAnimation { duration: Theme.animMed } }
-         }
+
+            opacity: root.introT * (root.page === "chat" ? 1 : 0)
+            visible: opacity > 0.01
+            enabled: root.page === "chat"
+
+            x: root.page === "chat" ? 0 : 18
+            Behavior on opacity { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+            Behavior on x       { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+        }
     }
 
+    // toasts unchanged…
     ToastHost {
         id: toasts
         parent: root.contentItem
         anchors.fill: parent
-
         Component.onCompleted: toasts.show("Toast System Online", false)
     }
 
     Connections {
         target: Controller
-        function onToast(msg) {
-            toasts.show(msg, false)
-        }
-        function onError(msg) {
-            toasts.show(msg, true)
-        }
+        function onToast(msg) { toasts.show(msg, false) }
+        function onError(msg) { toasts.show(msg, true) }
     }
 
-    // Keep logs centralized while building.
-    Connections {
-        target: Controller
-        function onToast(msg) { console.log("[TOAST]", msg) }
-        function onError(msg) { console.error("[ERROR]", msg) }
-        function onConnectedChanged() { console.log("[STATE] connected =", Controller.connected) }
-        function onAuthenticatedChanged() { console.log("[STATE] authenticated =", Controller.authenticated) }
-    }
-
-    // quit with ctrl w 
-    Action {
-        shortcut: "Ctrl+w"
-        onTriggered: Qt.quit()
-    }
+    Action { shortcut: "Ctrl+w"; onTriggered: Qt.quit() }
 }

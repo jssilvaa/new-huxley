@@ -18,7 +18,9 @@ public:
         SenderRole = Qt::UserRole + 1, 
         ContentRole,
         TimestampRole, 
-        IsOwnRole
+        IsOwnRole,
+        DayLabelRole,
+        DayStartRole
     }; 
 
     explicit ChatHistoryModel(QObject* parent = nullptr); 
@@ -34,4 +36,3 @@ public slots:
 private: 
     QVector<ChatMessage> m_messages; 
 };
-

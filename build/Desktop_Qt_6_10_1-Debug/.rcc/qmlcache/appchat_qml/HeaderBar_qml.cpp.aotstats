@@ -8,7 +8,7 @@
                         {
                             "codegenResult": 0,
                             "column": 12,
-                            "durationMicroseconds": 2011,
+                            "durationMicroseconds": 3556,
                             "functionName": "color",
                             "line": 10,
                             "message": ""
@@ -16,7 +16,7 @@
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 49,
+                            "durationMicroseconds": 81,
                             "functionName": "color",
                             "line": 11,
                             "message": ""
@@ -24,7 +24,7 @@
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 29,
+                            "durationMicroseconds": 44,
                             "functionName": "fill",
                             "line": 15,
                             "message": ""
@@ -32,7 +32,7 @@
                         {
                             "codegenResult": 0,
                             "column": 30,
-                            "durationMicroseconds": 25,
+                            "durationMicroseconds": 55,
                             "functionName": "sourceComponent",
                             "line": 22,
                             "message": ""
@@ -40,7 +40,7 @@
                         {
                             "codegenResult": 0,
                             "column": 45,
-                            "durationMicroseconds": 31,
+                            "durationMicroseconds": 75,
                             "functionName": "duration",
                             "line": 26,
                             "message": ""
@@ -48,7 +48,7 @@
                         {
                             "codegenResult": 2,
                             "column": 25,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 94,
                             "functionName": "target",
                             "line": 30,
                             "message": "Cannot access value for name Controller"
@@ -56,7 +56,7 @@
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 94,
+                            "durationMicroseconds": 211,
                             "functionName": "onCurrentPeerChanged",
                             "line": 31,
                             "message": "Cannot generate efficient code for LoadClosure"
@@ -88,7 +88,7 @@
                         {
                             "codegenResult": 2,
                             "column": 22,
-                            "durationMicroseconds": 103,
+                            "durationMicroseconds": 206,
                             "functionName": "visible",
                             "line": 52,
                             "message": "Cannot access value for name Controller"
@@ -96,7 +96,7 @@
                         {
                             "codegenResult": 2,
                             "column": 24,
-                            "durationMicroseconds": 95,
+                            "durationMicroseconds": 163,
                             "functionName": "color",
                             "line": 56,
                             "message": "Cannot access value for name Controller"

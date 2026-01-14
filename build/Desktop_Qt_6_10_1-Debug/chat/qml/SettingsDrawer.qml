@@ -81,6 +81,7 @@ Drawer {
                 Repeater {
                     model: [
                         { id: "classic",   name: "Classic",   a: "#141c24", b: "#0f0f0f" },
+                        { id: "minimal",   name: "Minimal",   a: "#f7f7f5", b: "#ffffff" },
                         { id: "midnight",  name: "Midnight",  a: "#1b2a4a", b: "#0b1020" },
                         { id: "synthwave", name: "Synthwave", a: "#2b1a6a", b: "#0a0620" },
                         { id: "hearts",    name: "Hearts",    a: "#3a1f2a", b: "#0f0b10" }

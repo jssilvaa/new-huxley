@@ -2,6 +2,7 @@
 #include "ClientController.h"
 #include "model/ChatHistoryModel.h"
 #include "service/MessageService.h"
+#include <algorithm>
 #include <qcontainerfwd.h>
 #include <qjsondocument.h>
 #include <qjsonobject.h>
@@ -13,6 +14,13 @@ namespace {
         const auto dt = QDateTime::fromString(isoTs, Qt::ISODate);
         if (!dt.isValid()) return isoTs; 
         return dt.toLocalTime().toString("yyyy-MM-dd HH:mm:ss");
+    }
+
+    static qint64 timestampToMs(const QString& ts) {
+        QDateTime dt = QDateTime::fromString(ts, "yyyy-MM-dd HH:mm:ss");
+        if (!dt.isValid()) dt = QDateTime::fromString(ts, Qt::ISODate);
+        if (!dt.isValid()) return 0;
+        return dt.toMSecsSinceEpoch();
     }
 }
 
@@ -254,6 +262,9 @@ void ClientController::onHistoryReceived(const QString& peer, const QVector<QJso
 
         out.push_back(cm);
     }
+    std::sort(out.begin(), out.end(), [](const ChatMessage& a, const ChatMessage& b) {
+        return timestampToMs(a.timestamp) < timestampToMs(b.timestamp);
+    });
 
     // update preview 
     if (!out.isEmpty()) {
@@ -263,6 +274,22 @@ void ClientController::onHistoryReceived(const QString& peer, const QVector<QJso
 
     // only change chat view if in user window
     if (peer != m_currentPeer) return; 
+
+    if (out.size() == 1 && m_chat.rowCount() > 0) {
+        const auto& single = out.front();
+        const int lastRow = m_chat.rowCount() - 1;
+        const QModelIndex lastIdx = m_chat.index(lastRow);
+        const QString lastSender = m_chat.data(lastIdx, ChatHistoryModel::SenderRole).toString();
+        const QString lastContent = m_chat.data(lastIdx, ChatHistoryModel::ContentRole).toString();
+        const QString lastTimestamp = m_chat.data(lastIdx, ChatHistoryModel::TimestampRole).toString();
+
+        if (lastSender == single.sender && lastContent == single.content && lastTimestamp == single.timestamp) {
+            return;
+        }
+
+        m_chat.appendMessage(single);
+        return;
+    }
 
     emit clearChat(); // temp placeholder for later message id greedy append
     m_chat.resetHistory(out);
@@ -307,7 +334,7 @@ void ClientController::onSendMessageResponse(bool ok, const QString& msg) {
 
     // if ok, getHistory to append new message
     if (ok) {
-        m_msgservice.getHistory(m_currentPeer); 
+        m_msgservice.getHistory(m_currentPeer, 1); 
     } else { 
         emit error(QString("Send failed: %1").arg(msg)); 
         // optional mark as failed with options 

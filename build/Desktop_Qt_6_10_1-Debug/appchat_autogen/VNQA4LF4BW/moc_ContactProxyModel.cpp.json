@@ -3,6 +3,22 @@
         {
             "className": "ContactProxyModel",
             "lineNumber": 9,
+            "methods": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "username",
+                            "type": "QString"
+                        }
+                    ],
+                    "index": 1,
+                    "isConst": true,
+                    "lineNumber": 27,
+                    "name": "rowForUser",
+                    "returnType": "int"
+                }
+            ],
             "object": true,
             "properties": [
                 {
@@ -27,7 +43,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 29,
+                    "lineNumber": 30,
                     "name": "filterTextChanged",
                     "returnType": "void"
                 }

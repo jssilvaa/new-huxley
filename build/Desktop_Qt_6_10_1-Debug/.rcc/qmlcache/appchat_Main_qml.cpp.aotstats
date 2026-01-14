@@ -6,155 +6,363 @@
                 {
                     "entries": [
                         {
+                            "codegenResult": 0,
+                            "column": 12,
+                            "durationMicroseconds": 2253,
+                            "functionName": "color",
+                            "line": 14,
+                            "message": ""
+                        },
+                        {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 158,
+                            "durationMicroseconds": 132,
                             "functionName": "controllerReady",
-                            "line": 20,
+                            "line": 16,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 26,
-                            "durationMicroseconds": 291,
-                            "functionName": "sourceComponent",
-                            "line": 25,
-                            "message": "Cannot access value for name controllerReady"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 80,
-                            "functionName": "fill",
-                            "line": 24,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 22,
-                            "durationMicroseconds": 170,
-                            "functionName": "visible",
-                            "line": 33,
-                            "message": "Cannot access value for name Controller"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 81,
-                            "functionName": "opacity",
-                            "line": 34,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 33,
-                            "functionName": "fill",
+                            "durationMicroseconds": 192,
+                            "functionName": "page",
+                            "line": 17,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 79,
+                            "functionName": "onCompleted",
+                            "line": 23,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 17,
+                            "durationMicroseconds": 34,
+                            "functionName": "target",
+                            "line": 27,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 19,
+                            "durationMicroseconds": 113,
+                            "functionName": "duration",
+                            "line": 31,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 39,
+                            "functionName": "type",
                             "line": 32,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 63,
-                            "durationMicroseconds": 2429,
-                            "functionName": "duration",
-                            "line": 35,
+                            "column": 23,
+                            "durationMicroseconds": 32,
+                            "functionName": "fill",
+                            "line": 38,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 22,
-                            "durationMicroseconds": 276,
-                            "functionName": "visible",
-                            "line": 43,
-                            "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
                             "column": 22,
-                            "durationMicroseconds": 85,
+                            "durationMicroseconds": 161,
                             "functionName": "opacity",
-                            "line": 44,
+                            "line": 45,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 55,
+                            "functionName": "visible",
+                            "line": 46,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 59,
+                            "functionName": "enabled",
+                            "line": 47,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 20,
+                            "durationMicroseconds": 102,
+                            "functionName": "scale",
+                            "line": 50,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 20,
+                            "durationMicroseconds": 92,
+                            "functionName": "y",
+                            "line": 51,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 25,
                             "functionName": "fill",
-                            "line": 42,
+                            "line": 43,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 54,
+                            "durationMicroseconds": 105,
                             "functionName": "duration",
-                            "line": 45,
+                            "line": 53,
                             "message": ""
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 22,
-                            "durationMicroseconds": 92,
-                            "functionName": "visible",
+                            "codegenResult": 0,
+                            "column": 117,
+                            "durationMicroseconds": 34,
+                            "functionName": "type",
                             "line": 53,
-                            "message": "Cannot access value for name Controller"
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 67,
-                            "functionName": "opacity",
+                            "column": 63,
+                            "durationMicroseconds": 97,
+                            "functionName": "duration",
                             "line": 54,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 27,
-                            "durationMicroseconds": 29,
-                            "functionName": "fill",
-                            "line": 52,
+                            "column": 117,
+                            "durationMicroseconds": 30,
+                            "functionName": "type",
+                            "line": 54,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 63,
-                            "durationMicroseconds": 41,
+                            "durationMicroseconds": 106,
                             "functionName": "duration",
                             "line": 55,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 17,
-                            "durationMicroseconds": 42,
-                            "functionName": "parent",
+                            "column": 117,
+                            "durationMicroseconds": 32,
+                            "functionName": "type",
+                            "line": 55,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 161,
+                            "functionName": "opacity",
+                            "line": 63,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 51,
+                            "functionName": "visible",
+                            "line": 64,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 58,
+                            "functionName": "enabled",
+                            "line": 65,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 20,
+                            "durationMicroseconds": 97,
+                            "functionName": "scale",
+                            "line": 67,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 20,
+                            "durationMicroseconds": 90,
+                            "functionName": "y",
+                            "line": 68,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 25,
+                            "functionName": "fill",
                             "line": 61,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 34,
+                            "column": 63,
+                            "durationMicroseconds": 101,
+                            "functionName": "duration",
+                            "line": 70,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 117,
+                            "durationMicroseconds": 35,
+                            "functionName": "type",
+                            "line": 70,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 63,
+                            "durationMicroseconds": 92,
+                            "functionName": "duration",
+                            "line": 71,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 117,
+                            "durationMicroseconds": 29,
+                            "functionName": "type",
+                            "line": 71,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 63,
+                            "durationMicroseconds": 93,
+                            "functionName": "duration",
+                            "line": 72,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 117,
+                            "durationMicroseconds": 28,
+                            "functionName": "type",
+                            "line": 72,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 147,
+                            "functionName": "opacity",
+                            "line": 80,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 47,
+                            "functionName": "visible",
+                            "line": 81,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 56,
+                            "functionName": "enabled",
+                            "line": 82,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 16,
+                            "durationMicroseconds": 94,
+                            "functionName": "x",
+                            "line": 84,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 24,
                             "functionName": "fill",
-                            "line": 62,
+                            "line": 78,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 63,
+                            "durationMicroseconds": 96,
+                            "functionName": "duration",
+                            "line": 85,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 117,
+                            "durationMicroseconds": 43,
+                            "functionName": "type",
+                            "line": 85,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 63,
+                            "durationMicroseconds": 90,
+                            "functionName": "duration",
+                            "line": 86,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 117,
+                            "durationMicroseconds": 28,
+                            "functionName": "type",
+                            "line": 86,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 17,
+                            "durationMicroseconds": 38,
+                            "functionName": "parent",
+                            "line": 93,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 24,
+                            "functionName": "fill",
+                            "line": 94,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 113,
+                            "durationMicroseconds": 101,
                             "functionName": "onCompleted",
-                            "line": 64,
+                            "line": 95,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 39,
+                            "durationMicroseconds": 42,
                             "functionName": "target",
-                            "line": 68,
+                            "line": 99,
                             "message": "Cannot access value for name Controller"
                         },
                         {
@@ -162,7 +370,7 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onToast",
-                            "line": 69,
+                            "line": 100,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -170,55 +378,15 @@
                             "column": 9,
                             "durationMicroseconds": 0,
                             "functionName": "onError",
-                            "line": 72,
+                            "line": 101,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 17,
-                            "durationMicroseconds": 37,
-                            "functionName": "target",
-                            "line": 79,
-                            "message": "Cannot access value for name Controller"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 9,
-                            "durationMicroseconds": 0,
-                            "functionName": "onToast",
-                            "line": 80,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 9,
-                            "durationMicroseconds": 0,
-                            "functionName": "onError",
-                            "line": 81,
-                            "message": "Functions without type annotations won't be compiled"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 9,
-                            "durationMicroseconds": 43,
-                            "functionName": "onConnectedChanged",
-                            "line": 82,
-                            "message": "Cannot access value for name Controller"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 9,
-                            "durationMicroseconds": 35,
-                            "functionName": "onAuthenticatedChanged",
-                            "line": 83,
-                            "message": "Cannot access value for name Controller"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 22,
+                            "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 89,
+                            "line": 104,
                             "message": "Could not find signal \"triggered\"."
                         }
                     ],

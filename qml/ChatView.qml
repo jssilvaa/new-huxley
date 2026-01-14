@@ -11,6 +11,15 @@ Rectangle {
     Layout.minimumWidth: 500
     Layout.minimumHeight: 300
 
+    function formatMessageTime(ts) {
+        if (!ts || ts.length === 0) return ""
+
+        const d = new Date(ts)
+        if (isNaN(d.getTime())) return ts
+
+        return Qt.formatTime(d, "hh:mm")
+    }
+
     // Empty states
     Column {
         anchors.centerIn: parent
@@ -31,12 +40,17 @@ Rectangle {
         clip: true
         spacing: 10
         model: Controller.chat
+        reuseItems: true
+        cacheBuffer: Math.max(0, height * 2)
 
         property bool ready: false
+        property bool isResetting: false
+        property bool pendingPositionEnd: false
+        interactive: !isResetting
         visible: ready 
         opacity: ready ? 1.0 : 0.0
         Behavior on opacity {
-            NumberAnimation { duration: Theme.animFast }
+            NumberAnimation { duration: chat.isResetting ? 0 : Theme.animFast }
         }
 
         Connections {
@@ -44,6 +58,7 @@ Rectangle {
             function onCurrentPeerChanged() {
                 chat.ready = false 
                 chat.stickToBottom = true
+                chat.isResetting = true
             }
         }
 
@@ -51,13 +66,31 @@ Rectangle {
         Connections {
             target: Controller 
             function onClearChat() {
-                chat.ready = false
+                chat.isResetting = true
+                chat.pendingPositionEnd = true
             }
             function onShowChat() {
+                if (!chat.ready) chat.ready = true
                 Qt.callLater(() => {
-                    chat.positionViewAtEnd() 
-                    chat.ready = true
+                    chat.forceLayout()
+                    if (chat.pendingPositionEnd) {
+                        chat.positionViewAtEnd()
+                        chat.pendingPositionEnd = false
+                    }
+                    chat.isResetting = false
                 })
+            }
+        }
+
+        Connections {
+            target: Controller
+            function onMessageSubmitted() {
+                chat.stickToBottom = true
+                if (chat.isResetting || !chat.ready) {
+                    chat.pendingPositionEnd = true
+                    return
+                }
+                Qt.callLater(() => chat.positionViewAtEnd())
             }
         }
 
@@ -81,6 +114,7 @@ Rectangle {
         } 
 
         onCountChanged: {
+            if (isResetting) return
             if (count > 0 && stickToBottom) {
                 Qt.callLater(function() {
                     positionViewAtEnd()
@@ -90,80 +124,135 @@ Rectangle {
                 ready = true 
             }
         }
+
+
+        header: Item {
+            width: chat.width
+            height: headerText.visible ? headerText.implicitHeight + 16 : 0
+            visible: Controller.hasPeer
+
+            Label {
+                id: headerText
+                anchors.centerIn: parent
+                width: Math.min(chat.width * 0.8, 460)
+                text: Controller.hasPeer
+                      ? "This is the beggining of your conversation with " + Controller.currentPeer
+                      : ""
+                color: Theme.muted
+                font.pointSize: 9
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignHCenter
+                visible: Controller.hasPeer
+            }
+        }
         
         add: Transition {
             ParallelAnimation {
-                NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: Theme.animFast }
-                NumberAnimation { properties: "y"; from: y + 6; to: y; duration: Theme.animFast }
+                NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: chat.isResetting ? 0 : Theme.animFast }
+                NumberAnimation { properties: "y"; from: y + 6; to: y; duration: chat.isResetting ? 0 : Theme.animFast }
             }
         }
 
         remove: Transition {
             ParallelAnimation {
-                NumberAnimation { properties: "opacity"; from: 1; to: 0; duration: Theme.animFast }
-                NumberAnimation { properties: "y"; from: y; to: y - 6; duration: Theme.animFast }
+                NumberAnimation { properties: "opacity"; from: 1; to: 0; duration: chat.isResetting ? 0 : Theme.animFast }
+                NumberAnimation { properties: "y"; from: y; to: y - 6; duration: chat.isResetting ? 0 : Theme.animFast }
             }
         }
 
         delegate: Item {
             id: row
             width: chat.width
-            height: bubble.implicitHeight + 6
+            implicitHeight: contentColumn.implicitHeight
+            height: implicitHeight
 
-            RowLayout {
-                anchors.fill: parent
+            Column {
+                id: contentColumn
+                width: parent.width
+                spacing: 6
 
-                Item { Layout.fillWidth: true; visible: isOwn }  // left spacer
+                Item {
+                    width: parent.width
+                    height: dayPill.visible ? dayPill.implicitHeight + 6 : 0
+                    visible: dayPill.visible
 
-                Rectangle {
-                    id: bubble
-                    radius: Theme.radiusSm
-                    color: isOwn ? Theme.bubbleOwn : Theme.bubblePeer
-                    border.color: Theme.border
-                    border.width: 1
+                    Rectangle {
+                        id: dayPill
+                        anchors.centerIn: parent
+                        radius: 999
+                        color: Theme.surface
+                        border.color: Theme.border
+                        border.width: 1
+                        visible: dayStart && dayLabel && dayLabel.length > 0
 
-                    Layout.alignment: isOwn ? Qt.AlignRight : Qt.AlignLeft
-                    Layout.maximumWidth: Math.floor(chat.width * 0.72)
-
-                    implicitWidth: bubbleContent.implicitWidth + 24
-                    implicitHeight: bubbleContent.implicitHeight + 18
-
-                    ColumnLayout {
-                        id: bubbleContent
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        anchors.margins: 10
-                        spacing: 4
+                        implicitWidth: dayLabelText.implicitWidth + 20
+                        implicitHeight: dayLabelText.implicitHeight + 6
 
                         Label {
-                            visible: !isOwn
-                            text: sender
+                            id: dayLabelText
+                            anchors.centerIn: parent
+                            text: dayLabel
                             color: Theme.muted
                             font.pointSize: 9
-                            elide: Label.ElideRight
-                        }
-
-                        Text {
-                            text: content
-                            color: Theme.text
-                            wrapMode: Text.Wrap
-                            textFormat: Text.PlainText
-                            width: Math.min(implicitWidth, bubble.Layout.maximumWidth - 20)
-                        }
-
-                        Label {
-                            visible: timestamp && timestamp.length > 0
-                            text: timestamp
-                            color: Theme.muted
-                            font.pointSize: 8
-                            horizontalAlignment: Text.AlignRight
-                            Layout.fillWidth: true
                         }
                     }
                 }
 
-                Item { Layout.fillWidth: true; visible: !isOwn } // right spacer
+                RowLayout {
+                    width: parent.width
+
+                    Item { Layout.fillWidth: true; visible: isOwn }  // left spacer
+
+                    Rectangle {
+                        id: bubble
+                        radius: Theme.radiusSm
+                        color: isOwn ? Theme.bubbleOwn : Theme.bubblePeer
+                        border.color: Theme.border
+                        border.width: 1
+
+                        Layout.alignment: isOwn ? Qt.AlignRight : Qt.AlignLeft
+                        Layout.maximumWidth: Math.floor(chat.width * 0.72)
+
+                        implicitWidth: bubbleContent.implicitWidth + 24
+                        implicitHeight: bubbleContent.implicitHeight + 18
+
+                        ColumnLayout {
+                            id: bubbleContent
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.top: parent.top
+                            anchors.margins: 10
+                            spacing: 4
+
+                            Label {
+                                visible: !isOwn
+                                text: sender
+                                color: Theme.muted
+                                font.pointSize: 9
+                                elide: Label.ElideRight
+                            }
+
+                            Text {
+                                text: content
+                                color: Theme.text
+                                wrapMode: Text.Wrap
+                                textFormat: Text.PlainText
+                                width: Math.min(implicitWidth, bubble.Layout.maximumWidth - 20)
+                            }
+
+                            Label {
+                                visible: timestamp && timestamp.length > 0
+                                text: formatMessageTime(timestamp)
+                                color: Theme.muted
+                                font.pointSize: 8
+                                horizontalAlignment: Text.AlignRight
+                                Layout.fillWidth: true
+                            }
+                        }
+                    }
+
+                    Item { Layout.fillWidth: true; visible: !isOwn } // right spacer
+                }
             }
         }
 

@@ -8,65 +8,137 @@
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 156,
+                            "durationMicroseconds": 152,
                             "functionName": "showIcon",
-                            "line": 9,
+                            "line": 10,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 29,
+                            "durationMicroseconds": 4267,
+                            "functionName": "fieldBg",
+                            "line": 12,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 108,
+                            "functionName": "fieldText",
+                            "line": 13,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 210,
+                            "functionName": "fieldMuted",
+                            "line": 14,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
                             "codegenResult": 2,
                             "column": 19,
                             "durationMicroseconds": 0,
                             "functionName": "rightPadding",
-                            "line": 18,
+                            "line": 22,
                             "message": "Could not find property \"rightPadding\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 27,
+                            "durationMicroseconds": 0,
+                            "functionName": "placeholderTextColor",
+                            "line": 24,
+                            "message": "Could not find property \"placeholderTextColor\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 12,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 25,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 21,
+                            "durationMicroseconds": 0,
+                            "functionName": "selectionColor",
+                            "line": 26,
+                            "message": "Could not find property \"selectionColor\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 24,
+                            "durationMicroseconds": 0,
+                            "functionName": "selectedTextColor",
+                            "line": 27,
+                            "message": "Could not find property \"selectedTextColor\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 16,
+                            "durationMicroseconds": 42,
+                            "functionName": "color",
+                            "line": 31,
+                            "message": "Cannot access value for name fieldBg"
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 75,
+                            "durationMicroseconds": 64,
                             "functionName": "fill",
-                            "line": 24,
+                            "line": 30,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 101,
+                            "functionName": "color",
+                            "line": 32,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 18,
-                            "durationMicroseconds": 35,
+                            "durationMicroseconds": 30,
                             "functionName": "visible",
-                            "line": 30,
+                            "line": 38,
                             "message": "Cannot access value for name showIcon"
                         },
                         {
                             "codegenResult": 2,
                             "column": 17,
-                            "durationMicroseconds": 26,
+                            "durationMicroseconds": 23,
                             "functionName": "source",
-                            "line": 31,
+                            "line": 39,
                             "message": "Cannot access value for name iconSource"
                         },
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 82,
+                            "durationMicroseconds": 75,
                             "functionName": "fillMode",
-                            "line": 40,
+                            "line": 48,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 20,
-                            "durationMicroseconds": 110,
+                            "durationMicroseconds": 392,
                             "functionName": "right",
-                            "line": 34,
+                            "line": 42,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 29,
-                            "durationMicroseconds": 100,
+                            "durationMicroseconds": 110,
                             "functionName": "verticalCenter",
-                            "line": 36,
+                            "line": 44,
                             "message": ""
                         }
                     ],

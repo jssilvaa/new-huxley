@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls.impl
 import QtQuick.Templates as T
+import chat 1.0
 
 T.Button {
     id: control
@@ -16,8 +17,19 @@ T.Button {
 
     icon.width: 24
     icon.height: 24
-    icon.color: control.checked || control.highlighted ? control.palette.brightText :
-                control.flat && !control.down ? (control.visualFocus ? control.palette.highlight : control.palette.windowText) : control.palette.buttonText
+    property color buttonBg: {
+        const base = control.enabled ? Theme.accent : Theme.border
+        if (control.down) return Qt.darker(base, 1.15)
+        if (control.hovered) return Qt.darker(base, 1.08)
+        return base
+    }
+    property color buttonText: {
+        if (!control.enabled) return Theme.muted
+        if (control.flat && !control.down && !control.checked && !control.highlighted) return Theme.text
+        return Theme.onAccent
+    }
+
+    icon.color: buttonText
 
     contentItem: IconLabel {
         spacing: control.spacing
@@ -27,15 +39,15 @@ T.Button {
         icon: control.icon
         text: control.text
         font.pointSize: 12
-        color: "#FFF"
+        color: control.buttonText
     }
 
     background: Rectangle {
         implicitWidth: 100
         implicitHeight: 40
         visible: !control.flat || control.down || control.checked || control.highlighted
-        color: control.hovered ? "#2a2a2a" : "#202020"
-        border.color: control.visualFocus ? control.palette.highlight : control.palette.windowText
+        color: control.buttonBg
+        border.color: control.visualFocus ? Theme.accent : Theme.border
         border.width: control.visualFocus ? 2 :
                       Qt.styleHints.accessibility.contrastPreference === Qt.HighContrast ? 1 : 0
         radius: 10

@@ -24,6 +24,7 @@ public:
         endFilterChange(); 
         emit filterTextChanged(); 
     }
+    Q_INVOKABLE int rowForUser(const QString& username) const;
 
 signals: 
     void filterTextChanged();

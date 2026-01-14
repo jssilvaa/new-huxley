@@ -28,3 +28,15 @@ bool ContactProxyModel::lessThan(const QModelIndex& l, const QModelIndex& r) con
     const auto ru = sourceModel()->data(r, ContactListModel::UsernameRole).toString();
     return lu.localeAwareCompare(ru) < 0; 
 }
+
+int ContactProxyModel::rowForUser(const QString& username) const {
+    if (username.isEmpty()) return -1;
+
+    for (int i = 0; i < rowCount(); ++i) {
+        const auto idx = index(i, 0);
+        const auto user = data(idx, ContactListModel::UsernameRole).toString();
+        if (user == username) return i;
+    }
+
+    return -1;
+}

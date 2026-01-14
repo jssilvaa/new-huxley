@@ -30,7 +30,10 @@ QtObject {
     // ---- mutators ----
     function setDark(v) { store.dark = v }
     function setAccent(i) { store.accentIndex = Math.max(0, Math.min(i, accents.length - 1)) }
-    function setPreset(id) { store.presetId = id }
+    function setPreset(id) {
+        store.presetId = id
+        if (id === "minimal" && store.dark) store.dark = false
+    }
     function setGradientOn(v) { store.gradientOn = v }
     function setDecorationsOn(v) { store.decorationsOn = v }
     function setReducedMotion(v) { store.reducedMotion = v }
@@ -48,6 +51,28 @@ QtObject {
             blurb: "Neutral, readable.",
             gradA: "#141c24",
             gradB: "#0f0f0f"
+        },
+        minimal: {
+            name: "Minimal",
+            blurb: "Light canvas, dark sidebar.",
+            // light
+            bgLight: "#f7f7f5",
+            panelLight: "#ffffff",
+            panel2Light: "#f2f3f5",
+            surfaceLight: "#ffffff",
+            borderLight: "#d8dde3",
+            bubbleOwnLight: "#e2f0e7",
+            bubblePeerLight: "#ffffff",
+            gradALight: "#f7f7f5",
+            gradBLight: "#ffffff",
+
+            // contacts sidebar (light mode only)
+            contactsPanel: "#171a1d",
+            contactsPanel2: "#20242a",
+            contactsSurface: "#1f2328",
+            contactsBorder: "#2a2f36",
+            contactsText: "#f3f5f7",
+            contactsMuted: "#aab2bd"
         },
         midnight: {
             name: "Midnight",
@@ -122,6 +147,16 @@ QtObject {
         const p = preset()
         return (p[key] !== undefined) ? p[key] : fallbackValue
     }
+    function luminance(c) {
+        return 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b
+    }
+    function contrastText(bg) {
+        return luminance(bg) > 0.55 ? "#111111" : "#f5f5f5"
+    }
+    function mutedText(bg) {
+        const base = contrastText(bg)
+        return luminance(bg) > 0.55 ? Qt.lighter(base, 1.8) : Qt.darker(base, 1.4)
+    }
 
     // ---- tokens (fallback = Classic values) ----
     readonly property color bg:      dark ? pick("bgDark",      "#0f0f0f") : pick("bgLight",      "#f5f5f5")
@@ -135,6 +170,23 @@ QtObject {
 
     readonly property color bubblePeer: dark ? pick("bubblePeerDark", "#1b1b1b") : pick("bubblePeerLight", "#ffffff")
     readonly property color bubbleOwn:  dark ? pick("bubbleOwnDark",  "#1f3b2d") : pick("bubbleOwnLight",  "#dff5e6")
+
+    // adaptive text colors for surfaces
+    readonly property color onBg: contrastText(bg)
+    readonly property color onPanel: contrastText(panel)
+    readonly property color onPanel2: contrastText(panel2)
+    readonly property color onSurface: contrastText(surface)
+    readonly property color onAccent: contrastText(accent)
+    readonly property color onBubblePeer: contrastText(bubblePeer)
+    readonly property color onBubbleOwn: contrastText(bubbleOwn)
+
+    // contacts sidebar overrides (defaults to standard tokens)
+    readonly property color contactsPanel: pick("contactsPanel", panel)
+    readonly property color contactsPanel2: pick("contactsPanel2", panel2)
+    readonly property color contactsSurface: pick("contactsSurface", surface)
+    readonly property color contactsBorder: pick("contactsBorder", border)
+    readonly property color contactsText: pick("contactsText", contrastText(contactsPanel))
+    readonly property color contactsMuted: pick("contactsMuted", mutedText(contactsPanel))
 
     // gradient tokens
     readonly property bool hasGradient: preset().gradA !== undefined && preset().gradB !== undefined

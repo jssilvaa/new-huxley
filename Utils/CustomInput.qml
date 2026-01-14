@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import chat 1.0
 
 TextField {
     id: control
@@ -8,6 +9,9 @@ TextField {
     property string iconSource: ""
     property bool showIcon: iconSource != ""
     property alias maximumLength: control.maximumLength
+    property color fieldBg: Theme.panel2
+    property color fieldText: Theme.onPanel2
+    property color fieldMuted: Theme.mutedText(Theme.panel2)
 
     // textfield inherits text, echomode, placeholdertext, enabled, readonly
     // this is already exposed. no need to do it twice
@@ -17,12 +21,16 @@ TextField {
     leftPadding: 16
     rightPadding: showIcon ? 44 : 16
 
-    placeholderTextColor: "#999"
-    color: "#1e1e1e"
+    placeholderTextColor: fieldMuted
+    color: fieldText
+    selectionColor: Theme.accent
+    selectedTextColor: Theme.onAccent
 
     background: Rectangle {
         anchors.fill: parent
-        color: "#e7e7e7"
+        color: fieldBg
+        border.color: Theme.border
+        border.width: 1
         radius: 20
     }
 
@@ -40,4 +48,3 @@ TextField {
         fillMode: Image.PreserveAspectFit
     }
 }
-

@@ -56,6 +56,7 @@ public:
         if (!m_authenticated) return; 
         if (m_currentPeer.isEmpty()) { emit error("No peer selected"); return; }
 
+        emit messageSubmitted();
         m_msgservice.sendMessage(m_currentPeer, content); 
     }
     Q_INVOKABLE int unreadCount(const QString& user) const {
@@ -87,6 +88,7 @@ signals:
     void focusContactsChanged(); 
     void clearChat(); // temporary logic, not scalable, but works for now 
     void showChat();
+    void messageSubmitted();
 
     void toast(QString msg); 
     void error(QString msg);

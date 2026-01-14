@@ -5,8 +5,8 @@ import QtQuick.Layouts
 import chat 1.0
 
 Rectangle {
-    color: Theme.panel
-    border.color: Theme.border
+    color: Theme.contactsPanel
+    border.color: Theme.contactsBorder
     border.width: 1
 
     function formatTime(ts) {
@@ -34,7 +34,7 @@ Rectangle {
 
         Label {
             text: "Chats"
-            color: "#eaeaea"
+            color: Theme.contactsText
             font.bold: true
         }
 
@@ -54,10 +54,23 @@ Rectangle {
             activeFocusOnTab: true
             model: Controller.contactsProxy
 
+            function syncCurrentIndex() {
+                if (!Controller.hasPeer) {
+                    currentIndex = -1
+                    return
+                }
+
+                const idx = Controller.contactsProxy.rowForUser(Controller.currentPeer)
+                if (idx >= 0 && idx !== currentIndex) {
+                    currentIndex = idx
+                }
+            }
+
             Component.onCompleted: {
                 if (Controller.focus) {
                     forceActiveFocus()
                 }
+                syncCurrentIndex()
             }
 
             Connections {
@@ -66,6 +79,25 @@ Rectangle {
                     if (Controller.focusContacts) {
                         Qt.callLater(() => list.forceActiveFocus())
                     }
+                }
+                function onCurrentPeerChanged() {
+                    list.syncCurrentIndex()
+                }
+            }
+
+            Connections {
+                target: Controller.contactsProxy
+                function onLayoutChanged() {
+                    list.syncCurrentIndex()
+                }
+                function onModelReset() {
+                    list.syncCurrentIndex()
+                }
+                function onRowsMoved() {
+                    list.syncCurrentIndex()
+                }
+                function onRowsInserted() {
+                    list.syncCurrentIndex()
                 }
             }
 
@@ -108,7 +140,7 @@ Rectangle {
                 property bool hovered: mouse.containsMouse
                 property bool pressed: mouse.pressed
 
-                color: selected ? Theme.surface : "transparent"
+                color: selected ? Theme.contactsSurface : "transparent"
 
                 // need to fix this later 
                 border.color: selected ? Theme.accent : "transparent"
@@ -137,7 +169,7 @@ Rectangle {
                     // online dot
                     Rectangle {
                         width: 8; height: 8; radius: 4
-                        color: online ? Theme.accent : Theme.muted
+                        color: online ? Theme.accent : Theme.contactsMuted
                         Layout.alignment: Qt.AlignVCenter
                     }
 
@@ -148,7 +180,7 @@ Rectangle {
 
                         Label {
                             text: username
-                            color: Theme.text
+                            color: Theme.contactsText
                             elide: Label.ElideRight
                             font.pointSize: 11
                             font.bold: selected
@@ -156,7 +188,7 @@ Rectangle {
 
                         Label {
                             text: lastMessage
-                            color: Theme.muted
+                            color: Theme.contactsMuted
                             font.pointSize: 9
                             elide: Label.ElideRight
                             visible: lastMessage && lastMessage.length > 0
@@ -172,7 +204,7 @@ Rectangle {
                         Label {
                             text: formatTime(lastTimestamp)
                             font.pointSize: 9
-                            color: Theme.muted
+                            color: Theme.contactsMuted
                             horizontalAlignment: Text.AlignRight
                             Layout.fillWidth: true
                             visible: lastTimestamp && lastTimestamp.length > 0
@@ -193,7 +225,7 @@ Rectangle {
                             Label {
                                 anchors.centerIn: parent
                                 text: unread > 99 ? "99+" : unread
-                                color: "white"
+                                color: Theme.onAccent
                                 font.pointSize: 9
                             }
                         }
@@ -202,7 +234,7 @@ Rectangle {
                     // keeps right edge consistent, little guy > icon
                     Label {
                         text: "›"
-                        color: Theme.muted
+                        color: Theme.contactsMuted
                         visible: hovered || selected
                     }
                 }
@@ -211,7 +243,7 @@ Rectangle {
                 Rectangle {
                     anchors.fill: parent
                     radius: row.radius
-                    color: Theme.border
+                    color: Theme.contactsBorder
                     opacity: pressed ? 0.10 : 0.0
                     Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
                 }
@@ -220,9 +252,9 @@ Rectangle {
                 Rectangle {
                     anchors.fill: parent
                     radius: row.radius
-                    color: Theme.panel2
+                    color: Theme.contactsPanel2
                     opacity: hovered && !selected ? 0.25 : 0.0
-                    border.color: Theme.border
+                    border.color: Theme.contactsBorder
                     border.width: hovered && !selected ? 1 : 0
                     Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
                 }

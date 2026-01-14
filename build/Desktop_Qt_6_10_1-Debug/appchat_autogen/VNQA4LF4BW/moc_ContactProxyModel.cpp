@@ -41,16 +41,22 @@ template <> constexpr inline auto ContactProxyModel::qt_create_metaobjectdata<qt
         "ContactProxyModel",
         "filterTextChanged",
         "",
+        "rowForUser",
+        "username",
         "filterText"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'filterTextChanged'
         QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'rowForUser'
+        QtMocHelpers::MethodData<int(const QString &) const>(3, 2, QMC::AccessPublic, QMetaType::Int, {{
+            { QMetaType::QString, 4 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'filterText'
-        QtMocHelpers::PropertyData<QString>(3, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 0),
+        QtMocHelpers::PropertyData<QString>(5, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 0),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -73,6 +79,8 @@ void ContactProxyModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->filterTextChanged(); break;
+        case 1: { int _r = _t->rowForUser((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<int*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -115,14 +123,14 @@ int ContactProxyModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

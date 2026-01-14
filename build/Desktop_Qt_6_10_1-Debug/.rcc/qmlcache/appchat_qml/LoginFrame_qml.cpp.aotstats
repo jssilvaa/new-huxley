@@ -8,218 +8,330 @@
                         {
                             "codegenResult": 2,
                             "column": 36,
-                            "durationMicroseconds": 220,
+                            "durationMicroseconds": 206,
                             "functionName": "controllerReady",
-                            "line": 12,
+                            "line": 10,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
                             "column": 19,
-                            "durationMicroseconds": 120,
+                            "durationMicroseconds": 96,
                             "functionName": "fill",
                             "line": 9,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 27,
-                            "durationMicroseconds": 60,
-                            "functionName": "centerIn",
-                            "line": 16,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 6132,
-                            "functionName": "visible",
-                            "line": 35,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 27,
-                            "durationMicroseconds": 83,
-                            "functionName": "fill",
-                            "line": 34,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 52,
-                            "durationMicroseconds": 128,
+                            "column": 16,
+                            "durationMicroseconds": 4566,
                             "functionName": "color",
-                            "line": 38,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 52,
-                            "durationMicroseconds": 105,
-                            "functionName": "color",
-                            "line": 39,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 22,
-                            "durationMicroseconds": 171,
-                            "functionName": "visible",
-                            "line": 45,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 21,
-                            "durationMicroseconds": 90,
-                            "functionName": "source",
-                            "line": 46,
+                            "line": 15,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 23,
-                            "durationMicroseconds": 79,
-                            "functionName": "fillMode",
-                            "line": 47,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 27,
-                            "durationMicroseconds": 64,
+                            "durationMicroseconds": 70,
                             "functionName": "fill",
-                            "line": 44,
+                            "line": 14,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 16,
+                            "durationMicroseconds": 236,
+                            "functionName": "width",
+                            "line": 22,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 17,
+                            "durationMicroseconds": 216,
+                            "functionName": "height",
+                            "line": 23,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 16,
+                            "durationMicroseconds": 104,
+                            "functionName": "color",
+                            "line": 25,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 60,
+                            "durationMicroseconds": 63,
+                            "functionName": "centerIn",
+                            "line": 21,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 99,
+                            "functionName": "color",
+                            "line": 26,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 21,
+                            "durationMicroseconds": 86,
+                            "functionName": "radius",
+                            "line": 32,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 22,
+                            "durationMicroseconds": 161,
+                            "functionName": "visible",
+                            "line": 33,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 27,
+                            "durationMicroseconds": 62,
                             "functionName": "fill",
-                            "line": 52,
+                            "line": 31,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 52,
+                            "durationMicroseconds": 96,
+                            "functionName": "color",
+                            "line": 36,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 52,
+                            "durationMicroseconds": 93,
+                            "functionName": "color",
+                            "line": 37,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 27,
-                            "durationMicroseconds": 72,
-                            "functionName": "fillMode",
-                            "line": 60,
+                            "durationMicroseconds": 62,
+                            "functionName": "fill",
+                            "line": 42,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 30,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 70,
-                            "message": "Could not find property \"weight\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 100,
-                            "functionName": "alignment",
-                            "line": 71,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 30,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 78,
-                            "message": "Could not find property \"weight\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 80,
-                            "functionName": "alignment",
-                            "line": 79,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 27,
-                            "durationMicroseconds": 0,
-                            "functionName": "echoMode",
-                            "line": 97,
-                            "message": "Could not find property \"echoMode\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 39,
-                            "durationMicroseconds": 192,
-                            "functionName": "onReturnPressed",
-                            "line": 101,
-                            "message": "Cannot access value for name Controller"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 39,
-                            "durationMicroseconds": 61,
-                            "functionName": "onReturnPressed",
-                            "line": 101,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 26,
-                            "durationMicroseconds": 406,
-                            "functionName": "enabled",
-                            "line": 133,
-                            "message": "Cannot access value for name controllerReady"
                         },
                         {
                             "codegenResult": 2,
                             "column": 28,
-                            "durationMicroseconds": 393,
-                            "functionName": "onClicked",
-                            "line": 134,
-                            "message": "Cannot access value for name Controller"
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 55,
+                            "message": "Could not find property \"color\"."
                         },
                         {
                             "codegenResult": 2,
-                            "column": 29,
-                            "durationMicroseconds": 0,
-                            "functionName": "textFormat",
-                            "line": 144,
-                            "message": "Could not find property \"textFormat\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 100,
-                            "functionName": "alignment",
-                            "line": 140,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
                             "column": 34,
-                            "durationMicroseconds": 82,
-                            "functionName": "cursorShape",
-                            "line": 148,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 57,
+                            "message": "Could not find property \"weight\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 62,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "echoMode",
+                            "line": 79,
+                            "message": "Could not find property \"echoMode\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 226,
+                            "functionName": "onReturnPressed",
+                            "line": 83,
+                            "message": "Cannot access value for name controllerReady"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 62,
+                            "functionName": "onReturnPressed",
+                            "line": 83,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 243,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 104,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 30,
+                            "durationMicroseconds": 382,
+                            "functionName": "enabled",
+                            "line": 114,
+                            "message": "Cannot access value for name controllerReady"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 396,
                             "functionName": "onClicked",
-                            "line": 149,
+                            "line": 115,
+                            "message": "Cannot access value for name Controller"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 122,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 33,
+                            "durationMicroseconds": 0,
+                            "functionName": "textFormat",
+                            "line": 123,
+                            "message": "Could not find property \"textFormat\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 39,
+                            "durationMicroseconds": 95,
+                            "functionName": "alignment",
+                            "line": 119,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 77,
+                            "functionName": "cursorShape",
+                            "line": 128,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 225,
+                            "functionName": "onClicked",
+                            "line": 129,
                             "message": "Cannot access value for name Controller"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 35,
-                            "durationMicroseconds": 72,
+                            "column": 39,
+                            "durationMicroseconds": 64,
                             "functionName": "fill",
-                            "line": 147,
+                            "line": 127,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 24,
+                            "durationMicroseconds": 108,
+                            "functionName": "color",
+                            "line": 139,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 94,
+                            "functionName": "color",
+                            "line": 140,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 59,
+                            "functionName": "fill",
+                            "line": 144,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 75,
+                            "functionName": "fillMode",
+                            "line": 150,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 157,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 164,
+                            "message": "Could not find property \"color\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "wrapMode",
+                            "line": 165,
+                            "message": "Could not find property \"wrapMode\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 40,
+                            "durationMicroseconds": 82,
+                            "functionName": "width",
+                            "line": 171,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 72,
+                            "durationMicroseconds": 93,
+                            "functionName": "color",
+                            "line": 171,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 174,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 177,
+                            "message": "Could not find property \"color\"."
                         }
                     ],
                     "filePath": "/home/josesilvaa/huxley-gui/chat/qml/LoginFrame.qml"

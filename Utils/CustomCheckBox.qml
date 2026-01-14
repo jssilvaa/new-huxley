@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls.Basic
 import QtQuick.Controls.impl
+import chat 1.0
 
 CheckBox {
     id: control
@@ -13,14 +14,14 @@ CheckBox {
         x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
 
-        color: control.checked ? "#1e1e1e" : "#fafafa"
+        color: control.checked ? Theme.accent : Theme.panel2
         border.width: control.visualFocus ? 2 : 1
-        border.color: "#999"
+        border.color: control.visualFocus ? Theme.accent : Theme.border
 
         ColorImage {
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
-            color: "#fafafa"
+            color: Theme.onAccent
             source: "qrc:/qt-project.org/imports/QtQuick/Controls/Basic/images/check.png"
             visible: control.checkState === Qt.Checked
 
@@ -33,7 +34,7 @@ CheckBox {
             y: (parent.height - height) / 2
             width: 16
             height: 3
-            color: control.palette.text
+            color: Theme.onPanel2
             visible: control.checkState === Qt.PartiallyChecked
         }
     }
@@ -44,6 +45,6 @@ CheckBox {
 
         text: control.text
         font: control.font
-        color: "#1e1e1e"
+        color: Theme.text
     }
 }
