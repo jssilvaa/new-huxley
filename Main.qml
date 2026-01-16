@@ -23,13 +23,19 @@ Window {
                        : (controllerReady && Controller.registering)   ? "register"
                        : "login"
 
-    Keys.onBackPressed: function(event) {
-        if (!root.isMobile)
-            return
+    FocusScope {
+        anchors.fill: parent
+        focus: true
+        Keys.priority: Keys.BeforeItem
 
-        if (root.page === "chat" && root.mobileChatShell && root.mobileChatShell.pageIndex === 1) {
-            root.mobileChatShell.pageIndex = 0
-            event.accepted = true
+        Keys.onBackPressed: function(event) {
+            if (!root.isMobile)
+                return
+
+            if (root.page === "chat" && root.mobileChatShell && root.mobileChatShell.pageIndex === 1) {
+                root.mobileChatShell.pageIndex = 0
+                event.accepted = true
+            }
         }
     }
 

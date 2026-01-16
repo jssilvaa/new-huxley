@@ -70,7 +70,7 @@ Rectangle {
                 chat.pendingPositionEnd = true
             }
             function onShowChat() {
-                if (!chat.ready) chat.ready = true
+                chat.ready = false
                 Qt.callLater(() => {
                     chat.forceLayout()
                     if (chat.pendingPositionEnd) {
@@ -78,6 +78,7 @@ Rectangle {
                         chat.pendingPositionEnd = false
                     }
                     chat.isResetting = false
+                    chat.ready = true
                 })
             }
         }
@@ -253,14 +254,6 @@ Rectangle {
 
                     Item { Layout.fillWidth: true; visible: !isOwn } // right spacer
                 }
-            }
-        }
-
-        Connections {
-            target: Controller
-            function onCurrentPeerChanged() {
-                chat.stickToBottom = true
-                Qt.callLater(function() { chat.positionViewAtEnd(); })
             }
         }
 
