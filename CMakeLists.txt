@@ -1,19 +1,21 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.21)
 
 project(chat VERSION 0.1 LANGUAGES CXX)
 
-# For clangd/IDE integration
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick Svg)
 
-qt_standard_project_setup(REQUIRES 6.8)
+qt_standard_project_setup()
 
-# Executable cpp sources 
+qt_policy(SET QTP0001 NEW)
+qt_policy(SET QTP0002 NEW)
+qt_policy(SET QTP0004 NEW)
+
 qt_add_executable(appchat
+    MANUAL_FINALIZATION
     main.cpp
 
     src/net/ProtocolClient.cpp
@@ -24,14 +26,15 @@ qt_add_executable(appchat
     src/model/ChatHistoryModel.cpp
 )
 
-target_include_directories(appchat 
-    PRIVATE src
+set_property(TARGET appchat PROPERTY
+    QT_ANDROID_PACKAGE_SOURCE_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/android
 )
 
-# mark QML singletons
+target_include_directories(appchat PRIVATE src)
+
 set_source_files_properties(qml/Theme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
-# QML modules and resources
 qt_add_qml_module(appchat
     URI chat
     VERSION 1.0
@@ -41,6 +44,7 @@ qt_add_qml_module(appchat
         qml/LoginFrame.qml
         qml/RegisterFrame.qml
         qml/ChatShell.qml
+        qml/MobileChatShell.qml
         qml/HeaderBar.qml
         qml/ContactsFrame.qml
         qml/ChatView.qml
@@ -49,11 +53,14 @@ qt_add_qml_module(appchat
         qml/Toast.qml
         qml/ToastHost.qml
         qml/SettingsDrawer.qml
+        qml/ConnectionSettings.qml
+        qml/MobileLoginFrame.qml
+        qml/MobileRegisterFrame.qml
         Utils/CustomInput.qml
         Utils/CustomCheckBox.qml
         Utils/CustomButton.qml
         Utils/CustomLabel.qml
-        
+
     RESOURCES
         images/logo.png
         images/message-icon.png
@@ -63,25 +70,25 @@ qt_add_qml_module(appchat
         images/patterns/diamonds.svg
 )
 
-# Platform specific properties
-set_target_properties(appchat PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appchat
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING 
-        ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
-
-# Link QT libraries
 target_link_libraries(appchat
     PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick Qt6::Svg
 )
 
-# Installation rules
+if(NOT ANDROID)
+    set_target_properties(appchat PROPERTIES
+        MACOSX_BUNDLE TRUE
+        WIN32_EXECUTABLE TRUE
+        MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+        MACOSX_BUNDLE_SHORT_VERSION_STRING
+            ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    )
+endif()
+
 include(GNUInstallDirs)
 install(TARGETS appchat
     BUNDLE DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
+
+qt_finalize_executable(appchat)

@@ -8,8 +8,8 @@ Rectangle {
     id: root
     color: "transparent"
 
-    Layout.minimumWidth: 500
-    Layout.minimumHeight: 300
+    Layout.minimumWidth: Qt.platform.os === "android" ? 0 : 500
+    Layout.minimumHeight: Qt.platform.os === "android" ? 0 : 300
 
     function formatMessageTime(ts) {
         if (!ts || ts.length === 0) return ""

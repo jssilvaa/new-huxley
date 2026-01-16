@@ -108,6 +108,11 @@ Item {
 
                 Item { Layout.fillHeight: true }
 
+                ConnectionSettings {
+                    Layout.fillWidth: true
+                    compact: true
+                }
+
                 CustomButton {
                     Layout.fillWidth: true
                     text: qsTr("Login  →")

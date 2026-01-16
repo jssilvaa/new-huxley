@@ -1,0 +1,6 @@
+module chat
+
+CustomButton 1.0 CustomButton.qml
+CustomCheckBox 1.0 CustomCheckBox.qml
+CustomInput 1.0 CustomInput.qml
+CustomLabel 1.0 CustomLabel.qml

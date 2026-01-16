@@ -1,3 +1,5 @@
 *.md
 .qtcreator/
 build/
+nextplan.txt
+android/

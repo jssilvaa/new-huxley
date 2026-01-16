@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../Utils"
 import chat 1.0
 
 Drawer {
@@ -34,6 +35,13 @@ Drawer {
                 text: "Settings"
                 font.bold: true
                 color: Theme.text
+            }
+
+            Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
+
+            ConnectionSettings {
+                compact: true
+                Layout.fillWidth: true
             }
 
             Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }

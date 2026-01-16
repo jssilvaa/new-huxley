@@ -1,0 +1,16 @@
+module chat
+
+ChatShell 1.0 ChatShell.qml
+ChatView 1.0 ChatView.qml
+ConnectionSettings 1.0 ConnectionSettings.qml
+ContactsFrame 1.0 ContactsFrame.qml
+HeaderBar 1.0 HeaderBar.qml
+InputBar 1.0 InputBar.qml
+MobileChatShell 1.0 MobileChatShell.qml
+MobileLoginFrame 1.0 MobileLoginFrame.qml
+MobileRegisterFrame 1.0 MobileRegisterFrame.qml
+RegisterFrame 1.0 RegisterFrame.qml
+SettingsDrawer 1.0 SettingsDrawer.qml
+Theme 1.0 Theme.qml
+Toast 1.0 Toast.qml
+ToastHost 1.0 ToastHost.qml

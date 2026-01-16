@@ -26,6 +26,8 @@ class ClientController final : public QObject {
     Q_PROPERTY(bool focusContacts READ focusContacts WRITE setFocusContacts NOTIFY focusContactsChanged)
     Q_PROPERTY(QObject* contactsProxy READ contactsProxy CONSTANT); 
     Q_PROPERTY(bool registering READ registering NOTIFY registeringChanged)
+    Q_PROPERTY(QString serverHost READ serverHost WRITE setServerHost NOTIFY serverHostChanged)
+    Q_PROPERTY(int serverPort READ serverPort WRITE setServerPort NOTIFY serverPortChanged)
 public: 
     explicit ClientController(QObject* parent=nullptr); 
     QObject* messageService() { return &m_msgservice; }
@@ -38,6 +40,7 @@ public:
     Q_INVOKABLE void registerUser(const QString& user, const QString& pass); 
     Q_INVOKABLE void showRegister(); 
     Q_INVOKABLE void showLogin();  
+    Q_INVOKABLE void reconnect();
     Q_INVOKABLE void refreshUsers() { m_msgservice.listUsers(); }
     Q_INVOKABLE void selectPeer(const QString& peer) {
         if (!m_authenticated) { emit error("Not authenticated"); return; }
@@ -78,6 +81,11 @@ public:
     bool currentPeerOnline() const; 
     QString currentPeer() const { return m_currentPeer; }
     bool focusContacts() const { return m_focusContacts; }
+    QString serverHost() const { return m_serverHost; }
+    int serverPort() const { return m_serverPort; }
+
+    void setServerHost(const QString& host);
+    void setServerPort(int port);
 
 signals: 
     void connectedChanged(); 
@@ -86,6 +94,8 @@ signals:
     void currentPeerChanged(); 
     void currentPeerOnlineChanged(); 
     void focusContactsChanged(); 
+    void serverHostChanged();
+    void serverPortChanged();
     void clearChat(); // temporary logic, not scalable, but works for now 
     void showChat();
     void messageSubmitted();
@@ -117,9 +127,12 @@ private:
     bool m_registering = false; 
     bool m_focusContacts = false;
     bool m_ready = false; 
+    bool m_reconnectPending = false;
     QString m_pendingUsername{}; 
     QString m_username{};  
     QString m_currentPeer{};
+    QString m_serverHost{};
+    int m_serverPort = 8080;
     QSet<QString> m_prefetchedPreview{}; 
     QTimer m_presenceTimer; 
 }; 

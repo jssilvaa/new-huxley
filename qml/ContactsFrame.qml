@@ -5,6 +5,8 @@ import QtQuick.Layouts
 import chat 1.0
 
 Rectangle {
+    id: root
+    signal contactActivated(string username)
     color: Theme.contactsPanel
     border.color: Theme.contactsBorder
     border.width: 1
@@ -158,6 +160,7 @@ Rectangle {
                     onClicked: {
                         list.currentIndex = index
                         Controller.selectPeer(username)
+                        root.contactActivated(username)
                     }
                 }
 

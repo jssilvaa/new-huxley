@@ -1,9 +1,8 @@
 import QtQuick
-import QtQuick.Controls.impl
-import QtQuick.Templates as T
+import QtQuick.Controls
 import chat 1.0
 
-T.Button {
+Button {
     id: control
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -15,8 +14,6 @@ T.Button {
     horizontalPadding: padding + 2
     spacing: 6
 
-    icon.width: 24
-    icon.height: 24
     property color buttonBg: {
         const base = control.enabled ? Theme.accent : Theme.border
         if (control.down) return Qt.darker(base, 1.15)
@@ -29,17 +26,23 @@ T.Button {
         return Theme.onAccent
     }
 
-    icon.color: buttonText
-
-    contentItem: IconLabel {
+    contentItem: Row {
         spacing: control.spacing
-        mirrored: control.mirrored
-        display: control.display
+        anchors.centerIn: parent
 
-        icon: control.icon
-        text: control.text
-        font.pointSize: 12
-        color: control.buttonText
+        Image {
+            source: control.icon.source
+            visible: source !== ""
+            width: 20
+            height: 20
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Label {
+            text: control.text
+            font.pointSize: 12
+            color: control.buttonText
+        }
     }
 
     background: Rectangle {

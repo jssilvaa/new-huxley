@@ -1,14 +1,19 @@
 // Main.qml
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Window
 import chat 1.0
 
 Window {
     id: root
-    width: 1200
-    height: 800
-    minimumWidth: 850
-    minimumHeight: 450
+    property bool isMobile: Qt.platform.os === "android"
+    property var mobileChatShell: null
+
+    width: isMobile ? Screen.width : 1200
+    height: isMobile ? Screen.height : 800
+    minimumWidth: isMobile ? 0 : 850
+    minimumHeight: isMobile ? 0 : 450
+    visibility: isMobile ? Window.FullScreen : Window.Windowed
     visible: true
     title: qsTr("Huxley Chat")
     color: Theme.bg
@@ -17,6 +22,16 @@ Window {
     property string page: (controllerReady && Controller.authenticated) ? "chat"
                        : (controllerReady && Controller.registering)   ? "register"
                        : "login"
+
+    Keys.onBackPressed: function(event) {
+        if (!root.isMobile)
+            return
+
+        if (root.page === "chat" && root.mobileChatShell && root.mobileChatShell.pageIndex === 1) {
+            root.mobileChatShell.pageIndex = 0
+            event.accepted = true
+        }
+    }
 
     // intro only once (first time app shows)
     property real introT: 0
@@ -32,13 +47,20 @@ Window {
         easing.type: Easing.OutCubic
     }
 
+    Component { id: desktopLoginComponent; LoginFrame { anchors.fill: parent } }
+    Component { id: mobileLoginComponent; MobileLoginFrame { anchors.fill: parent } }
+    Component { id: desktopRegisterComponent; RegisterFrame { anchors.fill: parent } }
+    Component { id: mobileRegisterComponent; MobileRegisterFrame { anchors.fill: parent } }
+    Component { id: desktopChatComponent; ChatShell { anchors.fill: parent } }
+    Component { id: mobileChatComponent; MobileChatShell { anchors.fill: parent } }
+
     // --- Pages kept alive so transitions work ---
     Item {
         id: pages
         anchors.fill: parent
 
         // LOGIN
-        LoginFrame {
+        Item {
             id: loginPage
             anchors.fill: parent
 
@@ -53,10 +75,15 @@ Window {
             Behavior on opacity { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
             Behavior on scale   { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
             Behavior on y       { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+
+            Loader {
+                anchors.fill: parent
+                sourceComponent: root.isMobile ? mobileLoginComponent : desktopLoginComponent
+            }
         }
 
         // REGISTER
-        RegisterFrame {
+        Item {
             id: regPage
             anchors.fill: parent
 
@@ -70,10 +97,15 @@ Window {
             Behavior on opacity { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
             Behavior on scale   { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
             Behavior on y       { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+
+            Loader {
+                anchors.fill: parent
+                sourceComponent: root.isMobile ? mobileRegisterComponent : desktopRegisterComponent
+            }
         }
 
         // CHAT (slide in slightly from right)
-        ChatShell {
+        Item {
             id: chatPage
             anchors.fill: parent
 
@@ -84,6 +116,14 @@ Window {
             x: root.page === "chat" ? 0 : 18
             Behavior on opacity { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
             Behavior on x       { NumberAnimation { duration: Theme.reducedMotion ? 0 : Theme.animMed; easing.type: Easing.OutCubic } }
+
+            Loader {
+                anchors.fill: parent
+                sourceComponent: root.isMobile ? mobileChatComponent : desktopChatComponent
+                onLoaded: {
+                    root.mobileChatShell = root.isMobile ? item : null
+                }
+            }
         }
     }
 

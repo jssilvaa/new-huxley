@@ -1,8 +1,8 @@
-// main.cpp
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext> 
 #include <QCoreApplication>
+#include <QTimer>
+#include <QtQml>
 #include "src/controller/ClientController.h"
 
 int main(int argc, char *argv[])
@@ -13,16 +13,16 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
-    
-    ClientController controller; 
-    controller.start(); // boot connection
-    engine.rootContext()->setContextProperty("Controller", &controller); 
+    ClientController controller;
+    QTimer::singleShot(0, &controller, &ClientController::start);
 
-    engine.loadFromModule("chat", "Main"); 
-    if (engine.rootObjects().isEmpty()) {
-        return -1; 
-    }
+    qmlRegisterSingletonInstance("chat", 1, 0, "Controller", &controller);
+
+    QQmlApplicationEngine engine;
+
+    engine.load(QUrl(QStringLiteral("qrc:/qt/qml/chat/Main.qml")));
+    if (engine.rootObjects().isEmpty())
+        return -1;
 
     return app.exec();
 }

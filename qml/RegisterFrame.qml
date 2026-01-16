@@ -123,6 +123,11 @@ Item {
 
                 Item { Layout.fillHeight: true }
 
+                ConnectionSettings {
+                    Layout.fillWidth: true
+                    compact: true
+                }
+
                 RowLayout {
                     Layout.fillWidth: true
                     spacing: 10

@@ -3,6 +3,8 @@
 #include "model/ChatHistoryModel.h"
 #include "service/MessageService.h"
 #include <algorithm>
+#include <QSettings>
+#include <QtGlobal>
 #include <qcontainerfwd.h>
 #include <qjsondocument.h>
 #include <qjsonobject.h>
@@ -10,6 +12,23 @@
 #include <qobject.h>
 
 namespace {
+    static QString defaultHost() {
+#ifdef Q_OS_ANDROID
+        return QStringLiteral("10.0.2.2");
+#else
+        return QStringLiteral("127.0.0.1");
+#endif
+    }
+
+    static int defaultPort() {
+        return 8080;
+    }
+
+    static int sanitizePort(int port) {
+        if (port < 1 || port > 65535) return defaultPort();
+        return port;
+    }
+
     static QString normalizeTimestamp(const QString& isoTs) {
         const auto dt = QDateTime::fromString(isoTs, Qt::ISODate);
         if (!dt.isValid()) return isoTs; 
@@ -27,6 +46,11 @@ namespace {
 ClientController::ClientController(QObject* parent) 
     : QObject(parent), m_msgservice(&m_proto, this) 
 {
+    QSettings settings;
+    m_serverHost = settings.value("connection/host", defaultHost()).toString().trimmed();
+    if (m_serverHost.isEmpty()) m_serverHost = defaultHost();
+    m_serverPort = sanitizePort(settings.value("connection/port", defaultPort()).toInt());
+
     // setup timer and server pings 
     const int t_ping_ms = 5000; 
     m_presenceTimer.setInterval(t_ping_ms);
@@ -54,7 +78,38 @@ ClientController::ClientController(QObject* parent)
 void ClientController::start() {
     if (m_connected || m_connecting) return; 
     m_connecting = true; 
-    m_proto.connectToHost("127.0.0.1", 8080); // connect localhost@8080
+    m_proto.connectToHost(m_serverHost, quint16(m_serverPort));
+}
+
+void ClientController::reconnect() {
+    if (m_connecting) return;
+    if (m_connected) {
+        m_reconnectPending = true;
+        m_proto.disconnectFromHost();
+        return;
+    }
+    start();
+}
+
+void ClientController::setServerHost(const QString& host) {
+    const QString next = host.trimmed();
+    const QString resolved = next.isEmpty() ? defaultHost() : next;
+    if (resolved == m_serverHost) return;
+    m_serverHost = resolved;
+
+    QSettings settings;
+    settings.setValue("connection/host", m_serverHost);
+    emit serverHostChanged();
+}
+
+void ClientController::setServerPort(int port) {
+    const int next = sanitizePort(port);
+    if (next == m_serverPort) return;
+    m_serverPort = next;
+
+    QSettings settings;
+    settings.setValue("connection/port", m_serverPort);
+    emit serverPortChanged();
 }
 
 void ClientController::login(const QString& user, const QString& pass) {
@@ -113,6 +168,9 @@ void ClientController::onConnected() {
 void ClientController::onDisconnected() {
     // gate before ctor finishes
     if (!m_ready) return; 
+
+    const bool shouldReconnect = m_reconnectPending;
+    m_reconnectPending = false;
     
     // reset flags
     m_connecting = false; 
@@ -140,7 +198,8 @@ void ClientController::onDisconnected() {
     emit currentPeerOnlineChanged(); 
 
     // disconnect
-    emit error("Disconnected"); 
+    if (!shouldReconnect) emit error("Disconnected");
+    if (shouldReconnect) start();
 }
 
 void ClientController::onError(QString msg) {
