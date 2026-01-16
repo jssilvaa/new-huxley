@@ -58,12 +58,24 @@ FocusScope {
             height: parent.height
         }
 
-        StackLayout {
+        Item {
             id: pages
             anchors.fill: parent
-            currentIndex: root.pageIndex
+            clip: true
+
+            property real pageT: root.pageIndex
+            Behavior on pageT {
+                NumberAnimation { duration: Theme.animSlow; easing.type: Easing.OutCubic }
+            }
 
             Item {
+                id: contactsPage
+                width: parent.width
+                height: parent.height
+                x: -pages.pageT * width
+                opacity: 1.0 - pages.pageT
+                enabled: root.pageIndex === 0
+
                 ColumnLayout {
                     anchors.fill: parent
                     spacing: 0
@@ -108,6 +120,13 @@ FocusScope {
             }
 
             Item {
+                id: chatPage
+                width: parent.width
+                height: parent.height
+                x: (1.0 - pages.pageT) * width
+                opacity: pages.pageT
+                enabled: root.pageIndex === 1
+
                 ColumnLayout {
                     anchors.fill: parent
                     spacing: 0

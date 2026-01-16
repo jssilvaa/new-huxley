@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 import chat 1.0
 
 Rectangle {
@@ -11,22 +12,50 @@ Rectangle {
 
     property string message: ""
     property bool error: false
+    property int duration: 2400
+    property int toastId: 0
 
-    implicitWidth: Math.min(parent.width * 0.6, text.implicitWidth + 32)
-    implicitHeight: text.implicitHeight + 20
+    signal dismissRequested(int id)
 
-    opacity: 0
-    y: parent.height
+    implicitHeight: Math.max(52, messageText.implicitHeight + 20)
 
-    Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
-    Behavior on y       { NumberAnimation { duration: Theme.animFast } }
+    Timer {
+        interval: root.duration
+        running: true
+        repeat: false
+        onTriggered: root.dismissRequested(root.toastId)
+    }
 
-    Text {
-        id: text
-        anchors.centerIn: parent
-        text: root.message
-        color: error ? Theme.danger : Theme.text
-        wrapMode: Text.Wrap
-        horizontalAlignment: Text.AlignHCenter
+    RowLayout {
+        anchors.fill: parent
+        anchors.margins: 12
+        spacing: 10
+
+        Rectangle {
+            width: 4
+            radius: 2
+            color: root.error ? Theme.danger : Theme.accent
+            Layout.fillHeight: true
+        }
+
+        Label {
+            id: messageText
+            Layout.fillWidth: true
+            text: root.message
+            color: Theme.text
+            wrapMode: Text.Wrap
+        }
+
+        ToolButton {
+            flat: true
+            onClicked: root.dismissRequested(root.toastId)
+
+            contentItem: Label {
+                text: "x"
+                color: Theme.text
+                font.pointSize: 11
+                font.bold: true
+            }
+        }
     }
 }

@@ -10,10 +10,15 @@ Rectangle {
     border.color: Theme.border
     border.width: 1
 
-    visible: Controller.authenticated && Controller.hasPeer
+    property bool showBar: Controller.authenticated && Controller.hasPeer
 
-    opacity: enabled ? 1.0 : 0.6
-    Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
+    visible: opacity > 0.01
+    opacity: showBar ? 1.0 : 0.0
+    enabled: showBar
+
+    Behavior on opacity {
+        NumberAnimation { duration: Theme.animSlow; easing.type: Easing.OutCubic }
+    }
 
     Keys.onReturnPressed: function(event) {
         if (event.modifiers & Qt.ShiftModifier) { // still not working, input bar does not extend?

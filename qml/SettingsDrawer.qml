@@ -13,6 +13,10 @@ Drawer {
     interactive: true
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
 
+    Behavior on position {
+        NumberAnimation { duration: Theme.animSlow; easing.type: Easing.OutCubic }
+    }
+
     background: Rectangle {
         color: Theme.panel
         border.color: Theme.border

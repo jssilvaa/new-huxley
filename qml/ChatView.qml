@@ -50,7 +50,10 @@ Rectangle {
         visible: ready 
         opacity: ready ? 1.0 : 0.0
         Behavior on opacity {
-            NumberAnimation { duration: chat.isResetting ? 0 : Theme.animFast }
+            NumberAnimation {
+                duration: chat.isResetting ? 0 : Theme.animMed + 120
+                easing.type: Easing.OutCubic
+            }
         }
 
         Connections {
@@ -96,6 +99,13 @@ Rectangle {
         }
 
         boundsBehavior: Flickable.StopAtBounds
+        Behavior on contentY {
+            enabled: chat.isResetting
+            NumberAnimation {
+                duration: Theme.reducedMotion ? 0 : Theme.animMed + 160
+                easing.type: Easing.OutCubic
+            }
+        }
 
         // Keep glued to bottom only if user is at bottom.
         property bool stickToBottom: true

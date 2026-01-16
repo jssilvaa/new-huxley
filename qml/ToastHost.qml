@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 import chat 1.0
 
 Item {
@@ -6,51 +7,67 @@ Item {
     anchors.fill: parent
     z: 1000
 
-    property var queue: []
-    property bool showing: false
+    property bool isMobile: Qt.platform.os === "android"
+    property int nextId: 1
 
-    Toast {
-        id: toast
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 24
+    ListModel { id: toastModel }
+
+    function show(msg, isError=false, duration=2400) {
+        toastModel.append({
+            toastId: nextId++,
+            message: msg,
+            error: isError,
+            duration: duration
+        })
     }
 
-    function show(msg, isError=false) {
-        queue.push({ msg: msg, error: isError })
-        if (!showing)
-            next()
+    function dismiss(toastId) {
+        for (let i = 0; i < toastModel.count; i++) {
+            if (toastModel.get(i).toastId === toastId) {
+                toastModel.remove(i)
+                return
+            }
+        }
     }
 
-    function next() {
-        if (queue.length === 0) {
-            showing = false
-            return
+    ListView {
+        id: list
+        model: toastModel
+        spacing: 10
+        interactive: false
+        clip: true
+        width: Math.min(parent.width * 0.9, 420)
+        height: Math.min(contentHeight, parent.height - 32)
+
+        anchors.right: parent.right
+        anchors.rightMargin: 16
+        anchors.top: host.isMobile ? undefined : parent.top
+        anchors.topMargin: host.isMobile ? 0 : 16
+        anchors.bottom: host.isMobile ? parent.bottom : undefined
+        anchors.bottomMargin: host.isMobile ? 20 : 0
+
+        verticalLayoutDirection: host.isMobile ? ListView.BottomToTop : ListView.TopToBottom
+
+        delegate: Toast {
+            width: list.width
+            message: model.message
+            error: model.error
+            duration: model.duration
+            toastId: model.toastId
+            onDismissRequested: host.dismiss(toastId)
         }
 
-        showing = true
-        const item = queue.shift()
+        add: Transition {
+            NumberAnimation { properties: "opacity"; from: 0; to: 1; duration: Theme.animMed; easing.type: Easing.OutCubic }
+            NumberAnimation { properties: "y"; from: host.isMobile ? y - 10 : y + 10; to: y; duration: Theme.animMed; easing.type: Easing.OutCubic }
+        }
 
-        toast.message = item.msg
-        toast.error   = item.error
+        remove: Transition {
+            NumberAnimation { properties: "opacity"; from: 1; to: 0; duration: Theme.animFast; easing.type: Easing.InCubic }
+        }
 
-        toast.opacity = 1
-        toast.y = parent.height - toast.height - 24
-
-        Qt.callLater(() => {
-            Qt.createQmlObject(`
-                import QtQuick
-                Timer {
-                    interval: 2000
-                    running: true
-                    repeat: false
-                    onTriggered: {
-                        toast.opacity = 0
-                        toast.y = parent.height
-                        Qt.callLater(host.next)
-                        destroy()
-                    }
-                }`, host)
-        })
+        displaced: Transition {
+            NumberAnimation { properties: "y"; duration: Theme.animFast; easing.type: Easing.OutCubic }
+        }
     }
 }

@@ -216,4 +216,5 @@ QtObject {
     // animation policy
     readonly property int animFast: reducedMotion ? 0 : 120
     readonly property int animMed:  reducedMotion ? 0 : 180
+    readonly property int animSlow: reducedMotion ? 0 : 260
 }
