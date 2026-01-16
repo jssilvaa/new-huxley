@@ -90,6 +90,8 @@ Item {
                 CustomInput {
                     id: user
                     Layout.fillWidth: true
+                    fieldText: Theme.text
+                    fieldMuted: Theme.muted
                     placeholderText: "Username"
                     iconSource: "qrc:/qt/qml/chat/images/message-icon.png"
                 }
@@ -97,6 +99,8 @@ Item {
                 CustomInput {
                     id: pass
                     Layout.fillWidth: true
+                    fieldText: Theme.text
+                    fieldMuted: Theme.muted
                     placeholderText: "Password"
                     echoMode: TextInput.Password
                     iconSource: "qrc:/qt/qml/chat/images/lock.png"
@@ -106,6 +110,8 @@ Item {
                 CustomInput {
                     id: confirm
                     Layout.fillWidth: true
+                    fieldText: Theme.text
+                    fieldMuted: Theme.muted
                     placeholderText: "Confirm password"
                     echoMode: TextInput.Password
                     iconSource: "qrc:/qt/qml/chat/images/lock.png"

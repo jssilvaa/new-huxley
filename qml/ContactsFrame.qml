@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../Utils"
 import chat 1.0
 
 Rectangle {
@@ -40,10 +41,13 @@ Rectangle {
             font.bold: true
         }
 
-        TextField {
+        CustomInput {
             id: search
             Layout.fillWidth: true
             placeholderText: "Search"
+            fieldBg: Theme.contactsPanel2
+            fieldText: Theme.contactsText
+            fieldMuted: Theme.contactsMuted
             onTextChanged: Controller.contactsProxy.filterText = text 
         }
 

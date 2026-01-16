@@ -65,6 +65,8 @@ Item {
         CustomInput {
             id: usernameInput
             Layout.fillWidth: true
+                    fieldText: Theme.text
+                    fieldMuted: Theme.muted
             placeholderText: qsTr("Enter your username")
             iconSource: "qrc:/qt/qml/chat/images/message-icon.png"
         }
@@ -72,6 +74,8 @@ Item {
         CustomInput {
             id: passwordInput
             Layout.fillWidth: true
+                    fieldText: Theme.text
+                    fieldMuted: Theme.muted
             placeholderText: qsTr("Enter your password")
             echoMode: TextInput.Password
             iconSource: "qrc:/qt/qml/chat/images/lock.png"

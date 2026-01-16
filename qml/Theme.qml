@@ -147,15 +147,24 @@ QtObject {
         const p = preset()
         return (p[key] !== undefined) ? p[key] : fallbackValue
     }
+    function linearize(v) {
+        return (v <= 0.04045) ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)
+    }
     function luminance(c) {
-        return 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b
+        const r = linearize(c.r)
+        const g = linearize(c.g)
+        const b = linearize(c.b)
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
     }
     function contrastText(bg) {
-        return luminance(bg) > 0.55 ? "#111111" : "#f5f5f5"
+        return luminance(bg) > 0.5
+            ? Qt.rgba(0.07, 0.07, 0.07, 1.0)
+            : Qt.rgba(0.96, 0.96, 0.96, 1.0)
     }
     function mutedText(bg) {
         const base = contrastText(bg)
-        return luminance(bg) > 0.55 ? Qt.lighter(base, 1.8) : Qt.darker(base, 1.4)
+        const alpha = luminance(bg) > 0.5 ? 0.62 : 0.72
+        return Qt.rgba(base.r, base.g, base.b, alpha)
     }
 
     // ---- tokens (fallback = Classic values) ----
@@ -166,7 +175,7 @@ QtObject {
     readonly property color border:  dark ? pick("borderDark",  "#222222") : pick("borderLight",  "#e0e0e0")
 
     readonly property color text:  dark ? pick("textDark",  "#eaeaea") : pick("textLight",  "#1a1a1a")
-    readonly property color muted: dark ? pick("mutedDark", "#9aa0a6") : pick("mutedLight", "#777777")
+    readonly property color muted: dark ? pick("mutedDark", mutedText(bg)) : pick("mutedLight", mutedText(bg))
 
     readonly property color bubblePeer: dark ? pick("bubblePeerDark", "#1b1b1b") : pick("bubblePeerLight", "#ffffff")
     readonly property color bubbleOwn:  dark ? pick("bubbleOwnDark",  "#1f3b2d") : pick("bubbleOwnLight",  "#dff5e6")

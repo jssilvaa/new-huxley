@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../Utils"
 import chat 1.0
 
 Rectangle {
@@ -40,9 +41,12 @@ Rectangle {
         anchors.margins: 10
         spacing: 10
 
-        TextField {
+        CustomInput {
             id: input
             Layout.fillWidth: true
+            fieldBg: Theme.surface
+            fieldText: Theme.text
+            fieldMuted: Theme.muted
 
             placeholderText: !Controller.authenticated
                 ? "Log in to start chatting"
@@ -53,7 +57,7 @@ Rectangle {
             enabled: Controller.authenticated && Controller.hasPeer
         }
 
-        Button {
+        CustomButton {
             text: "Send"
             enabled: input.text.length > 0 && input.enabled
 

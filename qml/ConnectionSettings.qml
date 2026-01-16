@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQml
+import "../Utils"
 import chat 1.0
 
 ColumnLayout {
@@ -34,11 +35,14 @@ ColumnLayout {
         Layout.fillWidth: true
         spacing: 8
 
-        TextField {
+        CustomInput {
             id: hostField
             Layout.fillWidth: true
             placeholderText: "Host"
             inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
+            fieldBg: Theme.panel2
+            fieldText: Theme.onPanel2
+            fieldMuted: Theme.mutedText(Theme.panel2)
 
             Binding {
                 target: hostField
@@ -50,12 +54,15 @@ ColumnLayout {
             onAccepted: root.applyConnection()
         }
 
-        TextField {
+        CustomInput {
             id: portField
             Layout.preferredWidth: compact ? 84 : 110
             placeholderText: "Port"
             inputMethodHints: Qt.ImhDigitsOnly
             validator: IntValidator { bottom: 1; top: 65535 }
+            fieldBg: Theme.panel2
+            fieldText: Theme.onPanel2
+            fieldMuted: Theme.mutedText(Theme.panel2)
 
             Binding {
                 target: portField
@@ -67,7 +74,7 @@ ColumnLayout {
             onAccepted: root.applyConnection()
         }
 
-        Button {
+        CustomButton {
             text: Controller.connected ? "Reconnect" : "Connect"
             onClicked: root.applyConnection()
         }
