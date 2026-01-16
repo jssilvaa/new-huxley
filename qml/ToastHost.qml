@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Window
 import chat 1.0
 
 Item {
@@ -8,6 +9,17 @@ Item {
     z: 1000
 
     property bool isMobile: Qt.platform.os === "android"
+    readonly property rect availableGeom: {
+        if (Screen.availableGeometry && Screen.availableGeometry.width > 0)
+            return Screen.availableGeometry
+        const w = Screen.width > 0 ? Screen.width : host.width
+        const h = Screen.height > 0 ? Screen.height : host.height
+        return Qt.rect(0, 0, w, h)
+    }
+    readonly property int safeTop: isMobile ? Math.max(0, availableGeom.y) : 0
+    readonly property int safeBottom: isMobile
+        ? Math.max(0, Screen.height - (availableGeom.y + availableGeom.height))
+        : 0
     property int nextId: 1
 
     ListModel { id: toastModel }
@@ -44,7 +56,7 @@ Item {
         anchors.top: host.isMobile ? undefined : parent.top
         anchors.topMargin: host.isMobile ? 0 : 16
         anchors.bottom: host.isMobile ? parent.bottom : undefined
-        anchors.bottomMargin: host.isMobile ? 20 : 0
+        anchors.bottomMargin: host.isMobile ? 20 + host.safeBottom : 0
 
         verticalLayoutDirection: host.isMobile ? ListView.BottomToTop : ListView.TopToBottom
 

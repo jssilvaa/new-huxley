@@ -2,6 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Window
 import chat 1.0
 
 FocusScope {
@@ -12,6 +13,18 @@ FocusScope {
     Component.onCompleted: root.forceActiveFocus()
 
     property int pageIndex: 0
+    readonly property rect availableGeom: {
+        if (Screen.availableGeometry && Screen.availableGeometry.width > 0)
+            return Screen.availableGeometry
+        const w = Screen.width > 0 ? Screen.width : root.width
+        const h = Screen.height > 0 ? Screen.height : root.height
+        return Qt.rect(0, 0, w, h)
+    }
+    readonly property int safeTop: Math.max(0, availableGeom.y)
+    readonly property int safeLeft: Math.max(0, availableGeom.x)
+    readonly property int safeRight: Math.max(0, Screen.width - (availableGeom.x + availableGeom.width))
+    readonly property int safeBottom: Math.max(0, Screen.height - (availableGeom.y + availableGeom.height))
+    readonly property int safePad: 6
 
     onPageIndexChanged: {
         root.forceActiveFocus()
@@ -78,6 +91,10 @@ FocusScope {
 
                 ColumnLayout {
                     anchors.fill: parent
+                    anchors.topMargin: safeTop + safePad
+                    anchors.bottomMargin: safeBottom + safePad
+                    anchors.leftMargin: safeLeft
+                    anchors.rightMargin: safeRight
                     spacing: 0
 
                     Rectangle {
@@ -129,6 +146,10 @@ FocusScope {
 
                 ColumnLayout {
                     anchors.fill: parent
+                    anchors.topMargin: safeTop + safePad
+                    anchors.bottomMargin: safeBottom + safePad
+                    anchors.leftMargin: safeLeft
+                    anchors.rightMargin: safeRight
                     spacing: 0
 
                     Rectangle {
