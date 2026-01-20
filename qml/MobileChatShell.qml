@@ -42,19 +42,7 @@ FocusScope {
         root.forceActiveFocus()
     }
 
-    Keys.onBackPressed: function(event) {
-        if (pageIndex === 1) {
-            pageIndex = 0
-            event.accepted = true
-        }
-    }
-
-    Keys.onReleased: function(event) {
-        if (event.key === Qt.Key_Back && pageIndex === 1) {
-            pageIndex = 0
-            event.accepted = true
-        }
-    }
+    // Back handling is centralized in Main.qml.
 
     Rectangle {
         anchors.fill: parent

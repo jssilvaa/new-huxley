@@ -171,6 +171,7 @@ Rectangle {
         }
         function keepBottomVisible() {
             if (isResetting || !ready || !stickToBottom) return
+            if (moving || flicking || dragging) return
             Qt.callLater(() => positionViewAtEnd())
         }
 

@@ -86,7 +86,9 @@ Item {
 
     Rectangle {
         id: panel
-        anchors.fill: safeArea
+        anchors.centerIn: safeArea
+        width: Math.min(safeArea.width, 420)
+        height: Math.min(safeArea.height, 720)
         radius: 24
         color: Theme.surface
         border.color: Theme.border
@@ -107,12 +109,14 @@ Item {
             id: scroll
             anchors.fill: parent
             clip: true
+            contentWidth: scroll.availableWidth
             ScrollBar.vertical.policy: Qt.platform.os === "android"
                 ? ScrollBar.AlwaysOff
                 : ScrollBar.AsNeeded
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
             ColumnLayout {
-                width: scroll.width
+                width: scroll.availableWidth
                 spacing: 12
                 anchors.margins: 20
                 anchors.left: parent.left
@@ -187,16 +191,18 @@ Item {
                     Layout.fillWidth: true
                     spacing: 4
 
-                    Label { text: "Password requirements:"; color: Theme.muted; font.pointSize: 9 }
-                    Label { text: "- at least 8 characters";             color: ruleColor(ruleLen);     font.pointSize: 9 }
-                    Label { text: "- 1 lowercase (a-z)";                 color: ruleColor(ruleLower);   font.pointSize: 9 }
-                    Label { text: "- 1 uppercase (A-Z)";                 color: ruleColor(ruleUpper);   font.pointSize: 9 }
-                    Label { text: "- 1 number (0-9)";                    color: ruleColor(ruleDigit);   font.pointSize: 9 }
-                    Label { text: "- 1 special character (!@#...)";      color: ruleColor(ruleSpecial); font.pointSize: 9 }
+                    Label { text: "Password requirements:"; color: Theme.muted; font.pointSize: 9; Layout.fillWidth: true; wrapMode: Text.Wrap }
+                    Label { text: "- at least 8 characters";             color: ruleColor(ruleLen);     font.pointSize: 9; Layout.fillWidth: true; wrapMode: Text.Wrap }
+                    Label { text: "- 1 lowercase (a-z)";                 color: ruleColor(ruleLower);   font.pointSize: 9; Layout.fillWidth: true; wrapMode: Text.Wrap }
+                    Label { text: "- 1 uppercase (A-Z)";                 color: ruleColor(ruleUpper);   font.pointSize: 9; Layout.fillWidth: true; wrapMode: Text.Wrap }
+                    Label { text: "- 1 number (0-9)";                    color: ruleColor(ruleDigit);   font.pointSize: 9; Layout.fillWidth: true; wrapMode: Text.Wrap }
+                    Label { text: "- 1 special character (!@#...)";      color: ruleColor(ruleSpecial); font.pointSize: 9; Layout.fillWidth: true; wrapMode: Text.Wrap }
                     Label {
                         text: "- passwords match"
                         color: ruleColor(matchOk)
                         font.pointSize: 9
+                        Layout.fillWidth: true
+                        wrapMode: Text.Wrap
                         visible: confirm.text.length > 0 || attempted
                     }
                 }

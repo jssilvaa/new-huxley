@@ -6,6 +6,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Profiling helpers (perf/flamegraphs): keep symbols + reliable stacks.
+# Use with: -DCMAKE_BUILD_TYPE=RelWithDebInfo -DAPPCHAT_PROFILING=ON
+option(APPCHAT_PROFILING "Enable profiling-friendly compiler/linker flags" OFF)
+
 find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick Svg)
 
 qt_standard_project_setup()
@@ -74,6 +78,13 @@ qt_add_qml_module(appchat
 target_link_libraries(appchat
     PRIVATE Qt6::Gui Qt6::Qml Qt6::Quick Qt6::Svg
 )
+
+if(APPCHAT_PROFILING)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+        target_compile_options(appchat PRIVATE -g -fno-omit-frame-pointer -fno-optimize-sibling-calls)
+        target_link_options(appchat PRIVATE -g)
+    endif()
+endif()
 
 if(NOT ANDROID)
     set_target_properties(appchat PROPERTIES

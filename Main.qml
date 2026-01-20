@@ -22,21 +22,43 @@ Window {
     property string page: (controllerReady && Controller.authenticated) ? "chat"
                        : (controllerReady && Controller.registering)   ? "register"
                        : "login"
+    function handleAndroidBack() {
+        if (!isMobile) return false
+
+        if (page === "register") {
+            Controller.showLogin()
+            return true
+        }
+
+        if (page === "chat" && mobileChatShell && mobileChatShell.pageIndex === 1) {
+            mobileChatShell.pageIndex = 0
+            return true
+        }
+
+        if (page === "chat") return true
+        if (page === "login") return true
+
+        return false
+    }
+    onClosing: function(close) {
+        if (!root.isMobile) return
+        if (root.handleAndroidBack()) close.accepted = false
+    }
 
     FocusScope {
         anchors.fill: parent
         focus: true
         Keys.priority: Keys.BeforeItem
-
         Keys.onBackPressed: function(event) {
-            if (!root.isMobile)
-                return
-
-            if (root.page === "chat" && root.mobileChatShell && root.mobileChatShell.pageIndex === 1) {
-                root.mobileChatShell.pageIndex = 0
-                event.accepted = true
-            }
+            event.accepted = root.handleAndroidBack()
         }
+    }
+
+    Shortcut {
+        enabled: root.isMobile
+        sequences: [StandardKey.Back]
+        context: Qt.ApplicationShortcut
+        onActivated: root.handleAndroidBack()
     }
 
     // intro only once (first time app shows)

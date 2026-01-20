@@ -145,8 +145,8 @@ Rectangle {
                 clip: true
 
                 property bool selected: ListView.isCurrentItem
-                property bool hovered: mouse.containsMouse
-                property bool pressed: mouse.pressed
+                property bool hovered: mouseArea.containsMouse
+                property bool pressed: mouseArea.pressed
                 property real rippleSize: Math.max(width, height) * 1.3
 
                 color: selected ? Theme.contactsSurface : "transparent"
@@ -160,7 +160,7 @@ Rectangle {
                 Behavior on color { ColorAnimation { duration: Theme.animFast } }
 
                 MouseArea {
-                    id: mouse
+                    id: mouseArea
                     anchors.fill: parent
                     hoverEnabled: true
 
@@ -169,7 +169,7 @@ Rectangle {
                         Controller.selectPeer(username)
                         root.contactActivated(username)
                     }
-                    onPressed: {
+                    onPressed: function(mouse) {
                         if (root.isAndroid && Qt.vibrate)
                             Qt.vibrate(8)
                         ripple.x = mouse.x - ripple.width / 2
