@@ -7,6 +7,8 @@ import chat 1.0
 Rectangle {
     id: root
     color: "transparent"
+    property int bottomInset: 0
+    onBottomInsetChanged: chat.keepBottomVisible()
 
     Layout.minimumWidth: Qt.platform.os === "android" ? 0 : 500
     Layout.minimumHeight: Qt.platform.os === "android" ? 0 : 300
@@ -166,6 +168,19 @@ Rectangle {
             } else if (count === 0) {
                 ready = true 
             }
+        }
+        function keepBottomVisible() {
+            if (isResetting || !ready || !stickToBottom) return
+            Qt.callLater(() => positionViewAtEnd())
+        }
+
+        onHeightChanged: keepBottomVisible()
+        onContentHeightChanged: keepBottomVisible()
+
+        footer: Item {
+            width: chat.width
+            height: root.bottomInset
+            visible: height > 0
         }
 
 

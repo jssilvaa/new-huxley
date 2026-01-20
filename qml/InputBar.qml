@@ -25,8 +25,12 @@ Rectangle {
         if (event.modifiers & Qt.ShiftModifier) { // still not working, input bar does not extend?
             input.insert("\n")
             event.accepted = true
-        } else if (enabled && input.text.length > 0) {
-            Controller.sendMessage(input.text)
+        } else if (enabled && input.displayText.length > 0) {
+            // Some Android IMEs keep typed characters in "preedit" until a word boundary.
+            // Commit it so the first characters count immediately.
+            Qt.inputMethod.commit()
+            const msg = input.text.length > 0 ? input.text : input.displayText
+            Controller.sendMessage(msg)
             event.accepted = true
         }
     }
@@ -73,7 +77,8 @@ Rectangle {
             Layout.preferredWidth: isAndroid ? 48 : implicitWidth
             Layout.preferredHeight: isAndroid ? 48 : implicitHeight
             Layout.alignment: Qt.AlignVCenter
-            enabled: input.text.length > 0 && input.enabled
+            // Use displayText so the button enables even while the IME is composing.
+            enabled: input.enabled && input.displayText.length > 0
 
             opacity: enabled ? 1.0 : 0.4
             Behavior on opacity {
@@ -81,7 +86,9 @@ Rectangle {
             }
 
             onClicked: {
-                Controller.sendMessage(input.text)
+                Qt.inputMethod.commit()
+                const msg = input.text.length > 0 ? input.text : input.displayText
+                Controller.sendMessage(msg)
             }
 
             Connections {
