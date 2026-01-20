@@ -30,13 +30,15 @@ namespace {
     }
 
     static QString normalizeTimestamp(const QString& isoTs) {
-        const auto dt = QDateTime::fromString(isoTs, Qt::ISODate);
+        auto dt = QDateTime::fromString(isoTs, Qt::ISODateWithMs);
+        if (!dt.isValid()) dt = QDateTime::fromString(isoTs, Qt::ISODate);
         if (!dt.isValid()) return isoTs; 
         return dt.toLocalTime().toString("yyyy-MM-dd HH:mm:ss");
     }
 
     static qint64 timestampToMs(const QString& ts) {
         QDateTime dt = QDateTime::fromString(ts, "yyyy-MM-dd HH:mm:ss");
+        if (!dt.isValid()) dt = QDateTime::fromString(ts, Qt::ISODateWithMs);
         if (!dt.isValid()) dt = QDateTime::fromString(ts, Qt::ISODate);
         if (!dt.isValid()) return 0;
         return dt.toMSecsSinceEpoch();

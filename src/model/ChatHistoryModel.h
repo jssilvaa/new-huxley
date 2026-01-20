@@ -32,7 +32,9 @@ public:
 public slots: 
     void resetHistory(const QVector<ChatMessage>& messages); 
     void appendMessage(const ChatMessage& message); 
+    void refreshDaySeparators();
 
 private: 
+    void emitDaySeparatorsChanged(int startRow = 0, int endRow = -1);
     QVector<ChatMessage> m_messages; 
 };

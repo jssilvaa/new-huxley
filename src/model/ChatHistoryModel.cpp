@@ -2,6 +2,7 @@
 #include "ChatHistoryModel.h"
 #include <QDateTime>
 #include <QLocale>
+#include <QtGlobal>
 #include <qstringview.h>
 
 namespace {
@@ -9,6 +10,7 @@ namespace {
         if (ts.isEmpty()) return {};
 
         QDateTime dt = QDateTime::fromString(ts, "yyyy-MM-dd HH:mm:ss");
+        if (!dt.isValid()) dt = QDateTime::fromString(ts, Qt::ISODateWithMs);
         if (!dt.isValid()) dt = QDateTime::fromString(ts, Qt::ISODate);
         if (dt.isValid()) dt = dt.toLocalTime();
         return dt;
@@ -80,6 +82,7 @@ void ChatHistoryModel::resetHistory(const QVector<ChatMessage>& messages) {
     beginResetModel(); 
     m_messages = messages;
     endResetModel(); 
+    refreshDaySeparators();
 }
 
 void ChatHistoryModel::appendMessage(const ChatMessage& message) {
@@ -87,4 +90,18 @@ void ChatHistoryModel::appendMessage(const ChatMessage& message) {
     beginInsertRows(QModelIndex(), row, row); 
     m_messages.push_back(message); 
     endInsertRows(); 
+    refreshDaySeparators();
+}
+
+void ChatHistoryModel::refreshDaySeparators() {
+    emitDaySeparatorsChanged();
+}
+
+void ChatHistoryModel::emitDaySeparatorsChanged(int startRow, int endRow) {
+    if (m_messages.isEmpty()) return;
+
+    const int lastRow = m_messages.size() - 1;
+    const int start = qBound(0, startRow, lastRow);
+    const int end = qBound(0, endRow < 0 ? lastRow : endRow, lastRow);
+    emit dataChanged(index(start), index(end), {DayLabelRole, DayStartRole});
 }

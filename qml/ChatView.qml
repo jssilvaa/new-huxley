@@ -42,6 +42,35 @@ Rectangle {
         model: Controller.chat
         reuseItems: true
         cacheBuffer: Math.max(0, height * 2)
+        section.property: "dayLabel"
+        section.criteria: ViewSection.FullString
+        section.labelPositioning: ViewSection.InlineLabels
+        section.delegate: Item {
+            width: chat.width
+            height: dayPill.visible ? dayPill.implicitHeight + 6 : 0
+            visible: dayPill.visible
+
+            Rectangle {
+                id: dayPill
+                anchors.centerIn: parent
+                radius: 999
+                color: Theme.surface
+                border.color: Theme.border
+                border.width: 1
+                visible: section && section.length > 0
+
+                implicitWidth: dayLabelText.implicitWidth + 20
+                implicitHeight: dayLabelText.implicitHeight + 6
+
+                Label {
+                    id: dayLabelText
+                    anchors.centerIn: parent
+                    text: section
+                    color: Theme.muted
+                    font.pointSize: 9
+                }
+            }
+        }
 
         property bool ready: false
         property bool isResetting: false
@@ -76,6 +105,9 @@ Rectangle {
                 chat.ready = false
                 Qt.callLater(() => {
                     chat.forceLayout()
+                    if (Controller.chat && Controller.chat.refreshDaySeparators) {
+                        Controller.chat.refreshDaySeparators()
+                    }
                     if (chat.pendingPositionEnd) {
                         chat.positionViewAtEnd()
                         chat.pendingPositionEnd = false
@@ -181,33 +213,6 @@ Rectangle {
                 id: contentColumn
                 width: parent.width
                 spacing: 6
-
-                Item {
-                    width: parent.width
-                    height: dayPill.visible ? dayPill.implicitHeight + 6 : 0
-                    visible: dayPill.visible
-
-                    Rectangle {
-                        id: dayPill
-                        anchors.centerIn: parent
-                        radius: 999
-                        color: Theme.surface
-                        border.color: Theme.border
-                        border.width: 1
-                        visible: dayStart && dayLabel && dayLabel.length > 0
-
-                        implicitWidth: dayLabelText.implicitWidth + 20
-                        implicitHeight: dayLabelText.implicitHeight + 6
-
-                        Label {
-                            id: dayLabelText
-                            anchors.centerIn: parent
-                            text: dayLabel
-                            color: Theme.muted
-                            font.pointSize: 9
-                        }
-                    }
-                }
 
                 RowLayout {
                     width: parent.width
