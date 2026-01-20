@@ -8,6 +8,7 @@ import chat 1.0
 Rectangle {
     id: root
     signal contactActivated(string username)
+    property bool isAndroid: Qt.platform.os === "android"
     color: Theme.contactsPanel
     border.color: Theme.contactsBorder
     border.width: 1
@@ -141,10 +142,12 @@ Rectangle {
                 width: ListView.view.width
                 height: 56
                 radius: Theme.radiusSm
+                clip: true
 
                 property bool selected: ListView.isCurrentItem
                 property bool hovered: mouse.containsMouse
                 property bool pressed: mouse.pressed
+                property real rippleSize: Math.max(width, height) * 1.3
 
                 color: selected ? Theme.contactsSurface : "transparent"
 
@@ -166,6 +169,24 @@ Rectangle {
                         Controller.selectPeer(username)
                         root.contactActivated(username)
                     }
+                    onPressed: {
+                        if (root.isAndroid && Qt.vibrate)
+                            Qt.vibrate(8)
+                        ripple.x = mouse.x - ripple.width / 2
+                        ripple.y = mouse.y - ripple.height / 2
+                        rippleAnim.restart()
+                    }
+                }
+
+                Rectangle {
+                    id: ripple
+                    width: row.rippleSize
+                    height: row.rippleSize
+                    radius: width / 2
+                    color: "#ffffff"
+                    opacity: 0.0
+                    scale: 0.2
+                    visible: root.isAndroid
                 }
 
                 RowLayout {
@@ -264,6 +285,25 @@ Rectangle {
                     border.color: Theme.contactsBorder
                     border.width: hovered && !selected ? 1 : 0
                     Behavior on opacity { NumberAnimation { duration: Theme.animFast } }
+                }
+
+                ParallelAnimation {
+                    id: rippleAnim
+                    PropertyAnimation {
+                        target: ripple
+                        property: "opacity"
+                        from: 0.18
+                        to: 0.0
+                        duration: Theme.animFast + 140
+                    }
+                    PropertyAnimation {
+                        target: ripple
+                        property: "scale"
+                        from: 0.2
+                        to: 1.1
+                        duration: Theme.animFast + 140
+                        easing.type: Easing.OutCubic
+                    }
                 }
             }
         }

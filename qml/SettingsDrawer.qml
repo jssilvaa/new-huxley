@@ -27,7 +27,9 @@ Drawer {
     anchors.fill: parent
     clip: true
 
-    ScrollBar.vertical.policy: ScrollBar.AsNeeded
+    ScrollBar.vertical.policy: Qt.platform.os === "android"
+        ? ScrollBar.AlwaysOff
+        : ScrollBar.AsNeeded
 
         ColumnLayout {
             anchors.fill: parent

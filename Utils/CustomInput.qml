@@ -17,6 +17,7 @@ TextField {
     // this is already exposed. no need to do it twice
     implicitHeight: 40
     font.pointSize: 12
+    verticalAlignment: TextInput.AlignVCenter
 
     leftPadding: 16
     rightPadding: showIcon ? 44 : 16

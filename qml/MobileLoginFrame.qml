@@ -30,7 +30,7 @@ Item {
         Rectangle {
             anchors.fill: parent
             visible: Theme.gradientOn && Theme.hasGradient
-            opacity: 0.35
+            opacity: Theme.gradientOpacity
             gradient: Gradient {
                 GradientStop { position: 0; color: Theme.gradA }
                 GradientStop { position: 1; color: Theme.gradB }

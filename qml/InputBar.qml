@@ -10,6 +10,7 @@ Rectangle {
     border.color: Theme.border
     border.width: 1
 
+    property bool isAndroid: Qt.platform.os === "android"
     property bool showBar: Controller.authenticated && Controller.hasPeer
 
     visible: opacity > 0.01
@@ -37,7 +38,8 @@ Rectangle {
     Connections {
         target: Controller
         function onCurrentPeerChanged() {
-            Qt.callLater(() => input.forceActiveFocus())
+            if (!isAndroid && input.enabled)
+                Qt.callLater(() => input.forceActiveFocus())
         }
     }
 
@@ -49,6 +51,7 @@ Rectangle {
         CustomInput {
             id: input
             Layout.fillWidth: true
+            Layout.alignment: Qt.AlignVCenter
             fieldBg: Theme.surface
             fieldText: Theme.text
             fieldMuted: Theme.muted
@@ -63,7 +66,13 @@ Rectangle {
         }
 
         CustomButton {
+            id: sendButton
             text: "Send"
+            icon.source: isAndroid ? "../images/message-icon.png" : ""
+            display: isAndroid ? AbstractButton.IconOnly : AbstractButton.TextOnly
+            Layout.preferredWidth: isAndroid ? 48 : implicitWidth
+            Layout.preferredHeight: isAndroid ? 48 : implicitHeight
+            Layout.alignment: Qt.AlignVCenter
             enabled: input.text.length > 0 && input.enabled
 
             opacity: enabled ? 1.0 : 0.4

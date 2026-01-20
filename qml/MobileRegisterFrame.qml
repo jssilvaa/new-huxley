@@ -59,7 +59,7 @@ Item {
         Rectangle {
             anchors.fill: parent
             visible: Theme.gradientOn && Theme.hasGradient
-            opacity: 0.35
+            opacity: Theme.gradientOpacity
             gradient: Gradient {
                 GradientStop { position: 0; color: Theme.gradA }
                 GradientStop { position: 1; color: Theme.gradB }
@@ -107,7 +107,9 @@ Item {
             id: scroll
             anchors.fill: parent
             clip: true
-            ScrollBar.vertical.policy: ScrollBar.AsNeeded
+            ScrollBar.vertical.policy: Qt.platform.os === "android"
+                ? ScrollBar.AlwaysOff
+                : ScrollBar.AsNeeded
 
             ColumnLayout {
                 width: scroll.width

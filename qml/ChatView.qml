@@ -267,6 +267,8 @@ Rectangle {
             }
         }
 
-        ScrollBar.vertical: ScrollBar { }
+        ScrollBar.vertical: ScrollBar {
+            policy: Qt.platform.os === "android" ? ScrollBar.AlwaysOff : ScrollBar.AsNeeded
+        }
     }
 }

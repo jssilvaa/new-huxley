@@ -217,4 +217,8 @@ QtObject {
     readonly property int animFast: reducedMotion ? 0 : 120
     readonly property int animMed:  reducedMotion ? 0 : 180
     readonly property int animSlow: reducedMotion ? 0 : 260
+
+    // platform tuning
+    readonly property bool isAndroid: Qt.platform.os === "android"
+    readonly property real gradientOpacity: isAndroid ? 0.5 : 0.35
 }

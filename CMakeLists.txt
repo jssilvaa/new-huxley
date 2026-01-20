@@ -63,6 +63,7 @@ qt_add_qml_module(appchat
 
     RESOURCES
         images/logo.png
+        images/back-icon.png
         images/message-icon.png
         images/lock.png
         images/settings-icon.png
