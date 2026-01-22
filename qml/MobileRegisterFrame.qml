@@ -221,7 +221,7 @@ Item {
 
                 CustomButton {
                     Layout.fillWidth: true
-                    text: "<- Back to login"
+                    text: "Back to login"
                     onClicked: Controller.showLogin()
                 }
             }

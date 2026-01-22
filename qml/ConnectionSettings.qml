@@ -76,6 +76,7 @@ ColumnLayout {
 
         CustomButton {
             text: Controller.connected ? "Reconnect" : "Connect"
+            horizontalPadding: isAndroid ? padding : padding + 6
             onClicked: root.applyConnection()
         }
     }

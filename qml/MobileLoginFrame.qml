@@ -158,7 +158,9 @@ Item {
 
             CustomButton {
                 Layout.fillWidth: true
-                text: qsTr("Login  ->")
+                text: qsTr("Login")
+                textPointSize: 16
+                contentOffsetX: -24
                 enabled: controllerReady && Controller.connected
                 onClicked: Controller.login(usernameInput.text, passwordInput.text)
             }

@@ -7,15 +7,19 @@ Button {
 
     property bool isAndroid: Qt.platform.os === "android"
     property bool iconOnly: control.display === AbstractButton.IconOnly
+    readonly property bool hasIcon: control.icon.source !== "" && control.display !== AbstractButton.TextOnly
+    readonly property bool hasText: control.text.length > 0 && control.display !== AbstractButton.IconOnly
     property bool useHaptics: isAndroid
+    property int textPointSize: isAndroid ? 14 : 12
+    property real contentOffsetX: 0
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    padding: isAndroid ? (iconOnly ? 10 : 12) : (iconOnly ? 8 : 10)
-    horizontalPadding: iconOnly ? padding : padding + (isAndroid ? 10 : 6)
+    padding: isAndroid ? (iconOnly ? 12 : 14) : (iconOnly ? 8 : 10)
+    horizontalPadding: iconOnly ? padding : padding + (isAndroid ? 12 : 6)
     spacing: iconOnly ? 0 : (isAndroid ? 10 : 8)
 
     hoverEnabled: !isAndroid
@@ -26,31 +30,48 @@ Button {
         if (control.hovered) return Qt.darker(base, 1.08)
         return base
     }
-    property color buttonGlow: Qt.lighter(buttonBg, 1.12)
+    property color buttonGlow: Qt.lighter(buttonBg, isAndroid ? 1.18 : 1.12)
+    property color buttonShade: Qt.darker(buttonBg, isAndroid ? 1.2 : 1.12)
     property color buttonText: {
         if (!control.enabled) return Theme.muted
         if (control.flat && !control.down && !control.checked && !control.highlighted) return Theme.text
         return Theme.onAccent
     }
 
-    contentItem: Row {
-        spacing: control.spacing
-        anchors.centerIn: parent
+    contentItem: Item {
+        implicitWidth: contentRow.implicitWidth
+        implicitHeight: contentRow.implicitHeight
 
-        Image {
-            source: control.icon.source
-            visible: source !== "" && control.display !== AbstractButton.TextOnly
-            width: control.icon.width > 0 ? control.icon.width : (isAndroid ? 22 : 20)
-            height: control.icon.height > 0 ? control.icon.height : (isAndroid ? 22 : 20)
-            fillMode: Image.PreserveAspectFit
-        }
+        Row {
+            id: contentRow
+            spacing: control.hasIcon && control.hasText ? control.spacing : 0
+            anchors.centerIn: parent
+            anchors.horizontalCenterOffset: control.contentOffsetX
 
-        Label {
-            text: control.text
-            visible: control.display !== AbstractButton.IconOnly
-            font.pointSize: isAndroid ? 13 : 12
-            font.weight: Font.DemiBold
-            color: control.buttonText
+            Image {
+                source: control.icon.source
+                visible: control.hasIcon
+                width: control.hasIcon
+                    ? (control.icon.width > 0 ? control.icon.width : (isAndroid ? 22 : 20))
+                    : 0
+                height: control.hasIcon
+                    ? (control.icon.height > 0 ? control.icon.height : (isAndroid ? 22 : 20))
+                    : 0
+                fillMode: Image.PreserveAspectFit
+            }
+
+            Label {
+                text: control.text
+                visible: control.hasText
+                width: control.hasText ? implicitWidth : 0
+                height: control.hasText ? implicitHeight : 0
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.pointSize: control.textPointSize
+                font.weight: Font.DemiBold
+                font.letterSpacing: isAndroid ? 0.2 : 0.0
+                color: control.buttonText
+            }
         }
     }
 
@@ -63,12 +84,12 @@ Button {
 
     background: Rectangle {
         implicitWidth: iconOnly ? implicitHeight : 100
-        implicitHeight: isAndroid ? 50 : 42
+        implicitHeight: isAndroid ? 52 : 42
         visible: isAndroid || !control.flat || control.down || control.checked || control.highlighted
         color: control.flat ? "transparent" : control.buttonBg
-        border.color: control.visualFocus ? Theme.accent : Qt.darker(control.buttonBg, 1.4)
+        border.color: control.visualFocus ? Theme.accent : Qt.darker(control.buttonBg, isAndroid ? 1.25 : 1.35)
         border.width: control.flat && !control.down && !control.checked && !control.highlighted ? 0 : (control.visualFocus ? 2 : 1)
-        radius: iconOnly ? height / 2 : (isAndroid ? 16 : 12)
+        radius: iconOnly ? height / 2 : (isAndroid ? 20 : 12)
         clip: true
 
         Behavior on color { ColorAnimation { duration: Theme.animFast } }
@@ -78,11 +99,22 @@ Button {
             anchors.fill: parent
             radius: parent.radius
             visible: !control.flat
-            opacity: 0.25
+            opacity: isAndroid ? 0.32 : 0.25
             gradient: Gradient {
                 GradientStop { position: 0.0; color: control.buttonGlow }
-                GradientStop { position: 1.0; color: Qt.darker(control.buttonBg, 1.15) }
+                GradientStop { position: 1.0; color: control.buttonShade }
             }
+        }
+
+        Rectangle {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            height: parent.height * (isAndroid ? 0.45 : 0.4)
+            radius: parent.radius
+            visible: !control.flat
+            color: "#ffffff"
+            opacity: control.enabled ? (isAndroid ? 0.16 : 0.12) : 0.0
         }
 
         Rectangle {

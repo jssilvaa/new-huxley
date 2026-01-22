@@ -147,7 +147,7 @@ Item {
 
                     CustomButton {
                         Layout.preferredWidth: 200
-                        text: "← Back to login"
+                        text: "Back to login"
                         onClicked: Controller.showLogin()
                     }
                 }
