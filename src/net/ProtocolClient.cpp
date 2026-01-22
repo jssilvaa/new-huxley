@@ -29,6 +29,19 @@ ProtocolClient::ProtocolClient(QObject* parent) : QObject(parent) {
     connect(&m_sock, &QTcpSocket::errorOccurred, this, &ProtocolClient::onSocketError); 
 }
 
+void ProtocolClient::shutdown() {
+    // Prevent any more signals/IO callbacks during teardown.
+    m_sock.blockSignals(true);
+    disconnect(&m_sock, nullptr, this, nullptr);
+
+    if (m_sock.state() != QAbstractSocket::UnconnectedState) {
+        m_sock.abort();
+    }
+    m_sock.close();
+    m_buf.clear();
+    m_expectedLen = 0;
+}
+
 void ProtocolClient::connectToHost(const QString& host, quint16 port) {
     m_buf.clear(); 
     m_expectedLen = 0; 

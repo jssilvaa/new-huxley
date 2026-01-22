@@ -83,6 +83,21 @@ void ClientController::start() {
     m_proto.connectToHost(m_serverHost, quint16(m_serverPort));
 }
 
+void ClientController::shutdown() {
+    // Idempotent best-effort shutdown to avoid exit-time crashes.
+    m_ready = false;
+    m_reconnectPending = false;
+    m_connecting = false;
+
+    m_presenceTimer.stop();
+
+    // Stop delivering signals into QML while the scene is tearing down.
+    disconnect(&m_msgservice, nullptr, this, nullptr);
+    disconnect(&m_proto, nullptr, this, nullptr);
+
+    m_proto.shutdown();
+}
+
 void ClientController::reconnect() {
     if (m_connecting) return;
     if (m_connected) {

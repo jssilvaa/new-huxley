@@ -80,9 +80,14 @@ target_link_libraries(appchat
 )
 
 if(APPCHAT_PROFILING)
+    # Needed for Qt Creator QML Profiler (starts the QML debug/profiler server).
+    if(NOT ANDROID)
+        target_compile_definitions(appchat PRIVATE QT_QML_DEBUG)
+    endif()
+
     if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
         target_compile_options(appchat PRIVATE -g -fno-omit-frame-pointer -fno-optimize-sibling-calls)
-        target_link_options(appchat PRIVATE -g)
+        target_link_options(appchat PRIVATE -g -Wl,--build-id)
     endif()
 endif()
 

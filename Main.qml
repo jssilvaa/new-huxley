@@ -41,8 +41,14 @@ Window {
         return false
     }
     onClosing: function(close) {
-        if (!root.isMobile) return
-        if (root.handleAndroidBack()) close.accepted = false
+        if (root.isMobile) {
+            if (root.handleAndroidBack()) close.accepted = false
+            return
+        }
+
+        // Desktop: stop network/timers before QML teardown completes.
+        if (Controller && Controller.shutdown)
+            Controller.shutdown()
     }
 
     FocusScope {
@@ -169,5 +175,7 @@ Window {
         function onError(msg) { toasts.show(msg, true) }
     }
 
-    Action { shortcut: "Ctrl+w"; onTriggered: Qt.quit() }
+    // Avoid quitting directly from a shortcut handler (can cause shutdown re-entrancy).
+    // Close the window instead; the app will exit when the last window closes.
+    Action { shortcut: "Ctrl+w"; onTriggered: Qt.callLater(() => root.close()) }
 }

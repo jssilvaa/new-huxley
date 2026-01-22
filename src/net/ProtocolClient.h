@@ -14,6 +14,8 @@ class ProtocolClient final : public QObject {
 public: 
     explicit ProtocolClient(QObject* parent=nullptr); 
 
+    void shutdown();
+
     Q_INVOKABLE void connectToHost(const QString& host, quint16 port); 
     Q_INVOKABLE void disconnectFromHost(); 
     Q_INVOKABLE void sendCommand(const QJsonObject& obj);

@@ -36,6 +36,7 @@ public:
     QObject* contactsProxy() { return &m_contactsProxy; }
 
     Q_INVOKABLE void start(); 
+    Q_INVOKABLE void shutdown();
     Q_INVOKABLE void login(const QString& user, const QString& pass);
     Q_INVOKABLE void registerUser(const QString& user, const QString& pass); 
     Q_INVOKABLE void showRegister(); 
