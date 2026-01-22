@@ -1,4 +1,3 @@
-// RegisterFrame.qml (desktop rectangular)
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -65,7 +64,7 @@ Item {
             anchors.margins: 26
             spacing: 26
 
-            // LEFT: form
+            // left form
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -153,7 +152,7 @@ Item {
                 }
             }
 
-            // RIGHT: rules block
+            // right rules block
             Rectangle {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 320

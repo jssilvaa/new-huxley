@@ -30,10 +30,10 @@ class ClientController final : public QObject {
     Q_PROPERTY(int serverPort READ serverPort WRITE setServerPort NOTIFY serverPortChanged)
 public: 
     explicit ClientController(QObject* parent=nullptr); 
-    QObject* messageService() { return &m_msgservice; }
-    QObject* contacts() { return &m_contacts; }
-    QObject* chat() { return &m_chat; }
-    QObject* contactsProxy() { return &m_contactsProxy; }
+    QObject* messageService();
+    QObject* contacts();
+    QObject* chat();
+    QObject* contactsProxy();
 
     Q_INVOKABLE void start(); 
     Q_INVOKABLE void shutdown();
@@ -42,48 +42,22 @@ public:
     Q_INVOKABLE void showRegister(); 
     Q_INVOKABLE void showLogin();  
     Q_INVOKABLE void reconnect();
-    Q_INVOKABLE void refreshUsers() { m_msgservice.listUsers(); }
-    Q_INVOKABLE void selectPeer(const QString& peer) {
-        if (!m_authenticated) { emit error("Not authenticated"); return; }
-        
-        if (peer == m_currentPeer) return; 
-        m_currentPeer = peer; 
-        m_contacts.clearUnread(peer); 
-        m_chat.resetHistory({}); 
+    Q_INVOKABLE void refreshUsers();
+    Q_INVOKABLE void selectPeer(const QString& peer);
+    Q_INVOKABLE void sendMessage(const QString& content);
+    Q_INVOKABLE int unreadCount(const QString& user) const;
+    Q_INVOKABLE bool hasUnread(const QString& user) const;
+    void setFocusContacts(bool v);
 
-        // get history and emit peer change
-        m_msgservice.getHistory(peer); 
-        emit currentPeerChanged(); 
-        emit currentPeerOnlineChanged();
-    }
-    Q_INVOKABLE void sendMessage(const QString& content) {
-        if (!m_authenticated) return; 
-        if (m_currentPeer.isEmpty()) { emit error("No peer selected"); return; }
-
-        emit messageSubmitted();
-        m_msgservice.sendMessage(m_currentPeer, content); 
-    }
-    Q_INVOKABLE int unreadCount(const QString& user) const {
-        return m_contacts.unreadCount(user); 
-    }; 
-    Q_INVOKABLE bool hasUnread(const QString& user) const {
-        return m_contacts.unreadCount(user) > 0; 
-    }; 
-    void setFocusContacts(bool v) {
-        if (m_focusContacts == v) return; 
-        m_focusContacts = v; 
-        emit focusContactsChanged(); 
-    }
-
-    bool connected() const { return m_connected; }
-    bool authenticated() const { return m_authenticated; }
-    bool registering() const { return m_registering; }
-    bool hasPeer() const { return !m_currentPeer.isEmpty(); }
+    bool connected() const;
+    bool authenticated() const;
+    bool registering() const;
+    bool hasPeer() const;
     bool currentPeerOnline() const; 
-    QString currentPeer() const { return m_currentPeer; }
-    bool focusContacts() const { return m_focusContacts; }
-    QString serverHost() const { return m_serverHost; }
-    int serverPort() const { return m_serverPort; }
+    QString currentPeer() const;
+    bool focusContacts() const;
+    QString serverHost() const;
+    int serverPort() const;
 
     void setServerHost(const QString& host);
     void setServerPort(int port);

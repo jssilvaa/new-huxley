@@ -1,4 +1,3 @@
-// src/service/MessageService.cpp
 #include "MessageService.h" 
 #include "../net/ProtocolClient.h"
 #include <QJsonDocument> 
@@ -6,6 +5,7 @@
 #include <qjsonarray.h>
 
 static QString extractCommand(const QJsonObject& obj) {
+    // normalize command key
     if (obj.contains("type"))
         return obj.value("type").toString().toLower().trimmed();
     if (obj.contains("command"))
@@ -16,18 +16,21 @@ static QString extractCommand(const QJsonObject& obj) {
 MessageService::MessageService(ProtocolClient* proto, QObject* parent)
     : QObject(parent), m_proto(proto) 
 {
-    assert(proto); // ensure proto exists so that wrapper may attach semantics
+    assert(proto); // proto required
+    // response stream handler
     connect(m_proto, &ProtocolClient::responseReceived, 
             this, &MessageService::onResponse); 
 }
 
 void MessageService::listUsers() {
+    // request user list
     m_proto->sendCommand(QJsonObject{
         {"type", "LIST_USERS"}
     }); 
 }
 
 void MessageService::getHistory(const QString& peer, int limit) {
+    // request message history
     m_proto->sendCommand(QJsonObject{
         {"type", "GET_HISTORY"},
         {"with", peer},
@@ -37,6 +40,7 @@ void MessageService::getHistory(const QString& peer, int limit) {
 }
 
 void MessageService::sendMessage(const QString& peer, const QString& content) {
+    // send message command
     m_proto->sendCommand(QJsonObject{
         {"type", "SEND_MESSAGE"}, 
         {"recipient", peer}, 
@@ -45,11 +49,12 @@ void MessageService::sendMessage(const QString& peer, const QString& content) {
 }
 
 void MessageService::onResponse(QJsonObject obj) {
+    // route response
     const QString cmd = extractCommand(obj);
 
     const bool success = obj.value("success").toBool(false);
 
-    // Login response
+    // login response
     if (cmd == "login" || cmd == "login_response") {
         const bool ok = obj.value("success").toBool(false); 
         const QString msg = obj.value("message").toString(); 
@@ -57,14 +62,14 @@ void MessageService::onResponse(QJsonObject obj) {
         return; 
     }   
 
-    // Register response 
+    // register response
     if (cmd == "register" || cmd == "register_response") {
         const bool ok = obj.value("success").toBool(false);
         const QString msg = obj.value("message").toString(); 
         emit registerResult(ok, msg); 
     }
 
-    // sucessful send ACK 
+    // send ack response
     if (cmd == "send_message" || cmd == "send_message_response") {
         const bool ok = obj.value("success").toBool(false); 
         const QString msg = obj.value("message").toString(); 
@@ -74,21 +79,19 @@ void MessageService::onResponse(QJsonObject obj) {
         return; 
     }
 
-    // async events
-    // incoming messages
+    // incoming message event
     if (cmd == "incoming_message" || cmd == "incoming_message_response") {
         emit incomingMessage(obj); 
         return; 
     }
 
-    // error messages
+    // error response
     if (!success) {
         emit commandError(cmd, obj.value("message").toString()); 
         return; 
     }
 
-    // sync events 
-    // get user list for chat display window
+    // user list payload
     if (cmd == "list_users") {
         const auto users = 
             obj.value("payload").toObject().value("users").toArray();
@@ -101,7 +104,7 @@ void MessageService::onResponse(QJsonObject obj) {
         return; 
     }
 
-    // get msgs history with user for bubble window
+    // history payload
     if (cmd == "get_history") {
         const auto payload = obj.value("payload").toObject(); 
         const QString peer = payload.value("with").toString(); 

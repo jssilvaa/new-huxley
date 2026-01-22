@@ -1,4 +1,3 @@
-// LoginFrame.qml (desktop rectangular)
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -9,7 +8,7 @@ Item {
     anchors.fill: parent
     property bool controllerReady: Controller !== null
 
-    // background (use Theme if you want)
+    // background panel
     Rectangle {
         anchors.fill: parent
         color: Theme.bg
@@ -43,7 +42,7 @@ Item {
             anchors.margins: 26
             spacing: 26
 
-            // LEFT: form
+            // left form
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -141,7 +140,7 @@ Item {
                 }
             }
 
-            // RIGHT: “discord-like” info block
+            // right info block
             Rectangle {
                 Layout.fillHeight: true
                 Layout.preferredWidth: 320

@@ -1,4 +1,3 @@
-// RegisterFrame.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -25,7 +24,7 @@ Item {
     property bool matchOk: (confirm.text.length > 0) && (pass.text === confirm.text)
 
     function ruleColor(ok) {
-        // before attempt: muted; after attempt: red if bad; always green if good
+        // rule color state
         if (ok) return "#2e7d32"
         return attempted ? "#c62828" : "#777"
     }

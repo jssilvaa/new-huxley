@@ -1,22 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Generate aggregated perf LaTeX/CSV tables across all runs.
-#
-# Examples:
-#   scripts/profiling/make_perf_summary.sh
-#   TOP=15 MODE=full scripts/profiling/make_perf_summary.sh
-#   FORMAT=csv MODE=app scripts/profiling/make_perf_summary.sh
+# perf summary output
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 : "${PERF_BASE:=$ROOT_DIR/profiles/perf}"
-: "${OUT_DIR:=$PERF_BASE}"  # write next to the runs by default
-: "${MODE:=full}"           # full|app
+: "${OUT_DIR:=$PERF_BASE}"  # output base dir
+: "${MODE:=full}"           # full or app
 : "${TOP:=10}"
-: "${FORMAT:=latex}"        # latex|csv
-: "${TABLE:=1}"             # latex only
+: "${FORMAT:=latex}"        # latex or csv
+: "${TABLE:=1}"             # latex table
 
 args=("$PERF_BASE" --all --mode "$MODE" --top "$TOP" --out-dir "$OUT_DIR")
 

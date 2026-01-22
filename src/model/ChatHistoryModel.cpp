@@ -1,4 +1,3 @@
-// src/model/ChatHistoryModel.cpp
 #include "ChatHistoryModel.h"
 #include <QDateTime>
 #include <QLocale>
@@ -7,6 +6,7 @@
 
 namespace {
     QDateTime parseTimestamp(const QString& ts) {
+        // best effort parse
         if (ts.isEmpty()) return {};
 
         QDateTime dt = QDateTime::fromString(ts, "yyyy-MM-dd HH:mm:ss");
@@ -17,12 +17,14 @@ namespace {
     }
 
     QDate dateFromTimestamp(const QString& ts) {
+        // date only
         const auto dt = parseTimestamp(ts);
         if (!dt.isValid()) return {};
         return dt.date();
     }
 
     QString dayLabelFromTimestamp(const QString& ts) {
+        // day label text
         const QDate date = dateFromTimestamp(ts);
         if (!date.isValid()) return {};
 
@@ -39,11 +41,13 @@ ChatHistoryModel::ChatHistoryModel(QObject* parent)
     : QAbstractListModel(parent) {}
 
 int ChatHistoryModel::rowCount(const QModelIndex& parent) const {
+    // no child rows
     if (parent.isValid()) return 0; 
     return m_messages.size(); 
 }
 
 QVariant ChatHistoryModel::data(const QModelIndex& index, int role) const {
+    // invalid index guard
     if (!index.isValid()) return {}; 
 
     const auto& m = m_messages.at(index.row()); 
@@ -55,6 +59,7 @@ QVariant ChatHistoryModel::data(const QModelIndex& index, int role) const {
         case IsOwnRole: return m.isOwn; 
         case DayLabelRole: return dayLabelFromTimestamp(m.timestamp);
         case DayStartRole: {
+            // day boundary check
             const QDate currentDate = dateFromTimestamp(m.timestamp);
             if (!currentDate.isValid()) return false;
             if (index.row() == 0) return true;
@@ -68,6 +73,7 @@ QVariant ChatHistoryModel::data(const QModelIndex& index, int role) const {
 }
 
 QHash<int, QByteArray> ChatHistoryModel::roleNames() const {
+    // role names for qml
     return {
         { SenderRole, "sender" },
         { ContentRole, "content" },
@@ -79,6 +85,7 @@ QHash<int, QByteArray> ChatHistoryModel::roleNames() const {
 }
 
 void ChatHistoryModel::resetHistory(const QVector<ChatMessage>& messages) {
+    // reset message list
     beginResetModel(); 
     m_messages = messages;
     endResetModel(); 
@@ -86,6 +93,7 @@ void ChatHistoryModel::resetHistory(const QVector<ChatMessage>& messages) {
 }
 
 void ChatHistoryModel::appendMessage(const ChatMessage& message) {
+    // append message row
     const int row = m_messages.size(); 
     beginInsertRows(QModelIndex(), row, row); 
     m_messages.push_back(message); 
@@ -94,10 +102,12 @@ void ChatHistoryModel::appendMessage(const ChatMessage& message) {
 }
 
 void ChatHistoryModel::refreshDaySeparators() {
+    // refresh day separators
     emitDaySeparatorsChanged();
 }
 
 void ChatHistoryModel::emitDaySeparatorsChanged(int startRow, int endRow) {
+    // notify day label change
     if (m_messages.isEmpty()) return;
 
     const int lastRow = m_messages.size() - 1;

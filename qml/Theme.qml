@@ -1,12 +1,11 @@
-// qml/Theme.qml
 pragma Singleton
 import QtQuick
-import QtCore   // Settings (Qt 6.5+)
+import QtCore   // settings
 
 QtObject {
     id: root
 
-    // ---- persisted settings ----
+    // persisted settings
     property var store: Settings {
         category: "ui"
         property bool dark: true
@@ -19,7 +18,7 @@ QtObject {
         property bool reducedMotion: false
     }
 
-    // expose as readonly state (bindings read these)
+    // readonly state
     readonly property bool dark: store.dark
     readonly property int accentIndex: store.accentIndex
     readonly property string presetId: store.presetId
@@ -27,7 +26,7 @@ QtObject {
     readonly property bool decorationsOn: store.decorationsOn
     readonly property bool reducedMotion: store.reducedMotion
 
-    // ---- mutators ----
+    // mutators
     function setDark(v) { store.dark = v }
     function setAccent(i) { store.accentIndex = Math.max(0, Math.min(i, accents.length - 1)) }
     function setPreset(id) {
@@ -38,13 +37,13 @@ QtObject {
     function setDecorationsOn(v) { store.decorationsOn = v }
     function setReducedMotion(v) { store.reducedMotion = v }
 
-    // ---- accents ----
+    // accents
     readonly property var accents: ["#4caf50", "#8e7dff", "#ff9800", "#00bcd4", "#e91e63"]
     readonly property color accent: accents[accentIndex]
     readonly property color danger: dark ? "#ff5252" : "#d32f2f"
 
-    // ---- presets catalog, small simple & stylish ----
-    // Each preset can override any token; anything missing falls back to Classic.
+    // preset catalog
+    // preset values override defaults
     readonly property var presets: ({
         classic: {
             name: "Classic",
@@ -66,7 +65,7 @@ QtObject {
             gradALight: "#f7f7f5",
             gradBLight: "#ffffff",
 
-            // contacts sidebar (light mode only)
+            // contacts sidebar
             contactsPanel: "#171a1d",
             contactsPanel2: "#20242a",
             contactsSurface: "#1f2328",
@@ -139,7 +138,7 @@ QtObject {
         }
     })
 
-    // helper: resolve a key from preset or fallback
+    // preset helpers
     function preset() {
         return presets[presetId] || presets.classic
     }
@@ -167,7 +166,7 @@ QtObject {
         return Qt.rgba(base.r, base.g, base.b, alpha)
     }
 
-    // ---- tokens (fallback = Classic values) ----
+    // tokens
     readonly property color bg:      dark ? pick("bgDark",      "#0f0f0f") : pick("bgLight",      "#f5f5f5")
     readonly property color panel:   dark ? pick("panelDark",   "#141414") : pick("panelLight",   "#ffffff")
     readonly property color panel2:  dark ? pick("panel2Dark",  "#161616") : pick("panel2Light",  "#fafafa")
@@ -180,7 +179,7 @@ QtObject {
     readonly property color bubblePeer: dark ? pick("bubblePeerDark", "#1b1b1b") : pick("bubblePeerLight", "#ffffff")
     readonly property color bubbleOwn:  dark ? pick("bubbleOwnDark",  "#1f3b2d") : pick("bubbleOwnLight",  "#dff5e6")
 
-    // adaptive text colors for surfaces
+    // adaptive text colors
     readonly property color onBg: contrastText(bg)
     readonly property color onPanel: contrastText(panel)
     readonly property color onPanel2: contrastText(panel2)
@@ -189,7 +188,7 @@ QtObject {
     readonly property color onBubblePeer: contrastText(bubblePeer)
     readonly property color onBubbleOwn: contrastText(bubbleOwn)
 
-    // contacts sidebar overrides (defaults to standard tokens)
+    // contacts sidebar overrides
     readonly property color contactsPanel: pick("contactsPanel", panel)
     readonly property color contactsPanel2: pick("contactsPanel2", panel2)
     readonly property color contactsSurface: pick("contactsSurface", surface)

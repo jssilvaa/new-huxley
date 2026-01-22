@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Heaptrack — Scenario 2 (scroll/typing)
+# heaptrack scenario 2
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=common_mem.sh
@@ -18,7 +18,7 @@ scenario="heap_s2_scroll_typing"
 out_dir="$(ensure_out_dir "${scenario}_$(timestamp)")"
 app="$(resolve_app)"
 
-# heaptrack output prefix; output naming varies by version (e.g. heaptrack.zst or heaptrack.<app>.<pid>.{zst,gz})
+# heaptrack output prefix
 OUT_PREFIX="$out_dir/heaptrack"
 
 cat <<EOF
@@ -47,13 +47,13 @@ echo "Running: ${cmd[*]}"
 
 "${cmd[@]}"
 
-# Find produced heaptrack trace file (heaptrack output naming varies by version)
+# find heaptrack trace
 TRACE="$(ls -1 "$out_dir"/heaptrack*.zst "$out_dir"/heaptrack*.gz 2>/dev/null | head -n 1 || true)"
 if [[ -n "$TRACE" ]]; then
   echo "Trace: $TRACE"
 
   ANALYZE_OUT="$out_dir/heaptrack.analyze.txt"
-  # Prefer heaptrack --analyze (more stable format for parsing); fallback to heaptrack_print if needed.
+  # prefer heaptrack analyze
   heaptrack --analyze "$TRACE" > "$ANALYZE_OUT" || true
   if [[ ! -s "$ANALYZE_OUT" ]] && command -v heaptrack_print >/dev/null 2>&1; then
     heaptrack_print "$TRACE" > "$ANALYZE_OUT" || true

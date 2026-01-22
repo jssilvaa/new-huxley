@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Common helpers for profiling scripts.
-# Usage: source this file from scenario scripts.
+# profiling helpers
 
 require_cmd() {
   command -v "$1" >/dev/null 2>&1 || {
@@ -16,11 +15,11 @@ timestamp() {
 }
 
 repo_root() {
-  # scripts/profiling/common.sh -> repo root is two levels up
+  # repo root from script dir
   cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd
 }
 
-# Defaults (override via env)
+# defaults via env
 : "${BUILD_DIR:=build/Desktop_Qt_6_10_1-RelWithDebInfo}"
 : "${APP_PATH:=}"
 : "${OUT_BASE:=profiles/perf}"
@@ -100,8 +99,8 @@ run_perf_for_scenario() {
 
   require_cmd perf
 
-  : "${PERF_STARTUP_DELAY:=2}"     # seconds (override via env)
-  : "${PERF_DURATION:=}"           # optional max seconds; empty = until app exits
+  : "${PERF_STARTUP_DELAY:=2}"     # startup delay seconds
+  : "${PERF_DURATION:=}"           # max seconds empty for app exit
 
   echo "Output: $out_dir"
   echo "App:    $app"
@@ -109,11 +108,11 @@ run_perf_for_scenario() {
 
   local perf_data="$out_dir/perf.data"
 
-  # Start app normally (so we don't profile the dynamic loader startup path)
+  # start app before perf attach
   "$app" &
   local app_pid=$!
 
-  # Give Qt/QML time to finish initialization before we attach perf
+  # delay for app init
   sleep "$PERF_STARTUP_DELAY"
 
   local cmd=(perf record -e "$PERF_EVENT" -F "$PERF_FREQ" -g --call-graph "$PERF_CALLGRAPH" -o "$perf_data" -p "$app_pid")
@@ -122,14 +121,14 @@ run_perf_for_scenario() {
   echo "Running: ${cmd[*]}"
 
   if [[ -n "${PERF_DURATION}" ]]; then
-    # Sample for a fixed time window
+    # fixed duration capture
     "${cmd[@]}" -- sleep "$PERF_DURATION" >/dev/null 2>&1 || true
   else
-    # Sample until the app exits
+    # capture until app exit
     "${cmd[@]}" >/dev/null 2>&1 &
     local perf_pid=$!
 
-    # Wait for app to exit, then stop perf cleanly
+    # wait app then stop perf
     wait "$app_pid" 2>/dev/null || true
     kill -INT "$perf_pid" 2>/dev/null || true
     wait "$perf_pid" 2>/dev/null || true

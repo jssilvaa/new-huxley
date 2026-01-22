@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate perf report outputs across multiple runs.
-
-Reads `perf report --stdio` text outputs (the files your scripts already save as
-`perf.report.full.txt` / `perf.report.app.txt`) and computes mean/stdev overhead
-for symbols across runs.
-
-Typical usage:
-  python3 scripts/profiling/perf_aggregate.py profiles/perf --scenario s2_scroll_typing --mode full --top 10 --latex --table \
-    --caption "Scenario 2 (scroll+typing) mean over 3 runs" --label "tab:perf-s2-full-mean" > profiles/perf/s2_full_mean.tex
-
-Or generate all scenarios:
-  python3 scripts/profiling/perf_aggregate.py profiles/perf --all --mode full --top 10 --latex --table --out-dir profiles/perf
-
-Notes:
-- By default, missing symbols are treated as 0% overhead for a run (more honest
-  for aggregation; avoids “only when present” inflation).
-"""
+"""aggregate perf report outputs"""
 
 from __future__ import annotations
 
@@ -61,7 +45,7 @@ def _split_columns(line: str) -> Optional[Tuple[str, str, str, str]]:
     if not _OVERHEAD_LINE_RE.match(line):
         return None
 
-    # perf uses fixed-width columns separated by 2+ spaces
+    # perf fixed width columns
     parts = re.split(r"\s{2,}", line.strip())
     if len(parts) < 4:
         return None
@@ -103,7 +87,7 @@ def stats(values: List[float]) -> Tuple[float, float]:
     if len(values) == 1:
         return values[0], 0.0
     mean = statistics.fmean(values)
-    # sample stdev is more appropriate for a small number of runs
+    # sample stdev for small n
     stdev = statistics.stdev(values)
     return mean, stdev
 
@@ -114,10 +98,7 @@ def aggregate(
     *,
     include_missing_as_zero: bool,
 ) -> Tuple[int, Dict[Tuple[str, str, str], List[float]]]:
-    """Return (n_runs, key -> list of overheads per run).
-
-    key := (command,dso,symbol)
-    """
+    """return runs and key series"""
 
     per_run_maps: List[Dict[Tuple[str, str, str], float]] = []
     all_keys: set[Tuple[str, str, str]] = set()
@@ -130,7 +111,7 @@ def aggregate(
         m: Dict[Tuple[str, str, str], float] = {}
         for r in rows:
             k = (r.command, r.dso, r.symbol)
-            # perf report should already be unique, but be defensive
+            # keep max overhead per key
             m[k] = max(m.get(k, 0.0), r.overhead_pct)
         per_run_maps.append(m)
         all_keys |= set(m.keys())
@@ -244,7 +225,7 @@ def main(argv: List[str]) -> int:
 
         rows: List[Tuple[float, float, int, str, str, str]] = []
         for (cmd, dso, sym), values in series.items():
-            # If only_when_present, series values won't include missing runs.
+            # drop missing values when only when present
             mean, sd = stats(values)
             rows.append((mean, sd, len(values), cmd, dso, sym))
 
@@ -255,7 +236,7 @@ def main(argv: List[str]) -> int:
         if args.csv:
             return render_csv(rows, top=args.top)
 
-        # default to LaTeX
+        # default to latex
         caption = args.caption or f"{scenario} ({args.mode}) mean overhead (top {args.top})"
         label = args.label
         if not label:

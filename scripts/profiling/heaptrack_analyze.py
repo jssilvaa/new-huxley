@@ -49,7 +49,7 @@ def repo_frame_score(frame: str, repo_root: Optional[str]) -> int:
     if needle not in frame:
         return -1
 
-    # Prefer concrete source locations over build paths.
+    # prefer source paths
     is_build = "/build/" in frame
     is_at = frame.startswith("at ")
 
@@ -67,7 +67,7 @@ def repo_frame_score(frame: str, repo_root: Optional[str]) -> int:
             return 4
         return 1
 
-    # Non-"at" repo hit (e.g. "in .../appchat") is less actionable.
+    # non at repo hit
     return 2
 
 
@@ -81,18 +81,18 @@ def _basename_if_path(s: str) -> str:
 def _pretty_loc_path(loc_path: str, repo_root: Optional[str]) -> str:
     loc_path = loc_path.strip()
 
-    # Prefer repo-relative paths when possible.
+    # prefer repo relative paths
     if repo_root:
         needle = repo_root.rstrip("/") + "/"
         if loc_path.startswith(needle):
             return loc_path[len(needle):]
 
-    # For non-repo absolute paths, shorten to basename.
+    # shorten non repo paths
     return _basename_if_path(loc_path)
 
 
 def _pretty_frame_for_output(frame: str, repo_root: Optional[str]) -> str:
-    # Keep raw frames containing full paths for matching; only prettify for writing.
+    # keep raw paths for matching
     if " in " in frame:
         prefix, loc = frame.split(" in ", 1)
         return f"{prefix} in {_pretty_loc_path(loc, repo_root)}"
@@ -133,9 +133,7 @@ def parse_temp_blocks(lines: list[str]) -> list[TempAllocBlock]:
         i += 1
 
         frames: list[str] = []
-        # Frames come as alternating:
-        #     <symbol or address>
-        #       in <path>
+        # parse symbol and path pairs
         while i < len(lines):
             raw = lines[i].rstrip("\n")
             stripped = raw.strip()
@@ -147,26 +145,24 @@ def parse_temp_blocks(lines: list[str]) -> list[TempAllocBlock]:
             if _TEMP_BLOCK_RE.match(raw):
                 break
 
-            # End-of-section hints
+            # end of section hints
             if stripped.lower().startswith("total runtime:"):
                 break
             if stripped.startswith("and "):
-                # e.g. "and 1B from 70 other places"
                 i += 1
                 continue
 
-            # Try to consume symbol + 'in ...' pair
+            # consume symbol and location
             if raw.startswith("    ") and not raw.startswith("      "):
                 sym = stripped
                 loc = ""
 
-                # Lookahead for location line
+                # lookahead for location line
                 if i + 1 < len(lines):
                     nxt = lines[i + 1].rstrip("\n")
                     nxts = nxt.strip()
                     if nxt.startswith("      ") and nxts.startswith("in "):
                         loc_path = nxts[3:].strip()
-                        # Keep full path here so repo matching stays reliable.
                         loc = loc_path
                         i += 2
                         frames.append(f"{sym} in {loc}")
@@ -176,13 +172,13 @@ def parse_temp_blocks(lines: list[str]) -> list[TempAllocBlock]:
                 frames.append(sym)
                 continue
 
-            # Fallback: keep the line
+            # fallback keep line
             frames.append(stripped)
             i += 1
 
         blocks.append(TempAllocBlock(count=count, total=total, percent=pct, frames=frames))
 
-    # The heaptrack output typically already orders these by count, but sort defensively.
+    # sort by count
     blocks.sort(key=lambda b: b.count, reverse=True)
     return blocks
 
@@ -202,7 +198,7 @@ def latex_escape(s: str) -> str:
 
 
 def best_app_site(block: TempAllocBlock, repo_root: Optional[str]) -> tuple[str, str]:
-    """Return (symbol, location) for the most useful repo-owned frame in the stack."""
+    """best repo frame in stack"""
     best_idx: Optional[int] = None
     best_score = -1
     for idx, frame in enumerate(block.frames):
@@ -217,7 +213,7 @@ def best_app_site(block: TempAllocBlock, repo_root: Optional[str]) -> tuple[str,
     idx = best_idx
     loc = block.frames[idx]
 
-    # Heuristic: take the closest preceding non-location line as the symbol.
+    # pick closest symbol line
     symbol = ""
     for j in range(idx - 1, -1, -1):
         cand = block.frames[j].strip()

@@ -1,4 +1,3 @@
-// qml/SettingsDrawer.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -52,7 +51,7 @@ Drawer {
 
             Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
 
-            // --- Appearance toggles ---
+            // appearance toggles
             CustomCheckBox {
                 text: "Dark Mode"
                 checked: Theme.dark
@@ -83,15 +82,14 @@ Drawer {
 
             Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
 
-            // --- Presets ---
+            // preset list
             Label { text: "Themes"; color: Theme.muted; font.pointSize: 10 }
 
             Flow {
                 Layout.fillWidth: true
                 spacing: 10
 
-                // We can’t iterate Theme.presets (object) directly; list them explicitly here.
-                // when adding more, make sure you don't forget to add them here too
+                // preset list is manual
                 Repeater {
                     model: [
                         { id: "classic",   name: "Classic",   a: "#141c24", b: "#0f0f0f" },
@@ -151,7 +149,7 @@ Drawer {
 
             Rectangle { Layout.fillWidth: true; height: 1; color: Theme.border; opacity: 0.8 }
 
-            // --- Accent ---
+            // accent picker
             Label { text: "Accent"; color: Theme.muted; font.pointSize: 10 }
 
             RowLayout {

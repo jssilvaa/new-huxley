@@ -5,12 +5,11 @@ import chat 1.0
 Label {
     id: root
 
-    // Background color this text sits on
-    // REQUIRED for correctness
+    // background color for contrast
     property color background: Theme.surface
 
     // semantic role
-    property string role: "primary" // "primary" | "muted" | "accent"
+    property string role: "primary" // primary muted accent
 
     color: {
         if (role === "muted")

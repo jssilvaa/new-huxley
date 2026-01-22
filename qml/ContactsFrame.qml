@@ -1,4 +1,3 @@
-// ContactsFrame.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -151,7 +150,7 @@ Rectangle {
 
                 color: selected ? Theme.contactsSurface : "transparent"
 
-                // need to fix this later 
+                // pending fix
                 border.color: selected ? Theme.accent : "transparent"
                 border.width: selected ? 1 : 0
 
@@ -223,7 +222,7 @@ Rectangle {
                         }
                     }
 
-                    // right side info: timestamp and badge
+                    // right side info
                     ColumnLayout {
                         spacing: 4
                         Layout.alignment: Qt.AlignVCenter
@@ -259,7 +258,7 @@ Rectangle {
                         }
                     }
 
-                    // keeps right edge consistent, little guy > icon
+                    // right edge spacer
                     Label {
                         text: "›"
                         color: Theme.contactsMuted

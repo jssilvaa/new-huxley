@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Valgrind Memcheck — Scenario 2 (scroll/typing)
+# valgrind memcheck scenario 2
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=common_mem.sh
@@ -13,15 +13,13 @@ scenario="vg_s2_scroll_typing"
 out_dir="$(ensure_out_dir "${scenario}_$(timestamp)")"
 app="$(resolve_app)"
 
-# Noise reduction defaults (override via env)
-# - VG_CLEAN_MODE=1: bias toward fewer Wayland/GTK/fontconfig paths so Memcheck results
-#   more often point into your code.
+# noise reduction defaults
 : "${VG_CLEAN_MODE:=1}"
 : "${VG_REPO_GREP:=1}"
 : "${VG_CONTEXT_LINES:=2}"
 
 if [[ "$VG_CLEAN_MODE" == "1" ]]; then
-  # Force X11 backend to avoid many Wayland/EGL integration paths.
+  # force x11 backend
   : "${QT_QPA_PLATFORM:=xcb}"
 fi
 
@@ -56,16 +54,16 @@ if [[ "$VG_CLEAN_MODE" == "1" ]]; then
   fi
 fi
 
-# Optional: generate suppression file if you want (one-time).
+# optional suppression generation
 if [[ "$VG_GEN_SUPP" == "1" ]]; then
   echo "Generating suppression file: $VG_SUPP"
-  # First run will create suppressions in stderr; we tee and extract blocks.
+  # generate suppression blocks
   valgrind --tool=memcheck --gen-suppressions=all --error-limit=no \
     --leak-check=full --show-leak-kinds=definite,indirect \
     --track-origins=yes --num-callers=30 \
     --log-file="$out_dir/valgrind.raw.log" \
     "$app" || true
-  # Extract suppressions blocks (simple heuristic)
+  # extract suppression blocks
   awk '/^{/{flag=1} flag{print} /^}$/ {flag=0; print ""}' "$out_dir/valgrind.raw.log" > "$VG_SUPP" || true
   echo "Wrote: $VG_SUPP"
   exit 0
@@ -90,8 +88,7 @@ cmd=(
   --keep-debuginfo=yes
 )
 
-
-# Use suppressions if present (Qt/GLib noise reduction)
+# optional suppressions
 if [[ -f "$VG_SUPP" ]]; then
   cmd+=( --suppressions="$VG_SUPP" )
 fi
@@ -102,18 +99,16 @@ echo "Output: $out_dir"
 echo "App:    $app"
 echo "Running: ${cmd[*]} -- $app"
 
-# Run (Valgrind stops when app exits)
+# run valgrind
 "${cmd[@]}" -- "$app" || true
 
-# Extract lines that touch this repo (fast signal for "is this our bug?")
+# extract repo hits
 if [[ "$VG_REPO_GREP" == "1" ]]; then
   root="$(repo_root)"
   if command -v grep >/dev/null 2>&1; then
-    # Extract only error contexts that touch appchat binary symbols OR repo paths
     {
     echo "== App-owned contexts (heuristic) =="
 
-    # 1) Any stack that mentions your binary name directly
     awk '
         BEGIN{in=0}
         /^==[0-9]+==/ {line=$0}
@@ -127,14 +122,12 @@ if [[ "$VG_REPO_GREP" == "1" ]]; then
         in && /^==[0-9]+==\s*$/ {next}
         in && /==[0-9]+==\s*$/ {next}
         in && /==[0-9]+==\s*$/ {next}
-        # end of a context is typically a blank '==pid==' line OR a summary section
         in && (/^==[0-9]+==\s*$/ || /ERROR SUMMARY:/ || /LEAK SUMMARY:/) {
         if (buf ~ /(appchat)/) print buf "\n---\n"
         in=0; buf=""
         }
     ' "$LOG"
 
-    # 2) Any stack that contains your repo path (if it exists)
     root="$(repo_root)"
     if grep -qF "$root/" "$LOG"; then
         echo
@@ -145,7 +138,7 @@ if [[ "$VG_REPO_GREP" == "1" ]]; then
   fi
 fi
 
-# Produce a short summary (works even if log format changes a bit)
+# summary output
 {
   echo "== Valgrind summary =="
   echo "log=$LOG"
@@ -160,7 +153,6 @@ fi
   echo "-- App-related hits (repo path; see valgrind.app_hits.txt) --"
   if [[ -s "$APP_HITS" ]]; then
     echo "hits_file=$APP_HITS"
-    # show just a snippet in the summary
     head -n 80 "$APP_HITS" || true
   else
     echo "(none)"

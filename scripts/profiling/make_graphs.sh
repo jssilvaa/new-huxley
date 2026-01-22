@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Convert perf.data into:
-# - perf.out (perf script output)
-# - out.folded (collapsed stacks)
-# - flamegraph.full.svg (all frames)
-# - flamegraph.app.svg (filtered to stacks touching (appchat))
-# - perf.report.full.txt and perf.report.app.txt (top tables)
+# perf data to reports and flamegraphs
 
 if [[ $# -lt 1 ]]; then
   echo "Usage: $0 <perf.data> [flamegraph_dir]" >&2
@@ -23,7 +18,7 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# We `cd` into the output directory below; make PERF_DATA absolute so `perf -i` keeps working.
+# make perf path absolute
 if command -v realpath >/dev/null 2>&1; then
   PERF_DATA="$(realpath "$PERF_DATA")"
 else
@@ -54,11 +49,9 @@ echo "Collapsing stacks..."
 echo "Generating flamegraph.full.svg..."
 "$FLAMEGRAPH" out.folded > flamegraph.full.svg
 
-# Filter folded stacks to those that include frames from the app binary.
-# perf script typically annotates symbols with (appchat). If it doesn't, the
-# app-only flamegraph may end up empty (full.svg will still be valid).
+# filter to app frames
 echo "Generating flamegraph.app.svg (filtered)..."
-# keep stacks where the command/comm at the start is appchat
+# keep stacks with appchat
 grep -E '^appchat;|;appchat\b' out.folded > out.app.folded || true
 if [[ -s out.app.folded ]]; then
   "$FLAMEGRAPH" out.app.folded > flamegraph.app.svg
@@ -67,9 +60,9 @@ else
 fi
 
 echo "Generating perf.report.*.txt..."
-# Full report
+# full report
 perf report --stdio -i "$PERF_DATA" --no-children --sort comm,dso,symbol > perf.report.full.txt || true
-# App-focused report
+# app report
 perf report --stdio -i "$PERF_DATA" --no-children --dsos=appchat --sort comm,dso,symbol > perf.report.app.txt || true
 
 echo "Generating LaTeX tables (top N)..."
@@ -90,7 +83,7 @@ if command -v python3 >/dev/null 2>&1 && [[ -f "$LATEX_SCRIPT" ]]; then
   }
 
   gen_tex perf.report.full.txt "perf.top${PERF_TOP_N}.full.tex" || true
-  # App report can legitimately have 0 rows (e.g. startup dominated by Qt/libs)
+  # app report may be empty
   if grep -qE '^[[:space:]]*[0-9]+(\.[0-9]+)?%' perf.report.app.txt 2>/dev/null; then
     gen_tex perf.report.app.txt "perf.top${PERF_TOP_N}.app.tex" || true
   fi

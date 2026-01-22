@@ -1,4 +1,3 @@
-// Main.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
@@ -46,7 +45,7 @@ Window {
             return
         }
 
-        // Desktop: stop network/timers before QML teardown completes.
+        // desktop shutdown guard
         if (Controller && Controller.shutdown)
             Controller.shutdown()
     }
@@ -67,7 +66,7 @@ Window {
         onActivated: root.handleAndroidBack()
     }
 
-    // intro only once (first time app shows)
+    // intro animation gate
     property real introT: 0
     Component.onCompleted: introAnim.start()
 
@@ -88,12 +87,12 @@ Window {
     Component { id: desktopChatComponent; ChatShell { anchors.fill: parent } }
     Component { id: mobileChatComponent; MobileChatShell { anchors.fill: parent } }
 
-    // --- Pages kept alive so transitions work ---
+    // keep pages alive for transitions
     Item {
         id: pages
         anchors.fill: parent
 
-        // LOGIN
+        // login page
         Item {
             id: loginPage
             anchors.fill: parent
@@ -102,7 +101,7 @@ Window {
             visible: opacity > 0.01
             enabled: root.page === "login"
 
-            // a tiny “pop” / drift
+            // page enter motion
             scale: root.page === "login" ? 1.0 : 0.985
             y:     root.page === "login" ? 0   : 10
 
@@ -116,7 +115,7 @@ Window {
             }
         }
 
-        // REGISTER
+        // register page
         Item {
             id: regPage
             anchors.fill: parent
@@ -138,7 +137,7 @@ Window {
             }
         }
 
-        // CHAT (slide in slightly from right)
+        // chat page
         Item {
             id: chatPage
             anchors.fill: parent
@@ -161,7 +160,7 @@ Window {
         }
     }
 
-    // toasts unchanged…
+    // toast host
     ToastHost {
         id: toasts
         parent: root.contentItem
@@ -175,7 +174,6 @@ Window {
         function onError(msg) { toasts.show(msg, true) }
     }
 
-    // Avoid quitting directly from a shortcut handler (can cause shutdown re-entrancy).
-    // Close the window instead; the app will exit when the last window closes.
+    // close window on shortcut
     Action { shortcut: "Ctrl+w"; onTriggered: Qt.callLater(() => root.close()) }
 }

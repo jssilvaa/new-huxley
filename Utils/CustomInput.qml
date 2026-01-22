@@ -5,7 +5,7 @@ import chat 1.0
 TextField {
     id: control
 
-    // set image & icons here
+    // icon source
     property string iconSource: ""
     property bool showIcon: iconSource != ""
     property alias maximumLength: control.maximumLength
@@ -13,8 +13,7 @@ TextField {
     property color fieldText: Theme.onPanel2
     property color fieldMuted: Theme.mutedText(Theme.panel2)
 
-    // textfield inherits text, echomode, placeholdertext, enabled, readonly
-    // this is already exposed. no need to do it twice
+    // use textfield builtins for text and state
     implicitHeight: 40
     font.pointSize: 12
     verticalAlignment: TextInput.AlignVCenter

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Common helpers for memory profiling scripts (valgrind/heaptrack).
-# Usage: source this file from scenario scripts.
+# memory profiling helpers
 
 require_cmd() {
   command -v "$1" >/dev/null 2>&1 || {
@@ -19,7 +18,7 @@ repo_root() {
   cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd
 }
 
-# Defaults (override via env)
+# defaults via env
 : "${BUILD_DIR:=build/Desktop_Qt_6_10_1-RelWithDebInfo}"
 : "${APP_PATH:=}"
 : "${OUT_BASE:=profiles/mem}"

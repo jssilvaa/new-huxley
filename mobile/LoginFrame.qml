@@ -1,4 +1,3 @@
-// LoginFrame.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -8,7 +7,7 @@ import chat 1.0
 Item {
     anchors.fill: parent
 
-    // controller object ready
+    // controller ready flag
     property bool controllerReady: Controller !== null
 
     Rectangle {
@@ -19,17 +18,7 @@ Item {
         radius: 24
         color: "#fafafa"
 
-        // ease in and out animation on register and back
-        // OpacityAnimator {
-        //     target: card
-        //     from: 0
-        //     to: 1
-        //     duration: 250
-        //     running: true
-        //     easing.type: Easing.InOutQuad
-        // }
-
-        // put these near the top of the background Rectangle (behind everything)
+        // background overlays
         Rectangle {
             anchors.fill: parent
             visible: Theme.gradientOn && Theme.hasGradient

@@ -1,4 +1,3 @@
-// ChatShell.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -11,7 +10,7 @@ Item {
         anchors.fill: parent
         color: Theme.bg
 
-        // background layers (behind everything)
+        // background layers
         Rectangle {
             anchors.fill: parent
             visible: Theme.gradientOn && Theme.hasGradient
@@ -32,19 +31,19 @@ Item {
 
         SettingsDrawer { id: settingsDrawer; height: parent.height }
 
-        // --- NEW ROOT LAYOUT: split left (contacts) / right (chat pane)
+        // root split layout
         RowLayout {
             anchors.fill: parent
             spacing: 0
 
-            // LEFT: contacts full height
+            // left contacts pane
             ContactsFrame {
                 Layout.preferredWidth: 340
                 Layout.minimumWidth: 240
                 Layout.fillHeight: true
             }
 
-            // RIGHT: chat pane (header + chat + input)
+            // right chat pane
             Rectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -54,7 +53,7 @@ Item {
                     anchors.fill: parent
                     spacing: 0
 
-                    // Header only for chat pane now
+                    // chat header only
                     HeaderBar {
                         Layout.fillWidth: true
                         Layout.preferredHeight: 56

@@ -1,4 +1,3 @@
-// HeaderBar.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -64,16 +63,6 @@ Rectangle {
         }
 
         Item { Layout.fillWidth: true }
-
-        // Label {
-        //     text: Controller.connected ? "● Connected" : "● Disconnected"
-        //     color: Controller.connected ? Theme.accent : Theme.danger
-        //     font.pointSize: 10
-
-        //     Behavior on color {
-        //         ColorAnimation { duration: Theme.animFast }
-        //     }
-        // }
 
         ToolButton {
             icon.source: "../images/settings-icon.png"

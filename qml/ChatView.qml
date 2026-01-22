@@ -1,4 +1,3 @@
-// ChatView.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -22,7 +21,7 @@ Rectangle {
         return Qt.formatTime(d, "hh:mm")
     }
 
-    // Empty states
+    // empty states
     Column {
         anchors.centerIn: parent
         spacing: 8
@@ -96,7 +95,7 @@ Rectangle {
             }
         }
 
-        // temp placeholder logic
+        // placeholder logic
         Connections {
             target: Controller 
             function onClearChat() {
@@ -141,7 +140,7 @@ Rectangle {
             }
         }
 
-        // Keep glued to bottom only if user is at bottom.
+        // keep at bottom only if already there
         property bool stickToBottom: true
         function atBottom() {
             return contentY >= (contentHeight - height - 2)
@@ -232,6 +231,8 @@ Rectangle {
 
                 RowLayout {
                     width: parent.width
+                    implicitHeight: bubble.implicitHeight
+                    height: implicitHeight
 
                     Item { Layout.fillWidth: true; visible: isOwn }  // left spacer
 

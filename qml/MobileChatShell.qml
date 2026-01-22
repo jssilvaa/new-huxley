@@ -1,4 +1,3 @@
-// MobileChatShell.qml
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -42,7 +41,7 @@ FocusScope {
         root.forceActiveFocus()
     }
 
-    // Back handling is centralized in Main.qml.
+    // back handling in main
 
     Rectangle {
         anchors.fill: parent
